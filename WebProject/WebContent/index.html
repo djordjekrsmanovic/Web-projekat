@@ -14,7 +14,7 @@
 
 <label>Korisničko ime: </label><input type="text" v-model="user.username"></input> <br/> <br/>
 <label>Lozinka:   </label><input type="password" v-model="user.password"></input> <br/> <br/>
-<button v-on:click="login(user)">Prijava</button> <br/><br/>
+<button v-on:click="loginTry()">Prijava</button> <br/><br/>
 <label>Niste registrovani?</label> <button v-on:click="registracija()">Registracija</button> <br/>
 
 
@@ -22,6 +22,6 @@
 
 <script src="js/vue.js"></script>
 <script src="js/axios.js"></script>
-<script>src="app/login.js</script>
+<script src="app/login.js"></script>
 </body>
 </html>

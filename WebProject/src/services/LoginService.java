@@ -22,7 +22,7 @@ public class LoginService {
 	@POST
 	@Path("")
 	@Produces(MediaType.TEXT_PLAIN)
-	public String login(User u) {
+	public String loginTry() {
 		
 		return "Uspjesno logovanje!";
 	}

@@ -12,10 +12,10 @@ var login = new Vue({
 		.then(response=> (this.users = response.data))
 	},
 	methods: {
-		login : function(user) {
+		loginTry : function() {
 			var u ={username: user.username, password: user.password}; 
 			axios
-			.post("rest/login", u)
+			.post("/rest/login", u)
 			.then(response => alert("response.data"));
 		}
 	}
