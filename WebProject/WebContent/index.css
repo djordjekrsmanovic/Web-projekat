@@ -1,0 +1,40 @@
+@charset "ISO-8859-1";
+
+div{
+	position:fixed;
+	top: 35%;
+	left: 38%;	
+	width:270px;
+	height: 250 px;
+	background-image: url(paper.jpg);
+	margin:auto;
+	border-radius: 20px;
+	padding: 25px; 
+}
+
+h1{
+	font-family:verdana;
+	font-style: italic;
+	background-color:white;
+	color:navy;
+	text-align: center;	
+	left: 20%;
+}
+h2{
+	font-family:verdana;
+	font-style: italic;
+	color:navy;
+	align: center;	
+}
+
+body{
+	background-image: url(foodBackground.jpg);
+	background-repeat:no-repeat;
+	background-size:1368px 700px;
+}
+
+label{
+	color:navy;
+	font-style:bold;
+	size:15;
+}

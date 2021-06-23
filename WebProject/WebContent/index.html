@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=UTF-8">
+<title>Nasa web aplikacija</title>
+<link href="index.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<h1 class="titleStyle">Dobrodošli u aplikaciju za naručivanje hrane.</h1>
+
+<div id="login" class="divStyle">
+	
+<h2 class="titleStyle">Prijavite se:</h2>
+
+<label>Korisničko ime: </label><input type="text" v-model="user.username"></input> <br/> <br/>
+<label>Lozinka:   </label><input type="password" v-model="user.password"></input> <br/> <br/>
+<button v-on:click="login(user)">Prijava</button> <br/><br/>
+<label>Niste registrovani?</label> <button v-on:click="registracija()">Registracija</button> <br/>
+
+
+</div>
+
+<script src="js/vue.js"></script>
+<script src="js/axios.js"></script>
+</body>
+</html>
