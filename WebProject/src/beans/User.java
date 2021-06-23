@@ -12,7 +12,6 @@ public class User {
 	private Date birthDate;
 	private boolean deleted;
 	private boolean banned;
-	private Role userRole;
 	
 	public User() {
 		super();
@@ -22,7 +21,7 @@ public class User {
 	
 
 	public User(String username, String password, String firstName, String lastName, Gender gender, Date birthDate,
-			boolean deleted, boolean banned, Role userRole) {
+			boolean deleted, boolean banned) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -32,7 +31,7 @@ public class User {
 		this.birthDate = birthDate;
 		this.deleted = deleted;
 		this.banned = banned;
-		this.userRole = userRole;
+		
 	}
 
 	public User(String username, String password) {
@@ -105,21 +104,5 @@ public class User {
 		this.banned = banned;
 	}
 
-
-
-	public Role getUserRole() {
-		return userRole;
-	}
-
-
-
-	public void setUserRole(Role userRole) {
-		this.userRole = userRole;
-	}
-	
-	
-	
-	
-	
 
 }

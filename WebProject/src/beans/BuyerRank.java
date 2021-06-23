@@ -3,5 +3,6 @@ package beans;
 public enum BuyerRank {
 	GOLD,
 	SILVER,
-	BRONZE
+	BRONZE,
+	NO_RANK
 }
