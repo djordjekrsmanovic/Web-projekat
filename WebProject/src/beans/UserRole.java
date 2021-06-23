@@ -1,6 +1,6 @@
 package beans;
 
-public enum Role {
+public enum UserRole {
 	ADMIN,
 	MANAGER,
 	DELIVERER,

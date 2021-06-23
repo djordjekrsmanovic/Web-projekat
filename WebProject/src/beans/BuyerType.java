@@ -13,6 +13,7 @@ public class BuyerType {
 	
 	
 	public BuyerType() {
+		buyerRank=BuyerRank.NO_RANK;
 		
 	}
 	
@@ -24,9 +25,12 @@ public class BuyerType {
 		}else if(buyerRank==BuyerRank.SILVER) {
 			this.requiredPoints=silverPoints;
 			this.discount=silverDiscount;
-		}else {
+		}else if(buyerRank==BuyerRank.BRONZE) {
 			this.requiredPoints=bronzePoints;
 			this.discount=bronzeDiscount;
+		}else {
+			this.requiredPoints=0;
+			this.discount=0;
 		}
 	}
 
