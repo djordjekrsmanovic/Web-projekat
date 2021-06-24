@@ -2,7 +2,7 @@
  * 
  */
 var login = new Vue({
-	el='#login',
+	el='#loginForm',
 	data: {
 		users: null,
 		user: {}
@@ -15,7 +15,7 @@ var login = new Vue({
 		loginTry : function() {
 			var u ={username: user.username, password: user.password}; 
 			axios
-			.post("/rest/login", u)
+			.post('rest/login')
 			.then(response => alert("response.data"));
 		}
 	}

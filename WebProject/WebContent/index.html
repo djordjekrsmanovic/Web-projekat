@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Nasa web aplikacija</title>
 <link href="index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <h1 class="titleStyle">Dobrodošli u aplikaciju za naručivanje hrane.</h1>
 
-<div id="login" class="divStyle">
+<div id="loginForm" class="divStyle">
 	
 <h2 class="titleStyle">Prijavite se:</h2>
 
 <label>Korisničko ime: </label><input type="text" v-model="user.username"></input> <br/> <br/>
 <label>Lozinka:   </label><input type="password" v-model="user.password"></input> <br/> <br/>
-<button v-on:click="loginTry()">Prijava</button> <br/><br/>
+<button v-on:click="loginTry">Prijava</button> <br/><br/>
 <label>Niste registrovani?</label> <button v-on:click="registracija()">Registracija</button> <br/>
 
 
