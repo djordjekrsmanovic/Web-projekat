@@ -8,17 +8,18 @@ public class Order {
 
 	private int id;
 	private List<Product> products;
-	//dodati restoran
+	private Restaurant restaurant;
 	private Date dateAndTime;
 	private long price;
 	private String buyerName;
 	private OrderStatus status;
 	
 	
-	public Order(int id, List<Product> products, Date dateAndTime, long price, String buyerName, OrderStatus status) {
+	public Order(int id, List<Product> products, Restaurant restaurant, Date dateAndTime, long price, String buyerName, OrderStatus status) {
 		super();
 		this.id = id;
 		this.products = products;
+		this.restaurant=restaurant;
 		this.dateAndTime = dateAndTime;
 		this.price = price;
 		this.buyerName = buyerName;
@@ -83,6 +84,16 @@ public class Order {
 
 	public void setStatus(OrderStatus status) {
 		this.status = status;
+	}
+
+
+	public Restaurant getRestaurant() {
+		return restaurant;
+	}
+
+
+	public void setRestaurant(Restaurant restaurant) {
+		this.restaurant = restaurant;
 	}
 	
 	

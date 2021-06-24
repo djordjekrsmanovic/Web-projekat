@@ -5,14 +5,16 @@ var login = new Vue({
 	el='#loginForm',
 	data: {
 		users: null,
-		user: {}
+		user: {},
+		poruka : "zdrao zdrao"
 	},
 	mounted(){
 		axios.get('rest/users')
 		.then(response=> (this.users = response.data))
 	},
 	methods: {
-		loginTry : function() {
+		loginTry : function(event) {
+			alert("zdrao")
 			var u ={username: user.username, password: user.password}; 
 			axios
 			.post('rest/login')

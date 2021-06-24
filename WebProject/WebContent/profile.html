@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Nalog</title>
+<script src="app/profile.js"></script>
+</head>
+<body id="profileBody">
+<div>
+<ul>
+<li><a href="">Nalog</a></li>
+<li><a href="">Odjava</a></li>
+</ul>
+</div>
+
+<form id="editProfileForm">
+                <table>
+                    <tr>                       
+                        <td>Korisničko ime:</td>
+                        <td colspan="2"><input id="profileUsername" type="text" v-model="user.username"></td>
+                    </tr>
+                    <tr>
+                        <td>Ime:</td>
+                        <td><input id="profileName" /></td>                       
+                    </tr>
+                    <tr>
+                    	<td>Prezime:</td>
+                        <td><input id="profileSurname"></td>
+                    </tr>
+                    <tr>
+                        <td>Pol:</td>
+                        <td><select id="profileSex">
+                                <option value="M">Muški</option>
+                                <option value="F">Ženski</option>                   
+                            </select> </td>                       
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                    	<td>Trenutna lozinka:</td>
+                        <td><input type="password" id="oldPassword" /></td>
+                        <td>Nova lozinka:</td>
+                        <td><input type="password" id="NewPassword" /></td>
+                        <td>Ponovite novu lozinku:</td>
+                        <td><input type="password" id="RepeatedNewPassword" /></td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td colspan="4">
+                            <button type="submit" v:on-click="edit">Izmeni podatke</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+</body>
+</html>
