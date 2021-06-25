@@ -1,0 +1,218 @@
+html,body{
+    margin: 0%;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jomhuria&display=swap');
+/*--------------global-styles-----------------*/
+a{
+    text-decoration: none;
+}
+
+.flex-row{
+    display:flex;
+    flex-direction: row;
+
+}
+
+/*-------------navbar-----------*/
+
+.nav{
+    background:white;
+    padding: 0 2rem;
+    height: 0rem;
+    min-height: 10vh;
+    overflow: hidden;
+    justify-content: space-between;
+    background-color: #66ccff;
+}
+
+.nav .nav-menu{
+    justify-content: space-between;
+}
+
+.nav .nav-items{
+    list-style: none;
+    display: flex;
+    
+}
+
+.nav .nav-items .nav-link{
+    padding: 1.2vh 0.5rem;
+    position: relative;
+    font-family: 'Roboto Condensed', sans-serif;
+    
+    
+}
+h1, h2, p{
+    margin: 0;
+  }
+.nav-link:hover{
+    /*background-color: white; */
+    box-shadow: 2px 2px 2px 2px #4287f5;
+}
+
+
+
+.nav-color{
+    color:white
+}
+
+.food-picture{
+    text-align: right;
+    background-color:#f5dfeb;
+}
+
+.site-message{
+    background-image:url("../pictures/hrana1.jpg");
+    background-size: cover;
+    background-color: blanchedalmond;
+    height: 50vh;
+}
+
+.site-background{
+    padding-top: 10rem;
+    text-align: center;
+    color:black
+    
+}
+
+.title{
+    font-size: larger;
+    font-family: 'Kirang Haerang', cursive;
+    color:white
+}
+
+.form-input{
+    padding: 4px;
+    height: 20px;
+    margin: 5px;
+    border: solid 1px;
+    border-radius: 8px;
+    background-color:#f2ede6;
+    border: white;
+    
+}
+
+.form-select{
+    padding: 4px;
+    height: 30px;
+    margin: 5px;
+    border: solid 1px;
+    border-radius: 8px;
+    background-color:#f2ede6;
+    border: white;
+}
+
+.form-input:focus{
+    outline-color:#4287f5
+}
+
+.form-select:focus{
+    outline-color:#4287f5
+}
+
+.search-button{
+  width:120px;
+  padding: 5px;
+  background:#2da12f;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+  border-radius: 5px;
+  
+}
+
+.search-button:hover{
+    background-color: #288f2a;
+}
+
+.card{
+    background-color:white;
+    border-radius: 20px;
+    padding: 1em;
+    box-shadow: 0px 15px 25px #95a5a6;
+    text-align: center;
+    
+}
+
+.card img{
+    max-width: 100%;
+    border-radius: 5px;
+    transition: transform .2s;
+}
+
+.card img:hover{
+    transform: scale(1.1);
+}
+
+.details-button{
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    border-radius: 10px;
+    background-color:#66ccff;
+    align-self: center;
+    margin-top: 40px;
+    border:white
+}
+
+button:hover{
+    -webkit-transform: scale(1.1);
+	    -ms-transform: scale(1.1);
+	        transform: scale(1.1);
+}
+
+.restaurants-card{
+    margin: 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 50px;
+    grid-row-gap:50px;
+    
+}
+
+.search-criterium{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 30px;
+    grid-row-gap:50px;
+    
+}
+
+.restaurant-title{
+    color:black;
+    display: inline-block;
+    float: left;
+    margin-bottom: 2%;
+    font-family: 'Dela Gothic One', cursive;
+    font-size: 20px;
+    
+    
+}
+
+
+
+.raiting-value{
+    display: inline-block;
+    color: rgb(223, 223, 13);
+    float: right;
+    font-family: 'Jomhuria', cursive;
+    font-size: 20px;
+    
+}
+
+.restaurant-status{
+    color:gray;
+    display: inline-block;
+    float: left;
+    margin: 0px;
+    padding: 0px;    
+}
+
