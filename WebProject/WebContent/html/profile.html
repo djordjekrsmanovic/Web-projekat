@@ -4,39 +4,50 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Nalog</title>
 	<script src="app/profile.js"></script>
-	<script src="js/vue.js"></script>
-	<script src="js/axios.js"></script>
-	<link href="nalog.css" rel="stylesheet" />
+	<script src="../jquery-3.3.1.min.js"></script>
+	<link href="../css/nalog.css" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
 </head>
 <body id="profileBody">
-	<div>
-	<ul>
-	<li><a href="">Početna strana</a></li>
-	<li><a href="">Odjava</a></li>
-	</ul>
-	</div id="podaci">
-	<div>                    
+
+	<section class="header">
+		<nav >
+			<a href=""><img src="../pictures/logo.png" width="120px" height="70px"></a>
+			<div class="nav-links">
+				<ul>
+					<li><a href="">Početna strana</a></li>
+					<li><a href="">Odjava</a></li>
+				</ul>
+			</div>
+		</nav>
+	</section>
+
+
+	<section class="editSection">
+	<div id="podaci">                    
 	    <label>Korisničko ime:</label>
-		<input id="profileUsername" type="text" v-model=""/> <br />
+		<input id="profileUsername" type="text" /> 
 	    <label>Ime:</label>
-		<input id="profileName" type="text"  v-model="" /> <br />
+		<input id="profileName" type="text"  /> 
 	    <label>Prezime:</label>
-	    <input id="profileSurname" type="text"  v-model=""/> <br />
+	    <input id="profileSurname" type="text" /> 
 	    <label>Pol:</label>
 	    <select id="profileSex">
 	        <option value="M">Muški</option>
 	        <option value="F">Ženski</option>                   
-	    </select> <br />
+	    </select> 
 	    <label>Trenutna lozinka:</label>
-	    <input type="password" id="oldPassword" v-model=""/> <br />
+	    <input type="password" id="oldPassword" /> 
 	    <label>Nova lozinka:</label>
-	    <input type="password" id="NewPassword" /> <br />
+	    <input type="password" id="NewPassword" /> 
 	    <label>Ponovite novu lozinku:</label>
-	    <input type="password" id="RepeatedNewPassword" /> <br />
+	    <input type="password" id="RepeatedNewPassword" /> 
 	    <label>Datum rodjenja:</label>
-	    <input id="datum" type="date" v-model=""><br/>             
-	    <button type="submit" v:on-click="edit">Izmjeni podatke</button>
-	</div>   
+	    <input id="datum" type="date" >          
+	    <button type="submit" >Izmjeni podatke</button>
+	</div> 
+	</section>  
+
 <br/> <br/> <br/>
 	<table>
 		<tr bgcolor="green">
@@ -47,7 +58,7 @@
 			<th>Status</th>
 		</tr>
 
-		<tr v-for="" v-on:click="">
+		<tr>
 		<td>{{n.id}}</td>
 		<td>{{n.restaurant.name }}</td>
 		<td>{{n.date | dateFormat('DD.MM.YYYY')}}</td>
@@ -56,7 +67,7 @@
 	</tr>
 
 	</table>
-	<table v-bind:class={hiddenSearch : userRole!='ADMIN'>
+	<table>
 		<tr bgcolor="green">
 			<th>Ime</th>
 			<th>Prezime</th>
@@ -66,7 +77,7 @@
 			<th>Broj sakupljenih bodova</th>
 		</tr>
 
-		<tr v-for="" v-on:click="">
+		<tr>
 		<td>{{k.firstName}}</td>
 		<td>{{k.lastName}}</td>
 		<td>{{k.username}}</td>
@@ -78,11 +89,11 @@
 	</table>
 <br/> <br/> <br/>
 
-<form id="pretragaNoMenager" v-bind:class={hiddenSearch : userRole!='MANAGER'}>
-	<label>Restoran</label> <input id="ImeRestorana" type="text"  v-model="" />
-	<label>Cijena od:</label> <input type="text"  v-model="" /> <label>do</label><input type="text" v-model="" />
-	<label>Datum od:</label> <input type="text"  v-model="" /> <label>do</label> <input type="text"  v-model="" /> <br/>
-	<button v:on-click="" >Pretraži</button> <br/>
+<form id="pretragaNoMenager">
+	<label>Restoran</label> <input id="ImeRestorana" type="text"  />
+	<label>Cijena od:</label> <input type="text" /> <label>do</label><input type="text"  />
+	<label>Datum od:</label> <input type="text" /> <label>do</label> <input type="text" /> <br/>
+	<button >Pretraži</button> <br/>
 	<label>Izaberi filter restorana </label>
 	<select>
 		<option>ITALIAN</option>
@@ -97,28 +108,28 @@
 		<option>FOOD</option>
 		<option>DRINK</option>
 	</select>
-	<button v:on-click="" >Filtriraj</button> <br/>
+	<button>Filtriraj</button> <br/>
 </form>
 <br/> <br/> <br/>
 
-<form id="pretragaMenager" v-bind:class={hiddenSearch : user!=BUYER || user!=DELIVERER}>
-	<label>Cijena od:</label> <input type="text"  v-model="" /> <label>do</label><input type="text" v-model="" />
-	<label>Datum od:</label> <input type="text"  v-model="" /> <label>do</label> <input type="text"  v-model="" /> <br/>
-	<button v:on-click="" >Pretraži</button><br/>
+<form id="pretragaMenager">
+	<label>Cijena od:</label> <input type="text"  /> <label>do</label><input type="text"  />
+	<label>Datum od:</label> <input type="text"   /> <label>do</label> <input type="text" /> <br/>
+	<button >Pretraži</button><br/>
 	<label>Izaberi filter porudzbine </label>
 	<select>
 		<option>FOOD</option>
 		<option>DRINK</option>
 	</select>
-	<button v:on-click="" >Filtriraj</button> <br/>
+	<button >Filtriraj</button> <br/>
 </form>
 <br/> <br/> <br/>
 
-<form id="pretragaAdmin" v-bind:class={hiddenSearch : userRole!='ADMIN'}>
-	<label>Ime</label> <input id="Ime" type="text"  v-model="" />
-	<label>Prezime</label> <input type="text"  v-model="" /> 
-	<label>Korisnicko ime</label> <input type="text"  v-model="" /> 
-	<button v:on-click="" >Pretraži</button> <br/>
+<form id="pretragaAdmin">
+	<label>Ime</label> <input id="Ime" type="text"  />
+	<label>Prezime</label> <input type="text"  /> 
+	<label>Korisnicko ime</label> <input type="text"  /> 
+	<button>Pretraži</button> <br/>
 	<label>Izaberi filter uloge </label>
 	<select>
 		<option>ADMIN</option>
@@ -133,7 +144,7 @@
 		<option>BRONZE</option>
 		<option>NO_RANK</option>
 	</select>
-	<button v:on-click="" >Filtriraj</button> <br/>
+	<button>Filtriraj</button> <br/>
 </form>
 </body>
 </html>
