@@ -7,7 +7,7 @@ public class Product {
 	private String name;
 	private double price;
 	private ProductType type;
-	//dodati restoran
+	private Restaurant restaurant;
 	private int amount;
 	private String description;
 	private String photoPath;
@@ -24,13 +24,14 @@ public class Product {
 	
 	
 
-	public Product(String id, String name, double price, ProductType type, int amount, String description,
+	public Product(String id, String name, double price, ProductType type,Restaurant restaurant, int amount, String description,
 			String photoPath) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.type = type;
+		this.restaurant=restaurant;
 		this.amount = amount;
 		this.description = description;
 		this.photoPath = photoPath;
@@ -90,6 +91,14 @@ public class Product {
 
 	public void setPhotoPath(String photoPath) {
 		this.photoPath = photoPath;
+	}
+
+	public Restaurant getRestaurant() {
+		return restaurant;
+	}
+
+	public void setRestaurant(Restaurant restaurant) {
+		this.restaurant = restaurant;
 	}
 	
 	
