@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Buyer extends User {
-	private UserRole role; //vjerovatno nije potrebno jer imamo odvojene entitete
+	private UserRole userRole; //vjerovatno nije potrebno jer imamo odvojene entitete
 	private List<Order> orders;
 	private ShoppingCart shoppingCart;
 	private int points;
@@ -19,13 +19,13 @@ public class Buyer extends User {
 			boolean deleted, boolean banned) {
 		super(username, password, firstName, lastName, gender, birthDate, deleted, banned);
 		// TODO Auto-generated constructor stub
-		role=UserRole.BUYER;
+		userRole=UserRole.BUYER;
 		this.buyerType=new BuyerType();
 	}
 	public Buyer(String username, String password, String firstName, String lastName, Gender gender, Date birthDate,
 			boolean deleted, boolean banned, List<Order> orders, ShoppingCart shoppingCart, int points) {
 		super(username, password, firstName, lastName, gender, birthDate, deleted, banned);
-		this.role = UserRole.BUYER;
+		this.userRole = UserRole.BUYER;
 		this.orders = orders;
 		this.shoppingCart = shoppingCart;
 		this.points = points;
@@ -34,16 +34,16 @@ public class Buyer extends User {
 	public Buyer(String username, String password, String firstName, String lastName, Gender gender, Date birthDate,
 			boolean deleted, boolean banned, ShoppingCart shoppingCart, int points) {
 		super(username, password, firstName, lastName, gender, birthDate, deleted, banned);
-		this.role = UserRole.BUYER;
+		this.userRole = UserRole.BUYER;
 		this.orders = new ArrayList<Order>();
 		this.shoppingCart = shoppingCart;
 		this.points = points;
 	}
 	public UserRole getRole() {
-		return role;
+		return userRole;
 	}
 	public void setRole(UserRole role) {
-		this.role = role;
+		this.userRole = role;
 	}
 	public List<Order> getOrders() {
 		return orders;
