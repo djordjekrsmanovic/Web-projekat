@@ -1,0 +1,21 @@
+{
+  "bojan" : {
+    "username" : "bojan",
+    "password" : "bojan",
+    "firstName" : "Bojan",
+    "lastName" : "Prodanovic",
+    "gender" : "male",
+    "birthDate" : 916268400000,
+    "deleted" : false,
+    "banned" : false,
+    "restaurant" : {
+      "name" : null,
+      "restaurantType" : null,
+      "products" : null,
+      "restaurantStatus" : null,
+      "location" : null,
+      "pictureURL" : null
+    },
+    "userRole" : "MANAGER"
+  }
+}

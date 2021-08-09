@@ -1,4 +1,12 @@
 @charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;1,700&display=swap');
+
+*{
+    margin: 0%;
+    box-sizing: border-box;
+    overflow: auto;
+    font-family: 'Roboto Condensed', sans-serif;
+}
 
 div{
 	position:fixed;

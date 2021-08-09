@@ -49,4 +49,15 @@ public class BuyerDAO extends GenericFileRepository<Buyer, String> {
 
 		return retDate;
 	}
+	
+	public String login(String username, String password) {
+		for(Buyer b : this.getList()) {
+			if(username==b.getUsername()) {
+				if(password==b.getPassword()) {
+					return "Uspjesno logovanje!";
+				}				
+			} return "Pogrjesno korisnicko ime ili lozinka!";
+		}
+		return "Korisnik ne postoji!";
+		} 
 }
