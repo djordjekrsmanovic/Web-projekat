@@ -24,6 +24,17 @@ public class Administrator extends User {
 		this.userRole = userRole;
 	}
 
+	@Override
+	public String toString() {
+		return "Administrator [userRole=" + userRole + ", getUsername()=" + getUsername() + ", getPassword()="
+				+ getPassword() + ", getFirstName()=" + getFirstName() + ", getLastName()=" + getLastName()
+				+ ", getGender()=" + getGender() + ", getBirthDate()=" + getBirthDate() + ", isDeleted()=" + isDeleted()
+				+ ", isBanned()=" + isBanned() + ", toString()=" + super.toString() + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + "]";
+	}
+
+	
+
 	
 	
 	

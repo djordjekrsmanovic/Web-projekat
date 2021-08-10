@@ -20,7 +20,7 @@ public class Manager extends User{
 			boolean deleted, boolean banned,Restaurant restaurant) {
 		super(username, password, firstName, lastName, gender, birthDate, deleted, banned);
 		this.restaurant = restaurant;
-		this.userRole = userRole.MANAGER;
+		this.userRole = UserRole.MANAGER;
 	}
 	public Restaurant getRestaurant() {
 		return restaurant;
@@ -33,6 +33,10 @@ public class Manager extends User{
 	}
 	public void setUserRole(UserRole userRole) {
 		this.userRole = userRole;
+	}
+	@Override
+	public String toString() {
+		return "Manager [restaurant=" + restaurant + ", userRole=" + userRole + "]";
 	}
 	
 	

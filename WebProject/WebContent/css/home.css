@@ -68,7 +68,7 @@ h1, h2, p{
 }
 
 .site-message{
-    background-image:url("hrana1.jpg");
+    background-image:url("../pictures/hrana1.jpg");
     background-size: cover;
     background-color: blanchedalmond;
     height: 50vh;

@@ -1,0 +1,20 @@
+{
+  "cevapi" : {
+    "id" : "cevapi",
+    "name" : "cevapi",
+    "price" : 550.0,
+    "type" : "FOOD",
+    "amount" : 350,
+    "description" : "Cevapi od svinjskog i juneceg mesa",
+    "photoPath" : ""
+  },
+  "supa" : {
+    "id" : "supa",
+    "name" : "supa",
+    "price" : 550.0,
+    "type" : "FOOD",
+    "amount" : 350,
+    "description" : "supa od svinjskog i juneceg mesa",
+    "photoPath" : ""
+  }
+}

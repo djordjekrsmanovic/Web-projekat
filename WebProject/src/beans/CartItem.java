@@ -30,6 +30,11 @@ public class CartItem {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
+
+	@Override
+	public String toString() {
+		return "CartItem [product=" + product + ", amount=" + amount + "]";
+	}
 	
 	
 	

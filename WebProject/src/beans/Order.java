@@ -6,42 +6,72 @@ import java.util.List;
 //porudzbina
 public class Order {
 
-	private int id;
-	private List<Product> products;
-	//dodati restoran
+	private String id;
+	private List<CartItem> products;
+	private Restaurant restaurant;
 	private Date dateAndTime;
-	private long price;
-	private String buyerName;
+	private double price;
+	private String buyerID;
 	private OrderStatus status;
 	
 	
-	public Order(int id, List<Product> products, Date dateAndTime, long price, String buyerName, OrderStatus status) {
+	
+	
+
+	
+
+
+	public Order() {
 		super();
-		this.id = id;
-		this.products = products;
-		this.dateAndTime = dateAndTime;
-		this.price = price;
-		this.buyerName = buyerName;
-		this.status = status;
+		// TODO Auto-generated constructor stub
 	}
 
 
-	public int getId() {
+	public Order(String id, List<CartItem> products, Restaurant restaurant, Date dateAndTime, double price,
+			String buyerName, OrderStatus status) {
+		super();
+		this.id = id;
+		this.products = products;
+		this.restaurant = restaurant;
+		this.dateAndTime = dateAndTime;
+		this.price = price;
+		this.buyerID = buyerName;
+		this.status = status;
+	}
+	
+	public Order(String id, List<CartItem> products, Restaurant restaurant, Date dateAndTime,
+			String buyerName, OrderStatus status) {
+		super();
+		this.id = id;
+		this.products = products;
+		this.restaurant = restaurant;
+		this.dateAndTime = dateAndTime;
+		this.buyerID = buyerName;
+		this.status = status;
+		double calculatedPrice=0;
+		for (CartItem cartItem:products) {
+			calculatedPrice+=cartItem.getAmount()*cartItem.getProduct().getPrice();
+		}
+		this.price=calculatedPrice;
+	}
+
+
+	public String getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
 
-	public List<Product> getProducts() {
+	public List<CartItem> getProducts() {
 		return products;
 	}
 
 
-	public void setProducts(List<Product> products) {
+	public void setProducts(List<CartItem> products) {
 		this.products = products;
 	}
 
@@ -56,23 +86,23 @@ public class Order {
 	}
 
 
-	public long getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
 
-	public void setPrice(long price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
 
 	public String getBuyerName() {
-		return buyerName;
+		return buyerID;
 	}
 
 
 	public void setBuyerName(String buyerName) {
-		this.buyerName = buyerName;
+		this.buyerID = buyerName;
 	}
 
 
@@ -83,6 +113,22 @@ public class Order {
 
 	public void setStatus(OrderStatus status) {
 		this.status = status;
+	}
+	
+	public Restaurant getRestaurant() {
+		return restaurant;
+	}
+
+
+	public void setRestaurant(Restaurant restaurant) {
+		this.restaurant = restaurant;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", products=" + products + ", restaurant=" + restaurant + ", dateAndTime="
+				+ dateAndTime + ", price=" + price + ", buyerID=" + buyerID + ", status=" + status + "]";
 	}
 	
 	

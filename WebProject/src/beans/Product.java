@@ -7,14 +7,18 @@ public class Product {
 	private String name;
 	private double price;
 	private ProductType type;
-	//dodati restoran
 	private int amount;
 	private String description;
 	private String photoPath;
 	
+	
+
 	public Product() {
-		
+		super();
+		// TODO Auto-generated constructor stub
 	}
+
+	
 
 	public Product(String id, String name, double price) {
 		this.id = id;
@@ -91,6 +95,16 @@ public class Product {
 	public void setPhotoPath(String photoPath) {
 		this.photoPath = photoPath;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", type=" + type + ", amount=" + amount
+				+ ", description=" + description + ", photoPath=" + photoPath + "]";
+	}
+	
+	
 	
 	
 

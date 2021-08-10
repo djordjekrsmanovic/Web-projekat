@@ -7,7 +7,6 @@ import java.util.List;
 public class Buyer extends User {
 	private UserRole userRole; //vjerovatno nije potrebno jer imamo odvojene entitete
 	private List<Order> orders;
-	private ShoppingCart shoppingCart;
 	private int points;
 	private BuyerType buyerType;
 	
@@ -23,20 +22,18 @@ public class Buyer extends User {
 		this.buyerType=new BuyerType();
 	}
 	public Buyer(String username, String password, String firstName, String lastName, Gender gender, Date birthDate,
-			boolean deleted, boolean banned, List<Order> orders, ShoppingCart shoppingCart, int points) {
+			boolean deleted, boolean banned, List<Order> orders, int points) {
 		super(username, password, firstName, lastName, gender, birthDate, deleted, banned);
 		this.userRole = UserRole.BUYER;
 		this.orders = orders;
-		this.shoppingCart = shoppingCart;
 		this.points = points;
 	}
 	
 	public Buyer(String username, String password, String firstName, String lastName, Gender gender, Date birthDate,
-			boolean deleted, boolean banned, ShoppingCart shoppingCart, int points) {
+			boolean deleted, boolean banned, int points) {
 		super(username, password, firstName, lastName, gender, birthDate, deleted, banned);
 		this.userRole = UserRole.BUYER;
 		this.orders = new ArrayList<Order>();
-		this.shoppingCart = shoppingCart;
 		this.points = points;
 	}
 	public UserRole getRole() {
@@ -51,17 +48,37 @@ public class Buyer extends User {
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
 	}
-	public ShoppingCart getShoppingCart() {
-		return shoppingCart;
-	}
-	public void setShoppingCart(ShoppingCart shoppingCart) {
-		this.shoppingCart = shoppingCart;
-	}
+	
+	
 	public int getPoints() {
 		return points;
 	}
 	public void setPoints(int points) {
 		this.points = points;
+	}
+	
+	
+	
+	@Override
+	public String toString() {
+		return "Buyer [userRole=" + userRole + ", orders=" + orders + ", points=" + points + ", buyerType=" + buyerType
+				+ ", getUsername()=" + getUsername() + ", getPassword()=" + getPassword() + ", getFirstName()="
+				+ getFirstName() + ", getLastName()=" + getLastName() + ", getGender()=" + getGender()
+				+ ", getBirthDate()=" + getBirthDate() + ", isDeleted()=" + isDeleted() + ", isBanned()=" + isBanned()
+				+ ", toString()=" + super.toString() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ "]";
+	}
+	public UserRole getUserRole() {
+		return userRole;
+	}
+	public void setUserRole(UserRole userRole) {
+		this.userRole = userRole;
+	}
+	public BuyerType getBuyerType() {
+		return buyerType;
+	}
+	public void setBuyerType(BuyerType buyerType) {
+		this.buyerType = buyerType;
 	}
 	
 	

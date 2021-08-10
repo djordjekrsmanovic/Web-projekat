@@ -1,0 +1,41 @@
+{
+  "djordje" : {
+    "buyer" : {
+      "username" : "djordje",
+      "password" : "djordje",
+      "firstName" : "Djordje",
+      "lastName" : "Krsmanovic",
+      "gender" : "male",
+      "birthDate" : 916268400000,
+      "deleted" : false,
+      "banned" : false,
+      "userRole" : "BUYER",
+      "orders" : [ ],
+      "points" : 0,
+      "buyerType" : null,
+      "role" : "BUYER"
+    },
+    "restaurant" : {
+      "name" : "Plava frajla",
+      "restaurantType" : "ETNO",
+      "products" : [ ],
+      "restaurantStatus" : "OPEN",
+      "location" : {
+        "latitude" : 45.24,
+        "longitude" : 19.84,
+        "address" : {
+          "street" : "Spens",
+          "streetNumber" : "5",
+          "city" : "Novi Sad",
+          "postalCode" : "23000"
+        }
+      },
+      "picturePath" : "",
+      "deleted" : false
+    },
+    "comment" : "Najbolji restoran",
+    "rate" : 5,
+    "commentState" : "APPROVED",
+    "deleted" : false
+  }
+}
