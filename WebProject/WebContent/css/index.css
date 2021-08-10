@@ -7,42 +7,91 @@
     overflow: auto;
     font-family: 'Roboto Condensed', sans-serif;
 }
-
-div{
-	position:fixed;
-	top: 35%;
-	left: 38%;	
-	width:270px;
-	height: 250 px;
-	background-image: url(paper.jpg);
-	margin:auto;
-	border-radius: 20px;
-	padding: 25px; 
-}
-
-h1{
-	font-family:verdana;
-	font-style: italic;
-	background-color:white;
-	color:navy;
-	text-align: center;	
-	left: 20%;
-}
-h2{
-	font-family:verdana;
-	font-style: italic;
-	color:navy;
-	align: center;	
-}
-
 body{
-	background-image: url(foodBackground.jpg);
-	background-repeat:no-repeat;
-	background-size:1368px 700px;
+	background-color: lightblue;
 }
 
-label{
-	color:navy;
-	font-style:bold;
-	size:15;
+.titleStyle{
+	text-align: center;
+	width: auto;
+	height: 60px;
+}
+
+.loginFormStyle{
+	margin-top: 7%;
+	margin-left: 28%;
+	width:600px;
+	background-image: url("../pictures/italianfood.jpg");
+	font-weight: bold;
+	align-items: flex-end;
+	border-style: all;
+	border-color: grey;
+	border-width: 3px;
+}
+
+.formTitle{
+ text-align: center;
+ size: 26;
+ font-style: bold;
+}
+
+.loginFormStyle div{
+	display:grid;
+	grid-template-columns: 1fr 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap:5px;
+}
+
+.loginFormStyle button{
+	width: 80px; 
+	height: 30px;
+}
+
+.loginFormStyle table{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.header{
+	background-size: cover;
+    background-color: lightgreen;
+    height: 15vh;
+}
+
+nav{
+	display: flex;
+	padding: 0.5% 3%;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.nav-links{
+ 	flex: 1;
+ 	text-align: right;
+}
+
+.nav-links ul li{
+	list-style: none;
+	display: inline-block;
+	padding: 8px 12px;
+	position: relative;
+}
+
+.nav-links ul li a{
+	color: #fff;
+	text-decoration: none;
+	font-size: 13;
+}
+
+.nav-links ul li::after {
+	content: '';
+	width: 0%;
+	height: 2px;
+	background: green;
+	display: block;
+	margin: auto;
+	transition: 0.5s;
+}
+.nav-links ul li:hover::after{
+	width: 100%;
 }
