@@ -1,37 +1,49 @@
 package beans;
 
+import java.util.List;
+
 public class ShoppingCart {
-	private CartItem cartItem;
-	private User cartOwner;
+	private List<CartItem> cartItems;
 	private double price;
-	
+	private String ownerID;
 	public ShoppingCart() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public ShoppingCart(CartItem cartItem, User cartOwner, double price) {
+	
+
+	public void setCartItems(List<CartItem> cartItems) {
+		this.cartItems = cartItems;
+	}
+
+	public ShoppingCart(List<CartItem> cartItems, double price,String ownerID) {
 		super();
-		this.cartItem = cartItem;
-		this.cartOwner = cartOwner;
+		this.cartItems = cartItems;
 		this.price = price;
+		this.ownerID=ownerID;
+	}
+	
+	public ShoppingCart(List<CartItem> cartItems,String ownerID) {
+		super();
+		this.cartItems=cartItems;
+		this.ownerID=ownerID;
+		double calculatedPrice=0;
+		for (CartItem cartItem:cartItems) {
+			calculatedPrice+=cartItem.getAmount()*cartItem.getProduct().getPrice();
+		}
+		this.price=calculatedPrice;
 	}
 
-	public CartItem getCartItem() {
-		return cartItem;
+	public List<CartItem> getCartItems() {
+		return cartItems;
 	}
 
-	public void setCartItem(CartItem cartItem) {
-		this.cartItem = cartItem;
+	public void setCartItem(List<CartItem> cartItem) {
+		this.cartItems = cartItem;
 	}
 
-	public User getCartOwner() {
-		return cartOwner;
-	}
-
-	public void setCartOwner(User cartOwner) {
-		this.cartOwner = cartOwner;
-	}
+	
 
 	public double getPrice() {
 		return price;
@@ -40,6 +52,28 @@ public class ShoppingCart {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+
+
+
+	public String getOwnerID() {
+		return ownerID;
+	}
+
+
+
+	public void setOwnerID(String ownerID) {
+		this.ownerID = ownerID;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "ShoppingCart [cartItems=" + cartItems + ", price=" + price + ", ownerID=" + ownerID
+				+ ", getCartItems()=" + getCartItems() + ", getPrice()=" + getPrice() + ", getOwnerID()=" + getOwnerID()
+				+ "]";
+	}
+	
 	
 	
 }

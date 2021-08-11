@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naruci</title>
+    <link rel="stylesheet" href="css/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="js/home.js"></script>
+    
+</head>
+<body>
+    <!---------------------------Navigation bar ------------------------------>
+    <nav class="nav">
+    <div class="nav-menu flex-row">
+        <a href="#" ><img src="pictures/logo.png" width="120px" height="70px"></a>
+    
+    <div >
+        <ul class="nav-items">
+            <li class="nav-link">
+                <a class="nav-color" href="#">Pocetna</a>
+            </li>
+            <li class="nav-link">
+                <a class="nav-color" href="#">Prijava</a>
+            </li>
+            <li class="nav-link">
+                <a class="nav-color" href="#">Neki nav-items</a>
+            </li>                   
+        </ul>
+    </div>
+</div>
+    </nav>
+
+    <!----------------X----------Navigation bar---------X-------------------->
+
+    <!--------------------------------Site title and search-------------------------------->
+    
+    <main>
+        <section class="site-message">
+                
+        
+            <div  class="site-background">
+                
+                <h1 class="title">Naručite vašu hranu online</h1>
+                <div class=".search-criterium">
+                    <input type="text" class="form-input" placeholder="Naziv restorana">
+                    <input type="text" class="form-input" placeholder="Lokacija restorana">
+                    
+                    <select id="RestaurantType" class="form-select">
+                    <option value="" disabled selected hidden>Vrsta restorana</option>
+                    <option value="Grill">Rostilj</option>
+                    <option value="Etno">Etno restoran</option>
+                    <option value="Japanesse">Japanski restoran</option>
+                    <option value="Italian">Italijanski restoran</option>
+                    <option value="AllRestaurants">Svi restorani</option>
+                    </select>
+                    <select id="RestaurantGrade" class="form-select" aria-placeholder="Ocjena">
+                        <option value="" disabled selected hidden>Ocjena</option>
+                        <option value="0-1">0-1</option>
+                       <option value="1-2">1-2</option>
+                       <option value="2-3">2-3</option>
+                       <option value="3-4" >3-4</option>
+                       <option value="4-5" >4-5</option>
+                       <option value="AllRaiting">Sve </option>
+                       </select>
+                    <button class="search-button">Pretrazi</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-----------------X-------------Site title and search-----------------X------------->
+
+
+    <!-------------------------------Sort and filtering---------------------------------->
+        <div class="restaurants-card" style="background-color:#4287f5;">
+
+        
+                <select id="SortType" class="form-select" aria-placeholder="Ocjena">
+                    <option value="" disabled selected hidden>SORTIRANJE</option>
+                    <option value="default">PODRAZUMJEVANI PRIKAZ</option>
+                    <option value="name-ascending">NAZIV-RASTUĆE</option>
+                   <option value="name-descending">NAZIV-OPADAJUĆE</option>
+                   <option value="location-ascending">LOKACIJA-RASTUĆE</option>
+                   <option value="location-descending">LOKACIJA-OPADAJUĆE</option>
+                   <option value="average-grade-ascending">PROSJEČNA OCJENA-RASTUĆE</option>
+                   <option value="average-grade-descending" >PROSJEČNA OCJENA-OPADAJUĆE</option>
+                   
+                   </select>
+                
+                   
+                    
+                    <select id="RestaurantType" class="form-select">
+                    <option value="" disabled selected hidden>Vrsta restorana</option>
+                    <option value="Grill">Rostilj</option>
+                    <option value="Etno">Etno restoran</option>
+                    <option value="Japanesse">Japanski restoran</option>
+                    <option value="Italian">Italijanski restoran</option>
+                    <option value="AllRestaurants">Svi restorani</option>
+                    </select>
+                
+                   <div style="margin: 7px;"><label>Prikaži samo otvorene restorane</label>
+                   <input type="checkbox"> </div> 
+                </div>     
+    <!-----------------X------------Sort and filtering---------------------X------------->
+
+    <!------------------------------Restaurants------------------------------------------->
+    <section class="restaurants-card" id="restaurants-list">
+        <div class="card">
+            <div class="fishes">
+                <img src="pictures/slika1.jpg">
+            </div>
+            <div style="overflow: hidden;">
+                <p class="restaurant-title">Skadarlijska kobasica</p>
+                <p class="raiting-value">4.5</p>
+            </div>
+            <div>
+                <p class="restaurant-status">Italijanski restoran</p>
+                <p >Zatvoren</p>
+            </div>
+            <div>
+                <img src="../pictures/lokacija-removebg-preview.png" width="30px" height="30px" style="margin: 15px;">
+                <p >Alekse Šantića 4 Novi Sad</p>
+            </div>
+            <div>
+                <button class="details-button">Detalji</button>
+            </div>
+           
+        </div>
+        
+    </section>
+
+    <!---------------X-------------Restaurants-------------------------X---------------->
+
+
+    
+    
+</body>
+</html>

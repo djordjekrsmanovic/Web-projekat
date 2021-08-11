@@ -1,0 +1,29 @@
+{
+  "djordje" : {
+    "cartItems" : [ {
+      "product" : {
+        "id" : "cevapi",
+        "name" : "cevapi",
+        "price" : 550.0,
+        "type" : "FOOD",
+        "amount" : 350,
+        "description" : "Cevapi od svinjskog i juneceg mesa",
+        "photoPath" : ""
+      },
+      "amount" : 2
+    }, {
+      "product" : {
+        "id" : "supa",
+        "name" : "supa",
+        "price" : 550.0,
+        "type" : "FOOD",
+        "amount" : 350,
+        "description" : "supa od svinjskog i juneceg mesa",
+        "photoPath" : ""
+      },
+      "amount" : 4
+    } ],
+    "price" : 3300.0,
+    "ownerID" : "djordje"
+  }
+}

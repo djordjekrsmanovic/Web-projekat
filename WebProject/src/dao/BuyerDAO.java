@@ -5,19 +5,22 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import beans.Buyer;
 import beans.Gender;
-import beans.ShoppingCart;
 
 public class BuyerDAO extends GenericFileRepository<Buyer, String> {
 
-
+	private String contextPath;
+	
 	@Override
 	protected String getPath() {
 		// TODO Auto-generated method stub
-		return "src"+File.separator+"DataBase"+File.separator+"buyer.json";
+		return contextPath+File.separator+"DataBase"+File.separator+"buyer.json";
 	}
 
 	@Override
@@ -27,15 +30,19 @@ public class BuyerDAO extends GenericFileRepository<Buyer, String> {
 	}
 	
 	public BuyerDAO() {
-		generateBuyers();
+		
 	}
 
-	@SuppressWarnings("unused")
-	private void generateBuyers() {
+	
+	public void generateBuyers() {
 		System.out.println("Kreiram");
-		Buyer buyer=new Buyer("djordje","djordje","Djordje","Krsmanovic",Gender.male,convertStringtoDate("14.01.1999."),false,false,new ShoppingCart(),0);
-		create(buyer);
+		Buyer buyer=new Buyer("djordje","djordje","Djordje","Krsmanovic",Gender.male,convertStringtoDate("14.01.1999."),false,false,0);
+		createOrUpdate(buyer);
+		
+		
 	}
+	
+	
 
 	private Date convertStringtoDate(String date) {
 		DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
@@ -50,14 +57,19 @@ public class BuyerDAO extends GenericFileRepository<Buyer, String> {
 		return retDate;
 	}
 	
-	public String login(String username, String password) {
-		for(Buyer b : this.getList()) {
-			if(username==b.getUsername()) {
-				if(password==b.getPassword()) {
-					return "Uspjesno logovanje!";
-				}				
-			} return "Pogrjesno korisnicko ime ili lozinka!";
-		}
-		return "Korisnik ne postoji!";
-		} 
+	public List<Buyer> getBuyersList(){
+		ObjectMapper objectMapper=new ObjectMapper();
+		List<Buyer> buyers = objectMapper.convertValue(getList(), new TypeReference<List<Buyer>>() { });
+		return buyers;
+	}
+	
+	public Buyer getBuyerByID(String id) {
+		ObjectMapper objectMapper=new ObjectMapper();
+		Buyer buyer=objectMapper.convertValue(getById(id), new TypeReference<Buyer>() { });
+		return buyer;
+	}
+	
+	public BuyerDAO(String contextPath) {
+		this.contextPath=contextPath;
+	}
 }

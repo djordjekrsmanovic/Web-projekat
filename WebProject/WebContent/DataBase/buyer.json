@@ -8,13 +8,10 @@
     "birthDate" : 916268400000,
     "deleted" : false,
     "banned" : false,
+    "userRole" : "BUYER",
     "orders" : [ ],
-    "shoppingCart" : {
-      "cartItem" : null,
-      "cartOwner" : null,
-      "price" : 0.0
-    },
     "points" : 0,
+    "buyerType" : null,
     "role" : "BUYER"
   }
 }

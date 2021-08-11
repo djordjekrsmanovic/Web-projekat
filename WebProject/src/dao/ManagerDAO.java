@@ -5,18 +5,26 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
-import beans.Buyer;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import beans.Address;
 import beans.Gender;
+import beans.Location;
 import beans.Manager;
 import beans.Restaurant;
-import beans.ShoppingCart;
+import beans.RestaurantStatus;
+import beans.RestaurantType;
 
-public class ManagerDAO  extends GenericFileRepository<Manager, String> {
-	
+public class ManagerDAO extends GenericFileRepository<Manager, String> {
+
+	private String contextPath;
+
 	protected String getPath() {
 		// TODO Auto-generated method stub
-		return "src"+File.separator+"DataBase"+File.separator+"manager.json";
+		return contextPath + File.separator + "DataBase" + File.separator + "manager.json";
 	}
 
 	@Override
@@ -24,14 +32,22 @@ public class ManagerDAO  extends GenericFileRepository<Manager, String> {
 		// TODO Auto-generated method stub
 		return entity.getUsername();
 	}
-	
+
 	public ManagerDAO() {
-		generateBuyers();
+		generateManagers();
 	}
-	private void generateBuyers() {
+
+	public void generateManagers() {
 		System.out.println("Kreiram");
-		Manager manager=new Manager("bojan","bojan","Bojan","Prodanovic",Gender.male,convertStringtoDate("14.01.1999."),false,false,new Restaurant());
-		create(manager);
+		Address address = new Address("Spens", "5", "Novi Sad", "23000");
+
+		Location location = new Location(45.24, 19.84, address);
+
+		Restaurant restaurant = new Restaurant("Plava frajla", RestaurantType.ETNO, RestaurantStatus.OPEN, location,
+				"");
+		Manager manager = new Manager("bojan", "bojan", "Bojan", "Prodanovic", Gender.male,
+				convertStringtoDate("14.01.1999."), false, false, restaurant);
+		createOrUpdate(manager);
 	}
 
 	private Date convertStringtoDate(String date) {
@@ -43,7 +59,24 @@ public class ManagerDAO  extends GenericFileRepository<Manager, String> {
 			// TODO Auto-generated catch block
 			retDate = null;
 		}
-
 		return retDate;
+	}
+
+	public List<Manager> getManagersList() {
+		ObjectMapper objectMapper = new ObjectMapper();
+		List<Manager> managers = objectMapper.convertValue(getList(), new TypeReference<List<Manager>>() {
+		});
+		return managers;
+	}
+
+	public Manager getManagerByID(String id) {
+		ObjectMapper objectMapper = new ObjectMapper();
+		Manager manager = objectMapper.convertValue(getById(id), new TypeReference<Manager>() {
+		});
+		return manager;
+	}
+
+	public ManagerDAO(String contextPath) {
+		this.contextPath = contextPath;
 	}
 }

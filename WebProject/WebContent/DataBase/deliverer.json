@@ -1,0 +1,14 @@
+{
+  "deliverer" : {
+    "username" : "deliverer",
+    "password" : "deliverer",
+    "firstName" : "Milan",
+    "lastName" : "Markovic",
+    "gender" : "male",
+    "birthDate" : 479516400000,
+    "deleted" : false,
+    "banned" : false,
+    "userRole" : "DELIVERER",
+    "oredersWaitingForDelivery" : [ ]
+  }
+}

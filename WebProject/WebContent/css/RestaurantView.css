@@ -2,6 +2,7 @@ html,body{
     margin: 0%;
     box-sizing: border-box;
     overflow: auto;
+    scroll-behavior: smooth;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;1,700&display=swap');
@@ -50,87 +51,14 @@ a{
 }
 h1, h2, p{
     margin: 0;
-  }
+    padding: 0;
+}
+div{
+    margin: 0;
+}
 .nav-link:hover{
     /*background-color: white; */
     box-shadow: 2px 2px 2px 2px #4287f5;
-}
-
-
-
-.nav-color{
-    color:white
-}
-
-.food-picture{
-    text-align: right;
-    background-color:#f5dfeb;
-}
-
-.site-message{
-    background-image:url("../pictures/hrana1.jpg");
-    background-size: cover;
-    background-color: blanchedalmond;
-    height: 50vh;
-}
-
-.site-background{
-    padding-top: 10rem;
-    text-align: center;
-    color:black
-    
-}
-
-.title{
-    font-size: larger;
-    font-family: 'Kirang Haerang', cursive;
-    color:white
-}
-
-.form-input{
-    padding: 4px;
-    height: 20px;
-    margin: 5px;
-    border: solid 1px;
-    border-radius: 8px;
-    background-color:#f2ede6;
-    border: white;
-    
-}
-
-.form-select{
-    padding: 4px;
-    height: 30px;
-    margin: 5px;
-    border: solid 1px;
-    border-radius: 8px;
-    background-color:#f2ede6;
-    border: white;
-}
-
-.form-input:focus{
-    outline-color:#4287f5
-}
-
-.form-select:focus{
-    outline-color:#4287f5
-}
-
-.search-button{
-  width:120px;
-  padding: 5px;
-  background:#2da12f;
-  color: white;
-  font-size: 17px;
-  border: 1px solid grey;
-  border-left: none; /* Prevent double borders */
-  cursor: pointer;
-  border-radius: 5px;
-  
-}
-
-.search-button:hover{
-    background-color: #288f2a;
 }
 
 .card{
@@ -139,19 +67,25 @@ h1, h2, p{
     padding: 1em;
     box-shadow: 0px 15px 25px #95a5a6;
     text-align: center;
-    
+    width: 500px;
+    height: 300px;
+    margin-top: 40px;
+    margin-left: 20px;
+    margin-bottom: 0px;
+    z-index: 2;
+    display: inline-block;
+    opacity: 100%;
+
     
 }
 
 .card img{
     max-width: 100%;
+    max-height: 150px;
     border-radius: 5px;
-    transition: transform .2s;
 }
 
-.card img:hover{
-    transform: scale(1.1);
-}
+
 
 .details-button{
     width: 100px;
@@ -164,11 +98,7 @@ h1, h2, p{
     border:white
 }
 
-button:hover{
-    -webkit-transform: scale(1.1);
-	    -ms-transform: scale(1.1);
-	        transform: scale(1.1);
-}
+
 
 .restaurants-card{
     margin: 5%;
@@ -217,4 +147,94 @@ button:hover{
     padding: 0px;    
 }
 
+.background-picture{
+    background-image:url("../pictures/hrana1.jpg");
+    background-size: cover;
+    background-color: blanchedalmond;
+    height: 70vh;
+    z-index: -1;
+}
 
+
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+
+  .tab button:hover {
+    background-color: #ddd;
+  }
+
+  .Product-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    width: 300px;
+    height: auto;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+
+  }
+  
+  .Product-price {
+    color: grey;
+    font-size: 22px;
+  }
+  
+  .Product-card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color:#ffad33;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  .Product-card button:hover {
+    opacity: 0.5;
+  }
+
+  .arrangment{
+    margin: 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 50px;
+    grid-row-gap:50px;
+  }
+
+  .product-picture{
+    width: 200px;
+    height: 150px;
+    display:block;
+    margin: 5px;
+  }
+
+  .product-title{
+    font-family: 'Dela Gothic One', cursive;
+    font-size: 18px;
+    width: 350px;
+  }
+
+  .product-description{
+      color: gray;
+      width: 150px;
+      overflow-wrap: break-word;
+  }

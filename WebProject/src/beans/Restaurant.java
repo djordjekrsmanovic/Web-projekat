@@ -6,7 +6,7 @@ import java.util.List;
 public class Restaurant {
 	private String name;
 	private RestaurantType restaurantType;
-	private List<Product> products;
+	private List<String> products;
 	private RestaurantStatus restaurantStatus;
 	private Location location;
 	private String picturePath;//neka sad ovako ostane ne znam sta treba da bude
@@ -18,7 +18,7 @@ public class Restaurant {
 		this.deleted=false;
 	}
 
-	public Restaurant(String name, RestaurantType restaurantType, List<Product> products,
+	public Restaurant(String name, RestaurantType restaurantType, List<String> products,
 			RestaurantStatus restaurantStatus, Location location, String pictureURL) {
 		super();
 		this.name = name;
@@ -35,7 +35,7 @@ public class Restaurant {
 		super();
 		this.name = name;
 		this.restaurantType = restaurantType;
-		this.products = new ArrayList<Product>();
+		this.products = new ArrayList<String>();
 		this.restaurantStatus = restaurantStatus;
 		this.location = location;
 		this.picturePath = pictureURL;
@@ -58,11 +58,11 @@ public class Restaurant {
 		this.restaurantType = restaurantType;
 	}
 
-	public List<Product> getProducts() {
+	public List<String> getProducts() {
 		return products;
 	}
 
-	public void setProducts(List<Product> products) {
+	public void setProducts(List<String> products) {
 		this.products = products;
 	}
 
@@ -82,12 +82,27 @@ public class Restaurant {
 		this.location = location;
 	}
 
-	public String getPictureURL() {
+	public String getPicturePath() {
 		return picturePath;
 	}
 
-	public void setPictureURL(String pictureURL) {
-		this.picturePath = pictureURL;
+	public void setPicturePath(String picturePath) {
+		this.picturePath = picturePath;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
+
+	@Override
+	public String toString() {
+		return "Restaurant [name=" + name + ", restaurantType=" + restaurantType + ", products=" + products
+				+ ", restaurantStatus=" + restaurantStatus + ", location=" + location + ", picturePath=" + picturePath
+				+ ", deleted=" + deleted + "]";
 	}
 	
 	
