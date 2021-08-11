@@ -15,7 +15,7 @@ $(document).ready(function(){
     var restauranName=getUrlParameters("name");
     if (restauranName===undefined || restauranName===""){
         alert("Restoran ne postoji");
-        window.location.replace("http://localhost:8080/WebProject/home.html");
+        //window.location.replace("http://localhost:8080/WebProject/home.html");
     }else{
         alert("Restoran postoji");
     }
