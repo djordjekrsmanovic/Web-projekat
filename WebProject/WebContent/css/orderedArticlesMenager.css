@@ -1,0 +1,140 @@
+@charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;1,700&display=swap');
+
+*{
+    margin: 0%;
+    box-sizing: border-box;
+    overflow: auto;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.header{
+	background-size: cover;
+    background-color: lightgreen;
+    height: 15vh;
+}
+
+.pozadina{
+	background-color: lightblue;
+}
+
+nav{
+	display: flex;
+	padding: 0.5% 3%;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.nav-links{
+ 	flex: 1;
+ 	text-align: right;
+}
+
+.nav-links ul li{
+	list-style: none;
+	display: inline-block;
+	padding: 8px 12px;
+	position: relative;
+}
+
+.nav-links ul li a{
+	color: #fff;
+	text-decoration: none;
+	font-size: 13;
+}
+
+.nav-links ul li::after {
+	content: '';
+	width: 0%;
+	height: 2px;
+	background: green;
+	display: block;
+	margin: auto;
+	transition: 0.5s;
+}
+
+.nav-links ul li:hover::after{
+	width: 100%;
+}
+
+.dugmadMenija{
+	align-content: left;
+	margin:3%;
+	justify-content: space-between;
+}
+
+.dugme{
+	font-size: 16px;
+	background-color: lightgreen;
+	border: 1px;
+	border-radius: 6px;
+	padding: 10px 20px;
+	margin: 4px 2px;
+	transition-duration: 0.4s;
+}
+
+.dugme:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+h1{
+	text-align: center;
+}
+
+.search-button{
+  width:120px;
+  padding: 5px;
+  background:#2da12f;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+  border-radius: 5px;
+  
+}
+
+.search-button:hover{
+    background-color: #288f2a;
+}
+
+.searchAndSort{
+	margin:3%;
+}
+
+.searchAlign{
+	display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	align-items: left;
+	grid-column-gap: 3px;
+}
+
+.searchAlign p{
+	text-align: right;
+}
+
+.pozadinaTabele{
+	margin:3%;
+}
+
+.tabela{
+	width: 80%;
+	border:3px solid black;
+}
+
+.form-select{
+    height: 30px;
+    border: solid 1px;
+    border-radius: 8px;
+    background-color:#f2ede6;
+    border: white;
+}
+
+.form-input:focus{
+    outline-color:#4287f5
+}
+
+.form-select:focus{
+    outline-color:#4287f5
+}S
