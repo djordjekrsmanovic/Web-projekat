@@ -194,6 +194,7 @@ div{
   .Product-price {
     color: grey;
     font-size: 22px;
+    margin-bottom: 10px;
   }
   
   .Product-card button {
@@ -233,10 +234,9 @@ div{
     width: 350px;
   }
 
-  .product-description{
+  .Product-Description{
       color: gray;
-      width: 150px;
-      overflow-wrap: break-word;
+      margin-top: 10px;
   }
 
 
@@ -341,3 +341,5 @@ div{
     align-self: center;
     
 }
+
+

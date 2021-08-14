@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -39,5 +40,13 @@ public class RestaurantService {
 		restaurantDAO.generateRestaurant();
 		System.out.println("Broj restorana je " + restaurantDAO.getRestaurants().size());
 		return restaurantDAO.getRestaurants();
+	}
+	
+	@GET
+	@Path("get-restaurant/{param}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Restaurant getRestaurant(@PathParam("param")String name) {
+		RestaurantDAO restaurantDAO=(RestaurantDAO) servletContext.getAttribute("RestaurantDAO");
+		return restaurantDAO.getRestaurantByID(name);
 	}
 }

@@ -11,6 +11,7 @@ public class Restaurant {
 	private Location location;
 	private String picturePath;//neka sad ovako ostane ne znam sta treba da bude
 	private boolean deleted;
+	private int raiting;
 	
 	public Restaurant() {
 		super();
@@ -28,6 +29,7 @@ public class Restaurant {
 		this.location = location;
 		this.picturePath = pictureURL;
 		this.deleted=false;
+		this.raiting=0;
 	}
 	
 	public Restaurant(String name, RestaurantType restaurantType,
@@ -40,6 +42,7 @@ public class Restaurant {
 		this.location = location;
 		this.picturePath = pictureURL;
 		this.deleted=false;
+		this.raiting=0;
 	}
 
 	public String getName() {
@@ -96,6 +99,14 @@ public class Restaurant {
 
 	public void setDeleted(boolean deleted) {
 		this.deleted = deleted;
+	}
+
+	public int getRaiting() {
+		return raiting;
+	}
+
+	public void setRaiting(int raiting) {
+		this.raiting = raiting;
 	}
 
 	@Override
