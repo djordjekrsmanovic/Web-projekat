@@ -14,6 +14,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import dao.AdminDAO;
+import dao.BuyerDAO;
+import dao.DelivererDAO;
+import dao.ManagerDAO;
 import dao.RestaurantDAO;
 import beans.Administrator;
 import beans.User;
@@ -35,11 +38,35 @@ public class LoginService {
 	
 	@POST
 	@Path("/loginTry")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public User loginTry(User userRequest) { 
+	public String loginTry(User userRequest) { 
 		AdminDAO adminDAO= new AdminDAO();
-		return adminDAO.loginAdmin(userRequest.getUsername(),userRequest.getPassword());
+		if(adminDAO.loginAdmin(userRequest.getUsername(), userRequest.getPassword())!=null) {
+			servletContext.setAttribute("user",adminDAO.loginAdmin(userRequest.getUsername(), userRequest.getPassword()));
+			return "Prijavljen Administrator";
+		}		
+		
+		ManagerDAO managerDAO= new ManagerDAO();
+		if(managerDAO.loginManager(userRequest.getUsername(), userRequest.getPassword())!=null) {
+			servletContext.setAttribute("user",managerDAO.loginManager(userRequest.getUsername(), userRequest.getPassword()));
+			return "Prijavljen menadzer";
+		}
+		
+		DelivererDAO delivererDAO= new DelivererDAO();
+		if(delivererDAO.loginDeliverer(userRequest.getUsername(), userRequest.getPassword())!=null) {
+			servletContext.setAttribute("user",delivererDAO.loginDeliverer(userRequest.getUsername(), userRequest.getPassword()));
+			return "Prijavljen dostavljac";
+		}
+		
+		BuyerDAO buyerDAO= new BuyerDAO();
+		if(buyerDAO.loginBuyer(userRequest.getUsername(), userRequest.getPassword())!=null) {
+			servletContext.setAttribute("user",buyerDAO.loginBuyer(userRequest.getUsername(), userRequest.getPassword()));
+			return "Prijavljen kupac";
+		}
+		
+		return "Ne postoji korisnik sa unesenim korisnickim imenom i sifrom!";
+		
 	}
 
 	@GET

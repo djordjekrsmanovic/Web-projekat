@@ -6,14 +6,16 @@ import java.util.List;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import beans.Administrator;
 import beans.Converter;
 import beans.Deliverer;
 import beans.Gender;
+import beans.User;
 
 public class DelivererDAO extends GenericFileRepository<Deliverer, String> {
 
 	private String contextPath;
-
+	public DelivererDAO() {}
 	@Override
 	protected String getPath() {
 		// TODO Auto-generated method stub
@@ -50,4 +52,15 @@ public class DelivererDAO extends GenericFileRepository<Deliverer, String> {
 	public DelivererDAO(String contextPath) {
 		this.contextPath = contextPath;
 	}
+	
+	public User loginDeliverer(String username, String password) {
+		List<Deliverer> deliverers = getDeliverers();
+		for(Deliverer d : deliverers) {
+			if(d.getUsername() == username && d.getPassword()==password) {
+				return (User) d;
+			}			
+		}
+		return null;
+	}
+	
 }

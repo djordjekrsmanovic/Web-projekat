@@ -10,8 +10,10 @@ import java.util.List;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import beans.Administrator;
 import beans.Buyer;
 import beans.Gender;
+import beans.User;
 
 public class BuyerDAO extends GenericFileRepository<Buyer, String> {
 
@@ -71,5 +73,15 @@ public class BuyerDAO extends GenericFileRepository<Buyer, String> {
 	
 	public BuyerDAO(String contextPath) {
 		this.contextPath=contextPath;
+	}
+	
+	public User loginBuyer(String username, String password) {
+		List<Buyer> buyers = getBuyersList();
+		for(Buyer b : buyers) {
+			if(b.getUsername() == username && b.getPassword()==password) {
+				return (User) b;
+			}			
+		}
+		return null;
 	}
 }
