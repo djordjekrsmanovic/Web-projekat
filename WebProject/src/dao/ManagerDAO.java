@@ -11,12 +11,14 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import beans.Address;
+import beans.Administrator;
 import beans.Gender;
 import beans.Location;
 import beans.Manager;
 import beans.Restaurant;
 import beans.RestaurantStatus;
 import beans.RestaurantType;
+import beans.User;
 
 public class ManagerDAO extends GenericFileRepository<Manager, String> {
 
@@ -79,4 +81,14 @@ public class ManagerDAO extends GenericFileRepository<Manager, String> {
 	public ManagerDAO(String contextPath) {
 		this.contextPath = contextPath;
 	}
+	public User loginManager(String username, String password) {
+		List<Manager> managers = getManagersList();
+		for(Manager m : managers) {
+			if(m.getUsername() == username && m.getPassword()==password) {
+				return (User) m;
+			}			
+		}
+		return null;
+	}
+	
 }

@@ -57,7 +57,11 @@ nav{
 	width: 100%;
 }
 
-.editSection{
+h1{
+	text-align: center;
+}
+
+.forma{
 	margin: 8%;
 	background-image: url("../pictures/hrana1.jpg");
 	font-weight: bold;
@@ -66,14 +70,10 @@ nav{
 	border-color: grey;
 	border-width: 3px;
 }
-.editSection div {
+
+.forma div {
 	display:grid;
 	grid-template-columns: 1fr 1fr;
     grid-column-gap: 10px;
     grid-row-gap:5px;
 }
-
-.hiddenSearch{
-	visibility: hidden;
-}
-
