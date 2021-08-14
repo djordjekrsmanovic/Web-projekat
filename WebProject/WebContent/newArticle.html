@@ -2,14 +2,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Moj nalog</title>
+<title>Novi artikal</title>
 	<script src="js/newArticle.js"></script>
 	<script src="jquery-3.3.1.min.js"></script>
 	<link href="css/newArticle.css" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
 </head>
 <body id="profileBody">
-
 	<section class="header">
 		<nav >
 			<a href=""><img src="pictures/logo.png" width="120px" height="70px"></a>
@@ -22,10 +21,29 @@
 			</div>
 		</nav>
 	</section>
+	<section class="pozadina">
 	<h1>Dodajte novi artikal:</h1>
-	<section>
-		
+	<section class="forma">
+		<div>
+		<label>Naziv</label>
+		<input type="text" id="ArticleName">
+		<label>Cijena</label>
+		<input type="text" id="Price">
+		<label>Tip artikla</label>
+		<select id="ArticleType">
+			<option value="food">Hrana</option>
+			<option value="drink">Piće</option>
+		</select>
+		<label>Količina</label>
+		<input type="text" id="Amount">
+		<label>Opis</label>
+		<input type="text" id="Description">
+		<label>Slika</label>
+		<input type="file" id="photo">
+		<br/>
+		<button type="submit">Dodaj</button>
+	</div>
 	</section>
-
+</section>
 </body>
 </html>

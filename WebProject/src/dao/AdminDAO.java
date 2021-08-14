@@ -17,6 +17,8 @@ import beans.User;
 public class AdminDAO extends GenericFileRepository<Administrator, String> {
 
 	private String contextPath;
+	
+	public AdminDAO() {}
 
 	@Override
 	protected String getPath() {

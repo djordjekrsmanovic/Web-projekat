@@ -34,15 +34,12 @@ public class LoginService {
 	}
 	
 	@POST
-	@Path("/loginTry/{user}")
+	@Path("/loginTry")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public User loginTry(@PathParam("user") User user) {
-		AdminDAO adminDAO = (AdminDAO) servletContext.getAttribute("AdminDAO");
-		if(adminDAO.loginAdmin(user.getUsername(), user.getPassword()) != null) {
-			return adminDAO.loginAdmin(user.getUsername(), user.getPassword());
-		}
-		return null;
+	public User loginTry(User userRequest) { 
+		AdminDAO adminDAO= new AdminDAO();
+		return adminDAO.loginAdmin(userRequest.getUsername(),userRequest.getPassword());
 	}
 
 	@GET

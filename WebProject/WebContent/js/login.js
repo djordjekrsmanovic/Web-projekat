@@ -1,30 +1,37 @@
 /**
  * 
  */
-var user = new User();
-user.username=$("input#username");
-user.password=$("input#pass");
-user.firstName="";
-user.lastName="";
-user.gender=0;
-user.birthDate=null;
-user.banned=false;
-user.deleted=false;
+ 
+
 $(document).ready(function(){
-	$("button#dugme_prijava").click(function(){
-		$.post(
-			url:'rest/login/loginTry',
-			contentType:'application/json',
-			data : user,
-			success:function(returnedUser){
-			if(returnedUser===null){
-				allert("Unijeto pogrjesno korisnicko ime ili sifra");
-			} else {
-				allert("Logovanje uspjesno!");
+	$("#login").submit(function(event){
+	
+		var usernam=$("input[name=username]").val();
+		var passwo=$("input[name=pass]").val();
+		var user={username: usernam, password: passwo, firstName: "", lastName: "",
+		gender: "male",birthDate: "1999-01-21", deleted: false, banned: false};
+		var jsonUser = JSON.stringify(user);
+		
+		$.ajax({
+			url:"rest/login/loginTry",
+			type: "POST",
+			data:jsonUser,
+			contentType:"application/json",
+			dataType:"json",
+			complete: function(data,status){
+			console.log(data.responseText);
+			if(status=="success"){
+			alert("Sve ok za sad");
 			}
+			else {
+          	if (document.getElementById("errorMessage").innerHTML == "") {
+            $("#errorMessage").append(
+              '<td colspan="2" class="error-message"><div>Unijeli ste pogrešno korisničko ime ili šifru.</div></td>'
+            );
+          }
+        }
 			},
-			error:function(data){
-				allert("Doslo je do greske!");
-			})
-	});
+		});
+		event.preventDefault();
+	});	
 });

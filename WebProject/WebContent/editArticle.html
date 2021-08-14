@@ -1,10 +1,49 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Izmjeni artikal</title>
+	<script src="js/newArticle.js"></script>
+	<script src="jquery-3.3.1.min.js"></script>
+	<link href="css/newArticle.css" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
 </head>
-<body>
+<body id="profileBody">
+	<section class="header">
+		<nav >
+			<a href=""><img src="pictures/logo.png" width="120px" height="70px"></a>
+			<div class="nav-links">
+				<ul>
+					<li><a href="home.html">Početna strana</a></li>
+					<li><a href="">Pregled restorana</a></li>
+					<li><a href="">Odjava</a></li>
+				</ul>
+			</div>
+		</nav>
+	</section>
+	<section class="pozadina">
+	<h1>Izmjenite artikal:</h1>
+	<section class="forma">
+		<div>
+		<label>Naziv</label>
+		<input type="text" id="ArticleName">
+		<label>Cijena</label>
+		<input type="text" id="Price">
+		<label>Tip artikla</label>
+		<select id="ArticleType">
+			<option value="food">Hrana</option>
+			<option value="drink">Piće</option>
+		</select>
+		<label>Količina</label>
+		<input type="text" id="Amount">
+		<label>Opis</label>
+		<input type="text" id="Description">
+		<label>Slika</label>
+		<input type="file" id="photo">
+		<br/>
+		<button type="submit">Dodaj</button>
+	</div>
+	</section>
+</section>
 
 </body>
 </html>

@@ -1,1 +1,79 @@
 @charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;1,700&display=swap');
+
+*{
+    margin: 0%;
+    box-sizing: border-box;
+    overflow: auto;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.header{
+	background-size: cover;
+    background-color: lightgreen;
+    height: 15vh;
+}
+
+.pozadina{
+	background-color: lightblue;
+}
+
+nav{
+	display: flex;
+	padding: 0.5% 3%;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.nav-links{
+ 	flex: 1;
+ 	text-align: right;
+}
+
+.nav-links ul li{
+	list-style: none;
+	display: inline-block;
+	padding: 8px 12px;
+	position: relative;
+}
+
+.nav-links ul li a{
+	color: #fff;
+	text-decoration: none;
+	font-size: 13;
+}
+
+.nav-links ul li::after {
+	content: '';
+	width: 0%;
+	height: 2px;
+	background: green;
+	display: block;
+	margin: auto;
+	transition: 0.5s;
+}
+
+.nav-links ul li:hover::after{
+	width: 100%;
+}
+
+h1{
+	text-align: center;
+}
+
+.forma{
+	margin: 8%;
+	background-image: url("../pictures/hrana1.jpg");
+	font-weight: bold;
+	align-items: flex-end;
+	border-style: all;
+	border-color: grey;
+	border-width: 3px;
+}
+
+.forma div {
+	display:grid;
+	grid-template-columns: 1fr 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap:5px;
+}

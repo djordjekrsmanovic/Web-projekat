@@ -95,3 +95,8 @@ nav{
 .nav-links ul li:hover::after{
 	width: 100%;
 }
+
+.error-message{
+	text-align: center;
+	color: red;
+}
