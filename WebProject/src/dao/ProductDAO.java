@@ -1,6 +1,7 @@
 package dao;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -8,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import beans.Product;
 import beans.ProductType;
+import beans.Restaurant;
 
 public class ProductDAO extends GenericFileRepository<Product, String> {
 
@@ -50,6 +52,16 @@ public class ProductDAO extends GenericFileRepository<Product, String> {
 
 	public ProductDAO(String contextPath) {
 		this.contextPath = contextPath;
+	}
+	
+	public List<Product> getRestaurantProducts(String restaurantName){
+		RestaurantDAO restaurantDAO=new RestaurantDAO(contextPath);
+		Restaurant restaurant=restaurantDAO.getRestaurantByID(restaurantName);
+		List<Product> products=new ArrayList<Product>();
+		for (String product:restaurant.getProducts()) {
+			products.add(getProductByID(product));
+		}
+		return products;
 	}
 
 }

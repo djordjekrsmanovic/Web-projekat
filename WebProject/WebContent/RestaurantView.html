@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pregled restorana</title>
     <link rel="stylesheet" href="css/RestaurantView.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="jquery-3.3.1.min.js"></script>
-    <script src="js/restaurantView.js"></script>
+    <script type="text/javascript" src="js/restaurantView.js"></script>
 </head>
 <body>
     <!---------------------------Navigation bar ------------------------------>
@@ -38,19 +39,19 @@
             <div class="card">
             
                 <div>
-                    <img src="pictures/slika1.jpg">
+                    <img src="pictures/slika1.jpg" id="restarant-logo">
                 </div>
                 <div style="overflow: hidden;">
-                    <p class="restaurant-title">Skadarlijska kobasica</p>
-                    <p class="raiting-value">4.5</p>
+                    <p class="restaurant-title" id="title-restaurant">Skadarlijska kobasica</p>
+                    <p class="raiting-value" id="restaurant-raiting">4.5</p>
                 </div>
                 <div>
-                    <p class="restaurant-status">Italijanski restoran</p>
-                    <p >Zatvoren</p>
+                    <p class="restaurant-status" id="restaurant-sort">Italijanski restoran</p>
+                    <p id="restarant-status">Zatvoren</p>
                 </div>
                 <div>
                     <img src="pictures/lokacija-removebg-preview.png" width="30px" height="30px" style="margin: 15px;">
-                    <p >Alekse Šantića 4 Novi Sad</p>
+                    <p id="restaurant-address">Alekse Šantića 4 Novi Sad</p>
                 </div>
     </div>
     
@@ -78,66 +79,206 @@
             <p style="margin-bottom:25px ;"><input type="text"></p>
             <p><button>Add to Cart</button></p>
           </div>
-          <div class="Product-card">
-            <img src="../pictures/slika1.jpg" alt="Denim Jeans" style="width:100%">
-            <h1>Tailored Jeans</h1>
-            <p class="Product-price">$19.99</p>
-            <p style="overflow-wrap:break-word; padding: 10px">ADdadkakdakdkadoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-            <p style="margin-top: 25px;">Kolicina</p>
-            <p style="margin-bottom:25px ;"><input type="text"></p>
-            <p><button>Add to Cart</button></p>
-          </div> <div class="Product-card">
-            <img src="../pictures/slika1.jpg" alt="Denim Jeans" style="width:100%">
-            <h1>Tailored Jeans</h1>
-            <p class="Product-price">$19.99</p>
-            <p style="overflow-wrap:break-word; padding: 10px">ADdadkakdakdkadoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-            <p style="margin-top: 25px;">Kolicina</p>
-            <p style="margin-bottom:25px ;"><input type="text"></p>
-            <p><button>Add to Cart</button></p>
-          </div> <div class="Product-card">
-            <img src="../pictures/slika1.jpg" alt="Denim Jeans" style="width:100%">
-            <h1>Tailored Jeans</h1>
-            <p class="Product-price">$19.99</p>
-            <p style="overflow-wrap:break-word; padding: 10px">ADdadkakdakdkadoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-            <p style="margin-top: 25px;">Kolicina</p>
-            <p style="margin-bottom:25px ;"><input type="text"></p>
-            <p><button>Add to Cart</button></p>
-          </div> <div class="Product-card">
-            <img src="../pictures/slika1.jpg" alt="Denim Jeans" style="width:100%">
-            <h1>Tailored Jeans</h1>
-            <p class="Product-price">$19.99</p>
-            <p style="overflow-wrap:break-word; padding: 10px">ADdadkakdakdkadoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-            <p style="margin-top: 25px;">Kolicina</p>
-            <p style="margin-bottom:25px ;"><input type="text"></p>
-            <p><button>Add to Cart</button></p>
-          </div> <div class="Product-card">
-            <img src="../pictures/slika1.jpg" alt="Denim Jeans" style="width:100%">
-            <h1>Tailored Jeans</h1>
-            <p class="Product-price">$19.99</p>
-            <p style="overflow-wrap:break-word; padding: 10px">ADdadkakdakdkadoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-            <p style="margin-top: 25px;">Kolicina</p>
-            <p style="margin-bottom:25px ;"><input type="text"></p>
-            <p><button>Add to Cart</button></p>
-          </div>
+          
         </div>
            <!-------------X-------------------Products----------------X------------->
 
+
+                  <!------------------------------Comments-------------------------------------->
+
+    <div class="grid-container" id="Komentari">
+
+      <div>
+  
+      
+      <table  class="comment-table" cellspacing="0" cellpadding="0" border="1">
+          <thead>
+              <tr>
+                  <td>Kupac</td>
+                  <td>Komentar</td>
+                  <td>Ocjena</td>
+              </tr>
+          </thead>
+       
+          <tbody class="table-body">
+              <tr>
+                  <td>
+                      <div>
+                          <img class="user-picture" src="pictures/maleUser.png">
+                      </div>
+                      <span>
+                          Marko Maric
+                      </span>
+                      
+                  </td>
+                  <td > <p class="comment-text">Neki komentar Neki komentarNeki komentarNeki komentarNeki komentarNeki komentarNeki komentarNeki komentarNeki komentarNeki komentarNeki komentarNeki komentarNeki komentarNeki komentarNeki komentarNeki komentarNeki komentarNeki komentar</p> </td></td>
+                  <td>
+  
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <div>
+                          <img class="user-picture" src="pictures/maleUser.png">
+                      </div>
+                      <span class="buyer-name">
+                          Marko Maric
+                      </span>
+                      
+                  </td>
+                  <td>Neki komentar </td>
+                  <td>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <div>
+                          <img class="user-picture" src="pictures/maleUser.png">
+                      </div>
+                      <span class="buyer-name">
+                          Marko Maric
+                      </span>
+                      
+                  </td>
+                  <td>Neki komentar </td>
+                  <td>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span>
+                  </td>
+              </tr><tr>
+                  <td>
+                      <div>
+                          <img class="user-picture" src="pictures/maleUser.png">
+                      </div>
+                      <span class="buyer-name">
+                          Marko Maric
+                      </span>
+                      
+                  </td>
+                  <td>Neki komentar </td>
+                  <td>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span>
+                  </td>
+              </tr><tr>
+                  <td>
+                      <div>
+                          <img class="user-picture" src="pictures/maleUser.png">
+                      </div>
+                      <span class="buyer-name">
+                          Marko Maric
+                      </span>
+                      
+                  </td>
+                  <td>Neki komentar </td>
+                  <td>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span>
+                  </td>
+              </tr><tr>
+                  <td>
+                      <div>
+                          <img class="user-picture" src="pictures/maleUser.png">
+                      </div>
+                      <span class="buyer-name">
+                          Marko Maric
+                      </span>
+                      
+                  </td>
+                  <td>Neki komentar </td>
+                  <td>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span>
+                  </td>
+              </tr><tr>
+                  <td>
+                      <div>
+                          <img class="user-picture" src="pictures/maleUser.png">
+                      </div>
+                      <span class="buyer-name">
+                          Marko Maric
+                      </span>
+                      
+                  </td>
+                  <td>Neki komentar </td>
+                  <td>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span>
+                  </td>
+              </tr>
+          </tbody>
+          
+          
+      </table>
+      </div>
+  
+       <!----------X--------------Comments---------------X----------------->
+  
+       <!-------------------------Write-Comment---------------------------->
+      <div class="comment-card">
+          <p class="comment-title">Unesite komentar</p>
+          <hr style="height: 1px; background-color: white;">
+      <form>
+          <div>
+              
+          </div>
+          <div style="margin:20px">
+              <textarea style="width: 200px; height: 100px;" placeholder="Unesite komentar"></textarea>
+          </div>
+          <div>
+              <span class="mark">Ocjena:</span>
+              <select>
+                  <option>
+                  1
+                  </option>
+                  <option>
+                      2
+                  </option>
+                  <option>
+                      3
+                  </option>
+                  <option>
+                      4
+                  </option>
+                  <option>
+                      5
+                  </option>
+              </select>
+          </div>
+          <div class="submit-div">
+              <input type="submit" class="submit-button" value="Posalji">
+          </div>
+      </form>
+  
+      <!----------X--------------Write-Comment---------------------------->
+      </div>
+      </div>
+
          
-           <script>
-            function openTab(evt, cityName) {
-              var i, tabcontent, tablinks;
-              tabcontent = document.getElementsByClassName("tabcontent");
-              for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-              }
-              tablinks = document.getElementsByClassName("tablinks");
-              for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-              }
-              document.getElementById(cityName).style.display = "grid";
-              evt.currentTarget.className += " active";
-              window.scroll(0,400);
-            }
-            </script>
-</body>
+     </body>
 </html>
