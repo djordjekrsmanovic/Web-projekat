@@ -35,3 +35,21 @@ $(document).ready(function(){
 		event.preventDefault();
 	});	
 });
+
+$(document).ready(function(){
+	$("#dugme_registracija").submit(function(event){
+		
+		$.ajax({
+			url:"rest/login/registracija",
+			type: "GET",
+			data:"",
+			contentType: "application/json",
+    		dataType: "json",
+			complete: function(data,status){
+			console.log(data.responseText);			
+			},
+		});
+		event.preventDefault();
+	});	
+});
+

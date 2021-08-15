@@ -1,10 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Prijava</title>
+<link href="css/index.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+<script src="jquery-3.3.1.min.js"></script>
+<script src="js/registration.js"></script>
 </head>
-<body>
+<body id="login_body">
+	<section class="header">
+		<nav >
+			<a href=""><img src="pictures/logo.png" width="120px" height="70px"></a>
+			<div class="nav-links">
+				<ul>
+					<li><a href="">Početna strana</a></li>					
+					<li><a href="index.html">Prijava</a></li>
+				</ul>
+			</div>
+		</nav>
+	</section>
+
+<div id="loginForm" class="loginFormStyle">
+	
+<h2 class="formTitle">Unesite svoje podatke:</h2>
+<form id="registration">
+<table class="loginTable">
+<tr><td><label>Korisničko ime: </label></td><td><input name="username" type="text"></input> <br/> </td></tr>
+<tr><td><label>Lozinka: </label></td><td><input name="pass" type="password"></input> <br/> </td></tr>
+<tr><td><label>Ponovite lozinku: </label></td><td><input name="pass" type="repeatedPassword"></input> <br/> </td></tr>
+<tr><td><label>Ime: </label></td><td><input name="name" type="text"></input> <br/> </td></tr>
+<tr><td><label>Prezime: </label></td><td><input name="surname" type="text"></input> <br/> </td></tr>
+<tr><td><label>Pol:</label>
+	    <select id="Sex">
+	        <option value="male">Muški</option>
+	        <option value="female">Ženski</option>                   
+	    </select> </td></tr>
+<tr><td><label>Datum rodjenja: </label></td><td><input name="date" type="text" placeholder="yyyy-mm-dd"></input> <br/> </td></tr>
+<tr><td><button type="submit">Registracija</button> <br/><br/></td></tr>
+<tr id="errorMessage"></tr>
+</table>
+</form>
+</div>
 
 </body>
 </html>

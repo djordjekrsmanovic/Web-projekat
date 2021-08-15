@@ -26,15 +26,15 @@
 	<section class="editSection">
 	<div id="podaci">                    
 	    <label>Korisničko ime:</label>
-		<input id="profileUsername" type="text" /> 
+		<input id="managerUsername" type="text" /> 
 	    <label>Ime:</label>
-		<input id="profileName" type="text"  /> 
+		<input id="managerName" type="text"  /> 
 	    <label>Prezime:</label>
-	    <input id="profileSurname" type="text" /> 
+	    <input id="managerSurname" type="text" /> 
 	    <label>Pol:</label>
-	    <select id="profileSex">
-	        <option value="M">Muški</option>
-	        <option value="F">Ženski</option>                   
+	    <select id="managerSex">
+	        <option value="male">Muški</option>
+	        <option value="female">Ženski</option>                   
 	    </select> 
 	    <label>Trenutna lozinka:</label>
 	    <input type="password" id="oldPassword" /> 
@@ -48,45 +48,6 @@
 	</div> 
 	</section>  
 
-<br/> <br/> <br/>
-	<table>
-		<tr bgcolor="green">
-			<th>ID</th>
-			<th>Ime Restorana </th>
-			<th>Datum</th>
-			<th>Cijena</th>
-			<th>Status</th>
-		</tr>
-
-		<tr>
-		<td>{{n.id}}</td>
-		<td>{{n.restaurant.name }}</td>
-		<td>{{n.date | dateFormat('DD.MM.YYYY')}}</td>
-		<td>{{n.price }}</td>
-		<td>{{n.status }}</td> 
-	</tr>
-
-	</table>
-	<table>
-		<tr bgcolor="green">
-			<th>Ime</th>
-			<th>Prezime</th>
-			<th>Korisnicko ime</th>
-			<th>Pol</th>
-			<th>Datum Rodjenja</th>
-			<th>Broj sakupljenih bodova</th>
-		</tr>
-
-		<tr>
-		<td>{{k.firstName}}</td>
-		<td>{{k.lastName}}</td>
-		<td>{{k.username}}</td>
-		<td>{{k.gender}}</td>
-		<td>{{k.birthDate | dateFormat('DD.MM.YYYY')}}</td> 
-		<td>{{k.points}}</td>
-	</tr>
-
-	</table>
 <br/> <br/> <br/>
 
 <form id="pretragaNoMenager">
