@@ -10,7 +10,6 @@ import java.util.List;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import beans.Administrator;
 import beans.Buyer;
 import beans.Gender;
 import beans.User;
@@ -22,7 +21,9 @@ public class BuyerDAO extends GenericFileRepository<Buyer, String> {
 	@Override
 	protected String getPath() {
 		// TODO Auto-generated method stub
+		System.out.println(contextPath);
 		return contextPath+File.separator+"DataBase"+File.separator+"buyer.json";
+		
 	}
 
 	@Override
@@ -83,5 +84,15 @@ public class BuyerDAO extends GenericFileRepository<Buyer, String> {
 			}			
 		}
 		return null;
+	}
+	
+	public boolean validUserName(String username) {
+		for (Buyer buyer:getBuyersList()) {
+			if (buyer.getUsername().contentEquals(username)) {
+				return false;
+			}
+		}
+		
+		return true;
 	}
 }

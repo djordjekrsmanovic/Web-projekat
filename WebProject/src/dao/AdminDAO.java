@@ -82,5 +82,15 @@ public class AdminDAO extends GenericFileRepository<Administrator, String> {
 		}
 		return null;
 	}
+	
+	public boolean validUserName(String username) {
+		for (Administrator admin:getAdminstrators()) {
+			if (admin.getUsername().contentEquals(username)) {
+				return false;
+			}
+		}
+		
+		return true;
+	}
 
 }
