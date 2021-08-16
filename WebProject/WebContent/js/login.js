@@ -18,23 +18,22 @@ $(document).ready(function(){
 			data:jsonUser,
 			contentType:"application/json",
 			dataType:"json",
-			complete: function(data,status){
-			console.log(data.responseText);
-			if(status=="success"){
-			alert("Sve ok za sad");
-			}
-			else {
+			complete: function(response){		
+			changeWindowAfterLog();
           	if (document.getElementById("errorMessage").innerHTML == "") {
             $("#errorMessage").append(
               '<td colspan="2" class="error-message"><div>Unijeli ste pogrešno korisničko ime ili šifru.</div></td>'
             );
-          }
-        }
+            }       
 			},
 		});
 		event.preventDefault();
 	});	
 });
+
+function changeWindowAfterLog(){				
+			window.location.href='/WebProject/home.html';
+						}	
 
 $(document).ready(function(){
 	$("#dugme_registracija").submit(function(event){
