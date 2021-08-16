@@ -35,7 +35,7 @@ function changeWindowAfterLog(){
 			window.location.href='/WebProject/home.html';
 						}	
 
-$(document).ready(function(){
+$(document).ready(function(event){
 	$("#dugme_registracija").submit(function(event){
 		
 		$.ajax({

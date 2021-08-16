@@ -98,13 +98,9 @@ public class LoginService {
 	}
 	
 	@GET
-	@Path("/manager/restaurant")
+	@Path("/login/managerProfile")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Restaurant restoran() {
-		Manager man = (Manager) servletContext.getAttribute("user");
-		if(man.getRestaurant()!=null) {
-			return man.getRestaurant();
-		}
-		return null;
+	public User managerProfile() {
+		return (User) servletContext.getAttribute("user");
 	}
 }
