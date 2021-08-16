@@ -223,9 +223,8 @@ div{
 
   .product-picture{
     width: 200px;
-    height: 150px;
+    height: 250px;
     display:block;
-    margin: 5px;
   }
 
   .product-title{
@@ -249,13 +248,16 @@ div{
 .user-picture{
     width: 100px;
     height: 100px;
-    margin: 15px
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+
     
 }
 
 .comment-table .buyer-name{
     text-align: center;
-    margin: 50px;
+    
     
 }
 
@@ -292,6 +294,7 @@ div{
     margin:40px;
     border: 5px solid rgba(255,255,255,0.3);
     color: white;
+    text-align: center;
 }
 
 .table-body{
