@@ -100,4 +100,13 @@ public class ManagerDAO extends GenericFileRepository<Manager, String> {
 		return true;
 	}
 	
+	public void updateProfile(Manager oldData, User newData) {
+		oldData.setUsername(newData.getUsername());
+		oldData.setPassword(newData.getPassword());
+		oldData.setFirstName(newData.getFirstName());
+		oldData.setLastName(newData.getLastName());
+		oldData.setBirthDate(newData.getBirthDate());
+		oldData.setGender(newData.getGender());
+	}
+	
 }

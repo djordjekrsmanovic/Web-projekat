@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Moj nalog</title>
-	<script src="js/menagerProfile.js"></script>
 	<script src="jquery-3.3.1.min.js"></script>
+	<script src="js/menagerProfile.js"></script>
 	<link href="css/nalog.css" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
 </head>
@@ -24,7 +24,8 @@
 	</section>
 <section class="pozadina">
 	<section class="editSection">
-	<div id="podaci">                    
+	<div id="podaci"> 
+	<form id="editProfile">                   
 	    <label>Korisničko ime:</label>
 		<input id="managerUsername" type="text" /> 
 	    <label>Ime:</label>
@@ -45,6 +46,7 @@
 	    <label>Datum rodjenja:</label>
 	    <input id="datum" type="date" >          
 	    <button type="submit" >Izmjeni podatke</button>
+	</form>
 	</div> 
 	</section>  
 

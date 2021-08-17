@@ -97,10 +97,4 @@ public class LoginService {
 		return "OK";
 	}
 	
-	@GET
-	@Path("/login/managerProfile")
-	@Produces(MediaType.APPLICATION_JSON)
-	public User managerProfile() {
-		return (User) servletContext.getAttribute("user");
-	}
 }

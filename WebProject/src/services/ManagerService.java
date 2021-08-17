@@ -17,9 +17,12 @@ import dao.AdminDAO;
 import dao.BuyerDAO;
 import dao.DelivererDAO;
 import dao.ManagerDAO;
+import dao.ProductDAO;
 import dao.RestaurantDAO;
 import beans.Administrator;
+import beans.Gender;
 import beans.Manager;
+import beans.Product;
 import beans.Restaurant;
 import beans.User;
 
@@ -44,6 +47,9 @@ public class ManagerService {
 		if (servletContext.getAttribute("BuyerDAO")==null) {
 			servletContext.setAttribute("BuyerDAO", new BuyerDAO(servletContext.getRealPath("")));
 		}
+		if (servletContext.getAttribute("ProductDAO")==null) {
+			servletContext.setAttribute("ProductDAO", new ProductDAO(servletContext.getRealPath("")));
+		}
 	}
 	
 	@GET
@@ -56,5 +62,45 @@ public class ManagerService {
 		}
 		return null;
 	}
-
+	
+	@POST
+	@Path("/newArticle")
+	@Produces(MediaType.TEXT_PLAIN)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String newArticle(Product product) {
+		ProductDAO productDAO = (ProductDAO) servletContext.getAttribute("ProductDAO");
+		if(productDAO.getProductByID(product.getId())==null) {
+			productDAO.create(product);
+			return "Novi artikal napravljen!";
+		}
+		return "Artikal vec postoji";
+	}
+	
+	@POST
+	@Path("/editArticle")
+	@Produces(MediaType.TEXT_PLAIN)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String editArticle(Product product) {
+		ProductDAO productDAO = (ProductDAO) servletContext.getAttribute("ProductDAO");		
+			productDAO.createOrUpdate(product);
+			return "Artikal izmjenjen!";
+	}
+	
+	@POST
+	@Path("/editProfile")
+	@Produces(MediaType.TEXT_PLAIN)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String editProfile(User user) {
+		Manager man = (Manager) servletContext.getAttribute("user");	
+		ManagerDAO manDAO = (ManagerDAO) servletContext.getAttribute("ManagerDAO");
+		manDAO.updateProfile(man, user);
+		return "Profil azuriran.";
+	}
+	
+	@GET
+	@Path("/managerProfile")
+	@Produces(MediaType.APPLICATION_JSON)
+	public User managerProfile() {
+		return (User) servletContext.getAttribute("user");
+	}
 }
