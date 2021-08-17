@@ -77,9 +77,8 @@
         <div class="restaurants-card" style="background-color:#4287f5;">
 
         
-                <select id="SortType" class="form-select" aria-placeholder="Ocjena">
+                <select id="SortType" class="form-select" >
                     <option value="" disabled selected hidden>SORTIRANJE</option>
-                    <option value="default">PODRAZUMJEVANI PRIKAZ</option>
                     <option value="name-ascending">NAZIV-RASTUĆE</option>
                    <option value="name-descending">NAZIV-OPADAJUĆE</option>
                    <option value="location-ascending">LOKACIJA-RASTUĆE</option>
@@ -91,17 +90,17 @@
                 
                    
                     
-                    <select id="RestaurantType" class="form-select">
+                    <select id="Type" class="form-select">
                     <option value="" disabled selected hidden>Vrsta restorana</option>
-                    <option value="Grill">Rostilj</option>
-                    <option value="Etno">Etno restoran</option>
-                    <option value="Japanesse">Japanski restoran</option>
-                    <option value="Italian">Italijanski restoran</option>
+                    <option value="GRILL">Rostilj</option>
+                    <option value="ETNO">Etno restoran</option>
+                    <option value="JAPANESE">Japanski restoran</option>
+                    <option value="ITALIAN">Italijanski restoran</option>
                     <option value="AllRestaurants">Svi restorani</option>
                     </select>
                 
                    <div style="margin: 7px;"><label>Prikaži samo otvorene restorane</label>
-                   <input type="checkbox"> </div> 
+                   <input type="checkbox" id='opened'> </div> 
                 </div>     
     <!-----------------X------------Sort and filtering---------------------X------------->
 

@@ -1,4 +1,5 @@
 loadedRestaurants=[];
+recomendedView=[];
 $(document).ready(function(){
 	
 	$.get({
@@ -8,6 +9,7 @@ $(document).ready(function(){
 			
 			for(restaurant of restaurants){
 				loadedRestaurants.push(restaurant);
+                recomendedView.push(restaurant);
                 formRestaurantCard(restaurant);
 			}
 		},
@@ -15,10 +17,119 @@ $(document).ready(function(){
 				allert("greska");
 		}
 	})
+
+    $('#SortType').change(function(){
+        $('#restaurants-list').empty();
+        restaurantType();
+        sortRestaurants();
+        showAfterSort();
+    })
+
+    $("#Type").change(function(){
+        $('#restaurants-list').empty();
+        restaurantType();
+        sortRestaurants();
+        showAfterSort();
+    })
+
+    $("#opened").change(function(){
+        $('#restaurants-list').empty();
+        restaurantType();
+        sortRestaurants();
+        showAfterSort();
+    })
 	
 	
 })
 
+function restaurantType(){
+    let value=$('#Type').val();
+
+    if (value==null){
+        return;
+    }
+    loadedRestaurants.length=0;
+    loadedRestaurants=JSON.parse(JSON.stringify(recomendedView));
+    if (value=='AllRestaurants'){
+        return;
+    }
+    for (let i=0;i<loadedRestaurants.length;i++){
+        if (value!=restaurant.restaurantType){
+           loadedRestaurants.splice(i,1);
+           i--;
+        }
+    }
+    
+}
+
+function sortRestaurants(){
+    let value=$('#SortType').val();
+    
+    if (value==null){
+        return;
+    }
+
+    if (value==='name-ascending'){
+        sortNameAscending();
+    }else if(value=='name-descending'){
+        sortNameDescending();
+    }else if(value==='location-ascending'){
+        sortLocationAscending();
+    }else if(value==='location-descending'){
+        sortLocationDescending();
+    }else if(value==='average-grade-ascending'){
+        sortGradeAscending();
+    }else if (value=='average-grade-descending'){
+        sortGradeDescending();
+    }else if (value=='default'){
+        loadedRestaurants.length=0;
+        loadedRestaurants=JSON.parse(JSON.stringify(recomendedView));
+    }
+}
+
+function sortNameAscending(){
+    loadedRestaurants.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+}
+
+function sortNameDescending(){
+    loadedRestaurants.sort((a,b) => (a.name < b.name) ? 1 : ((b.name < a.name) ? -1 : 0));
+    
+}
+
+function sortLocationAscending(){
+    loadedRestaurants.sort((a,b) => (a.location.address.street+" "+a.location.address.streetNumber+" "+a.location.address.city > b.location.address.street+" "+b.location.address.streetNumber+" "+b.location.address.city) ? 1 : ((b.location.address.street+" "+b.location.address.streetNumber+" "+b.location.address.city > a.location.address.street+" "+a.location.address.streetNumber+" "+a.location.address.city) ? -1 : 0));
+
+}
+
+function sortLocationDescending(){
+    loadedRestaurants.sort((a,b) => (a.location.address.street+" "+a.location.address.streetNumber+" "+a.location.address.city < b.location.address.street+" "+b.location.address.streetNumber+" "+b.location.address.city) ? 1 : ((b.location.address.street+" "+b.location.address.streetNumber+" "+b.location.address.city < a.location.address.street+" "+a.location.address.streetNumber+" "+a.location.address.city) ? -1 : 0));
+    
+}
+
+function sortGradeAscending(){
+    loadedRestaurants.sort((a,b) => (a.grade > b.grade) ? 1 : ((b.grade > a.grade) ? -1 : 0));
+    
+}
+
+function sortGradeDescending(){
+    loadedRestaurants.sort((a,b) => (a.grade < b.grade) ? 1 : ((b.grade < a.grade) ? -1 : 0));
+    
+}
+
+
+
+
+
+function showAfterSort(){
+    for(restaurant of loadedRestaurants){
+        if (document.getElementById('opened').checked){
+            if (restaurant.restaurantStatus=='CLOSED'){
+                continue;
+            }
+        }
+        formRestaurantCard(restaurant);
+    }
+}
 function detailsClick(restaurant){
     alert("Kliknuto na restoran sa imenon "+ restaurant.name);
 }
@@ -37,7 +148,7 @@ function formRestaurantCard(restaurant){
     });
     let raitingValue=$('<p></p>',{
         class:"raiting-value",
-        text:'5'
+        text:restaurant.raiting
     });
 
     let StatusAndTypeDiv=$('<div></div>');
