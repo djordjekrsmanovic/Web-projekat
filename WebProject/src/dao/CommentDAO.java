@@ -1,6 +1,7 @@
 package dao;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -63,6 +64,17 @@ public class CommentDAO extends GenericFileRepository<Comment, String> {
 
 	public CommentDAO(String contextPath) {
 		this.contextPath = contextPath;
+	}
+	
+	public List<Comment> getRestaurantComments(String restaurantName){
+		List<Comment> allComments=getComments();
+		for (int i=0;i<allComments.size();i++) {
+			if (!allComments.get(i).getRestaurant().getName().equalsIgnoreCase(restaurantName)) {
+				allComments.remove(i);
+				i--;
+			}
+		}
+		return allComments;
 	}
 
 }

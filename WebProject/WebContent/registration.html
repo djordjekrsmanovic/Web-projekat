@@ -1,47 +1,95 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Prijava</title>
-<link href="css/index.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="css/registration.css" rel="stylesheet">
 <script src="jquery-3.3.1.min.js"></script>
-<script src="js/registration.js"></script>
+<script type="text/javascript" src="js/registration.js"></script>
 </head>
-<body id="login_body">
-	<section class="header">
+<body>
+    <section class="header">
 		<nav >
 			<a href=""><img src="pictures/logo.png" width="120px" height="70px"></a>
 			<div class="nav-links">
 				<ul>
-					<li><a href="">Početna strana</a></li>					
-					<li><a href="index.html">Prijava</a></li>
+					<li><a href="home.html">Početna strana</a></li>
+					<li><a href="">Pregled korisnika</a></li>
+					<li><a href="">Kreiraj novi restoran</a></li>
+					<li><a href="">Odjava</a></li>
 				</ul>
 			</div>
 		</nav>
 	</section>
 
-<div id="loginForm" class="loginFormStyle">
-	
-<h2 class="formTitle">Unesite svoje podatke:</h2>
-<form id="registration">
-<table class="loginTable">
-<tr><td><label>Korisničko ime: </label></td><td><input name="username" type="text"></input> <br/> </td></tr>
-<tr><td><label>Lozinka: </label></td><td><input name="pass" type="password"></input> <br/> </td></tr>
-<tr><td><label>Ponovite lozinku: </label></td><td><input name="pass" type="repeatedPassword"></input> <br/> </td></tr>
-<tr><td><label>Ime: </label></td><td><input name="name" type="text"></input> <br/> </td></tr>
-<tr><td><label>Prezime: </label></td><td><input name="surname" type="text"></input> <br/> </td></tr>
-<tr><td><label>Pol:</label>
-	    <select id="Sex">
-	        <option value="male">Muški</option>
-	        <option value="female">Ženski</option>                   
-	    </select> </td></tr>
-<tr><td><label>Datum rodjenja: </label></td><td><input name="date" type="text" placeholder="yyyy-mm-dd"></input> <br/> </td></tr>
-<tr><td><button type="submit">Registracija</button> <br/><br/></td></tr>
-<tr id="errorMessage"></tr>
-</table>
-</form>
-</div>
+    <section style="background-color: linear-gradient(#e66465, #9198e5);;">
+        <div class="registration-card">
+            <div class="title">Registracija</div>
+            <form action="" id='registration-form' method="POST" accept-charset="UTF-8" >
+                <div class="user-details">
+                    <div class="input-box">
+                        <div class="details">
+                            Ime
+                        </div>
 
+                        <input type="text" id='name' pattern="[A-Za-z]+" placeholder="Unesite Vaše ime" required>
+                    </div>
+                    <div class="input-box">
+                        <div class="details">
+                            Prezime
+                        </div>
+                        <input type="text" id='lastname' pattern="[A-Za-z]+" placeholder="Unesite Vaše prezime" required>
+                    </div>
+                    <div class="input-box">
+                        <div class="details">
+                            Datum rođenja
+                        </div>
+                        <input type="date" id='date' placeholder="Unesite datum rodjenja" required>
+                    </div>
+                    <div class="input-box">
+                        <div class="details">
+                            Korisničko ime
+                        </div>
+                        <input type="text" id='userName' placeholder="Unesite Vaše korisničko ime" required>
+                    </div>
+
+                    <div class="input-box">
+                        <div class="details">
+                            Lozinka
+                        </div>
+                        <input type="password" id='password' placeholder="Unesite Vašu lozinku" required>
+                    </div>
+
+                    <div class="input-box">
+                        <div class="details">
+                            Potvrdi lozinku
+                        </div>
+                        <input type="password" id='repeatedPassword' placeholder="Potvrdi lozinku" required>
+                    </div>
+                    <div >
+                        <div><p class="gendre">Pol</p></div>
+                        
+
+                        
+                        <span class="radio">
+                            <input type="radio" id="musko" name="gender" value="musko" required>
+                            <label for="musko">Muško</label>
+                        </span>
+                        <span>
+                            <input type="radio" id="zensko" name="gender" value="zensko" required>
+                            <label for="zensko">Žensko</label>
+                        </span>
+                        
+                    </div>
+                    
+                    
+                </div>
+                <div class="button">
+                    <input type="submit"  value="Registruje se">
+                </div>
+            </form>
+            <p class="error"></p>
+        </div>
+    </section>
 </body>
 </html>

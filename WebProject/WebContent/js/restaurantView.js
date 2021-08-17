@@ -1,5 +1,6 @@
 
 var loadedProducts=[];
+var loadedComments=[];
 
 $(document).ready(function(){
   
@@ -36,10 +37,86 @@ $(document).ready(function(){
         }
     })
 
+    var commentsUrlAddress='rest/comments/get-restaurant-comments/'+restaurantName;
+    $.get({
+        url:commentsUrlAddress,
+        contentType:'application/json',
+        success:function(comments){
+            for (comment of comments){
+                loadedComments.push(comment);
+                console.log('ucitani su komentari');
+                formComments(comment);
+            }
+        }
+    })
+
+    
+
     
     
     
 });
+
+
+function formComments(comment){
+    /*<tr>
+                  <td>
+                      <div>
+                          <img class="user-picture" src="pictures/maleUser.png">
+                      </div>
+                      <span>
+                          Marko Maric
+                      </span>
+                      
+                  </td>
+                  <td > <p class="comment-text">Neki komentar Neki komentarNeki komentarNeki komentarNeki komentarNeki komentarNeki komentarNeki komentarNeki komentarNeki komentarNeki komentarNeki komentarNeki komentarNeki komentarNeki komentarNeki komentarNeki komentarNeki komentar</p> </td></td>
+                  <td>
+  
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span>
+                  </td>
+              </tr> */
+              
+    console.log('Formiram komentar');
+    
+    let tableRow=$('<tr></tr>');
+    let image=$('<img />',{
+        class:'user-picture',
+        src:'pictures/maleUser.png'
+    });
+    let userName=$('<span></span>',{
+        text:comment.buyer.firstName+' '+comment.buyer.lastName});
+
+    let userTD=$('<td> </td>').append(image,userName);
+
+    let commentTd=$('<td></td>');
+    let commentText=$('<p></p>',{
+        text:comment.comment,
+        class:'comment-text'
+    })
+
+    commentTd.append(commentText);
+
+    let raitingTd=$('<td></td>');
+    
+    for (let i=0;i<5;i++){
+        raitingTd.append($('<span></span>',{
+            class:'fa fa-star'
+        }));
+    }
+
+    stars=raitingTd.children();
+    for (let i=0;i<comment.rate;i++){
+        stars[i].classList.add('checked');
+    }
+
+    tableRow.append(userTD,commentTd,raitingTd);
+    $('.table-body').append(tableRow);
+
+}
 
 function fillProducts(product){
     /*<div class="Product-card">
@@ -54,9 +131,10 @@ function fillProducts(product){
     let cardDiv=$('<div></div>',{
         class:'Product-card',
     })
-    let image=$('<img/>',{
+    let image=$('<img />',{
         //src:'product.photoPath',
-        src:'../pictures/hrana1.jpg',
+        src:'pictures/hrana1.jpg',
+        class:'product-picture'
     })
     image.css('width','100%');
     let productTitle=$('<h1></h1>',{

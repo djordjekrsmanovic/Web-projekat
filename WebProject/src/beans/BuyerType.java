@@ -14,7 +14,6 @@ public class BuyerType {
 	
 	public BuyerType() {
 		buyerRank=BuyerRank.NO_RANK;
-		
 	}
 	
 	public BuyerType(BuyerRank buyerRank) {

@@ -27,6 +27,7 @@ public class Buyer extends User {
 		this.userRole = UserRole.BUYER;
 		this.orders = orders;
 		this.points = points;
+		this.buyerType=new BuyerType();
 	}
 	
 	public Buyer(String username, String password, String firstName, String lastName, Gender gender, Date birthDate,
@@ -35,6 +36,7 @@ public class Buyer extends User {
 		this.userRole = UserRole.BUYER;
 		this.orders = new ArrayList<Order>();
 		this.points = points;
+		this.buyerType=new BuyerType();
 	}
 	public UserRole getRole() {
 		return userRole;

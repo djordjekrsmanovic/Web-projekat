@@ -6,7 +6,6 @@ import java.util.List;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import beans.Administrator;
 import beans.Converter;
 import beans.Deliverer;
 import beans.Gender;
@@ -61,6 +60,16 @@ public class DelivererDAO extends GenericFileRepository<Deliverer, String> {
 			}			
 		}
 		return null;
+	}
+	
+	public boolean validUserName(String username) {
+		for (Deliverer deliverer:getDeliverers()) {
+			if (deliverer.getUsername().contentEquals(username)) {
+				return false;
+			}
+		}
+		
+		return true;
 	}
 	
 }
