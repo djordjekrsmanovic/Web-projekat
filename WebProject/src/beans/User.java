@@ -12,6 +12,7 @@ public class User {
 	private Date birthDate;
 	private boolean deleted;
 	private boolean banned;
+	private UserRole role;
 	
 	public User() {
 		super();
@@ -98,6 +99,14 @@ public class User {
 
 	public void setBanned(boolean banned) {
 		this.banned = banned;
+	}
+	
+	public UserRole getRole() {
+		return role;
+	}
+
+	public void setRole(UserRole role) {
+		this.role = role;
 	}
 
 

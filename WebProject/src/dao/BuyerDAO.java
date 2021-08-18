@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import beans.Buyer;
 import beans.Gender;
 import beans.User;
+import beans.UserRole;
 
 public class BuyerDAO extends GenericFileRepository<Buyer, String> {
 
@@ -80,6 +81,7 @@ public class BuyerDAO extends GenericFileRepository<Buyer, String> {
 		List<Buyer> buyers = getBuyersList();
 		for(Buyer b : buyers) {
 			if(b.getUsername().equals(username) && b.getPassword().equals(password)) {
+				b.setRole(UserRole.BUYER);
 				return (User) b;
 			}			
 		}

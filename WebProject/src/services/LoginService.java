@@ -22,6 +22,7 @@ import beans.Administrator;
 import beans.Manager;
 import beans.Restaurant;
 import beans.User;
+import beans.UserRole;
 
 @Path("/login")
 public class LoginService {
@@ -77,10 +78,25 @@ public class LoginService {
 	}
 	
 	@GET
-	@Path("/login/loggedUser")
-	@Produces(MediaType.APPLICATION_JSON)
-	public User loggedUser() {
-		return (User) servletContext.getAttribute("user");
+	@Path("/loggedUser")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String loggedUser() {
+	User user= (User) servletContext.getAttribute("user");
+	if(user!=null) {
+	  if(user.getRole()==UserRole.ADMIN) {
+		  return "admin";
+	  } 
+	  else if(user.getRole()==UserRole.MANAGER) {
+			  return "manager";
+		  } 
+	  else if(user.getRole()==UserRole.BUYER) {
+			  return "buyer";
+		  } 
+	  else if(user.getRole()==UserRole.DELIVERER) {
+		  return "deliverer";
+	  } else return "notLoged";
+	} 
+	  else return "notLoged";
 	}
 	
 	@GET

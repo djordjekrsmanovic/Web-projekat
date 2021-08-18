@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import beans.Administrator;
 import beans.Gender;
 import beans.User;
+import beans.UserRole;
 
 public class AdminDAO extends GenericFileRepository<Administrator, String> {
 
@@ -77,6 +78,7 @@ public class AdminDAO extends GenericFileRepository<Administrator, String> {
 		List<Administrator> admins = getAdminstrators();		
 		for(Administrator a : admins) {						
 			if(a.getUsername().equals(username) && a.getPassword().equals(password)) {
+				a.setRole(UserRole.ADMIN);
 				return (User) a;
 			}			
 		}
