@@ -14,7 +14,7 @@ $(document).ready(function(){
 			}
 		},
 		error:function(data){
-				allert("greska");
+				alert("greska");
 		}
 	});
 	
@@ -51,23 +51,23 @@ $(document).ready(function(){
 		
 	})
 
-    $('#SortType').change(function(){
+    $(".search-button").click(function(){
         $('#restaurants-list').empty();
-        restaurantType();
+        searchRestaurant();
         sortRestaurants();
         showAfterSort();
     })
 
-    $("#Type").change(function(){
+    $('#SortType').change(function(){
         $('#restaurants-list').empty();
-        restaurantType();
         sortRestaurants();
         showAfterSort();
     })
+
+    
 
     $("#opened").change(function(){
         $('#restaurants-list').empty();
-        restaurantType();
         sortRestaurants();
         showAfterSort();
     })
@@ -75,25 +75,37 @@ $(document).ready(function(){
 	
 })
 
-function restaurantType(){
-    let value=$('#Type').val();
-
-    if (value==null){
-        return;
-    }
+function searchRestaurant(){
+    let name=$("#search-name").val()==null ? "" : $("#search-name").val();
+    let location=$("#search-location").val()==null ? "" : $("#search-location").val();
+    let type=$("#search-type").val()==null ? "" : $("#search-type").val();
+    let grade=$("#search-grade").val()==null ? "" : $("#search-grade").val();
+    let deleted=false;
     loadedRestaurants.length=0;
     loadedRestaurants=JSON.parse(JSON.stringify(recomendedView));
-    if (value=='AllRestaurants'){
-        return;
-    }
     for (let i=0;i<loadedRestaurants.length;i++){
-        if (value!=restaurant.restaurantType){
-           loadedRestaurants.splice(i,1);
-           i--;
+        deleted=false;
+        let restaurantLocation=loadedRestaurants[i].location.address.street+" "+loadedRestaurants[i].location.address.streetNumber+" "+loadedRestaurants[i].location.address.city
+        console.log(!loadedRestaurants[i].name.includes(name),!restaurantLocation.includes(location),!loadedRestaurants[i].restaurantType.includes(type));
+        if (!loadedRestaurants[i].name.toLowerCase().includes(name.toLowerCase()) || !restaurantLocation.toLowerCase().includes(location.toLowerCase()) || !loadedRestaurants[i].restaurantType.toLowerCase().includes(type.toLowerCase()) ){
+            loadedRestaurants.splice(i,1);
+            i--;
+            deleted=true;
+        }
+
+        if (grade!="" && deleted==false){
+            if ((parseFloat(grade)-1 <= parseFloat(loadedRestaurants[i].raiting) < parseFloat(grade))){
+                loadedRestaurants.splice(i,1);
+                i--;
+            } 
         }
     }
+
+
     
+
 }
+
 
 function sortRestaurants(){
     let value=$('#SortType').val();
