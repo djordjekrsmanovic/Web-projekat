@@ -52,33 +52,27 @@ public class LoginService {
 	@Path("/loginTry")
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String loginTry(User userRequest) { 
-
+	public String loginTry(User userRequest) { 		
 		AdminDAO adminDAO= (AdminDAO) servletContext.getAttribute("AdminDAO");
-		if(adminDAO.loginAdmin(userRequest.getUsername(), userRequest.getPassword())!=null) {
-			servletContext.setAttribute("user",adminDAO.loginAdmin(userRequest.getUsername(), userRequest.getPassword()));
-			return "Prijavljen Administrator";
-		}		
-		
 		ManagerDAO managerDAO= (ManagerDAO) servletContext.getAttribute("ManagerDAO");
-		if(managerDAO.loginManager(userRequest.getUsername(), userRequest.getPassword())!=null) {
-			servletContext.setAttribute("user",managerDAO.loginManager(userRequest.getUsername(), userRequest.getPassword()));
-			return "Prijavljen menadzer";
-		}
-		
 		DelivererDAO delivererDAO= (DelivererDAO) servletContext.getAttribute("DelivererDAO");
-		if(delivererDAO.loginDeliverer(userRequest.getUsername(), userRequest.getPassword())!=null) {
+		BuyerDAO buyerDAO=(BuyerDAO) servletContext.getAttribute("BuyerDAO");	
+		
+		if(adminDAO.loginAdmin(userRequest.getUsername(), userRequest.getPassword())!=null) {			
+			servletContext.setAttribute("user",adminDAO.loginAdmin(userRequest.getUsername(), userRequest.getPassword()));
+			return "s";
+		} else if(managerDAO.loginManager(userRequest.getUsername(), userRequest.getPassword())!=null) {
+			servletContext.setAttribute("user",managerDAO.loginManager(userRequest.getUsername(), userRequest.getPassword()));
+			return "s";
+		} else if(delivererDAO.loginDeliverer(userRequest.getUsername(), userRequest.getPassword())!=null) {
 			servletContext.setAttribute("user",delivererDAO.loginDeliverer(userRequest.getUsername(), userRequest.getPassword()));
-			return "Prijavljen dostavljac";
-		}
-		
-		BuyerDAO buyerDAO=(BuyerDAO) servletContext.getAttribute("BuyerDAO");
-		if(buyerDAO.loginBuyer(userRequest.getUsername(), userRequest.getPassword())!=null) {
+			return "s";
+		} else if(buyerDAO.loginBuyer(userRequest.getUsername(), userRequest.getPassword())!=null) {
 			servletContext.setAttribute("user",buyerDAO.loginBuyer(userRequest.getUsername(), userRequest.getPassword()));
-			return "Prijavljen kupac";
-		}
+			return "s";
+		} else
 		
-		return "Ne postoji korisnik sa unesenim korisnickim imenom i sifrom!";
+		return "f";
 		
 	}
 	

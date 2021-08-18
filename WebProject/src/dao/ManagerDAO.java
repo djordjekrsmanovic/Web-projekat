@@ -83,7 +83,7 @@ public class ManagerDAO extends GenericFileRepository<Manager, String> {
 	public User loginManager(String username, String password) {
 		List<Manager> managers = getManagersList();
 		for(Manager m : managers) {
-			if(m.getUsername() == username && m.getPassword()==password) {
+			if(m.getUsername().equals(username) && m.getPassword().equals(password)) {
 				return (User) m;
 			}			
 		}

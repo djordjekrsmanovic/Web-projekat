@@ -55,7 +55,7 @@ public class DelivererDAO extends GenericFileRepository<Deliverer, String> {
 	public User loginDeliverer(String username, String password) {
 		List<Deliverer> deliverers = getDeliverers();
 		for(Deliverer d : deliverers) {
-			if(d.getUsername() == username && d.getPassword()==password) {
+			if(d.getUsername().equals(username) && d.getPassword().equals(password)) {
 				return (User) d;
 			}			
 		}

@@ -1,23 +1,14 @@
 /**
  * 
  */
- 
- function fillProfileData(user) {
-    $("#managerUserame").val(user.username);
-    $("#managerName").val(user.name);
-    $("#managerSurname").val(user.surname);
-    //$("#managerSex").val(getSexSelectionString(user.sex));  
-    $("#oldPassword").val(user.password);
-    $("#datum").val(user.birthDate);
-}
+
  
   $(document).ready(function(){
  	$.get({
  		url:"rest/manager/managerProfile",
 		dataType:"json",
  		success: function(response){
- 			var resp=response;
- 			fillProfileData(resp);
+ 			fillProfileData(response);
  		},
  	});	
  	
@@ -30,7 +21,7 @@
         let repeatedPassword=$('#RepeatedNewPassword').val();
         let gender=$("managerSex option:selected").val();
         if (name===''||surname===''||date===''||userName==''||password==''||repeatedPassword==''||gender==''){
-            $('#error').text="Sva polja trebaju biti popunjena";
+            $("#error").append=('Sva polja trebaju biti popunjena');
             return;
         }
 
@@ -54,3 +45,14 @@
  	document.location.reload();
  	});
  });
+ 
+function fillProfileData(user) {
+    $("#managerUsername").val(user.username);
+    $("#managerName").val(user.firstName);
+    $("#managerSurname").val(user.lastName);
+    if(user.gender=="male"){
+    $("#managerSex").val("male"); } 
+    else {  $("#managerSex").val("female");}
+    $("#oldPassword").val(user.password);
+    $("#datum").val(user.birthDate);
+}

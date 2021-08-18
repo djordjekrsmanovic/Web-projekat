@@ -23,29 +23,31 @@
 		</nav>
 	</section>
 <section class="pozadina">
-	<section class="editSection">
-	<div id="podaci"> 
-	<form id="editProfile">                   
-	    <label>Korisničko ime:</label>
-		<input id="managerUsername" type="text" /> 
-	    <label>Ime:</label>
-		<input id="managerName" type="text"  /> 
-	    <label>Prezime:</label>
-	    <input id="managerSurname" type="text" /> 
-	    <label>Pol:</label>
+	<section>
+	<div id="podaci" class="editSection"> 
+	<form id="editProfile"> 
+		<table>                  
+	    <tr><td><label>Korisničko ime:</label></td><td>
+		<input id="managerUsername" type="text" /></td></tr>
+	    <tr><td><label>Ime:</label></td><td>
+		<input id="managerName" type="text"  /></td></tr> 
+	    <tr><td><label>Prezime:</label></td><td>
+	    <input id="managerSurname" type="text" /></td></tr> 
+	    <tr><td><label>Pol:</label></td><td>
 	    <select id="managerSex">
 	        <option value="male">Muški</option>
 	        <option value="female">Ženski</option>                   
-	    </select> 
-	    <label>Trenutna lozinka:</label>
-	    <input type="password" id="oldPassword" /> 
-	    <label>Nova lozinka:</label>
-	    <input type="password" id="NewPassword" /> 
-	    <label>Ponovite novu lozinku:</label>
-	    <input type="password" id="RepeatedNewPassword" /> 
-	    <label>Datum rodjenja:</label>
-	    <input id="datum" type="date" >          
-	    <button type="submit" >Izmjeni podatke</button>
+	    </select></td></tr> 
+	    <tr><td><label>Trenutna lozinka:</label></td><td>
+	    <input type="password" id="oldPassword" /></td></tr> 
+	    <tr><td><label>Nova lozinka:</label></td><td>
+	    <input type="password" id="NewPassword" /></td></tr> 
+	    <tr><td><label>Ponovite novu lozinku:</label></td><td>
+	    <input type="password" id="RepeatedNewPassword" /></td></tr> 
+	    <tr><td><label>Datum rodjenja:</label></td><td>
+	    <input id="datum" type="date" ></td></tr>          
+	    <tr><td><button type="submit" >Izmjeni podatke</button></td><td id="error"></td></tr>
+	</table>
 	</form>
 	</div> 
 	</section>  

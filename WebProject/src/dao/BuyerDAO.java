@@ -79,7 +79,7 @@ public class BuyerDAO extends GenericFileRepository<Buyer, String> {
 	public User loginBuyer(String username, String password) {
 		List<Buyer> buyers = getBuyersList();
 		for(Buyer b : buyers) {
-			if(b.getUsername() == username && b.getPassword()==password) {
+			if(b.getUsername().equals(username) && b.getPassword().equals(password)) {
 				return (User) b;
 			}			
 		}
