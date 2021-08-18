@@ -18,6 +18,7 @@ import beans.Restaurant;
 import beans.RestaurantStatus;
 import beans.RestaurantType;
 import beans.User;
+import beans.UserRole;
 
 public class ManagerDAO extends GenericFileRepository<Manager, String> {
 
@@ -83,7 +84,8 @@ public class ManagerDAO extends GenericFileRepository<Manager, String> {
 	public User loginManager(String username, String password) {
 		List<Manager> managers = getManagersList();
 		for(Manager m : managers) {
-			if(m.getUsername() == username && m.getPassword()==password) {
+			if(m.getUsername().equals(username) && m.getPassword().equals(password)) {
+				m.setRole(UserRole.MANAGER);
 				return (User) m;
 			}			
 		}
@@ -98,6 +100,15 @@ public class ManagerDAO extends GenericFileRepository<Manager, String> {
 		}
 		
 		return true;
+	}
+	
+	public void updateProfile(Manager oldData, User newData) {
+		oldData.setUsername(newData.getUsername());
+		oldData.setPassword(newData.getPassword());
+		oldData.setFirstName(newData.getFirstName());
+		oldData.setLastName(newData.getLastName());
+		oldData.setBirthDate(newData.getBirthDate());
+		oldData.setGender(newData.getGender());
 	}
 	
 }

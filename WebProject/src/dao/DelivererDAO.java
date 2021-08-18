@@ -10,6 +10,7 @@ import beans.Converter;
 import beans.Deliverer;
 import beans.Gender;
 import beans.User;
+import beans.UserRole;
 
 public class DelivererDAO extends GenericFileRepository<Deliverer, String> {
 
@@ -55,7 +56,8 @@ public class DelivererDAO extends GenericFileRepository<Deliverer, String> {
 	public User loginDeliverer(String username, String password) {
 		List<Deliverer> deliverers = getDeliverers();
 		for(Deliverer d : deliverers) {
-			if(d.getUsername() == username && d.getPassword()==password) {
+			if(d.getUsername().equals(username) && d.getPassword().equals(password)) {
+				d.setRole(UserRole.DELIVERER);
 				return (User) d;
 			}			
 		}

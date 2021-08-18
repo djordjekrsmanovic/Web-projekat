@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Moj nalog</title>
-	<script src="js/menagerProfile.js"></script>
 	<script src="jquery-3.3.1.min.js"></script>
+	<script src="js/menagerProfile.js"></script>
 	<link href="css/nalog.css" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
 </head>
@@ -16,77 +16,42 @@
 			<div class="nav-links">
 				<ul>
 					<li><a href="home.html">Početna strana</a></li>
-					<li><a href="">Pregled restorana</a></li>
+					<li><a href="menagerRestaurantInfo.html">Pregled restorana</a></li>
 					<li><a href="">Odjava</a></li>
 				</ul>
 			</div>
 		</nav>
 	</section>
 <section class="pozadina">
-	<section class="editSection">
-	<div id="podaci">                    
-	    <label>Korisničko ime:</label>
-		<input id="profileUsername" type="text" /> 
-	    <label>Ime:</label>
-		<input id="profileName" type="text"  /> 
-	    <label>Prezime:</label>
-	    <input id="profileSurname" type="text" /> 
-	    <label>Pol:</label>
-	    <select id="profileSex">
-	        <option value="M">Muški</option>
-	        <option value="F">Ženski</option>                   
-	    </select> 
-	    <label>Trenutna lozinka:</label>
-	    <input type="password" id="oldPassword" /> 
-	    <label>Nova lozinka:</label>
-	    <input type="password" id="NewPassword" /> 
-	    <label>Ponovite novu lozinku:</label>
-	    <input type="password" id="RepeatedNewPassword" /> 
-	    <label>Datum rodjenja:</label>
-	    <input id="datum" type="date" >          
-	    <button type="submit" >Izmjeni podatke</button>
+	<section>
+	<div id="podaci" class="editSection"> 
+	<form id="editProfile"> 
+		<table>                  
+	    <tr><td><label>Korisničko ime:</label></td><td>
+		<input id="managerUsername" type="text" /></td></tr>
+	    <tr><td><label>Ime:</label></td><td>
+		<input id="managerName" type="text"  /></td></tr> 
+	    <tr><td><label>Prezime:</label></td><td>
+	    <input id="managerSurname" type="text" /></td></tr> 
+	    <tr><td><label>Pol:</label></td><td>
+	    <select id="managerSex">
+	        <option value="male">Muški</option>
+	        <option value="female">Ženski</option>                   
+	    </select></td></tr> 
+	    <tr><td><label>Trenutna lozinka:</label></td><td>
+	    <input type="password" id="oldPassword" /></td></tr> 
+	    <tr><td><label>Nova lozinka:</label></td><td>
+	    <input type="password" id="NewPassword" /></td></tr> 
+	    <tr><td><label>Ponovite novu lozinku:</label></td><td>
+	    <input type="password" id="RepeatedNewPassword" /></td></tr> 
+	    <tr><td><label>Datum rodjenja:</label></td><td>
+	    <input id="datum" type="date" ></td></tr>          
+	    <tr><td><button type="submit" >Izmjeni podatke</button></td><td id="error"></td></tr>
+	</table>
+	</form>
 	</div> 
 	</section>  
 
-<br/> <br/> <br/>
-	<table>
-		<tr bgcolor="green">
-			<th>ID</th>
-			<th>Ime Restorana </th>
-			<th>Datum</th>
-			<th>Cijena</th>
-			<th>Status</th>
-		</tr>
-
-		<tr>
-		<td>{{n.id}}</td>
-		<td>{{n.restaurant.name }}</td>
-		<td>{{n.date | dateFormat('DD.MM.YYYY')}}</td>
-		<td>{{n.price }}</td>
-		<td>{{n.status }}</td> 
-	</tr>
-
-	</table>
-	<table>
-		<tr bgcolor="green">
-			<th>Ime</th>
-			<th>Prezime</th>
-			<th>Korisnicko ime</th>
-			<th>Pol</th>
-			<th>Datum Rodjenja</th>
-			<th>Broj sakupljenih bodova</th>
-		</tr>
-
-		<tr>
-		<td>{{k.firstName}}</td>
-		<td>{{k.lastName}}</td>
-		<td>{{k.username}}</td>
-		<td>{{k.gender}}</td>
-		<td>{{k.birthDate | dateFormat('DD.MM.YYYY')}}</td> 
-		<td>{{k.points}}</td>
-	</tr>
-
-	</table>
 <br/> <br/> <br/>
 
 <form id="pretragaNoMenager">

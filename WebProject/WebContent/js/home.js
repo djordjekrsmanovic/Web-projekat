@@ -16,6 +16,39 @@ $(document).ready(function(){
 		error:function(data){
 				allert("greska");
 		}
+	});
+	
+	$.get({
+		url:'rest/login/loggedUser',
+		dataType:'text',
+		success: function(userType){
+			if(userType==="admin"){
+				$('#prijavaMenu').hide();
+				$('#pregled').append('Pregled korisnika');
+				$('#pregled').attr('href','allUsersAdminView.html');
+				$('#profile').attr('href','adminProfile.html');				
+			} else if(userType==="buyer"){
+				$('#prijavaMenu').hide();
+				$('#pregled').append('Pregled porudzbina');
+				$('#pregled').attr('href','');
+				$('#profile').attr('href','buyerProfile.html');
+			} else if(userType==="manager"){
+				$('#prijavaMenu').hide();
+				$('#pregled').append('Pregled Restorana');
+				$('#pregled').attr('href','menagerRestaurantInfo.html');
+				$('#profile').attr('href','menagerProfile.html');
+			} else if(userType==="deliverer"){
+				$('#prijavaMenu').hide();
+				$('#pregled').append('Pregled porudzbina');
+				$('#pregled').attr('href','');
+				$('#profile').attr('href','delivererProfile.html');
+			} else {
+				$('#logoutMenu').hide();
+				$('#profileMenu').hide();
+				$('#pregledMenu').hide();
+			}
+		},
+		
 	})
 
     $('#SortType').change(function(){
