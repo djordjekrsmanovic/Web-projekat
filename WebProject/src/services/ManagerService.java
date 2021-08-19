@@ -103,4 +103,13 @@ public class ManagerService {
 	public User managerProfile() {
 		return (User) servletContext.getAttribute("user");
 	}
+	
+	@POST
+	@Path("/productName")
+	@Produces(MediaType.TEXT_PLAIN)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String rememberProductName(String name) {
+		servletContext.setAttribute("productName", name);
+		return "Success!";
+	}
 }

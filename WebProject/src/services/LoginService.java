@@ -99,12 +99,13 @@ public class LoginService {
 	  else return "notLoged";
 	}
 	
+	
 	@GET
-	@Path("/registracija")
+	@Path("/logout")
 	@Produces(MediaType.TEXT_PLAIN)
-	public String test() {
-		System.out.println("test");
-		return "OK";
+	public String logout() {
+		servletContext.setAttribute("user", null);
+		return "Loged out successfully!";
 	}
 	
 }

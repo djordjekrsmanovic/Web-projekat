@@ -19,17 +19,17 @@
     
     <div >
         <ul class="nav-items">
-            <li class="nav-link">
-                <a id="prijavaMenu" class="nav-color" href="index.html">Prijava</a>
+            <li id="prijavaMenu" class="nav-link">
+                <a class="nav-color" href="index.html">Prijava</a>
             </li>
             <li id="pregledMenu" class="nav-link">
-                <a class="nav-color"></a>
+                <a id="pregled" class="nav-color"></a>
             </li> 
             <li id="profileMenu" class="nav-link">
-                <a  class="nav-color">Moj Profil</a>
+                <a id="profile" class="nav-color">Moj Profil</a>
             </li>  
             <li id="logoutMenu" class="nav-link">
-                <a class="nav-color" href="#">Odjavi se</a>
+                <a id="logoutButton" class="nav-color" href="#">Odjavi se</a>
             </li>                    
         </ul>
     </div>
@@ -48,27 +48,27 @@
                 
                 <h1 class="title">Naručite vašu hranu online</h1>
                 <div class=".search-criterium">
-                    <input type="text" id="search-name"class="form-input" placeholder="Naziv restorana">
-                    <input type="text" id="search-location" class="form-input" placeholder="Lokacija restorana">
+                    <input type="text" class="form-input" placeholder="Naziv restorana">
+                    <input type="text" class="form-input" placeholder="Lokacija restorana">
                     
-                    <select id="search-type" class="form-select">
+                    <select id="RestaurantType" class="form-select">
                     <option value="" disabled selected hidden>Vrsta restorana</option>
-                        <option value="GRILL">Rostilj</option>
-                        <option value="ETNO">Etno restoran</option>
-                        <option value="JAPANESE">Japanski restoran</option>
-                        <option value="ITALIAN">Italijanski restoran</option>
-                        <option value="">Svi restorani</option>
+                    <option value="Grill">Rostilj</option>
+                    <option value="Etno">Etno restoran</option>
+                    <option value="Japanesse">Japanski restoran</option>
+                    <option value="Italian">Italijanski restoran</option>
+                    <option value="AllRestaurants">Svi restorani</option>
                     </select>
-                    <select id="search-grade" class="form-select" aria-placeholder="Ocjena">
+                    <select id="RestaurantGrade" class="form-select" aria-placeholder="Ocjena">
                         <option value="" disabled selected hidden>Ocjena</option>
-                        <option value="1">0-1</option>
-                       <option value="2">1-2</option>
-                       <option value="3">2-3</option>
-                       <option value="4" >3-4</option>
-                       <option value="5" >4-5</option>
-                       <option value="">Sve </option>
+                        <option value="0-1">0-1</option>
+                       <option value="1-2">1-2</option>
+                       <option value="2-3">2-3</option>
+                       <option value="3-4" >3-4</option>
+                       <option value="4-5" >4-5</option>
+                       <option value="AllRaiting">Sve </option>
                        </select>
-                    <button class="search-button" >Pretrazi</button>
+                    <button class="search-button">Pretrazi</button>
                 </div>
             </div>
         </section>
@@ -80,8 +80,9 @@
         <div class="restaurants-card" style="background-color:#4287f5;">
 
         
-                <select id="SortType" class="form-select" >
+                <select id="SortType" class="form-select" aria-placeholder="Ocjena">
                     <option value="" disabled selected hidden>SORTIRANJE</option>
+                    <option value="default">PODRAZUMJEVANI PRIKAZ</option>
                     <option value="name-ascending">NAZIV-RASTUĆE</option>
                    <option value="name-descending">NAZIV-OPADAJUĆE</option>
                    <option value="location-ascending">LOKACIJA-RASTUĆE</option>
@@ -92,10 +93,18 @@
                    </select>
                 
                    
-                
+                    
+                    <select id="RestaurantType" class="form-select">
+                    <option value="" disabled selected hidden>Vrsta restorana</option>
+                    <option value="Grill">Rostilj</option>
+                    <option value="Etno">Etno restoran</option>
+                    <option value="Japanesse">Japanski restoran</option>
+                    <option value="Italian">Italijanski restoran</option>
+                    <option value="AllRestaurants">Svi restorani</option>
+                    </select>
                 
                    <div style="margin: 7px;"><label>Prikaži samo otvorene restorane</label>
-                   <input type="checkbox" id='opened'> </div> 
+                   <input type="checkbox"> </div> 
                 </div>     
     <!-----------------X------------Sort and filtering---------------------X------------->
 

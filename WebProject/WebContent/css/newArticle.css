@@ -62,7 +62,7 @@ h1{
 }
 
 .forma{
-	margin: 8%;
+	margin: 15%;
 	background-image: url("../pictures/hrana1.jpg");
 	font-weight: bold;
 	align-items: flex-end;
@@ -71,7 +71,7 @@ h1{
 	border-width: 3px;
 }
 
-.forma div {
+.forma table {
 	display:grid;
 	grid-template-columns: 1fr 1fr;
     grid-column-gap: 10px;

@@ -1,9 +1,9 @@
 /**
  * 
  */
-
  
   $(document).ready(function(){
+	  
  	$.get({
  		url:"rest/manager/managerProfile",
 		dataType:"json",
@@ -37,13 +37,29 @@
                 alert("Uspjesno ste izmjenili podatke svog profila");
             },
             error:function(data){
-                alert("Greska prilikom registracije");
+                alert("Greska prilikom izmjene.");
             }
         })
  	
  	event.preventDefault();
  	document.location.reload();
  	});
+ 	
+ 	$("#logoutButton").click(function(){
+		if(window.confirm("Da li zaista zelite da se odjavite?")){
+			$.get({
+			url:'rest/login/logout',
+			dataType:'text',
+			success: function(response){
+			alert(response);
+			window.location.href='/WebProject/home.html';
+			},
+			})
+		} else {
+			return;
+		}	
+	})
+ 	
  });
  
 function fillProfileData(user) {

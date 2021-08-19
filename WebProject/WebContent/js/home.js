@@ -50,6 +50,21 @@ $(document).ready(function(){
 		},
 		
 	})
+	
+	$("#logoutButton").click(function(){
+		if(window.confirm("Da li zaista zelite da se odjavite?")){
+			$.get({
+			url:'rest/login/logout',
+			dataType:'text',
+			success: function(response){
+			alert(response);
+			document.location.reload();
+			},
+			})
+		} else {
+			return;
+		}	
+	})
 
     $(".search-button").click(function(){
         $('#restaurants-list').empty();
