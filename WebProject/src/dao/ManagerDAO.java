@@ -77,7 +77,15 @@ public class ManagerDAO extends GenericFileRepository<Manager, String> {
 		});
 		return manager;
 	}
-
+	
+	public void deleteManager(String id) {
+		Manager manager=getManagerByID(id);
+		if (manager==null) {
+			return;
+		}
+		manager.setDeleted(true);
+		createOrUpdate(manager);
+	}
 	public ManagerDAO(String contextPath) {
 		this.contextPath = contextPath;
 	}
@@ -109,6 +117,16 @@ public class ManagerDAO extends GenericFileRepository<Manager, String> {
 		oldData.setLastName(newData.getLastName());
 		oldData.setBirthDate(newData.getBirthDate());
 		oldData.setGender(newData.getGender());
+	}
+
+	public void banManager(String id) {
+		Manager manager=getManagerByID(id);
+		if (manager==null) {
+			return;
+		}
+		manager.setBanned(!manager.isBanned());
+		createOrUpdate(manager);
+		
 	}
 	
 }

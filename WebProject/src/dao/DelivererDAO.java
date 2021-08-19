@@ -41,6 +41,15 @@ public class DelivererDAO extends GenericFileRepository<Deliverer, String> {
 		});
 		return deliverer;
 	}
+	
+	public void deleteDeliverer(String id) {
+		Deliverer deliverer=getDelivererByID(id);
+		if (deliverer==null) {
+			return;
+		}
+		deliverer.setDeleted(true);
+		createOrUpdate(deliverer);
+	}
 
 	public void generateDeliverer() {
 		Deliverer deliverer = new Deliverer("deliverer", "deliverer", "Milan", "Markovic", Gender.male,
@@ -72,6 +81,15 @@ public class DelivererDAO extends GenericFileRepository<Deliverer, String> {
 		}
 		
 		return true;
+	}
+	public void banDeliverer(String id) {
+		Deliverer deliverer=getDelivererByID(id);
+		if (deliverer==null) {
+			return;
+		}
+		deliverer.setBanned(!deliverer.isBanned());
+		createOrUpdate(deliverer);
+		
 	}
 	
 }

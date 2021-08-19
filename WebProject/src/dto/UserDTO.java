@@ -11,6 +11,7 @@ public class UserDTO {
 	public String lastName;
 	public String gender;
 	public String birthDate;
+	
 	public UserDTO() {
 		super();
 		// TODO Auto-generated constructor stub

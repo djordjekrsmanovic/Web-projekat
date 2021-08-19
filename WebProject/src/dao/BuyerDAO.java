@@ -77,6 +77,15 @@ public class BuyerDAO extends GenericFileRepository<Buyer, String> {
 		this.contextPath=contextPath;
 	}
 	
+	public void deleteBuyer(String id) {
+		Buyer buyer=getBuyerByID(id);
+		if(buyer==null) {
+			return;
+		}
+		buyer.setDeleted(true);
+		createOrUpdate(buyer);
+	}
+	
 	public User loginBuyer(String username, String password) {
 		List<Buyer> buyers = getBuyersList();
 		for(Buyer b : buyers) {
@@ -96,5 +105,15 @@ public class BuyerDAO extends GenericFileRepository<Buyer, String> {
 		}
 		
 		return true;
+	}
+
+	public void banBuyer(String id) {
+		Buyer buyer=getBuyerByID(id);
+		if(buyer==null) {
+			return;
+		}
+		buyer.setBanned(!buyer.isBanned());
+		createOrUpdate(buyer);
+		
 	}
 }
