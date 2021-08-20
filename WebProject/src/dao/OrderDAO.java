@@ -70,7 +70,7 @@ public class OrderDAO extends GenericFileRepository<Order, String> {
 
 		Location location = new Location(45.24, 19.84, address);
 		Restaurant restaurant = new Restaurant("Plava frajla", RestaurantType.ETNO, RestaurantStatus.OPEN, location,
-				"");
+				"","bojan");
 		Order order = new Order("1234567891", cartItems, restaurant, Converter.convertStringtoDate("13.3.2021."),
 				"djordje", OrderStatus.CEKA_DOSTAVLJACA);
 		createOrUpdate(order);

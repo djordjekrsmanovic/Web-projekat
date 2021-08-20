@@ -56,8 +56,8 @@ public class RestaurantDAO extends GenericFileRepository<Restaurant, String> {
 		Location location1 = new Location(44.34, 18.16, address1);
 
 		Restaurant restaurant = new Restaurant("Plava frajla", RestaurantType.ETNO, RestaurantStatus.OPEN, location,
-				"");
-		Restaurant restaurant1 = new Restaurant("Vidikovac", RestaurantType.ETNO, RestaurantStatus.OPEN, location1, "");
+				"","bojan");
+		Restaurant restaurant1 = new Restaurant("Vidikovac", RestaurantType.ETNO, RestaurantStatus.OPEN, location1, "","");
 		List<String> products = new ArrayList<String>();
 		products.add("cevapi");
 		products.add("supa");
