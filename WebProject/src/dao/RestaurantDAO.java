@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import beans.Address;
 import beans.Location;
+import beans.Product;
 import beans.Restaurant;
 import beans.RestaurantStatus;
 import beans.RestaurantType;
@@ -58,9 +59,8 @@ public class RestaurantDAO extends GenericFileRepository<Restaurant, String> {
 		Restaurant restaurant = new Restaurant("Plava frajla", RestaurantType.ETNO, RestaurantStatus.OPEN, location,
 				"");
 		Restaurant restaurant1 = new Restaurant("Vidikovac", RestaurantType.ETNO, RestaurantStatus.OPEN, location1, "");
-		List<String> products = new ArrayList<String>();
-		products.add("cevapi");
-		products.add("supa");
+		ProductDAO productDAO = new ProductDAO();
+		List<Product> products = productDAO.getProducts();
 		restaurant.setProducts(products);
 		createOrUpdate(restaurant);
 		createOrUpdate(restaurant1);
@@ -68,6 +68,10 @@ public class RestaurantDAO extends GenericFileRepository<Restaurant, String> {
 
 	public RestaurantDAO(String contextPath) {
 		this.contextPath = contextPath;
+	}
+	
+	public void addProductToRestaurant(Restaurant r, Product p) {
+		r.addProduct(p);
 	}
 
 }

@@ -14,6 +14,8 @@ import beans.Restaurant;
 public class ProductDAO extends GenericFileRepository<Product, String> {
 
 	private String contextPath;
+	
+	public ProductDAO () {}
 
 	@Override
 	protected String getPath() {
@@ -58,10 +60,20 @@ public class ProductDAO extends GenericFileRepository<Product, String> {
 		RestaurantDAO restaurantDAO=new RestaurantDAO(contextPath);
 		Restaurant restaurant=restaurantDAO.getRestaurantByID(restaurantName);
 		List<Product> products=new ArrayList<Product>();
-		for (String product:restaurant.getProducts()) {
-			products.add(getProductByID(product));
+		for (Product product:restaurant.getProducts()) {
+			products.add(product);
 		}
 		return products;
 	}
+	
+	public Product getProductByName(String name) {
+		List<Product> produkti = this.getProducts();
+		for(Product p : produkti) {
+			if(p.getName().equals(name)) {
+				return p;
+			}
+		}
+		return null;
+	}	
 
 }

@@ -49,10 +49,9 @@
 		if(window.confirm("Da li zaista zelite da se odjavite?")){
 			$.get({
 			url:'rest/login/logout',
-			dataType:'text',
 			success: function(response){
-			alert(response);
 			window.location.href='/WebProject/home.html';
+			alert(response);			
 			},
 			})
 		} else {

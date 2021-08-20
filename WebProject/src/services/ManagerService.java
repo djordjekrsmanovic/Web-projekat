@@ -50,6 +50,10 @@ public class ManagerService {
 		if (servletContext.getAttribute("ProductDAO")==null) {
 			servletContext.setAttribute("ProductDAO", new ProductDAO(servletContext.getRealPath("")));
 		}
+		if (servletContext.getAttribute("RestaurantDAO")==null) {
+			servletContext.setAttribute("RestaurantDAO", new RestaurantDAO(servletContext.getRealPath("")));
+		}
+		
 	}
 	
 	@GET
@@ -69,8 +73,14 @@ public class ManagerService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String newArticle(Product product) {
 		ProductDAO productDAO = (ProductDAO) servletContext.getAttribute("ProductDAO");
-		if(productDAO.getProductByID(product.getId())==null) {
+		if(productDAO.getProductByName(product.getName())==null) {
 			productDAO.create(product);
+			ManagerDAO mDAO = (ManagerDAO) servletContext.getAttribute("ManagerDAO");
+			RestaurantDAO rDAO = (RestaurantDAO) servletContext.getAttribute("RestaurantDAO");
+			User u = (User) servletContext.getAttribute("user");
+			Manager m = mDAO.getManagerByUsername(u.getUsername());
+			rDAO.addProductToRestaurant(m.getRestaurant(), product);
+			
 			return "Novi artikal napravljen!";
 		}
 		return "Artikal vec postoji";
@@ -108,8 +118,18 @@ public class ManagerService {
 	@Path("/productName")
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String rememberProductName(String name) {
-		servletContext.setAttribute("productName", name);
+	public String rememberProductName(Product pname) {
+		servletContext.setAttribute("productName", pname.getName());
 		return "Success!";
+	}
+	
+	@GET
+	@Path("/productData")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Product productData() {
+		String name = (String) servletContext.getAttribute("productName");
+		ProductDAO productDAO= (ProductDAO) servletContext.getAttribute("ProductDAO");
+		
+		return productDAO.getProductByName(name);
 	}
 }

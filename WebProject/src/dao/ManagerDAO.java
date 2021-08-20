@@ -129,4 +129,13 @@ public class ManagerDAO extends GenericFileRepository<Manager, String> {
 		
 	}
 	
+	public Manager getManagerByUsername(String username) {
+		for(Manager m : this.getManagersList()) {
+			if(m.getUsername().equals(username)) {
+				return m;
+			}
+		}
+		return null;
+	}
+	
 }

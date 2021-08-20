@@ -12,7 +12,7 @@ $(document).ready(function(){
 	$.post({
 		url:'rest/manager/productName',
 		contentType:'application/json',
-		data: JSON.stringify({productName:articleName}),		
+		data: JSON.stringify({id:"", name:articleName, price:100, type:"FOOD", amount:300, description:"", photoPath:""}),		
 		success: function(){
 			window.location.href='/WebProject/managerEditArticle.html';
 		},
@@ -38,6 +38,33 @@ $(document).ready(function(){
 		},	
 	
 	});
+	
+	$("#logoutButton").click(function(){
+		if(window.confirm("Da li zaista zelite da se odjavite?")){
+			$.get({
+			url:'rest/login/logout',
+			success: function(response){
+			window.location.href='/WebProject/home.html';
+			alert(response);			
+			},
+			})
+		} else {
+			return;
+		}	
+	})
+	
+	$("#newArticleButton").click(function(){
+		window.location.href='/WebProject/newArticle.html';
+	})
+	
+	$("#buyersViewButton").click(function(){
+		window.location.href='/WebProject/restaurantBuyersView.html';
+	})
+	
+	$("#ordersViewButton").click(function(){
+		window.location.href='/WebProject/ordersMenagerView.html';
+	})
+	
 });
 
 

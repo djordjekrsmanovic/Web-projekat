@@ -6,7 +6,7 @@ import java.util.List;
 public class Restaurant {
 	private String name;
 	private RestaurantType restaurantType;
-	private List<String> products;
+	private List<Product> products;
 	private RestaurantStatus restaurantStatus;
 	private Location location;
 	private String picturePath;//neka sad ovako ostane ne znam sta treba da bude
@@ -19,7 +19,7 @@ public class Restaurant {
 		this.deleted=false;
 	}
 
-	public Restaurant(String name, RestaurantType restaurantType, List<String> products,
+	public Restaurant(String name, RestaurantType restaurantType, List<Product> products,
 			RestaurantStatus restaurantStatus, Location location, String pictureURL) {
 		super();
 		this.name = name;
@@ -37,7 +37,7 @@ public class Restaurant {
 		super();
 		this.name = name;
 		this.restaurantType = restaurantType;
-		this.products = new ArrayList<String>();
+		this.products = new ArrayList<Product>();
 		this.restaurantStatus = restaurantStatus;
 		this.location = location;
 		this.picturePath = pictureURL;
@@ -61,11 +61,11 @@ public class Restaurant {
 		this.restaurantType = restaurantType;
 	}
 
-	public List<String> getProducts() {
+	public List<Product> getProducts() {
 		return products;
 	}
 
-	public void setProducts(List<String> products) {
+	public void setProducts(List<Product> products) {
 		this.products = products;
 	}
 
@@ -116,6 +116,8 @@ public class Restaurant {
 				+ ", deleted=" + deleted + "]";
 	}
 	
-	
+	public void addProduct(Product p) {
+		products.add(p);
+	}
 	
 }

@@ -2,8 +2,8 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Izmjeni artikal</title>
-	<script src="js/editArticle.js"></script>
 	<script src="jquery-3.3.1.min.js"></script>
+	<script src="js/editArticle.js"></script>
 	<link href="css/newArticle.css" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
 </head>
@@ -14,8 +14,9 @@
 			<div class="nav-links">
 				<ul>
 					<li><a href="home.html">Početna strana</a></li>
-					<li><a href="">Pregled restorana</a></li>
-					<li><a href="">Odjava</a></li>
+					<li><a href="menagerProfile.html">Moj nalog</a></li>
+					<li><a href="menagerRestaurantInfo.html">Pregled restorana</a></li>
+					<li><a id="logoutButton">Odjava</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -42,7 +43,7 @@
 		<tr><td><label>Slika</label></td>
 		<td><input type="file" id="photo"></td></tr>
 		<br/>
-		<tr><td><button type="submit">Izmjeni</button></td></tr>
+		<tr><td><button id="izmjeniButton" type="submit">Izmjeni</button></td></tr>
 
 		</table>
 	</form>
