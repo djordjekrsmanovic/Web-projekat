@@ -11,7 +11,11 @@
     "userRole" : "BUYER",
     "orders" : [ ],
     "points" : 0,
-    "buyerType" : null,
+    "buyerType" : {
+      "buyerRank" : "GOLD",
+      "discount" : 0.0,
+      "requiredPoints" : 0
+    },
     "role" : "BUYER"
   },
   "Marko" : {

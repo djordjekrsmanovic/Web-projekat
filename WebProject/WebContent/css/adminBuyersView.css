@@ -43,7 +43,7 @@ nav{
 }
 
 .blockedUser{
-  background-color: #fa5850;
+  background-color: #f19792;
 }
 
 .nav-links ul li::after {
@@ -153,10 +153,11 @@ nav{
   }
   
   .r-table tbody tr td button {
-    color: #439978;
+    color: #10915f;
     cursor: pointer;
     border: 0px;
     background-color:transparent;
+    font-size: medium;
   
   }
 
