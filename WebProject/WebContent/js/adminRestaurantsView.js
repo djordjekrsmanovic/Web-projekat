@@ -21,7 +21,7 @@ $(document).ready(function(){
 
 function loadRestaurants(){
     $.get({
-		url:'rest/restaurant/load-restaurants',
+		url:'rest/restaurant/load-admin-restaurants',
 		contentType:'application/json',
 		success:function(restaurants){
 			
@@ -59,11 +59,20 @@ function formTable(restaurants){
         let changeManagerTD=$('<td></td>');
         changeManagerTD.append(changeManagerButton);
         let deleteRestaurantButton=document.createElement('button');
-        deleteRestaurantButton.innerHTML="Izmijeni menadžera";
+        deleteRestaurantButton.innerHTML="Obriši restoran";
         deleteRestaurantButton.addEventListener('click',createDeleteHandler(restaurant));
         let deleteTd=$('<td></td>');
         deleteTd.append(deleteRestaurantButton);
-        tr.append(logoTd,nameTd,restaurantTypeTd,statusTD,locationTD,gradeTd,changeManagerTD,deleteTd);
+        let managerTD=$('<td></td>');
+        let managerName;
+        if (restaurant.manager!=null){
+            managerName=restaurant.manager.firstName+" "+restaurant.manager.lastName;
+        }else{
+            managerName="Ne postoji";
+        }
+        
+        managerTD.append(managerName);
+        tr.append(logoTd,nameTd,restaurantTypeTd,statusTD,locationTD,gradeTd,managerTD,changeManagerTD,deleteTd);
         $('#tableBody').append(tr);
     }
 }
@@ -77,7 +86,20 @@ function createManagerHandler(restaurant){
 
 function createDeleteHandler(restaurant){
     return function(){
-        console.log(restaurant.name);
+        let url="rest/restaurant/delete-restaurant/"+restaurant.name;
+        $.ajax({
+            url:url,
+            type:'DELETE',
+            contentType:'application/json',
+            success:function(restaurant){
+                alert('Restoran je izbrisan');
+                loadedRestaurants();
+                formTable(loadedRestaurants);
+            },
+            error:function(){
+                alert('Greska prilikom brisanja restorana');
+            }
+        })
 
     }
 }

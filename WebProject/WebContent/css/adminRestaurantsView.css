@@ -160,7 +160,7 @@ nav{
   .r-table td img {
     height: 60px;
     transition: transform .6s;
-    width: 150px;
+    width: 120px;
   }
   
   .r-table td img:hover {

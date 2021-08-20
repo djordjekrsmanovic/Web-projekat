@@ -65,6 +65,15 @@ public class RestaurantDAO extends GenericFileRepository<Restaurant, String> {
 		createOrUpdate(restaurant);
 		createOrUpdate(restaurant1);
 	}
+	
+	public Restaurant deleteRestaurant(String id) {
+		Restaurant restaurant=getRestaurantByID(id);
+		if (restaurant==null) {
+			return null;
+		}
+		restaurant.setDeleted(!restaurant.isDeleted());
+		return restaurant;
+	}
 
 	public RestaurantDAO(String contextPath) {
 		this.contextPath = contextPath;
