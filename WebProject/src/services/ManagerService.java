@@ -3,12 +3,10 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -17,10 +15,10 @@ import dao.AdminDAO;
 import dao.BuyerDAO;
 import dao.DelivererDAO;
 import dao.ManagerDAO;
+import dao.OrderDAO;
 import dao.ProductDAO;
 import dao.RestaurantDAO;
-import beans.Administrator;
-import beans.Gender;
+import beans.Buyer;
 import beans.Manager;
 import beans.Product;
 import beans.Restaurant;
@@ -53,7 +51,9 @@ public class ManagerService {
 		if (servletContext.getAttribute("RestaurantDAO")==null) {
 			servletContext.setAttribute("RestaurantDAO", new RestaurantDAO(servletContext.getRealPath("")));
 		}
-		
+		if (servletContext.getAttribute("OrderDAO")==null) {
+			servletContext.setAttribute("OrderDAO", new OrderDAO(servletContext.getRealPath("")));
+		}
 	}
 	
 	@GET
@@ -131,5 +131,18 @@ public class ManagerService {
 		ProductDAO productDAO= (ProductDAO) servletContext.getAttribute("ProductDAO");
 		
 		return productDAO.getProductByName(name);
+	}
+	
+	@GET
+	@Path("/getBuyers")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Buyer> managerBuyers(){
+		OrderDAO orderDAO = (OrderDAO) servletContext.getAttribute("OrderDAO");
+		BuyerDAO bDAO = (BuyerDAO) servletContext.getAttribute("BuyerDAO");
+		User u = (User) servletContext.getAttribute("user");
+		ManagerDAO mDAO = (ManagerDAO) servletContext.getAttribute("ManagerDAO");
+		Manager m = mDAO.getManagerByUsername(u.getUsername());
+		
+		return orderDAO.getBuyersForManager(m.getUsername(), bDAO.getBuyersList());
 	}
 }

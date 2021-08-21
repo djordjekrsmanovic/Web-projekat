@@ -82,60 +82,11 @@ h1{
 	text-align: center;
 }
 
-.search-button{
-  width:120px;
-  padding: 5px;
-  background:#2da12f;
-  color: white;
-  font-size: 17px;
-  border: 1px solid grey;
-  border-left: none; /* Prevent double borders */
-  cursor: pointer;
-  border-radius: 5px;
-  
-}
-
-.search-button:hover{
-    background-color: #288f2a;
-}
-
-.searchAndSort{
-	margin:3%;
-}
-
-.searchAlign{
-	display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-	align-items: left;
-	grid-column-gap: 3px;
-}
-
-.searchAlign p{
-	text-align: right;
-}
-
 .pozadinaTabele{
-	margin:3%;
+	padding: none;
 }
 
 .tabela{
 	width: 80%;
 	border:3px solid black;
-	table-layout: fixed;
 }
-
-.form-select{
-    height: 30px;
-    border: solid 1px;
-    border-radius: 8px;
-    background-color:#f2ede6;
-    border: white;
-}
-
-.form-input:focus{
-    outline-color:#4287f5
-}
-
-.form-select:focus{
-    outline-color:#4287f5
-}S

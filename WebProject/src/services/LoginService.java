@@ -27,23 +27,23 @@ import beans.UserRole;
 @Path("/login")
 public class LoginService {
 	@Context
-	private ServletContext servletContext;
+	private ServletContext request;
 
 	public LoginService() {	}
 	
 	@PostConstruct
 	public void init() {	
-		if (servletContext.getAttribute("AdminDAO")==null) {
-			servletContext.setAttribute("AdminDAO", new AdminDAO(servletContext.getRealPath("")));
+		if (request.getAttribute("AdminDAO")==null) {
+			request.setAttribute("AdminDAO", new AdminDAO(request.getRealPath("")));
 		}
-		if (servletContext.getAttribute("ManagerDAO")==null) {
-			servletContext.setAttribute("ManagerDAO", new ManagerDAO(servletContext.getRealPath("")));
+		if (request.getAttribute("ManagerDAO")==null) {
+			request.setAttribute("ManagerDAO", new ManagerDAO(request.getRealPath("")));
 		}
-		if (servletContext.getAttribute("DelivererDAO")==null) {
-			servletContext.setAttribute("DelivererDAO", new DelivererDAO(servletContext.getRealPath("")));
+		if (request.getAttribute("DelivererDAO")==null) {
+			request.setAttribute("DelivererDAO", new DelivererDAO(request.getRealPath("")));
 		}
-		if (servletContext.getAttribute("BuyerDAO")==null) {
-			servletContext.setAttribute("BuyerDAO", new BuyerDAO(servletContext.getRealPath("")));
+		if (request.getAttribute("BuyerDAO")==null) {
+			request.setAttribute("BuyerDAO", new BuyerDAO(request.getRealPath("")));
 		}
 		
 		
@@ -54,22 +54,22 @@ public class LoginService {
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String loginTry(User userRequest) { 		
-		AdminDAO adminDAO= (AdminDAO) servletContext.getAttribute("AdminDAO");
-		ManagerDAO managerDAO= (ManagerDAO) servletContext.getAttribute("ManagerDAO");
-		DelivererDAO delivererDAO= (DelivererDAO) servletContext.getAttribute("DelivererDAO");
-		BuyerDAO buyerDAO=(BuyerDAO) servletContext.getAttribute("BuyerDAO");	
+		AdminDAO adminDAO= (AdminDAO) request.getAttribute("AdminDAO");
+		ManagerDAO managerDAO= (ManagerDAO) request.getAttribute("ManagerDAO");
+		DelivererDAO delivererDAO= (DelivererDAO) request.getAttribute("DelivererDAO");
+		BuyerDAO buyerDAO=(BuyerDAO) request.getAttribute("BuyerDAO");	
 		
 		if(adminDAO.loginAdmin(userRequest.getUsername(), userRequest.getPassword())!=null) {			
-			servletContext.setAttribute("user",adminDAO.loginAdmin(userRequest.getUsername(), userRequest.getPassword()));
+			request.setAttribute("user",adminDAO.loginAdmin(userRequest.getUsername(), userRequest.getPassword()));
 			return "s";
 		} else if(managerDAO.loginManager(userRequest.getUsername(), userRequest.getPassword())!=null) {
-			servletContext.setAttribute("user",managerDAO.loginManager(userRequest.getUsername(), userRequest.getPassword()));
+			request.setAttribute("user",managerDAO.loginManager(userRequest.getUsername(), userRequest.getPassword()));
 			return "s";
 		} else if(delivererDAO.loginDeliverer(userRequest.getUsername(), userRequest.getPassword())!=null) {
-			servletContext.setAttribute("user",delivererDAO.loginDeliverer(userRequest.getUsername(), userRequest.getPassword()));
+			request.setAttribute("user",delivererDAO.loginDeliverer(userRequest.getUsername(), userRequest.getPassword()));
 			return "s";
 		} else if(buyerDAO.loginBuyer(userRequest.getUsername(), userRequest.getPassword())!=null) {
-			servletContext.setAttribute("user",buyerDAO.loginBuyer(userRequest.getUsername(), userRequest.getPassword()));
+			request.setAttribute("user",buyerDAO.loginBuyer(userRequest.getUsername(), userRequest.getPassword()));
 			return "s";
 		} else
 		
@@ -81,7 +81,7 @@ public class LoginService {
 	@Path("/loggedUser")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String loggedUser() {
-	User user= (User) servletContext.getAttribute("user");
+	User user= (User) request.getAttribute("user");
 	if(user!=null) {
 	  if(user.getRole()==UserRole.ADMIN) {
 		  return "admin";
@@ -104,7 +104,7 @@ public class LoginService {
 	@Path("/logout")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String logout() {
-		servletContext.setAttribute("user", null);
+		request.setAttribute("user", null);
 		return "Loged out successfully!";
 	}
 	

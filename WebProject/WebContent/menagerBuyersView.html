@@ -3,7 +3,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Pregled kupaca</title>
 	<script src="jquery-3.3.1.min.js"></script>
-	<script src="js/restaurantBuyersManager.js"></script>
+	<script src="js/menagerBuyersView.js"></script>
+	<link href="css/menagerBuyersView.css" rel="stylesheet" />
 	<link href="css/orderedArticlesMenager.css" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
 </head>
@@ -20,6 +21,22 @@
 				</ul>
 			</div>
 		</nav>
+	</section>
+	<section class="dugmadMenija">
+		<button class="dugme" id="newArticleButton">Dodaj novi artikal</button>
+		<button class="dugme" id="restaurantViewButton">Pregled restorana</button>
+		<button class="dugme" id="ordersViewButton">Pregled poružbina</button>
+	</section>
+	<section>
+		<div class="pozadinaTabele">
+			<table class="tabela" id="buyersTable">
+				<tr><th>Ime</th>
+                <th>Prezime</th>
+                <th>Korisničko ime</th>
+                <th>Poeni</th>
+            	<th>Tip</th></tr>
+			</table>
+		</div>
 	</section>
 
 </body>

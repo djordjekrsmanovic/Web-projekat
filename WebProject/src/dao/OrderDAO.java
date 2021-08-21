@@ -8,6 +8,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import beans.Address;
+import beans.Buyer;
 import beans.CartItem;
 import beans.Converter;
 import beans.Location;
@@ -78,6 +79,18 @@ public class OrderDAO extends GenericFileRepository<Order, String> {
 
 	public OrderDAO(String contextPath) {
 		this.contextPath = contextPath;
+	}
+	
+	public List<Buyer> getBuyersForManager(String managerID, List<Buyer> kupci){
+		List<Buyer> retLista = new ArrayList<Buyer>();
+		for(Buyer k : kupci) {
+			for(Order o : k.getOrders()) {			
+			if(o.getRestaurant().getManagerID().equals(managerID)) {				
+				retLista.add(k);
+			}
+			}
+		}
+		return retLista;
 	}
 
 }

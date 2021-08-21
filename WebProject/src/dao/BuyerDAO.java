@@ -34,7 +34,7 @@ public class BuyerDAO extends GenericFileRepository<Buyer, String> {
 	}
 	
 	public BuyerDAO() {
-		
+		this.generateBuyers();
 	}
 
 	
@@ -114,6 +114,16 @@ public class BuyerDAO extends GenericFileRepository<Buyer, String> {
 		}
 		buyer.setBanned(!buyer.isBanned());
 		createOrUpdate(buyer);
+		
+	}
+	
+	public Buyer getBuyerByUsername(String username) {
+		for(Buyer b: this.getBuyersList()) {
+			if(b.getUsername().equals(username)) {
+				return b;
+			}
+		}
+		return null;
 		
 	}
 }

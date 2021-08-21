@@ -57,8 +57,8 @@ public class RestaurantDAO extends GenericFileRepository<Restaurant, String> {
 		Location location1 = new Location(44.34, 18.16, address1);
 
 		Restaurant restaurant = new Restaurant("Plava frajla", RestaurantType.ETNO, RestaurantStatus.OPEN, location,
-				"");
-		Restaurant restaurant1 = new Restaurant("Vidikovac", RestaurantType.ETNO, RestaurantStatus.OPEN, location1, "");
+				"", "bojan");
+		Restaurant restaurant1 = new Restaurant("Vidikovac", RestaurantType.ETNO, RestaurantStatus.OPEN, location1, "", "bojan");
 		ProductDAO productDAO = new ProductDAO();
 		List<Product> products = productDAO.getProducts();
 		restaurant.setProducts(products);
@@ -72,6 +72,15 @@ public class RestaurantDAO extends GenericFileRepository<Restaurant, String> {
 	
 	public void addProductToRestaurant(Restaurant r, Product p) {
 		r.addProduct(p);
+	}
+	
+	public Restaurant deleteRestaurant(String id) {
+		Restaurant restaurant=getRestaurantByID(id);
+		if (restaurant==null) {
+			return null;
+		}
+		restaurant.setDeleted(!restaurant.isDeleted());
+		return restaurant;
 	}
 
 }
