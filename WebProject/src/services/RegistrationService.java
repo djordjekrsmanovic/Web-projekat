@@ -13,11 +13,14 @@ import javax.ws.rs.core.MediaType;
 
 import beans.Buyer;
 import beans.Converter;
+import beans.Deliverer;
 import beans.Gender;
+import beans.Manager;
 import dao.AdminDAO;
 import dao.BuyerDAO;
 import dao.DelivererDAO;
 import dao.ManagerDAO;
+import dto.AdminAddUserDTO;
 import dto.UserDTO;
 
 @Path("/registration")
@@ -79,5 +82,56 @@ public class RegistrationService {
 		buyerDAO.create(buyer);
 	
 		return buyer;
+	}
+	
+	@POST
+	@Path("/add-deliverer")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Deliverer addDeliverer(AdminAddUserDTO user) {
+		/*public Buyer(String username, String password, String firstName, String lastName, Gender gender, Date birthDate,
+				boolean deleted, boolean banned, int points) */
+		System.out.println("Admin dodaje korisnika");
+		Gender gender=Gender.other;
+		if (user.gender.equalsIgnoreCase("muski")) {
+			gender=Gender.male;
+		}else {
+			gender=Gender.female;
+		}
+		
+		if (user.userType.equalsIgnoreCase("DELIVERER")) {
+			Deliverer deliverer=new Deliverer(user.username,user.password,user.firstName,user.lastName,gender,Converter.convertStringtoDate(user.birthDate),false,false);
+			DelivererDAO delivererDAO=(DelivererDAO) servletContext.getAttribute("DelivererDAO");
+			delivererDAO.create(deliverer);
+			return deliverer;
+		}
+		
+		return null;
+		
+	}
+	
+	@POST
+	@Path("/add-manager")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Manager addManager(AdminAddUserDTO user) {
+		System.out.println("Admin dodaje korisnika");
+		Gender gender=Gender.other;
+		if (user.gender.equalsIgnoreCase("muski")) {
+			gender=Gender.male;
+		}else {
+			gender=Gender.female;
+		}
+		
+		if (user.userType.equalsIgnoreCase("MANAGER")) {
+			Manager manager=new Manager(user.username,user.password,user.firstName,user.lastName,gender,Converter.convertStringtoDate(user.birthDate),false,false);
+			ManagerDAO managerDAO=(ManagerDAO) servletContext.getAttribute("ManagerDAO");
+			managerDAO.create(manager);
+			System.out.println("Kreiranje menadzera");
+			return manager;
+		}
+		
+		return null;
+		
 	}
 }

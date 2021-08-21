@@ -14,7 +14,7 @@ $(document).ready(function(){
         let password=$('#password').val();
         let repeatedPassword=$('#repeatedPassword').val();
         let gender=document.querySelector('input[name="gender"]:checked').value;
-
+        
         if (name===''||surname===''||date===''||userName==''||password==''||repeatedPassword==''||gender==''){
             $('#error').text="Sva polja trebaju biti popunjena";
             return;
@@ -41,7 +41,6 @@ $(document).ready(function(){
     })
 
     $('#userName').focusout(function(){
-        alert('fokus');
         let validUser="rest/registration/get-usernames/"+$('#userName').val();
         $.get({
             url:validUser,
@@ -77,7 +76,7 @@ $(document).ready(function(){
         let name=$('#lastname').val();
         let regex=RegExp('^[A-Za-z]+$');
         if (!regex.test(name)){
-			$('.error').text("Ime moze samo da sadrzi slova");
+			$('.error').text("Prezime moze samo da sadrzi slova");
             $('#lastname').addClass('wrongUsername');
 		}else{
             $('.error').text("");
