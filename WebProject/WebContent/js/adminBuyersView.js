@@ -6,16 +6,22 @@ $(document).ready(function(){
     
 
     $("#searchButton").click(function(){
+        filterUsers();
         searchUsers();
+        sortUsers();
         formTable(loadedUsers);
     })
 
     $("#sort").change(function(){
+        filterUsers();
+        searchUsers();
         sortUsers();
         formTable(loadedUsers);
     })
     $("#filter").change(function(){
         filterUsers();
+        searchUsers();
+        sortUsers();
         formTable(loadedUsers);
     })
 })
@@ -40,6 +46,8 @@ function loadUsers(){
 
 function sortUsers(){
     let value=$("#sort").val();
+    let filterCriterium=$("#filter").val();
+    let searchCriterium=$("#value").val().toLowerCase();
     $('#tableBody').empty();
     if (value=="nameASC"){
         sortNameAscending();
@@ -58,7 +66,7 @@ function sortUsers(){
     }else if(value=="pointsDSC"){
         sortPointsDSC();
     }
-    else{
+    else if(filterCriterium=="" && searchCriterium==""){
         loadedUsers.length=0;
         loadedUsers=JSON.parse(JSON.stringify(loadedUsersDefault));
     }
@@ -116,8 +124,12 @@ function filterUsers(){
 function searchUsers(){
     $('#tableBody').empty();
     let value=$("#value").val().toLowerCase();
-    loadedUsers.length=0;
-    loadedUsers=JSON.parse(JSON.stringify(loadedUsersDefault));    
+    let filterCriterium=$("#filter").val();
+    if (filterCriterium==""){
+        loadedUsers.length=0;
+        loadedUsers=JSON.parse(JSON.stringify(loadedUsersDefault)); 
+    }
+       
     for (let i=0;i<loadedUsers.length;i++){
         console.log(!loadedUsers[i].firstName.toLowerCase().includes(value),!loadedUsers[i].lastName.toLowerCase().includes(value),!loadedUsers[i].username.toLowerCase().includes(value))
         if (!loadedUsers[i].firstName.toLowerCase().includes(value) && !loadedUsers[i].lastName.toLowerCase().includes(value) && !loadedUsers[i].username.toLowerCase().includes(value)){
