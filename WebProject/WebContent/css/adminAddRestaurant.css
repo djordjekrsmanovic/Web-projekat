@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;1,700&display=swap');
+
+*{
+    margin: 0%;
+    box-sizing: border-box;
+    overflow: auto;
+    font-family: 'Roboto Condensed', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body{
+	background:linear-gradient(to right,#7980ce,lightblue);
+    height: 100%;
+}
+
+.header{
+	background-size: cover;
+    background-color: lightgreen;
+
+}
+nav{
+	display: flex;
+	padding: 0.5% 3%;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.nav-links{
+ 	flex: 1;
+ 	text-align: right;
+}
+
+.nav-links ul li{
+	list-style: none;
+	display: inline-block;
+	padding: 8px 12px;
+	position: relative;
+}
+
+.nav-links ul li a{
+	color: #fff;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+.blockedUser{
+  background-color: #f19792;
+}
+
+.nav-links ul li::after {
+	content: '';
+	width: 0%;
+	height: 2px;
+	background: green;
+	display: block;
+	margin: auto;
+	transition: 0.5s;
+}
+
+.nav-links ul li:hover::after{
+	width: 100%;
+}
+
+.addNewRestaurant{
+    width: 1000px;
+    height: fit-content;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 60px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    height: 700px;
+    margin-bottom: 100px;
+
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 230px 200px;
+    margin: 15px;
+}
+
+.bigContainer{
+    display: grid;
+    grid-template-columns: 550px 400px;
+    margin-top: 20px;
+    
+}
+
+.pictureDiv{
+    background-image:url( "../pictures/restaurant.jpg");
+    width: 400px;
+    height: 350px;
+    background-size: cover;
+    float: right;
+    margin-top: 10px;
+}
+
+.container span{
+    font-size: large;
+}
+
+.container select{
+    font-size: medium;
+    width: 200px;
+}
+
+.container input{
+    font-size: medium;
+    width: 200px;
+}
+
+.addManagerButton{
+    margin-left: 250px;
+    
+}
+
+.addManagerButton button{
+    width: 150px;
+    height: 40px;
+    border-radius: 6px;
+    border:0px;
+    background-color: #6a9de9;
+    font-size: medium;
+    color: white;
+    
+}
+
+
+
+.finishDiv button{
+    width: 20%;
+    margin-left: 40%;
+    margin-right: 40%;
+    margin-top: 100px;
+    height: 40px;
+    color:white;
+    background-color: rgb(20, 192, 43);
+    border-radius: 5px;
+    border: 0px;
+}
+
+
+
+
+
+.registration-card{
+    width: 30%;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 30px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    height: 500px;
+    margin-bottom: 40px;
+    display: none;
+}
+
+.title{
+    font-size: 25px;
+    font-weight: 500;
+}  
+
+.user-details{
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+}
+
+.input-box input{
+    height: 30px;
+    width: 150px;
+    font-size: small;
+    padding: 10px;
+}
+
+
+.wrongUsername{
+    border:solid 2px red;
+}
+
+
+.input-box{
+    margin: 10px;
+    font-size: large;
+}
+
+.gendre{
+    margin-left: 10px;
+    font-size: large;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.radio{
+    font-size: medium;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.button input{
+    width: 70%;
+    margin:15px;
+    margin-left: 15%;
+    margin-right: 15%;
+    height: 40px;
+    background:linear-gradient(lightblue, #4e57b4);
+    border: 0px;
+    border-radius: 2px;
+    font-size: large;
+    color: white;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.button input:hover{
+    background: #4e57b4;
+}
+
+.user-type{
+    height: 40px;
+    width: 250px;
+    font-size: medium;
+    padding: 10px;
+}
+
+.error{
+    text-align: center;
+    color: red
+}
