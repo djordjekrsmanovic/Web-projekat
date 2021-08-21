@@ -7,13 +7,16 @@ $(document).ready(function(){
 
     $("#searchButton").click(function(){
         searchUsers();
+        formTable(loadedUsers);
     })
 
     $("#sort").change(function(){
         sortUsers();
+        formTable(loadedUsers);
     })
     $("#filter").change(function(){
         filterUsers();
+        formTable(loadedUsers);
     })
 })
 
@@ -22,14 +25,14 @@ function loadUsers(){
     loadedUsers.length=0;
     loadedUsersDefault.length=0;
     $.get({
-        url:'rest/users/load-users',
+        url:'rest/users/load-buyers',
         contentType:'application/json',
         success:function(users){
             for(user of users){
                 loadedUsers.push(user);
                 loadedUsersDefault.push(user);
             }
-
+            filterUsers();
             formTable(loadedUsers);
         }
     })
@@ -50,12 +53,17 @@ function sortUsers(){
         sortUserNameASC();
     }else if(value=="userNameDSC"){
         sortUserNameDSC();
-    }else{
+    }else if(value=="pointsASC"){
+        sortPointsASC();
+    }else if(value=="pointsDSC"){
+        sortPointsDSC();
+    }
+    else{
         loadedUsers.length=0;
         loadedUsers=JSON.parse(JSON.stringify(loadedUsersDefault));
     }
 
-    formTable(loadedUsers);
+    
 }
 
 function sortNameAscending(){
@@ -82,46 +90,56 @@ function sortUserNameDSC(){
     return loadedUsers.sort((a,b)=> (a.username<b.username) ? 1 :(b.username<a.username) ? -1:0);
 }
 
+function sortPointsASC(){
+    return loadedUsers.sort((a,b)=> (a.points>b.points) ? 1 :(b.points>a.points) ? -1:0);
+}
+
+function sortPointsDSC(){
+    return loadedUsers.sort((a,b)=> (a.points<b.points) ? 1 :(b.points<a.points) ? -1:0);
+}
+
 function filterUsers(){
     let filterCriterium=$("#filter").val();
     loadedUsers.length=0;
     loadedUsers=JSON.parse(JSON.stringify(loadedUsersDefault));
     if (filterCriterium!=""){
         for (let i=0;i<loadedUsers.length;i++){
-            if (loadedUsers[i].userRole!=filterCriterium){
+            if (loadedUsers[i].buyerType.buyerRank!=filterCriterium){
                 loadedUsers.splice(i,1);
                 i--;
             }
         }
     }
-    formTable(loadedUsers);
+    
 }
 
 function searchUsers(){
     $('#tableBody').empty();
     let value=$("#value").val().toLowerCase();
     loadedUsers.length=0;
-    loadedUsers=JSON.parse(JSON.stringify(loadedUsersDefault));
+    loadedUsers=JSON.parse(JSON.stringify(loadedUsersDefault));    
     for (let i=0;i<loadedUsers.length;i++){
+        console.log(!loadedUsers[i].firstName.toLowerCase().includes(value),!loadedUsers[i].lastName.toLowerCase().includes(value),!loadedUsers[i].username.toLowerCase().includes(value))
         if (!loadedUsers[i].firstName.toLowerCase().includes(value) && !loadedUsers[i].lastName.toLowerCase().includes(value) && !loadedUsers[i].username.toLowerCase().includes(value)){
             loadedUsers.splice(i,1);
             i--;
         }
     }
 
-    formTable(loadedUsers);
+    
 
 }
 function formTable(users){
     $('#tableBody').empty();
     for (user of users){
         let tr=$('<tr></tr>');
-        let role=getRole(user);
-        let roleTd=$('<td>'+role+'</td>');
+        
         let nameTd=$('<td>'+user.firstName+'</td>');
         let lastNameTd=$('<td>'+user.lastName+'</td>');
         let userNameTd=$('<td>'+user.username+'</td>');
-        let passwordTd=$('<td>'+user.password+'</td>');
+        let role=getRole(user);
+        let roleTd=$('<td>'+role+'</td>');
+        let pointsTd=$('<td>'+user.points+'</td>');
         let buttonDelete=document.createElement('button');
         buttonDelete.innerHTML="Obriši";
         buttonDelete.addEventListener('click',createHandler(user));
@@ -137,7 +155,7 @@ function formTable(users){
         
         blockButton.addEventListener('click',createHandlerBlock(user));
         blockButtonTd.append(blockButton);
-        tr.append(roleTd,nameTd,lastNameTd,userNameTd,passwordTd,blockButtonTd,buttonTd);
+        tr.append(nameTd,lastNameTd,userNameTd,roleTd,pointsTd,blockButtonTd,buttonTd);
         $('#tableBody').append(tr);
     }
 }
@@ -201,12 +219,12 @@ function blockUserFromFront(user){
 }
 
 function getRole(user){
-    if (user.userRole=='ADMIN'){
-        return 'Administrator';
-    }else if(user.userRole=='MANAGER'){
-        return 'Menadzer';
-    }else if(user.userRole=='DELIVERER'){
-        return 'Dostavljač';
+    if (user.buyerType.buyerRank=='GOLD'){
+        return 'Zlatni kupac';
+    }else if(user.buyerType.buyerRank=='BRONZE'){
+        return 'Bronzani kupac';
+    }else if(user.buyerType.buyerRank=='SILVER'){
+        return 'Srebrni kupac';
     }
-    return 'Kupac';
+    return 'Početnik';
 }

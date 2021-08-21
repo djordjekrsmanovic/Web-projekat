@@ -12,7 +12,16 @@ public class Restaurant {
 	private String picturePath;//neka sad ovako ostane ne znam sta treba da bude
 	private boolean deleted;
 	private int raiting;
+	private String managerID;
 	
+	public String getManagerID() {
+		return managerID;
+	}
+
+	public void setManagerID(String managerID) {
+		this.managerID = managerID;
+	}
+
 	public Restaurant() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -33,7 +42,7 @@ public class Restaurant {
 	}
 	
 	public Restaurant(String name, RestaurantType restaurantType,
-			RestaurantStatus restaurantStatus, Location location, String pictureURL) {
+			RestaurantStatus restaurantStatus, Location location, String pictureURL,String managerID) {
 		super();
 		this.name = name;
 		this.restaurantType = restaurantType;
@@ -43,6 +52,7 @@ public class Restaurant {
 		this.picturePath = pictureURL;
 		this.deleted=false;
 		this.raiting=0;
+		this.managerID=managerID;
 	}
 
 	public String getName() {

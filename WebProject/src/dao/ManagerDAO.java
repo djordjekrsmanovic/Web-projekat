@@ -46,7 +46,7 @@ public class ManagerDAO extends GenericFileRepository<Manager, String> {
 		Location location = new Location(45.24, 19.84, address);
 
 		Restaurant restaurant = new Restaurant("Plava frajla", RestaurantType.ETNO, RestaurantStatus.OPEN, location,
-				"");
+				"","bojan");
 		Manager manager = new Manager("bojan", "bojan", "Bojan", "Prodanovic", Gender.male,
 				convertStringtoDate("14.01.1999."), false, false, restaurant);
 		createOrUpdate(manager);

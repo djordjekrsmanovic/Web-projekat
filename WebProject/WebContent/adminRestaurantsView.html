@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="css/adminRestaurantsView.css" rel="stylesheet" >
+    <script src="jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/adminRestaurantsView.js"></script>
+</head>
+<body>
+    <section class="header">
+		<nav >
+			<a href=""><img src="pictures/logo.png" width="120px" height="60px"></a>
+			<div class="nav-links">
+				<ul>
+					<li><a href="home.html">Početna strana</a></li>
+          <li><a href="">Restorani</a></li>
+          <li><a href="">Kupci</a></li>
+          <li><a href="">Korisnici</a></li>
+					<li><a href="">Profil</a></li>
+					<li><a href="">Odjava</a></li>
+				</ul>
+			</div>
+		</nav>
+	</section>
+     
+    <div class="search-div">
+      <input type="text" placeholder="Unesite tekst" id="value" >
+      <button id="searchButton">Pretrazi</button>
+      <span class="sortSpan">
+        <span class="sortTable">
+          <select id="sort">
+            <option value="" >Podrazumjevani prikaz</option>
+            <option value="name-ascending">NAZIV-RASTUĆE</option>
+            <option value="name-descending">NAZIV-OPADAJUĆE</option>
+            <option value="location-ascending">LOKACIJA-RASTUĆE</option>
+            <option value="location-descending">LOKACIJA-OPADAJUĆE</option>
+            <option value="average-grade-ascending">PROSJEČNA OCJENA-RASTUĆE</option>
+            <option value="average-grade-descending" >PROSJEČNA OCJENA-OPADAJUĆE</option>
+          </select>
+        </span>
+        <span class="filterTable" >
+            <select id="filter" class="form-select">
+                <option value="">Svi restorani</option>
+                <option value="GRILL">Rostilj</option>
+                <option value="ETNO">Etno restoran</option>
+                <option value="JAPANESE">Japanski restoran</option>
+                <option value="ITALIAN">Italijanski restoran</option>
+                <option value="OPEN">Otvoreni restorani</option>
+                <option value="CLOSED">Zatvoreni restorani</option>
+            </select>
+        </span>
+      </span>
+      
+    </div>
+    
+    <section background:linear-gradient(lightblue, #7980ce)>
+        <div class="tbl-header">
+            <table class="r-table" cellpadding="0" cellspacing="0" border="0">
+              <thead>
+                <tr>
+                  
+                  <th>Logo</th>
+                  <th>Naziv</th>
+                  <th>Tip restorana</th>
+                  <th>Status restorana</th>
+                  <th>Lokacija</th>
+                  <th>Ocjena</th>
+                  <th>Menadžer</th>
+                  <th>Izmijeni menadžera</th>
+                  <th>Obriši restoran</th>
+                </tr>
+              </thead>
+              <tbody id='tableBody'>
+                <tr>
+                    <td><img src="pictures/hrana1.jpg"></td>
+                    <td>Nazivaadadad</td>
+                  <td>Tip restoranaadadada</td>
+                  <td>Status restoranaadadadad</td>
+                  <td>Alekse Santica 4'Novi Sad aaa adada adada</td>
+                  <td>Ocjenaadadada</td>
+                  <td>Marko MArkovic</td>
+                  <td>Izmijeni menadzeraadadadad</td>
+                  <td>Obriši restoranadadadaadad</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          </div>
+    </section>
+    
+      
+</body>
+</html>

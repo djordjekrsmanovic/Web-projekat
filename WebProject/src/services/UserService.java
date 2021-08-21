@@ -99,4 +99,12 @@ public class UserService {
 		buyerDAO.banBuyer(id);
 		
 	}
+	
+	@GET
+	@Path("/load-buyers")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Buyer> getBuyers(){
+		BuyerDAO buyerDAO=(BuyerDAO) servletContext.getAttribute("BuyerDAO");
+		return buyerDAO.getBuyersList();
 	}
+}

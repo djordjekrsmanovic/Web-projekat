@@ -57,7 +57,7 @@ public class CommentDAO extends GenericFileRepository<Comment, String> {
 		Address address = new Address("Spens", "5", "Novi Sad", "23000");
 		Location location = new Location(45.24, 19.84, address);
 		Restaurant restaurant = new Restaurant("Plava frajla", RestaurantType.ETNO, RestaurantStatus.OPEN, location,
-				"");
+				"","");
 		Comment comment = new Comment(buyer, restaurant, "Najbolji restoran", 5);
 		createOrUpdate(comment);
 	}
