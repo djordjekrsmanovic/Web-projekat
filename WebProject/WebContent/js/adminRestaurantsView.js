@@ -3,17 +3,23 @@ recomendedView=[];
 $(document).ready(function(){
     loadRestaurants();
     $("#sort").change(function(){
+        filterRestaurants();
+        searchRestaurant();
         sortRestaurants(loadedRestaurants);
         formTable(loadedRestaurants);
     })
 
     $("#filter").change(function(){
         filterRestaurants();
+        searchRestaurant();
+        sortRestaurants(loadedRestaurants);
         formTable(loadedRestaurants);
     })
 
     $('#searchButton').click(function(){
+        filterRestaurants();
         searchRestaurant();
+        sortRestaurants(loadedRestaurants);
         formTable(loadedRestaurants);
     })
 
@@ -130,6 +136,8 @@ function getRestaurantStatus(restaurant){
 
 function sortRestaurants(){
     let value=$('#sort').val();
+    let filterCriterium=$("#filter").val();
+    let searchCriterium=$("#value").val().toLowerCase();
     
     if (value==null){
         return;
@@ -147,7 +155,7 @@ function sortRestaurants(){
         sortGradeAscending();
     }else if (value=='average-grade-descending'){
         sortGradeDescending();
-    }else if (value=='default'){
+    }else if (value=='default' && filterCriterium=="" && searchCriterium==""){
         loadedRestaurants.length=0;
         loadedRestaurants=JSON.parse(JSON.stringify(recomendedView));
     }
@@ -184,8 +192,10 @@ function sortGradeDescending(){
 
 function filterRestaurants(){
     let filterCriterium=$("#filter").val();
+    
     loadedRestaurants.length=0;
     loadedRestaurants=JSON.parse(JSON.stringify(recomendedView));
+    
 
     if (filterCriterium=="OPEN" || filterCriterium=="CLOSED"){
         openRestaurnatsFilter();
@@ -215,8 +225,12 @@ function openRestaurnatsFilter(){
 function searchRestaurant(){
     $('#tableBody').empty();
     let value=$("#value").val().toLowerCase();
-    loadedRestaurants.length=0;
-    loadedRestaurants=JSON.parse(JSON.stringify(recomendedView));    
+    let filterCriterium=$("#filter").val();
+    if(filterCriterium==""){
+        loadedRestaurants.length=0;
+        loadedRestaurants=JSON.parse(JSON.stringify(recomendedView));
+    }
+      
     for (let i=0;i<loadedRestaurants.length;i++){
         let restaurantLocation=loadedRestaurants[i].location.address.street+" "+loadedRestaurants[i].location.address.streetNumber+" "+loadedRestaurants[i].location.address.city
         

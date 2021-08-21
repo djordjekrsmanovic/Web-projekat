@@ -160,7 +160,11 @@ nav{
     border: 0px;
     background-color:transparent;
     font-size: medium;
-  
+    cursor: pointer;
+  }
+
+  .r-table tbody tr td button:hover{
+    color: #086642;
   }
 
   .filterSortDiv{

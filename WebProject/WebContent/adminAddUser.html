@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="css/adminAddUser.css" rel="stylesheet" >
+    <script src="jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/adminAddUser.js"></script>
+</head>
+<body>
+    <section class="header">
+		<nav >
+			<a href=""><img src="pictures/logo.png" width="120px" height="60px"></a>
+			<div class="nav-links">
+				<ul>
+					<li><a href="home.html">Početna strana</a></li>
+          <li><a href="">Restorani</a></li>
+          <li><a href="">Kupci</a></li>
+          <li><a href="">Korisnici</a></li>
+          <li><a href="">Dodaj restoran</a></li>
+          <li><a href="">Dodaj korisnika</a></li>
+					<li><a href="">Profil</a></li>
+					<li><a href="">Odjava</a></li>
+				</ul>
+			</div>
+		</nav>
+	</section>
+
+    <div class="registration-card">
+        <div class="title">Dodaj korisnika</div>
+        <form action="" id='registration-form' method="POST" accept-charset="UTF-8" >
+            <div class="user-details">
+                <div class="input-box">
+                    <div class="details">
+                        Ime
+                    </div>
+
+                    <input type="text" id='name' pattern="[A-Za-z]+" placeholder="Unesite Vaše ime" required>
+                </div>
+                <div class="input-box">
+                    <div class="details">
+                        Prezime
+                    </div>
+                    <input type="text" id='lastname' pattern="[A-Za-z]+" placeholder="Unesite Vaše prezime" required>
+                </div>
+                <div class="input-box">
+                    <div class="details">
+                        Datum rođenja
+                    </div>
+                    <input type="date" id='date' placeholder="Unesite datum rodjenja" required>
+                </div>
+                <div class="input-box">
+                    <div class="details">
+                        Korisničko ime
+                    </div>
+                    <input type="text" id='userName' placeholder="Unesite Vaše korisničko ime" required>
+                </div>
+
+                <div class="input-box">
+                    <div class="details">
+                        Lozinka
+                    </div>
+                    <input type="password" id='password' placeholder="Unesite Vašu lozinku" required>
+                </div>
+
+                <div class="input-box">
+                    <div class="details">
+                        Potvrdi lozinku
+                    </div>
+                    <input type="password" id='repeatedPassword' placeholder="Potvrdi lozinku" required>
+                </div>
+                <div class="input-box">
+                    <div class="details">
+                        Tip korisnika
+                    </div>
+                    <select class="user-type" id="type">
+                        <option value="DELIVERER">Dostavljač</option>
+                        <option value="MANAGER">Menadžer</option>
+                    </select>
+                </div>
+                <div >
+                    <div><p class="gendre">Pol</p></div>
+                    <span class="radio">
+                        <input type="radio" id="musko" name="gender" value="musko" required>
+                        <label for="musko">Muško</label>
+                    </span>
+                    <span class="radio" id="userType">
+                        <input type="radio" id="zensko" name="gender" value="zensko" required>
+                        <label for="zensko">Žensko</label>
+                    </span>
+                    
+                </div>
+
+                
+                
+                
+            </div>
+            <div class="button">
+                <input type="submit"  value="Potvrdi">
+            </div>
+        </form>
+        <p class="error"></p>
+    </div>
+    
+      
+</body>
+</html>
