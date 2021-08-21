@@ -20,6 +20,7 @@ import dao.ProductDAO;
 import dao.RestaurantDAO;
 import beans.Buyer;
 import beans.Manager;
+import beans.Order;
 import beans.Product;
 import beans.Restaurant;
 import beans.User;
@@ -145,4 +146,15 @@ public class ManagerService {
 		
 		return orderDAO.getBuyersForManager(m.getUsername(), bDAO.getBuyersList());
 	}
+	
+	@GET
+	@Path("/getOrders")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Order> managerOrders(){
+		OrderDAO orderDAO = (OrderDAO) servletContext.getAttribute("OrderDAO");
+		User u = (User) servletContext.getAttribute("user");		
+		
+		return orderDAO.getOrdersForManager(u.getUsername());
+	}
+	
 }

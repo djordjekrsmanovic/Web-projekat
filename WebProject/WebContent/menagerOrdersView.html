@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Pregled narudzbi</title>
     <script src="jquery-3.3.1.min.js"></script>
-	<script src="js/restaurantOrdersManager.js"></script>
+	<script src="js/menagerOrdersView.js"></script>
 	<link href="css/orderedArticlesMenager.css" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
 </head>
@@ -28,15 +28,15 @@
         <section class="site-message">
                                      
                 <div class="searchAlign">
-                    <input type="text" class="form-input" placeholder="Naziv restorana">
-                    <input type="text" class="form-input" placeholder="Cijena porudžbine od">
-                    <input type="text" class="form-input" placeholder="Cijena porudžbine do">
+                    <input id="name" type="text" class="form-input" placeholder="Naziv restorana">
+                    <input id="priceFrom" type="text" class="form-input" placeholder="Cijena porudžbine od">
+                    <input id="priceTo" type="text" class="form-input" placeholder="Cijena porudžbine do">
                     <label>Datum od:</label>
-                    <input type="date" class="form-input">
+                    <input id="dateFrom" type="date" class="form-input">
                     <label>Datum do:</label>
-                    <input type="date" class="form-input">                    
+                    <input id="dateTo" type="date" class="form-input">                    
                   
-                    <button class="search-button">Pretrazi</button>
+                    <button id="searchButton" class="search-button">Pretrazi</button>
                 </div>
          
         </section>
@@ -49,9 +49,9 @@
 
         
                 <select id="SortType" class="form-select" aria-placeholder="Ocjena">
-                    <option value="" disabled selected hidden>SORTIRANJE</option>
-                    <option value="default">PODRAZUMJEVANI PRIKAZ</option>
-                    <option value="name-ascending">NAZIV-RASTUĆE</option>
+                   <option value="" disabled selected hidden>SORTIRANJE</option>
+                   <option value="default">PODRAZUMJEVANI PRIKAZ</option>
+                   <option value="name-ascending">NAZIV-RASTUĆE</option>
                    <option value="name-descending">NAZIV-OPADAJUĆE</option>
                    <option value="location-ascending">CIJENA-RASTUĆE</option>
                    <option value="location-descending">CIJENA-OPADAJUĆE</option>
@@ -62,7 +62,7 @@
                 
                    
                     
-                    <select id="RestaurantType" class="form-select">
+                    <select id="RestaurantTypeFilter" class="form-select">
                     <option value="" disabled selected hidden>Vrsta restorana</option>
                     <option value="Grill">Rostilj</option>
                     <option value="Etno">Etno restoran</option>
@@ -71,7 +71,7 @@
                     <option value="AllRestaurants">Svi restorani</option>
                     </select>
 
-                    <select id="OrderStatus" class="form-select">
+                    <select id="OrderStatusFilter" class="form-select">
                     <option value="" disabled selected hidden>Status porudžbine</option>
                     <option value="Processing">Obrada</option>
                     <option value="Preparation">U pripremi</option>
@@ -84,16 +84,23 @@
                 </div>  
         </section>
 	<section class="pozadinaTabele">
-		<table class="tabela">
+		<div>
+		<table id="ordersTable" class="tabela">
 			<tr>
 			<th>ID</th>
 			<th>Datum i vrijeme</th>
 			<th>Cijena</th>
-			<th>Ime i prezime kupca</th>
+			<th>ID kupca</th>
 			<th>Status</th>
+			<th>Izmjena statusa</th>
 			</tr>
 			<tr></tr>
+			<tbody id="tableBody">
+				
+
+			</tbody>
 		</table>
+		</div>
 	</section>
 
 </body>

@@ -58,11 +58,11 @@ $(document).ready(function(){
 	})
 	
 	$("#buyersViewButton").click(function(){
-		window.location.href='/WebProject/restaurantBuyersView.html';
+		window.location.href='/WebProject/menagerBuyersView.html';
 	})
 	
 	$("#ordersViewButton").click(function(){
-		window.location.href='/WebProject/ordersMenagerView.html';
+		window.location.href='/WebProject/menagerOrdersView.html';
 	})
 	
 });
