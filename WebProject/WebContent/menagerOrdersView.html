@@ -17,12 +17,12 @@
 				<ul>
 					<li><a href="home.html">Početna strana</a></li>
 					<li><a href="menagerProfile.html">Moj nalog</a></li>
-					<li><a href="">Odjava</a></li>
+					<li><a id="logoutButton" href="">Odjava</a></li>
 				</ul>
 			</div>
 		</nav>
 	</section>
-	<h1>Ime restorana....</h1>
+	<h1 id="restaurantName"></h1>
 
 	<section class="searchAndSort"> 
         <section class="site-message">
@@ -51,34 +51,23 @@
                 <select id="SortType" class="form-select" aria-placeholder="Ocjena">
                    <option value="" disabled selected hidden>SORTIRANJE</option>
                    <option value="default">PODRAZUMJEVANI PRIKAZ</option>
-                   <option value="name-ascending">NAZIV-RASTUĆE</option>
-                   <option value="name-descending">NAZIV-OPADAJUĆE</option>
-                   <option value="location-ascending">CIJENA-RASTUĆE</option>
-                   <option value="location-descending">CIJENA-OPADAJUĆE</option>
-                   <option value="average-grade-ascending">DATUM-RASTUĆE</option>
-                   <option value="average-grade-descending" >DATUM-OPADAJUĆE</option>
+                   <option value="price-ascending">CIJENA-RASTUĆE</option>
+                   <option value="price-descending">CIJENA-OPADAJUĆE</option>
+                   <option value="date-ascending">DATUM-RASTUĆE</option>
+                   <option value="date-descending" >DATUM-OPADAJUĆE</option>
                    
                    </select>
                 
-                   
-                    
-                    <select id="RestaurantTypeFilter" class="form-select">
-                    <option value="" disabled selected hidden>Vrsta restorana</option>
-                    <option value="Grill">Rostilj</option>
-                    <option value="Etno">Etno restoran</option>
-                    <option value="Japanesse">Japanski restoran</option>
-                    <option value="Italian">Italijanski restoran</option>
-                    <option value="AllRestaurants">Svi restorani</option>
-                    </select>
 
                     <select id="OrderStatusFilter" class="form-select">
                     <option value="" disabled selected hidden>Status porudžbine</option>
-                    <option value="Processing">Obrada</option>
-                    <option value="Preparation">U pripremi</option>
-                    <option value="Waiting">Čeka dostavljača </option>
-                    <option value="InTransport">U transportu</option>
-                    <option value="Delivered">Dostavljena</option>
-                    <option value="Canceled">Otkazana</option>
+                    <option value="OBRADA">Obrada</option>
+                    <option value="U_PRIPREMI">U pripremi</option>
+                    <option value="CEKA_DOSTAVLJACA">Čeka dostavljača </option>
+                    <option value="U_TRANSPORTU">U transportu</option>
+                    <option value="DOSTAVLJENA">Dostavljena</option>
+                    <option value="OTKAZANA">Otkazana</option>
+                    <option value="AllOrders">Svi porudzbine</option>
                     </select>
                  
                 </div>  

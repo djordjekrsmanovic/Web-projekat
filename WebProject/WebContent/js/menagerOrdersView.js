@@ -6,6 +6,21 @@
  searchResults=[];
  
  $(document).ready(function(){
+ 
+	 $("#logoutButton").click(function(){
+		if(window.confirm("Da li zaista zelite da se odjavite?")){
+			$.get({
+			url:'rest/login/logout',
+			success: function(response){
+			window.location.href='/WebProject/home.html';
+			alert(response);			
+			},
+			})
+		} else {
+			return;
+		}	
+	})
+
  	$.get({
  		url:"rest/manager/getOrders",
  		dataType:"json",
@@ -13,6 +28,7 @@
  		for(order of orders){
  			loadedOrders.push(order);
  			defaultOrders.push(order);
+ 			 $("#restaurantName").append(order.restaurant.name);
  		}		 
  		 fillTable(orders);
  		},
@@ -26,21 +42,18 @@
         sortOrders(loadedOrders);
         fillTable(loadedOrders);
     })
-
-    $("#RestaurantTypeFilter").change(function(){
-        filterOrders();
-        fillTable(loadedOrders);
-    })
     
     $("#OrderStatusFilter").change(function(){
-        filterOrders();
+        filterOrdersByStatus();
         fillTable(loadedOrders);
     })
 
     $('#searchButton').click(function(){
         searchOrders();
-        fillTable(loadedOrders);
+        fillTable(searchResults);
     })
+    
+   
  
  });
  
@@ -50,6 +63,7 @@
  	let i;
  	for(i=0; i<duzina;i++){
  		let tr = $("<tr></tr>");
+ 		tr.attr("id",orders[i].id);
 	 	let td1 = $("<td></td>");
 	 	let td2 = $("<td></td>");
 	 	let td3 = $("<td></td>");
@@ -65,6 +79,11 @@
 	 	    let button = $("<button></button>", {id:"changeStatusButton"});
 	 	    button.append("Zavrsi pripremu");
 	 		td6.append(button);
+	 		td6.click(function(){
+	 			i--;
+	 			changeStatus(orders[i]);
+	 			i++;
+	 		})
 	 	} else {td6.append("Nedostupno");}
 	 	
 	 	tr.append(td1);
@@ -90,6 +109,7 @@
  
  function searchOrders(){
  	 $("#tableBody").empty();
+ 	 searchResults=[];
 	 let name = $("#name").val().toLowerCase();
 	 let priceFrom =$("#priceFrom").val();
 	 let priceTo = $("#priceTo").val();
@@ -105,23 +125,96 @@
 	 let duzina = loadedOrders.length;
 	 
 	 for(i=0;i<duzina;i++){
-	 	if(loadedOrders[i].name.toLowerCase().includes(name) && loadedOrders[i].price<priceTo &&loadedOrders[i].price>priceFrom)
+	 	if(loadedOrders[i].restaurant.name.toLowerCase().includes(name) && loadedOrders[i].price<priceTo &&loadedOrders[i].price>priceFrom)
 	 	{
+	 	if(loadedOrders[i].date<dateTo && loadedOrders[i].date>dateFrom){
 	 		searchResults.push(loadedOrders[i]);
+	 		}
 	 	}
 	 }
 	 
 	 
  }
  
-  function filterOrders(){
- $("#tableBody").empty();
- 
- 
+  function filterOrdersByStatus(){
+ 	$("#tableBody").empty();
+ 	loadedOrders=[];
+ 	var filterStatus = $("#OrderStatusFilter").val();
+ 	let i;
+ 	let duzina = defaultOrders.length;
+ 	if(filterStatus!=""){
+ 	for(i=0; i<duzina;i++){
+ 		if(defaultOrders[i].status===filterStatus){
+ 			loadedOrders.push(defaultOrders[i]);
+ 		} else if(filterStatus==="AllOrders"){
+ 			loadedOrders=defaultOrders;
+ 		}
+ 	}
+ 	}
  }
  
+ /*  function filterOrdersByType(){
+   loadedOrders=[];
+ 	$("#tableBody").empty();
+ 	var filterType = $("#RestaurantTypeFilter").val();
+ 	let i;
+ 	let duzina = defaultOrders.length;
+ 	if(filterType!=""){
+ 	for(i=0; i<duzina;i++){
+ 		if(defaultOrders[i].restaurant.type===filterType){
+ 			loadedOrders.push(defaultOrders[i]);
+ 		} else if(filterType==="AllRestaurants"){
+ 			loadedOrders=defaultOrders;
+ 		}
+ 	}
+ 	}
+ }*/
+ 
   function sortOrders(){
- $("#tableBody").empty();
+ 	$("#tableBody").empty();
+ 	var sortType = $("#SortType").val();
+ 	
+ 	if(sortType==null){
+ 		return;
+ 	}
+ 	if(sortType==="price-ascending"){
+ 		priceAscSort();
+ 	}else if(sortType==="price-descending"){
+ 		priceDescSort();
+ 	}else if(sortType==="date-ascending"){
+ 		dateAscSort();
+ 	}else if(sortType==="date-descending"){
+ 		dateDescSort();
+ 	}else { loadedOrders=defaultOrders;}
+ 	
+ }
+ 
+ function priceAscSort(){
+ 	loadedOrders.sort(function(a,b){return a.price-b.price;});
+ }
+ function priceDesscSort(){
+ 	loadedOrders.sort(function(a,b){return b.price-a.price;});
+ }
+ function dateAscSort(){
+ 	loadedOrders.sort(function(a,b){return a.date-b.date});
+ }
+ function dateDescSort(){
+ 	loadedOrders.sort(function(a,b){return b.date-a.date});
+ }
+ 
+ function changeStatus(orderS){
+ 	$.post({
+ 	url:"rest/manager/changeOrderStatus",
+ 	contentType:"application/json",
+ 	data:JSON.stringify(orderS),
+ 	success: function(order){
+ 		var row = document.getElementById(order.id);
+ 		var tds=row.children;
+ 		tds[5].innerHTML="";
+ 		tds[5].append("Nedostupno");
+ 	},
+ 	
+ 	})
  
  
  }

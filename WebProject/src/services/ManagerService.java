@@ -153,8 +153,17 @@ public class ManagerService {
 	public List<Order> managerOrders(){
 		OrderDAO orderDAO = (OrderDAO) servletContext.getAttribute("OrderDAO");
 		User u = (User) servletContext.getAttribute("user");		
-		
 		return orderDAO.getOrdersForManager(u.getUsername());
+
+	}
+	
+	@POST
+	@Path("/changeOrderStatus")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Order changeOrderStatus(Order order) {
+		OrderDAO orderDAO=(OrderDAO) servletContext.getAttribute("OrderDAO");
+		return orderDAO.changeStatus(order.getId());
 	}
 	
 }
