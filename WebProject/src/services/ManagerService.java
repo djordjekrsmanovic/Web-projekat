@@ -199,4 +199,21 @@ public class ManagerService {
 		cDAO.changeCommentStatus(komentar, "odbij");
 		return "Odbijen!";
 	}
+	
+	@GET
+	@Path("/get-managers")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Manager> getManagers(){
+		
+		ManagerDAO managerDAO = (ManagerDAO) servletContext.getAttribute("ManagerDAO");
+		List<Manager> managers=managerDAO.getManagersList();
+		for(int i=0;i<managers.size();i++) {
+			if(managers.get(i).getRestaurant()!=null) {
+				managers.remove(i);
+				i--;
+			}
+		}
+		System.out.println(managers.size());
+		return managers;
+	}
 }
