@@ -186,6 +186,7 @@ public class ManagerService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String odobri(Comment komentar) {
 		CommentDAO cDAO = (CommentDAO) servletContext.getAttribute("CommentDAO");
+		cDAO.changeCommentStatus(komentar, "odobri");
 		return "Odobren!";
 	}
 	
@@ -195,6 +196,7 @@ public class ManagerService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String odbij(Comment komentar) {
 		CommentDAO cDAO = (CommentDAO) servletContext.getAttribute("CommentDAO");
+		cDAO.changeCommentStatus(komentar, "odbij");
 		return "Odbijen!";
 	}
 }

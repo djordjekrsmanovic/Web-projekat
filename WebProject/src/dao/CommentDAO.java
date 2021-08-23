@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import beans.Address;
 import beans.Buyer;
 import beans.Comment;
+import beans.CommentState;
 import beans.Converter;
 import beans.Gender;
 import beans.Location;
@@ -78,6 +79,7 @@ public class CommentDAO extends GenericFileRepository<Comment, String> {
 	}
 	
 	public List<Comment> getCommentsForManager(String managerid) {
+
 		List<Comment> retVal = new ArrayList<Comment>();
 		for(Comment c : this.getComments()) {
 			if(c.getRestaurant().getManagerID().equals(managerid)) {
@@ -87,9 +89,19 @@ public class CommentDAO extends GenericFileRepository<Comment, String> {
 		return retVal;
 	}
 	
-	public void changeCommentStatus(String id) {
-		
-		
+	public void changeCommentStatus(Comment comm, String tipPromjene) {
+		List<Comment> komentari = this.getComments();
+		for(Comment c : komentari) {
+			if(c.getBuyer().getUsername().equals(comm.getBuyer().getUsername()) && c.getRestaurant().getManagerID().equals(comm.getRestaurant().getManagerID())) {
+				if(tipPromjene.equals("odobri")) {
+					c.setCommentState(CommentState.APPROVED);
+					this.update(c);
+				} else {
+					c.setCommentState(CommentState.REJECT);
+					this.update(c);
+				}
+			}
+		}
 	}
 
 }

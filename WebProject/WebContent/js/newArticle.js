@@ -12,13 +12,16 @@ $(document).ready(function(){
 		var articleType = "FOOD"} else { var articleType="DRINK";}
 		var amoun = $("input[name=Amount]").val();
 		var descriptio = $("input[name=Description]").val();
+		var photoName = $("#photo").val();
+		var phPath = "../pictures/" + photoName;
 		
-		if(articleName==="" || articleType==="" || price===""){
+		
+		if(articleName==="" || articleType==="" || price==="" || photoName===""){
 		alert("Ime, cijena, tip i slika moraju biti popunjeni i dodati");
 		return;
 		}
 		
-		var article = {id:id, name:articleName, price:price, type:articleType, amount:amoun, description:descriptio, photoPath:""};
+		var article = {id:id, name:articleName, price:price, type:articleType, amount:amoun, description:descriptio, photoPath:phPath};
 		var jsonArticle= JSON.stringify(article);
 		$.post({
 			url:"rest/menager/newArticle",	
