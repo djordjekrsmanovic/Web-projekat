@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Pregled komentara</title>
+    <script src="jquery-3.3.1.min.js"></script>
+	<script src="js/menagerCommentsView.js"></script>
+	<link href="css/managerCommentView.css" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+</head>
+<body id="profileBody" class="pozadina">
+
+	<section class="header">
+		<nav >
+			<a href=""><img src="pictures/logo.png" width="120px" height="70px"></a>
+			<div class="nav-links">
+				<ul>
+					<li><a href="home.html">Početna strana</a></li>
+					<li><a href="menagerProfile.html">Moj nalog</a></li>
+					<li><a href="menagerRestaurantInfo.html">Pregled restorana</a></li>
+					<li><a id="logoutButton">Odjava</a></li>
+				</ul>
+			</div>
+		</nav>
+	</section>
+	<h1 id="restaurantName"></h1>
+
+	<section id="komentari" class="commentCards">
+		<div class="comment">
+			<div><h2 id="podaci" class="userData">Podaci o korisniku: </h2></div>
+			<div><h2>Tekst komentara: </h2></div>
+			<div><p>Tekst komentarasaaa sanfisfu asdus soijdoaisj doi oidjsoj aooj</p></div>
+			<div><p>Status komentara: </p></div>
+			<div class="dugmad">
+			<div><button id="odobriButton" class="dugme">Odobri komentar</button></div>
+			<div><button id="odbijButton" class="dugme">Odbij komentar</button></div>
+			</div>
+		</div>
+
+	</section>
+
+</body>
+</html>

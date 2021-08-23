@@ -75,5 +75,14 @@ public class ProductDAO extends GenericFileRepository<Product, String> {
 		}
 		return null;
 	}	
+	
+	public void editProduct(Product p) {
+		List<Product> produkti = this.getProducts();
+		for(Product prod : produkti) {
+			if(prod.getId().equals(p.getId())) {
+				this.update(p);
+			}
+		}
+	}
 
 }

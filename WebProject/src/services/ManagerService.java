@@ -20,6 +20,7 @@ import beans.Restaurant;
 import beans.User;
 import dao.AdminDAO;
 import dao.BuyerDAO;
+import dao.CommentDAO;
 import dao.DelivererDAO;
 import dao.ManagerDAO;
 import dao.OrderDAO;
@@ -27,7 +28,9 @@ import dao.ProductDAO;
 import dao.RestaurantDAO;
 <<<<<<< Updated upstream
 import beans.Buyer;
+import beans.Comment;
 import beans.Manager;
+import beans.Order;
 import beans.Product;
 import beans.Restaurant;
 import beans.User;
@@ -63,6 +66,9 @@ public class ManagerService {
 		}
 		if (servletContext.getAttribute("OrderDAO")==null) {
 			servletContext.setAttribute("OrderDAO", new OrderDAO(servletContext.getRealPath("")));
+		}
+		if (servletContext.getAttribute("CommentDAO")==null) {
+			servletContext.setAttribute("CommentDAO", new CommentDAO(servletContext.getRealPath("")));
 		}
 	}
 	
@@ -154,6 +160,54 @@ public class ManagerService {
 		Manager m = mDAO.getManagerByUsername(u.getUsername());
 		
 		return orderDAO.getBuyersForManager(m.getUsername(), bDAO.getBuyersList());
+	}
+	
+	@GET
+	@Path("/getOrders")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Order> managerOrders(){
+		OrderDAO orderDAO = (OrderDAO) servletContext.getAttribute("OrderDAO");
+		User u = (User) servletContext.getAttribute("user");		
+		return orderDAO.getOrdersForManager(u.getUsername());
+
+	}
+	
+	@POST
+	@Path("/changeOrderStatus")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Order changeOrderStatus(Order order) {
+		OrderDAO orderDAO=(OrderDAO) servletContext.getAttribute("OrderDAO");
+		return orderDAO.changeStatus(order.getId());
+	}
+	
+	@GET
+	@Path("/getComments")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Comment> getComments(){
+		User u = (User) servletContext.getAttribute("user");
+		CommentDAO cDAO = (CommentDAO) servletContext.getAttribute("CommentDAO");
+		return cDAO.getCommentsForManager(u.getUsername());
+	}
+	
+	@POST
+	@Path("/odobri")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String odobri(Comment komentar) {
+		CommentDAO cDAO = (CommentDAO) servletContext.getAttribute("CommentDAO");
+		cDAO.changeCommentStatus(komentar, "odobri");
+		return "Odobren!";
+	}
+	
+	@POST
+	@Path("/odbij")
+	@Produces(MediaType.TEXT_PLAIN)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String odbij(Comment komentar) {
+		CommentDAO cDAO = (CommentDAO) servletContext.getAttribute("CommentDAO");
+		cDAO.changeCommentStatus(komentar, "odbij");
+		return "Odbijen!";
 	}
 	
 	@GET
