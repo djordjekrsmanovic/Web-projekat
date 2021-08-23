@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
+<div id="imgTest"></div>
+<script type='text/javascript'>
+  function encodeImageFileAsURL() {
+
+    var filesSelected = document.getElementById("inputFileToLoad").files;
+    if (filesSelected.length > 0) {
+      var fileToLoad = filesSelected[0];
+
+      var fileReader = new FileReader();
+
+      fileReader.onload = function(fileLoadedEvent) {
+        var srcData = fileLoadedEvent.target.result; // <--- data: base64
+        var parts=srcData.split(",");
+        let extension=parts[0].split(";")[0].split("/")[1];
+        if(extension!="png" && extension!="jpg" && extension!="jpeg"){
+            alert("Dozvoljene su samo slike u png jpg i jpeg formatu");
+            return;
+        }
+        var newImage = document.createElement('img');
+        newImage.src = srcData;
+
+        document.getElementById("imgTest").innerHTML = newImage.outerHTML;
+        alert(srcData);
+        console.log("Converted Base64 version is " + srcData);
+        var urlServer='rest/images/upload-restaurant-logo';
+        $.post({
+            url:'rest/images/upload-restaurant-logo',
+            data:srcData,
+            success:function(data){
+                console.log("Success");
+            },
+            error:function(data){
+                console.log("Error");
+            }
+        })
+      }
+      fileReader.readAsDataURL(fileToLoad);
+    }
+  }
+</script>
+</body>
+</html>

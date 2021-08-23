@@ -5,18 +5,25 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
+import beans.Address;
+import beans.Converter;
+import beans.Location;
+import beans.Manager;
 import beans.Restaurant;
 import dao.ManagerDAO;
 import dao.RestaurantDAO;
 import dto.AdminRestaurantDTO;
+import dto.CreateRestaurantDTO;
 
 @Path("/restaurant")
 public class RestaurantService {
@@ -84,5 +91,34 @@ public class RestaurantService {
 		RestaurantDAO restaurantDAO=(RestaurantDAO) servletContext.getAttribute("RestaurantDAO");
 		System.out.println("USAO SAM U BRISANJE RESTORANA");
 		return restaurantDAO.deleteRestaurant(id);
+	}
+	
+	@POST
+	@Path("/add-restaurant")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Restaurant addRestaurant(CreateRestaurantDTO restaurantDTO) {
+		System.out.println("Usao sam u dodavanje restorana");
+		RestaurantDAO restaurantDAO=(RestaurantDAO) servletContext.getAttribute("RestaurantDAO");
+		ManagerDAO managerDAO=(ManagerDAO) servletContext.getAttribute("ManagerDAO");
+		if (restaurantDTO.username=="") {
+			Address address=new Address(restaurantDTO.restaurantStreet,restaurantDTO.restaurantStreet,restaurantDTO.restaurantCity,restaurantDTO.restuarantPostalNumber);
+			Location location=new Location(0,0,address);
+			Restaurant restaurant=new Restaurant(restaurantDTO.restaurantName,Converter.getRestaurantType(restaurantDTO.restaurantType),Converter.getRestaurantStatus(restaurantDTO.restaurantStatus),location,restaurantDTO.URL,restaurantDTO.selectedManager);
+			Manager manager=managerDAO.getManagerByID(restaurantDTO.selectedManager);
+			manager.setRestaurant(restaurant);
+			managerDAO.createOrUpdate(manager);
+			restaurantDAO.create(restaurant);
+			return restaurant;
+		}else {
+			Address address=new Address(restaurantDTO.restaurantStreet,restaurantDTO.restaurantStreet,restaurantDTO.restaurantCity,restaurantDTO.restuarantPostalNumber);
+			Location location=new Location(0,0,address);
+			Restaurant restaurant=new Restaurant(restaurantDTO.restaurantName,Converter.getRestaurantType(restaurantDTO.restaurantType),Converter.getRestaurantStatus(restaurantDTO.restaurantStatus),location,restaurantDTO.URL,restaurantDTO.selectedManager);
+			Manager manager=new Manager(restaurantDTO.username,restaurantDTO.password,restaurantDTO.firstName,restaurantDTO.lastName,Converter.getGender(restaurantDTO.gender),Converter.convertStringtoDate(restaurantDTO.birthDate),false,false,restaurant);
+			managerDAO.create(manager);
+			restaurantDAO.create(restaurant);
+			return restaurant;
+		}
+		
 	}
 }

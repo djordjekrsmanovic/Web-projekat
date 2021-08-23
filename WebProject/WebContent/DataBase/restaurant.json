@@ -2,7 +2,7 @@
   "Plava frajla" : {
     "name" : "Plava frajla",
     "restaurantType" : "ETNO",
-    "products" : [ "cevapi", "supa" ],
+    "products" : [ ],
     "restaurantStatus" : "OPEN",
     "location" : {
       "latitude" : 45.24,

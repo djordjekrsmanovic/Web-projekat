@@ -105,12 +105,12 @@
             <div>
                 <div class="container">
                     <span>Naziv:</span>
-                    <span><input type="text>"></span>
+                    <span><input type="text>" id="restaurantName"></span>
                 </div>
                 <div class="container">
                     <span>Tip restorana:</span>
                         <span>
-                            <select>
+                            <select id="restaurantType">
                                 <option value="ITALIAN">Italijanski restoran</option>
                                 <option value="JAPANESE">Japanski restoran</option>
                                 <option value="GRILL">Roštilj</option>
@@ -119,10 +119,10 @@
                         </span>
                 </div>
     
-                <div class="container">
+                <div class="container" >
                     <span>Status restorana:</span>
                         <span>
-                            <select>
+                            <select id="restaurantStatus">
                                 <option value="OPEN">Otvoren</option>
                                 <option value="CLOSED">Zatvoren</option>
                             </select>
@@ -131,38 +131,35 @@
                 <div class="container">
                     <span>Logo restorana:</span>
                         <span>
-                            <select>
-                                <option value="OPEN">Otvoren</option>
-                                <option value="CLOSED">Zatvoren</option>
-                            </select>
+                            <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
                         </span>
                 </div>
     
     
                 <div class="container"> 
                     <span>Ulica:</span>
-                    <span><input type="text>"></span>
+                    <span><input type="text>" id="restaurantStreet"></span>
                 </div>
     
                 <div class="container">
                     <span>Broj:</span>
-                    <span><input type="text>"></span>
+                    <span><input type="text>" id="restaurantNumber"></span>
                 </div>
     
                 <div class="container">
                     <span>Grad:</span>
-                    <span><input type="text>"></span>
+                    <span><input type="text>" id="restaurantCity"></span>
                 </div>
     
                 <div class="container">
                     <span>Poštanski broj:</span>
-                    <span><input type="text>"></span>
+                    <span><input type="text>" id="restuarantPostalNumber"></span>
                 </div>
     
                 <div class="container"> 
                     <span>Izaberite menadžera:</span>
-                        <span>
-                            Ne postoje slobodni menadzeri
+                        <span id="manager-option">
+                            
                         </span>
                         
                 </div>
@@ -172,14 +169,14 @@
             
             <div class="pictureDiv">
             </div>
-            <div class="addManagerButton" id="addManager">
-                <span><button>Kreiraj novog menadžera</button></span>
+            <div class="addManagerButton" >
+                <span><button id="addManager">Kreiraj novog menadžera</button></span>
             </div>
         </div>
 
         <div class="finishDiv">
             
-            <span><button>Potvrdi</button></span>
+            <span><button id="confirmRestaurant">Potvrdi</button></span>
             
         </div>
         

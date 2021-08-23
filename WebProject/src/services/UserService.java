@@ -14,7 +14,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
-import beans.Administrator;
 import beans.Buyer;
 import beans.Deliverer;
 import beans.Manager;
@@ -56,7 +55,6 @@ public class UserService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<ShowUsersDTO> loggedUser() {
 		List<ShowUsersDTO> allUsers=new ArrayList<ShowUsersDTO>();
-		AdminDAO adminDAO= (AdminDAO) servletContext.getAttribute("AdminDAO");
 		ManagerDAO managerDAO= (ManagerDAO) servletContext.getAttribute("ManagerDAO");
 		DelivererDAO delivererDAO= (DelivererDAO) servletContext.getAttribute("DelivererDAO");
 		BuyerDAO buyerDAO=(BuyerDAO) servletContext.getAttribute("BuyerDAO");	

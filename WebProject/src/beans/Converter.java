@@ -18,4 +18,32 @@ public class Converter {
 
 		return retDate;
 	}
+	
+	public static RestaurantType getRestaurantType(String type) {
+		if (type.equalsIgnoreCase("ETNO")) {
+			return RestaurantType.ETNO;
+		}else if(type.equalsIgnoreCase("JAPANESE")) {
+			return RestaurantType.JAPANESE;
+		}else if(type.equalsIgnoreCase("GRILL")) {
+			return RestaurantType.GRILL;
+		}else {
+			return RestaurantType.ITALIAN;
+		}
+	}
+	
+	public static RestaurantStatus getRestaurantStatus(String status) {
+		if (status.equalsIgnoreCase("OPEN")) {
+			return RestaurantStatus.OPEN;
+		}else {
+			return RestaurantStatus.CLOSED;
+		}
+	}
+	
+	public static Gender getGender(String gender) {
+		if (gender.equalsIgnoreCase("muski")) {
+			return Gender.male;
+		}else {
+			return Gender.female;
+		}
+	}
 }
