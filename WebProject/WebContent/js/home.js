@@ -36,6 +36,8 @@ $(document).ready(function(){
 				$('#prijavaMenu').hide();
 				$('#pregled').append('Pregled Restorana');
 				$('#pregled').attr('href','menagerRestaurantInfo.html');
+				$('#pregledKomentara').append('Pregled Komentara');
+				$('#pregledKomentara').attr('href','managerCommentsView.html');
 				$('#profile').attr('href','menagerProfile.html');
 			} else if(userType==="deliverer"){
 				$('#prijavaMenu').hide();

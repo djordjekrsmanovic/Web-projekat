@@ -1,0 +1,107 @@
+@charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;1,700&display=swap');
+
+*{
+    margin: 0%;
+    box-sizing: border-box;
+    overflow: auto;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.header{
+	background-size: cover;
+    background-color: lightgreen;
+    height: 15vh;
+}
+
+.pozadina{
+	background-color: lightblue;
+}
+
+nav{
+	display: flex;
+	padding: 0.5% 3%;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.nav-links{
+ 	flex: 1;
+ 	text-align: right;
+}
+
+.nav-links ul li{
+	list-style: none;
+	display: inline-block;
+	padding: 8px 12px;
+	position: relative;
+}
+
+.nav-links ul li a{
+	color: #fff;
+	text-decoration: none;
+	font-size: 13;
+}
+
+.nav-links ul li::after {
+	content: '';
+	width: 0%;
+	height: 2px;
+	background: green;
+	display: block;
+	margin: auto;
+	transition: 0.5s;
+}
+
+.nav-links ul li:hover::after{
+	width: 100%;
+}
+
+h1{
+	text-align: center;
+}
+
+.commentCards{
+    margin: 5%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: 50px;
+    grid-row-gap:50px;
+    
+}
+
+.comment{
+	background-color:white;
+    border-radius: 20px;
+    padding: 1em;
+    box-shadow: 0px 15px 25px #95a5a6;
+    text-align: center;   
+
+}
+
+.dugmad{
+	display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-left:30%;
+    margin-right:30%;
+}
+
+.dugme{
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    border-radius: 10px;
+    background-color:lightgreen;
+    align-self: center;
+    margin-top: 20px;
+    border:white
+}
+
+button:hover{
+    background-color: green;
+}
+
+.naslovZaTekst{
+	font-size: 14;
+	font-style: italic;
+}

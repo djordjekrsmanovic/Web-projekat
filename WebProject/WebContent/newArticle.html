@@ -15,8 +15,10 @@
 			<div class="nav-links">
 				<ul>
 					<li><a href="home.html">Početna strana</a></li>
-					<li><a href="">Pregled restorana</a></li>
-					<li><a href="">Odjava</a></li>
+					<li><a href="menagerProfile.html">Moj nalog</a></li>
+					<li><a href="menagerRestaurantInfo.html">Pregled restorana</a></li>
+					<li><a href="managerCommentsView.html">Pregled komentara</a></li>
+					<li><a id="logoutButton">Odjava</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -25,25 +27,25 @@
 	<h1>Dodajte novi artikal:</h1>
 	<section>
 	<div class="forma">
-	<form>
+	<form >
 		<table>
-		<label>Naziv</label>
-		<input type="text" name="ArticleName">
-		<label>Cijena</label>
-		<input type="text" name="Price">
-		<label>Tip artikla</label>
-		<select name="ArticleType">
+		<tr><td><label>Naziv</label></td>
+		<td><input type="text" name="ArticleName"></td><tr>
+		<tr><td><label>Cijena</label></td>
+		<td><input type="text" name="Price"></td></tr>
+		<tr><td><label>Tip artikla</label></td>
+		<td><select name="ArticleType">
 			<option value="food">Hrana</option>
 			<option value="drink">Piće</option>
-		</select>
-		<label>Količina</label>
-		<input type="text" name="Amount">
-		<label>Opis</label>
-		<input type="text" name="Description">
-		<label>Slika</label>
-		<input type="file" name="photo">
-		<br/>
-		<button id="dodaj" type="submit">Dodaj</button>
+		</select></td></tr>
+		<tr><td><label>Količina</label></td>
+		<td><input type="text" name="Amount"></td></tr>
+		<tr><td><label>Opis</label></td>
+		<td><input type="text" name="Description"></td></tr>
+		<tr><td><label>Slika</label></td>
+		<td><input type="file" name="photo">
+		<br/></td></tr>
+		<tr><td><button id="dodaj" type="submit">Dodaj</button></td></tr>
 		</table>
 	</form>
 	</div>

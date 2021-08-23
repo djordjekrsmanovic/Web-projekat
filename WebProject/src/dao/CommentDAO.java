@@ -57,7 +57,7 @@ public class CommentDAO extends GenericFileRepository<Comment, String> {
 		Address address = new Address("Spens", "5", "Novi Sad", "23000");
 		Location location = new Location(45.24, 19.84, address);
 		Restaurant restaurant = new Restaurant("Plava frajla", RestaurantType.ETNO, RestaurantStatus.OPEN, location,
-				"","");
+				"","bojan");
 		Comment comment = new Comment(buyer, restaurant, "Najbolji restoran", 5);
 		createOrUpdate(comment);
 	}
@@ -75,6 +75,21 @@ public class CommentDAO extends GenericFileRepository<Comment, String> {
 			}
 		}
 		return allComments;
+	}
+	
+	public List<Comment> getCommentsForManager(String managerid) {
+		List<Comment> retVal = new ArrayList<Comment>();
+		for(Comment c : this.getComments()) {
+			if(c.getRestaurant().getManagerID().equals(managerid)) {
+				retVal.add(c);
+			}
+		}
+		return retVal;
+	}
+	
+	public void changeCommentStatus(String id) {
+		
+		
 	}
 
 }

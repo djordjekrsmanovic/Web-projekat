@@ -13,12 +13,14 @@ import javax.ws.rs.core.MediaType;
 
 import dao.AdminDAO;
 import dao.BuyerDAO;
+import dao.CommentDAO;
 import dao.DelivererDAO;
 import dao.ManagerDAO;
 import dao.OrderDAO;
 import dao.ProductDAO;
 import dao.RestaurantDAO;
 import beans.Buyer;
+import beans.Comment;
 import beans.Manager;
 import beans.Order;
 import beans.Product;
@@ -54,6 +56,9 @@ public class ManagerService {
 		}
 		if (servletContext.getAttribute("OrderDAO")==null) {
 			servletContext.setAttribute("OrderDAO", new OrderDAO(servletContext.getRealPath("")));
+		}
+		if (servletContext.getAttribute("CommentDAO")==null) {
+			servletContext.setAttribute("CommentDAO", new CommentDAO(servletContext.getRealPath("")));
 		}
 	}
 	
@@ -166,4 +171,30 @@ public class ManagerService {
 		return orderDAO.changeStatus(order.getId());
 	}
 	
+	@GET
+	@Path("/getComments")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Comment> getComments(){
+		User u = (User) servletContext.getAttribute("user");
+		CommentDAO cDAO = (CommentDAO) servletContext.getAttribute("CommentDAO");
+		return cDAO.getCommentsForManager(u.getUsername());
+	}
+	
+	@POST
+	@Path("/odobri")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String odobri(Comment komentar) {
+		CommentDAO cDAO = (CommentDAO) servletContext.getAttribute("CommentDAO");
+		return "Odobren!";
+	}
+	
+	@POST
+	@Path("/odbij")
+	@Produces(MediaType.TEXT_PLAIN)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String odbij(Comment komentar) {
+		CommentDAO cDAO = (CommentDAO) servletContext.getAttribute("CommentDAO");
+		return "Odbijen!";
+	}
 }
