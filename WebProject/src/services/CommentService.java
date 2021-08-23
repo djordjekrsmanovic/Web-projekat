@@ -37,4 +37,13 @@ public class CommentService {
 		CommentDAO commentDAO=(CommentDAO) servletContext.getAttribute("commentDAO");
 		return commentDAO.getRestaurantComments(restaurantName);
 	}
+	
+	@GET
+	@Path("/get-comments")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Comment> getComments(){
+		CommentDAO commentDAO=(CommentDAO) servletContext.getAttribute("commentDAO");
+		System.out.println("USAO U UCITAVANJE KOMENTARA");
+		return commentDAO.getComments();
+	}
 }

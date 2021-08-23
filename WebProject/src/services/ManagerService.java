@@ -11,6 +11,13 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
+import beans.Buyer;
+import beans.Comment;
+import beans.Manager;
+import beans.Order;
+import beans.Product;
+import beans.Restaurant;
+import beans.User;
 import dao.AdminDAO;
 import dao.BuyerDAO;
 import dao.DelivererDAO;
@@ -18,11 +25,14 @@ import dao.ManagerDAO;
 import dao.OrderDAO;
 import dao.ProductDAO;
 import dao.RestaurantDAO;
+<<<<<<< Updated upstream
 import beans.Buyer;
 import beans.Manager;
 import beans.Product;
 import beans.Restaurant;
 import beans.User;
+=======
+>>>>>>> Stashed changes
 
 @Path("/manager")
 public class ManagerService {
