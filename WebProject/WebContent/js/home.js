@@ -23,10 +23,26 @@ $(document).ready(function(){
 		dataType:'text',
 		success: function(userType){
 			if(userType==="admin"){
-				$('#prijavaMenu').hide();
-				$('#pregled').append('Pregled korisnika');
-				$('#pregled').attr('href','allUsersAdminView.html');
-				$('#profile').attr('href','adminProfile.html');				
+                /*	<li><a href="home.html">Početna strana</a></li>
+                     <li><a href="adminRestaurantsView.html">Restorani</a></li>
+                    <li><a href="adminBuyersView.html">Kupci</a></li>
+                    <li><a href="adminUsersView.html">Korisnici</a></li>
+                    <li><a href="adminAddRestaurant.html">Dodaj restoran</a></li>
+                    <li><a href="adminAddUser.html">Dodaj korisnika</a></li>
+					<li><a href="adminProfile.html">Profil</a></li>*/
+				$('#loginMenu').hide();
+                $('#registrationMenu').hide();
+                let homeLi=$('<li></li>').append('<a href="home.html">Početna strana </a>');
+                let restaurantViewLi=$('<li></li>').append('<a href="adminRestaurantsView.html">Restorani</a>');
+                let buyersViewLi=$('<li></li>').append('<a href="adminBuyersView.html">Kupci</a>');
+                let usersViewLi=$('<li></li>').append('<a href="adminUsersView.html">Korisnici</a>');
+                let addRestaurantLi=$('<li></li>').append('<a href="adminAddRestaurant.html">Dodaj restoran</a>');
+                let addUserLi=$('<li></li>').append('<a href="adminAddUser.html">Dodaj korisnika</a>');
+                let profileView=$('<li></li>').append('<a href="adminProfileView.html">Profil</a>');
+                let logOut=$('<li></li>').append('<a href="">Odjavi se</a>');
+                $('#ul-menu').append(homeLi,restaurantViewLi,buyersViewLi,usersViewLi,addRestaurantLi,addUserLi,profileView,logOut);
+                
+							
 			} else if(userType==="buyer"){
 				$('#prijavaMenu').hide();
 				$('#pregled').append('Pregled porudzbina');

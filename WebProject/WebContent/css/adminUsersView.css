@@ -15,7 +15,7 @@ body{
 .header{
 	background-size: cover;
     background-color: lightgreen;
-    height: 15vh;
+
 }
 nav{
 	display: flex;
@@ -39,11 +39,11 @@ nav{
 .nav-links ul li a{
 	color: #fff;
 	text-decoration: none;
-	font-size: 13;
+	font-size: 17px;
 }
 
 .blockedUser{
-  background-color: #fa5850;
+  background-color: #f19792;
 }
 
 .nav-links ul li::after {
