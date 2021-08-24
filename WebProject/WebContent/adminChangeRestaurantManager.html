@@ -7,7 +7,7 @@
     <title>Document</title>
     <link href="css/adminChangeRestaurantManager.css" rel="stylesheet" >
     <script src="jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="js/adminChangeRestaurantManager.js"></script>
+    <script type="text/javascript" src="js/adminChangeManager.js"></script>
 </head>
 <body>
     <section class="header">
@@ -37,11 +37,8 @@
                         <span style="margin-top: 100px; margin-left: 20px; font-size: large;">Dostupni menadžeri:</span>
                         
                     <span style="margin-top: 100px; margin-left: 5px;">
-                        <select style="font-size: medium;">
-                            <option>Milan Antonijević</option>
-                            <option>Marko Krkobabević</option>
-                            <option>Menadzer1</option>
-                            <option>Menadzer1</option>
+                        <select id='selectedManager' style="font-size: medium;" >
+                            
                         </select>
                     </span>
                     </div>
@@ -52,8 +49,8 @@
                 </div>
             </div>
             <div style="margin-top: 70px;">
-                <button class="confirmButton">Potvrdi</button>
-                <button class="cancelButton">Otkazi</button>
+                <button class="confirmButton" id='confirm'>Potvrdi</button>
+                <button class="cancelButton" id='cancel'>Otkazi</button>
             </div>  
         </div>
         
