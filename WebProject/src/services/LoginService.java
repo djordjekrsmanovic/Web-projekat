@@ -100,4 +100,12 @@ public class LoginService {
 		return "Loged out successfully!";
 	}
 	
+	@GET
+	@Path("/get-loged-user")
+	@Produces(MediaType.APPLICATION_JSON)
+	public User getLogedUser() {
+		User user=(User) request.getAttribute("user");
+		return user;
+	}
+	
 }

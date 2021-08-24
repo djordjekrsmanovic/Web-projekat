@@ -17,7 +17,47 @@ $(document).ready(function(){
     })
 
     //kod za ucitavanje korisnika
+
+    $.get({
+        url:'rest/login/get-loged-user',
+        contentType:'application/json',
+        success:function(user){
+            fillUserData(user);
+        }
+    })
+
+    $('#logout').click(function(){
+        $.get({
+            url:'rest/login/logout',
+            contentType:'application/json',
+            success:function(data){
+                if (data=="Loged out successfully!"){
+                    window.location.href="http://localhost:8080/WebProject/home.html";
+                }else{
+                    alert('Greska prilikom odjave sa profila');
+                }
+            }
+        })
+    })
 })
+
+function fillUserData(user){
+    let date=new Date(user.birthDate);
+    date=date.toLocaleDateString();
+    let parts=date.split('/');
+    let newDate=parts[0]+'.'+parts[1]+'.'+parts[2];
+    $('#name').text(user.firstName);
+    $('#lastname').text(user.lastName);
+    $('#username').text(user.username);
+    $('#birthDate').text(newDate);
+    
+    if (user.gender=='male'){
+        $('#gender').text('Muški');
+    }else{
+        $('#gender').text('Ženski');
+    }
+    
+}
 
 function formCommentTable(){
     for (comment of comments){

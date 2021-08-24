@@ -2,6 +2,8 @@ loadedRestaurants=[];
 recomendedView=[];
 $(document).ready(function(){
 	
+
+    
 	$.get({
 		url:'rest/restaurant/load-restaurants',
 		contentType:'application/json',
@@ -39,7 +41,23 @@ $(document).ready(function(){
                 let addRestaurantLi=$('<li></li>').append('<a href="adminAddRestaurant.html">Dodaj restoran</a>');
                 let addUserLi=$('<li></li>').append('<a href="adminAddUser.html">Dodaj korisnika</a>');
                 let profileView=$('<li></li>').append('<a href="adminProfileView.html">Profil</a>');
-                let logOut=$('<li></li>').append('<a href="">Odjavi se</a>');
+                let logout=$('<a id="logout" href="">Odjava</a>');
+                logout.click(function(){
+                   
+                        $.get({
+                            url:'rest/login/logout',
+                            contentType:'application/json',
+                            success:function(data){
+                                if (data=="Loged out successfully!"){
+                                    window.location.href="http://localhost:8080/WebProject/home.html";
+                                }else{
+                                    alert('Greska prilikom odjave sa profila');
+                                }
+                            }
+                        })
+                    
+                })
+                let logOut=$('<li></li>').append(logout);
                 $('#ul-menu').append(homeLi,restaurantViewLi,buyersViewLi,usersViewLi,addRestaurantLi,addUserLi,profileView,logOut);
                 
 							
