@@ -2,10 +2,11 @@
  * 
  */
  
-  $(document).ready(function(){
-	  
- 	$.get({
- 		url:"rest/manager/managerProfile",
+ 
+$(document).ready(function(){
+	
+$.get({
+ 		url:"rest/deliverer/delivererProfile",
 		dataType:"json",
  		success: function(response){
  			fillProfileData(response);
@@ -13,13 +14,13 @@
  	});	
  	
  	$("#editProfile").submit(function(event){
- 		let name=$('#managerName').val();
-        let surname=$('#managerSurname').val();
+ 		let name=$('#delivererName').val();
+        let surname=$('#delivererSurname').val();
         let date=$('#datum').val();       
-        let userName=$('#managerUserame').val();
+        let userName=$('#delivererUserame').val();
         let password=$('#newPassword').val();
         let repeatedPassword=$('#RepeatedNewPassword').val();
-        let gender=$("managerSex option:selected").val();
+        let gender=$("delivererSex option:selected").val();
         if (name===''||surname===''||date===''||userName==''||password==''||repeatedPassword==''||gender==''){
             $("#error").append=('Sva polja trebaju biti popunjena');
             return;
@@ -30,7 +31,7 @@
         }
 
         $.post({
-            url:'rest/manager/editProfile',
+            url:'rest/deliverer/editProfile',
             contentType:'application/json',
             data:JSON.stringify({username:userName,password:password,firstName:name,lastName:surname,gender:gender,birthDate:date}),
             success:function(data){
@@ -62,12 +63,12 @@
  });
  
 function fillProfileData(user) {
-    $("#managerUsername").val(user.username);
-    $("#managerName").val(user.firstName);
-    $("#managerSurname").val(user.lastName);
+    $("#delivererUsername").val(user.username);
+    $("#delivererName").val(user.firstName);
+    $("#delivererSurname").val(user.lastName);
     if(user.gender=="male"){
-    $("#managerSex").val("male"); } 
-    else {  $("#managerSex").val("female");}
+    $("#delivererSex").val("male"); } 
+    else {  $("#delivererSex").val("female");}
     $("#oldPassword").val(user.password);
     let date =  new Date(user.birthDate);
     let formatedDate=formatDate(date);

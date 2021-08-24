@@ -92,4 +92,14 @@ public class DelivererDAO extends GenericFileRepository<Deliverer, String> {
 		
 	}
 	
+	public void updateProfile(Deliverer oldData, User newData) {
+		oldData.setUsername(newData.getUsername());
+		oldData.setPassword(newData.getPassword());
+		oldData.setFirstName(newData.getFirstName());
+		oldData.setLastName(newData.getLastName());
+		oldData.setBirthDate(newData.getBirthDate());
+		oldData.setGender(newData.getGender());
+		this.createOrUpdate(oldData);
+	}
+	
 }

@@ -42,7 +42,7 @@ $(document).ready(function(){
 			} else if(userType==="deliverer"){
 				$('#prijavaMenu').hide();
 				$('#pregled').append('Pregled porudzbina');
-				$('#pregled').attr('href','');
+				$('#pregled').attr('href','delivererOrdersView.html');
 				$('#profile').attr('href','delivererProfile.html');
 			} else {
 				$('#logoutMenu').hide();
