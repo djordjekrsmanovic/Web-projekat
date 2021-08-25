@@ -23,7 +23,6 @@ import beans.Restaurant;
 import dao.ManagerDAO;
 import dao.RestaurantDAO;
 import dto.AdminRestaurantDTO;
-import dto.ChangeManagerDTO;
 import dto.CreateRestaurantDTO;
 
 @Path("/restaurant")
@@ -39,10 +38,10 @@ public class RestaurantService {
 	public void init() {
 		
 		if (servletContext.getAttribute("RestaurantDAO")==null) {
-			servletContext.setAttribute("RestaurantDAO", new RestaurantDAO(servletContext.getInitParameter("path")));
+			servletContext.setAttribute("RestaurantDAO", new RestaurantDAO(servletContext.getRealPath("")));
 		}
 		if (servletContext.getAttribute("ManagerDAO")==null) {
-			servletContext.setAttribute("ManagerDAO", new ManagerDAO(servletContext.getInitParameter("path")));
+			servletContext.setAttribute("ManagerDAO", new ManagerDAO(servletContext.getRealPath("")));
 		}
 	}
 	
@@ -52,7 +51,7 @@ public class RestaurantService {
 	public List<Restaurant> load(){
 		RestaurantDAO restaurantDAO=(RestaurantDAO) servletContext.getAttribute("RestaurantDAO");
 		System.out.print("\n\n\n\nUSAO SAM U SERVIS RESTORANA");
-		//restaurantDAO.generateRestaurant();
+		restaurantDAO.generateRestaurant();
 		System.out.println("Broj restorana je " + restaurantDAO.getRestaurants().size());
 		return restaurantDAO.getRestaurants();
 	}
@@ -122,27 +121,4 @@ public class RestaurantService {
 		}
 		
 	}
-	
-	@POST
-	@Path("/change-manager")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Restaurant changeManager(ChangeManagerDTO data) {
-		RestaurantDAO restaurantDAO=(RestaurantDAO) servletContext.getAttribute("RestaurantDAO");
-		ManagerDAO managerDAO=(ManagerDAO) servletContext.getAttribute("ManagerDAO");
-		Restaurant restaurant=restaurantDAO.getRestaurantByID(data.restaurantName);
-		Manager manager=managerDAO.getManagerByID(data.managerUserName);
-		if (manager==null || restaurant==null) {
-			return null;
-		}
-		Manager formerManager=managerDAO.getManagerByID(restaurant.getManagerID());
-		formerManager.setRestaurant(null);
-		restaurant.setManagerID(manager.getUsername());
-		manager.setRestaurant(restaurant);
-		managerDAO.createOrUpdate(manager);
-		managerDAO.createOrUpdate(formerManager);
-		restaurantDAO.createOrUpdate(restaurant);
-		return restaurant;
-	}
-	
 }

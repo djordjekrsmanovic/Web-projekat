@@ -22,7 +22,7 @@ public class User {
 	
 
 	public User(String username, String password, String firstName, String lastName, Gender gender, Date birthDate,
-			boolean deleted, boolean banned,UserRole role) {
+			boolean deleted, boolean banned) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -32,7 +32,7 @@ public class User {
 		this.birthDate = birthDate;
 		this.deleted = deleted;
 		this.banned = banned;
-		this.role=role;
+		
 	}
 
 

@@ -9,10 +9,6 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <context-param>
-    <param-name>path</param-name>
-    <param-value>C:\\Users\\Djordje\\Desktop\\Web-projekat\\WebProject\\WebContent</param-value>
-  </context-param>
   <!-- Obavezan Jersey REST Service servlet -->
   <servlet>
 		<servlet-name>Jersey REST Service</servlet-name>

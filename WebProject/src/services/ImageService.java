@@ -47,10 +47,11 @@ public class ImageService {
 		byte[] decodedBytes = decoder.decodeBuffer(imageString);
 		
 		BufferedImage buffImg = ImageIO.read(new ByteArrayInputStream(decodedBytes));
-		String basePath=servletContext.getInitParameter("path");
-		String photoPath=basePath+File.separator+"pictures"+File.separator+pictureDTO.name;
+		String basePath=servletContext.getRealPath("");
+		String photoPath=basePath+File.separator+"pictures"+File.separator+"logos"+File.separator+pictureDTO.name;
 		File file = new File(photoPath + "."+extension);
 		ImageIO.write(buffImg, extension, file);
+
 		System.out.println("Image " + ".png" + " uploaded.");
 
 	}

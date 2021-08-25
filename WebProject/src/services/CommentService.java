@@ -26,7 +26,7 @@ public class CommentService {
 	@PostConstruct
 	public void init() {
 		if (servletContext.getAttribute("commentDAO")==null) {
-			servletContext.setAttribute("commentDAO", new CommentDAO(servletContext.getInitParameter("path")));
+			servletContext.setAttribute("commentDAO", new CommentDAO(servletContext.getRealPath("")));
 		}
 	}
 	
@@ -36,14 +36,5 @@ public class CommentService {
 	public List<Comment> getComments(@PathParam("restaurantName") String restaurantName){
 		CommentDAO commentDAO=(CommentDAO) servletContext.getAttribute("commentDAO");
 		return commentDAO.getRestaurantComments(restaurantName);
-	}
-	
-	@GET
-	@Path("/get-comments")
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Comment> getComments(){
-		CommentDAO commentDAO=(CommentDAO) servletContext.getAttribute("commentDAO");
-		System.out.println("USAO U UCITAVANJE KOMENTARA");
-		return commentDAO.getComments();
 	}
 }

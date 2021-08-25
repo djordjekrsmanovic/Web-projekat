@@ -14,13 +14,13 @@ public class Deliverer extends User {
 	}
 	public Deliverer(String username, String password, String firstName, String lastName, Gender gender, Date birthDate,
 			boolean deleted, boolean banned) {
-		super(username, password, firstName, lastName, gender, birthDate, deleted, banned,UserRole.DELIVERER);
+		super(username, password, firstName, lastName, gender, birthDate, deleted, banned);
 		this.userRole=UserRole.DELIVERER;
 		this.oredersWaitingForDelivery=new ArrayList<Order>();
 	}
 	public Deliverer(String username, String password, String firstName, String lastName, Gender gender, Date birthDate,
 			boolean deleted, boolean banned,UserRole userRole) {
-		super(username, password, firstName, lastName, gender, birthDate, deleted, banned,UserRole.DELIVERER);
+		super(username, password, firstName, lastName, gender, birthDate, deleted, banned);
 		this.userRole = userRole;
 		this.oredersWaitingForDelivery = new ArrayList<Order>();
 	}

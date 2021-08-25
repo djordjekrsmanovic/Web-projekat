@@ -55,8 +55,9 @@ body{
 .header{
 	background-size: cover;
     background-color: lightgreen;
-
+    height: 15vh;
 }
+
 nav{
 	display: flex;
 	padding: 0.5% 3%;
@@ -79,11 +80,7 @@ nav{
 .nav-links ul li a{
 	color: #fff;
 	text-decoration: none;
-	font-size: 17px;
-}
-
-.blockedUser{
-  background-color: #f19792;
+	font-size: 13;
 }
 
 .nav-links ul li::after {
@@ -95,10 +92,10 @@ nav{
 	margin: auto;
 	transition: 0.5s;
 }
-
 .nav-links ul li:hover::after{
 	width: 100%;
 }
+
 .error-message{
 	text-align: center;
 	color: red;

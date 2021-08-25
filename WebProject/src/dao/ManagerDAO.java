@@ -78,7 +78,6 @@ public class ManagerDAO extends GenericFileRepository<Manager, String> {
 		return manager;
 	}
 	
-	
 	public void deleteManager(String id) {
 		Manager manager=getManagerByID(id);
 		if (manager==null) {

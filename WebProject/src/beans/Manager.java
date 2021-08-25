@@ -12,13 +12,13 @@ public class Manager extends User{
 	}
 	public Manager(String username, String password, String firstName, String lastName, Gender gender, Date birthDate,
 			boolean deleted, boolean banned) {
-		super(username, password, firstName, lastName, gender, birthDate, deleted, banned,UserRole.MANAGER);
+		super(username, password, firstName, lastName, gender, birthDate, deleted, banned);
 		// TODO Auto-generated constructor stub
 		userRole=UserRole.MANAGER;
 	}
 	public Manager(String username, String password, String firstName, String lastName, Gender gender, Date birthDate,
 			boolean deleted, boolean banned,Restaurant restaurant) {
-		super(username, password, firstName, lastName, gender, birthDate, deleted, banned,UserRole.MANAGER);
+		super(username, password, firstName, lastName, gender, birthDate, deleted, banned);
 		this.restaurant = restaurant;
 		this.userRole = UserRole.MANAGER;
 	}

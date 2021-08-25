@@ -95,11 +95,5 @@ public abstract class GenericFileRepository<Entity, KeyType> {
 		writeFile(entities);
 	}
 	
-	public void deletePhysical(String id) {
-		HashMap<KeyType, Entity> entities = readFile();
-		entities.remove(id);
-		writeFile(entities);
-	}
-	
 
 }

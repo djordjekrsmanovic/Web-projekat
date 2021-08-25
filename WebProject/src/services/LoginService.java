@@ -26,16 +26,16 @@ public class LoginService {
 	@PostConstruct
 	public void init() {	
 		if (request.getAttribute("AdminDAO")==null) {
-			request.setAttribute("AdminDAO", new AdminDAO(request.getInitParameter("path")));
+			request.setAttribute("AdminDAO", new AdminDAO(request.getRealPath("")));
 		}
 		if (request.getAttribute("ManagerDAO")==null) {
-			request.setAttribute("ManagerDAO", new ManagerDAO(request.getInitParameter("path")));
+			request.setAttribute("ManagerDAO", new ManagerDAO(request.getRealPath("")));
 		}
 		if (request.getAttribute("DelivererDAO")==null) {
-			request.setAttribute("DelivererDAO", new DelivererDAO(request.getInitParameter("path")));
+			request.setAttribute("DelivererDAO", new DelivererDAO(request.getRealPath("")));
 		}
 		if (request.getAttribute("BuyerDAO")==null) {
-			request.setAttribute("BuyerDAO", new BuyerDAO(request.getInitParameter("path")));
+			request.setAttribute("BuyerDAO", new BuyerDAO(request.getRealPath("")));
 		}
 		
 		
@@ -98,14 +98,6 @@ public class LoginService {
 	public String logout() {
 		request.setAttribute("user", null);
 		return "Loged out successfully!";
-	}
-	
-	@GET
-	@Path("/get-loged-user")
-	@Produces(MediaType.APPLICATION_JSON)
-	public User getLogedUser() {
-		User user=(User) request.getAttribute("user");
-		return user;
 	}
 	
 }

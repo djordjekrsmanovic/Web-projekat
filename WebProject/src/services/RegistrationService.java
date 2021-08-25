@@ -36,16 +36,16 @@ public class RegistrationService {
 	@PostConstruct
 	public void init() {
 		if (servletContext.getAttribute("AdminDAO")==null) {
-			servletContext.setAttribute("AdminDAO", new AdminDAO(servletContext.getInitParameter("path")));
+			servletContext.setAttribute("AdminDAO", new AdminDAO(servletContext.getRealPath("")));
 		}
 		if (servletContext.getAttribute("BuyerDAO")==null) {
-			servletContext.setAttribute("BuyerDAO", new BuyerDAO(servletContext.getInitParameter("path")));
+			servletContext.setAttribute("BuyerDAO", new BuyerDAO(servletContext.getRealPath("")));
 		}
 		if (servletContext.getAttribute("DelivererDAO")==null) {
-			servletContext.setAttribute("DelivererDAO", new DelivererDAO(servletContext.getInitParameter("path")));
+			servletContext.setAttribute("DelivererDAO", new DelivererDAO(servletContext.getRealPath("/")));
 		}
 		if (servletContext.getAttribute("ManagerDAO")==null) {
-			servletContext.setAttribute("ManagerDAO", new ManagerDAO(servletContext.getInitParameter("path")));
+			servletContext.setAttribute("ManagerDAO", new ManagerDAO(servletContext.getRealPath("")));
 		}
 		
 	}

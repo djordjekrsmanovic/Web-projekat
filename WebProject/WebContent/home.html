@@ -11,19 +11,33 @@
     <script src="js/home.js"></script>
     
 </head>
-<body style="background-color:rgb(165, 198, 209)">
+<body>
     <!---------------------------Navigation bar ------------------------------>
-    <section class="header">
-		<nav >
-			<a href=""><img src="pictures/logo.png" width="120px" height="60px"></a>
-			<div class="nav-links">
-				<ul id="ul-menu">
-					<li id="loginMenu"><a href="login.html" >Prijava</a></li>
-                    <li id="registrationMenu"><a href="registration.html" >Registracija</a></li>
-				</ul>
-			</div>
-		</nav>
-	</section>
+    <nav class="nav">
+    <div class="nav-menu flex-row">
+        <a href="#" ><img src="pictures/logo.png" width="120px" height="70px"></a>
+    
+    <div >
+        <ul class="nav-items">
+            <li id="prijavaMenu" class="nav-link">
+                <a class="nav-color" href="index.html">Prijava</a>
+            </li>
+            <li id="profileMenu" class="nav-link">
+                <a id="profile" class="nav-color">Moj Profil</a>
+            </li>
+            <li id="pregledMenu" class="nav-link">
+                <a id="pregled" class="nav-color"></a>
+            </li>            
+            <li id="pregledKomentaraMenu" class="nav-link">
+                <a id="pregledKomentara" class="nav-color" href="#"></a>
+            </li>   
+            <li id="logoutMenu" class="nav-link">
+                <a id="logoutButton" class="nav-color" href="#">Odjavi se</a>
+            </li>                    
+        </ul>
+    </div>
+</div>
+    </nav>
 
     <!----------------X----------Navigation bar---------X-------------------->
 
@@ -64,7 +78,7 @@
     </main>
     <!-----------------X-------------Site title and search-----------------X------------->
 
-    <div > 
+
     <!-------------------------------Sort and filtering---------------------------------->
         <div class="restaurants-card" style="background-color:#4287f5;">
 
@@ -126,7 +140,7 @@
     <!---------------X-------------Restaurants-------------------------X---------------->
 
 
-</div>
+    
     
 </body>
 </html>

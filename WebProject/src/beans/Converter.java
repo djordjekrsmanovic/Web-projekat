@@ -40,7 +40,7 @@ public class Converter {
 	}
 	
 	public static Gender getGender(String gender) {
-		if (gender.equalsIgnoreCase("male")) {
+		if (gender.equalsIgnoreCase("muski")) {
 			return Gender.male;
 		}else {
 			return Gender.female;
