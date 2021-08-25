@@ -1,5 +1,7 @@
 package services;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
@@ -13,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 import beans.Deliverer;
 import beans.Manager;
 import beans.User;
+import beans.Order;
 import dao.AdminDAO;
 import dao.BuyerDAO;
 import dao.CommentDAO;
@@ -74,6 +77,15 @@ public class DelivererService {
 		DelivererDAO delDAO = (DelivererDAO) servletContext.getAttribute("DelivererDAO");
 		delDAO.updateProfile(del, user);
 		return "Profil azuriran.";
+	}
+	
+	@GET
+	@Path("/getAllOrders")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Order> getOrders(){
+		
+		OrderDAO oDAO = (OrderDAO) servletContext.getAttribute("OrderDAO");
+		return oDAO.getOrders();
 	}
 
 }

@@ -71,7 +71,9 @@
 	 	let td5 = $("<td></td>");
 	 	let td6 = $("<td></td>");
 	 	td1.append(orders[i].id);
-	 	td2.append(orders[i].dateAndTime);
+	 	let date =orders[i].dateAndTime;
+	 	let formatedDate= formatDate(date);
+	 	td2.append(formatedDate);
 	 	td3.append(orders[i].price);
 	 	td4.append(orders[i].buyerID);
 	 	td5.append(getOrderStatus(orders[i]));
@@ -216,6 +218,19 @@
  	
  	})
  
- 
  }
+ 
+ function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
  
