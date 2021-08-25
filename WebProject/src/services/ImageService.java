@@ -16,7 +16,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import dto.PictureDTO;
-import sun.misc.BASE64Decoder;
+//import sun.misc.BASE64Decoder;
 
 @Path("/images")
 public class ImageService {
@@ -33,7 +33,7 @@ public class ImageService {
 		
 	}
 	
-	@POST
+/*	@POST
 	@Path("/upload-restaurant-logo")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
@@ -53,5 +53,5 @@ public class ImageService {
 		ImageIO.write(buffImg, extension, file);
 		System.out.println("Image " + ".png" + " uploaded.");
 
-	}
+	}*/
 }
