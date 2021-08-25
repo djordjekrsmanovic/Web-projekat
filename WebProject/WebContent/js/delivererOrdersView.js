@@ -41,6 +41,21 @@ $(document).ready(function(){
         searchOrders();
         fillTable(searchResults);
     })
+    
+    $("#filterStatus").change(function(){
+        filterOrdersByStatus();
+        fillTable(loadedOrders);
+    })
+    
+    $("#filterType").change(function(){
+        filterOrdersByType();
+        fillTable(loadedOrders);
+    })
+    
+    $("#sort").change(function(){
+        sortOrders(loadedOrders);
+        fillTable(loadedOrders);
+    })
 	
 })
 
@@ -70,7 +85,7 @@ $(document).ready(function(){
 	 		td6.append(button);
 	 		td6.click(function(){
 	 			i--;
-	 			changeStatus(orders[i]);
+	 			zatraziDostavu(orders[i]);
 	 			i++;
 	 		})
 	 	} else {td6.append("Nedostupno");}
@@ -141,7 +156,7 @@ $(document).ready(function(){
  function filterOrdersByType(){
    loadedOrders=[];
  	$("#tableBody").empty();
- 	var filterType = $("#RestaurantTypeFilter").val();
+ 	var filterType = $("#filterType").val();
  	let i;
  	let duzina = defaultOrders.length;
  	if(filterType!=""){
@@ -155,4 +170,78 @@ $(document).ready(function(){
  	}
  }
  
+   function filterOrdersByStatus(){
+ 	$("#tableBody").empty();
+ 	loadedOrders=[];
+ 	var filterStatus = $("#filterStatus").val();
+ 	let i;
+ 	let duzina = defaultOrders.length;
+ 	if(filterStatus!=""){
+ 	for(i=0; i<duzina;i++){
+ 		if(defaultOrders[i].status===filterStatus){
+ 			loadedOrders.push(defaultOrders[i]);
+ 		} else if(filterStatus==="AllOrders"){
+ 			loadedOrders=defaultOrders;
+ 		}
+ 	}
+ 	}
+ }
+ 
+ function sortOrders(){
+ 	$("#tableBody").empty();
+ 	var sortType = $("#sort").val();
+ 	
+ 	if(sortType==null){
+ 		return;
+ 	}
+ 	if(sortType==="name-ascending"){
+ 		nameAscSort();
+ 	}else if(sortType==="name-descending"){
+ 		nameDescSort();
+ 	}else if(sortType==="price-ascending"){
+ 		priceAscSort();
+ 	}else if(sortType==="price-descending"){
+ 		priceDescSort();
+ 	}else if(sortType==="date-ascending"){
+ 		dateAscSort();
+ 	}else if(sortType==="date-descending"){
+ 		dateDescSort();
+ 	}else { loadedOrders=defaultOrders;}
+ 	
+ }
+ 
+ function nameAscSort(){
+ 	loadedOrders.sort(function(a,b){return a.toLowerCase().name-b.toLowerCase().name;});
+ }
+ function nameDescSort(){
+ 	loadedOrders.sort(function(a,b){return b.toLowerCase().name-a.toLowerCase().name;});
+ }
+ function priceAscSort(){
+ 	loadedOrders.sort(function(a,b){return a.price-b.price;});
+ }
+ function priceDesscSort(){
+ 	loadedOrders.sort(function(a,b){return b.price-a.price;});
+ }
+ function dateAscSort(){
+ 	loadedOrders.sort(function(a,b){return a.date-b.date});
+ }
+ function dateDescSort(){
+ 	loadedOrders.sort(function(a,b){return b.date-a.date});
+ }
+ 
+ function zatraziDostavu(order){
+ 	$.post({
+ 		url:"rest/deliverer/requireDeliver",
+ 		contentType:"json",
+ 		data: JSON.stringify(order),
+ 		success: function(response){
+ 			alert("Zahtjev za dostavu uspjesno upucen.");
+ 		},
+ 		error: function(){
+ 			alert("Interna server greska.");
+ 		}
+ 	
+ 	})
+ 
+ }
  

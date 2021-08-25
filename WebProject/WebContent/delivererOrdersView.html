@@ -30,30 +30,30 @@
                 <input id="dateFrom" type="date" class="form-input">
                 <label>Datum do:</label>
                 <input id="dateTo" type="date" class="form-input"> 
-      <button id="searchButton">Pretrazi</button> <br/>
+      <button id="searchButton">Pretraži</button> <br/>
       <span class="sortSpan">
         <span class="sortTable">
         <br/>
           <select id="sort">
             <option value="" >Podrazumjevani prikaz</option>
-            <option value="nameASC">Ime-rastuće</option>
-            <option value="nameDSC">Ime-opadajuće</option>
-            <option value="priceASC">Cijena-rastuće</option>
-            <option value="priceDSC">Cijena-opadajuće</option>
-            <option value="dateASC">Datum-rastuće</option>
-            <option value="dateDSC">Datum-opadajuće</option>
+            <option value="name-ascending">Ime-rastuće</option>
+            <option value="name-descending">Ime-opadajuće</option>
+            <option value="price-ascending">Cijena-rastuće</option>
+            <option value="price-descending">Cijena-opadajuće</option>
+            <option value="date-ascending">Datum-rastuće</option>
+            <option value="date-descending">Datum-opadajuće</option>
           </select>
         </span>
         <span class="filterTable" >
           <select id="filterType">
-            <option value="">Sve</option>
+            <option value="AllOrders">Sve</option>
             <option value="ITALIAN">Italijanski</option>
             <option value="JAPANESE">Japanski</option>
             <option value="GRILL">Grill</option>
             <option value="ETNO">Etno</option>
           </select>
           <select id="filterStatus">
-            <option value="">Sve</option>
+            <option value="AllOrders">Sve</option>
             <option value="OBRADA">Obrada</option>
             <option value="U_PRIPREMI">U pripremi</option>
             <option value="CEKA_DOSTAVLJACA">Čeka dostavljača </option>
@@ -74,9 +74,9 @@
                   <th>ID</th>
 				  <th>Datum</th>
 			      <th>Cijena</th>
-			      <th>Korisnicko ime kupca</th>
+			      <th>Korisničko ime kupca</th>
 			      <th>Status</th>
-			      <th>Zatrazi dostavu</th>
+			      <th>Zatraži dostavu</th>
                 </tr>
               </thead>
               <tbody id='tableBody'>

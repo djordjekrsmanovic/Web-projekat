@@ -13,12 +13,12 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import beans.Deliverer;
-import beans.Manager;
 import beans.User;
 import beans.Order;
 import dao.AdminDAO;
 import dao.BuyerDAO;
 import dao.CommentDAO;
+import dao.DeliverRequestDAO;
 import dao.DelivererDAO;
 import dao.ManagerDAO;
 import dao.OrderDAO;
@@ -59,6 +59,9 @@ public class DelivererService {
 		if (servletContext.getAttribute("CommentDAO")==null) {
 			servletContext.setAttribute("CommentDAO", new CommentDAO(servletContext.getRealPath("")));
 		}
+		if (servletContext.getAttribute("DeliverRequestDAO")==null) {
+			servletContext.setAttribute("DeliverRequestDAO", new DeliverRequestDAO(servletContext.getRealPath("")));
+		}
 	}
 	
 	@GET
@@ -88,4 +91,14 @@ public class DelivererService {
 		return oDAO.getOrders();
 	}
 
+	@POST
+	@Path("/requireDeliver")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public String requireDeliver(Order o) {
+		DeliverRequestDAO req = (DeliverRequestDAO) servletContext.getAttribute("DeliverRequestDAO");
+		Deliverer d = (Deliverer) servletContext.getAttribute("user");
+		req.createRequest(o, d);
+		return "Success";
+	}
 }
