@@ -11,6 +11,13 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
+import beans.Buyer;
+import beans.Comment;
+import beans.Manager;
+import beans.Order;
+import beans.Product;
+import beans.Restaurant;
+import beans.User;
 import dao.AdminDAO;
 import dao.BuyerDAO;
 import dao.CommentDAO;
@@ -19,13 +26,7 @@ import dao.ManagerDAO;
 import dao.OrderDAO;
 import dao.ProductDAO;
 import dao.RestaurantDAO;
-import beans.Buyer;
-import beans.Comment;
-import beans.Manager;
-import beans.Order;
-import beans.Product;
-import beans.Restaurant;
-import beans.User;
+
 
 @Path("/manager")
 public class ManagerService {
@@ -37,28 +38,28 @@ public class ManagerService {
 	@PostConstruct
 	public void init() {	
 		if (servletContext.getAttribute("AdminDAO")==null) {
-			servletContext.setAttribute("AdminDAO", new AdminDAO(servletContext.getRealPath("")));
+			servletContext.setAttribute("AdminDAO", new AdminDAO(servletContext.getInitParameter("path")));
 		}
 		if (servletContext.getAttribute("ManagerDAO")==null) {
-			servletContext.setAttribute("ManagerDAO", new ManagerDAO(servletContext.getRealPath("")));
+			servletContext.setAttribute("ManagerDAO", new ManagerDAO(servletContext.getInitParameter("path")));
 		}
 		if (servletContext.getAttribute("DelivererDAO")==null) {
-			servletContext.setAttribute("DelivererDAO", new DelivererDAO(servletContext.getRealPath("")));
+			servletContext.setAttribute("DelivererDAO", new DelivererDAO(servletContext.getInitParameter("path")));
 		}
 		if (servletContext.getAttribute("BuyerDAO")==null) {
-			servletContext.setAttribute("BuyerDAO", new BuyerDAO(servletContext.getRealPath("")));
+			servletContext.setAttribute("BuyerDAO", new BuyerDAO(servletContext.getInitParameter("path")));
 		}
 		if (servletContext.getAttribute("ProductDAO")==null) {
-			servletContext.setAttribute("ProductDAO", new ProductDAO(servletContext.getRealPath("")));
+			servletContext.setAttribute("ProductDAO", new ProductDAO(servletContext.getInitParameter("path")));
 		}
 		if (servletContext.getAttribute("RestaurantDAO")==null) {
-			servletContext.setAttribute("RestaurantDAO", new RestaurantDAO(servletContext.getRealPath("")));
+			servletContext.setAttribute("RestaurantDAO", new RestaurantDAO(servletContext.getInitParameter("path")));
 		}
 		if (servletContext.getAttribute("OrderDAO")==null) {
-			servletContext.setAttribute("OrderDAO", new OrderDAO(servletContext.getRealPath("")));
+			servletContext.setAttribute("OrderDAO", new OrderDAO(servletContext.getInitParameter("path")));
 		}
 		if (servletContext.getAttribute("CommentDAO")==null) {
-			servletContext.setAttribute("CommentDAO", new CommentDAO(servletContext.getRealPath("")));
+			servletContext.setAttribute("CommentDAO", new CommentDAO(servletContext.getInitParameter("path")));
 		}
 	}
 	

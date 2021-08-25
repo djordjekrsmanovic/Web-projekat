@@ -16,7 +16,8 @@
     },
     "picturePath" : "",
     "deleted" : false,
-    "raiting" : 0
+    "raiting" : 0,
+    "managerID" : "bojan"
   },
   "Vidikovac" : {
     "name" : "Vidikovac",
@@ -35,6 +36,7 @@
     },
     "picturePath" : "",
     "deleted" : false,
-    "raiting" : 0
+    "raiting" : 0,
+    "managerID" : "manager"
   }
 }

@@ -7,7 +7,7 @@
     <title>Document</title>
     <link href="css/adminChangeRestaurantManager.css" rel="stylesheet" >
     <script src="jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="js/adminChangeRestaurantManager.js"></script>
+    <script type="text/javascript" src="js/adminChangeManager.js"></script>
 </head>
 <body>
     <section class="header">
@@ -16,11 +16,13 @@
 			<div class="nav-links">
 				<ul>
 					<li><a href="home.html">Početna strana</a></li>
-          <li><a href="">Restorani</a></li>
-          <li><a href="">Kupci</a></li>
-          <li><a href="">Korisnici</a></li>
-					<li><a href="">Profil</a></li>
-					<li><a href="">Odjava</a></li>
+          <li><a href="adminRestaurantsView.html">Restorani</a></li>
+          <li><a href="adminBuyersView.html">Kupci</a></li>
+          <li><a href="adminUsersView.html">Korisnici</a></li>
+          <li><a href="adminAddRestaurant.html">Dodaj restoran</a></li>
+          <li><a href="adminAddUser.html">Dodaj korisnika</a></li>
+					<li><a href="adminProfileView.html">Profil</a></li>
+                    <li><a href="" id='logout'>Odjava</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -35,11 +37,8 @@
                         <span style="margin-top: 100px; margin-left: 20px; font-size: large;">Dostupni menadžeri:</span>
                         
                     <span style="margin-top: 100px; margin-left: 5px;">
-                        <select style="font-size: medium;">
-                            <option>Milan Antonijević</option>
-                            <option>Marko Krkobabević</option>
-                            <option>Menadzer1</option>
-                            <option>Menadzer1</option>
+                        <select id='selectedManager' style="font-size: medium;" >
+                            
                         </select>
                     </span>
                     </div>
@@ -50,8 +49,8 @@
                 </div>
             </div>
             <div style="margin-top: 70px;">
-                <button class="confirmButton">Potvrdi</button>
-                <button class="cancelButton">Otkazi</button>
+                <button class="confirmButton" id='confirm'>Potvrdi</button>
+                <button class="cancelButton" id='cancel'>Otkazi</button>
             </div>  
         </div>
         

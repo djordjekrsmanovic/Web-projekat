@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;1,700&display=swap');
+
+*{
+    margin: 0%;
+    box-sizing: border-box;
+    overflow: auto;
+    font-family: 'Roboto Condensed', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body{
+	background:linear-gradient(to right,#7980ce,lightblue);
+    height: 100%;
+}
+
+.header{
+	background-size: cover;
+    background-color: lightgreen;
+
+}
+nav{
+	display: flex;
+	padding: 0.5% 3%;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.nav-links{
+ 	flex: 1;
+ 	text-align: right;
+}
+
+.nav-links ul li{
+	list-style: none;
+	display: inline-block;
+	padding: 8px 12px;
+	position: relative;
+}
+
+.nav-links ul li a{
+	color: #fff;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+
+
+.nav-links ul li::after {
+	content: '';
+	width: 0%;
+	height: 2px;
+	background: green;
+	display: block;
+	margin: auto;
+	transition: 0.5s;
+}
+
+.nav-links ul li:hover::after{
+	width: 100%;
+}
+
+
+.editDiv{
+    margin-top: 40px;
+    width: 600px;
+    background-color: white;
+    border-radius: 10px;
+    margin-left: 28%;
+    margin-bottom: 50px;
+}
+
+.editData{
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    margin: 20px;
+}
+
+.editData label{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.editData input{
+    height: 30px;
+}
+
+.title{
+    font-weight: bolder;
+    font-size: xx-large;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.editData button{
+    margin-left: 15px;
+    border: 0px;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(108, 168, 236);
+    cursor: pointer;
+}
+
+
+
+.submitButtonClass{
+    margin: 50px;
+    margin-left: 42%;
+    height: 40px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    background-color: rgb(16, 204, 57);
+    border: 0px;
+    color: white;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.error-message{
+    margin-left: 210px;
+    font-size: 18px;
+    color: rgb(241, 76, 76);
+    margin-bottom: 10px;
+}
+
+.wrongUsername{
+    border:solid 2px red;
+}
+

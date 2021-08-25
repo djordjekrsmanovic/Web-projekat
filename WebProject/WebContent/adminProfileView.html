@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="css/adminProfileView.css" rel="stylesheet" >
+    <script src="jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/adminProfileView.js"></script>
+</head>
+<body>
+    <section class="header">
+		<nav >
+			<a href=""><img src="pictures/logo.png" width="120px" height="60px"></a>
+			<div class="nav-links">
+				<ul>
+					<li><a href="home.html">Početna strana</a></li>
+          <li><a href="adminRestaurantsView.html">Restorani</a></li>
+          <li><a href="adminBuyersView.html">Kupci</a></li>
+          <li><a href="adminUsersView.html">Korisnici</a></li>
+          <li><a href="adminAddRestaurant.html">Dodaj restoran</a></li>
+          <li><a href="adminAddUser.html">Dodaj korisnika</a></li>
+		  <li><a href="adminProfileView.html">Profil</a></li>
+		  <li><a href="" id='logout'>Odjava</a></li>
+				</ul>
+			</div>
+		</nav>
+	</section>
+
+    
+
+    <div class="container">
+        <div class="pictureWelcome">
+
+        </div>
+        <div class="profile">
+            <div class="edit-profile">
+                <button id='changeButton'>Izmijeni profil</button>
+            </div>
+            <div style="margin:30px">
+                <span class="profile-title">Ime:</span>
+                <span class="profile-value" id='name'></span>
+            </div>
+            <div style="margin:30px">
+                <span class="profile-title">Prezime:</span>
+                <span class="profile-value" id='lastname'></span>
+            </div>
+            <div style="margin:30px">
+                <span class="profile-title">Korisničko ime:</span>
+                <span class="profile-value" id='username'></span>
+            </div>
+
+            <div style="margin:30px">
+                <span class="profile-title">Datum rođenja:</span>
+                <span class="profile-value" id='birthDate'></span>
+            </div>
+            <div style="margin:30px">
+                <span class="profile-title">Pol:</span>
+                <span class="profile-value" id='gender' ></span>
+            </div>
+        </div>
+        
+    </div>
+
+    <p class="comments-title">Komentari</p>
+    <div class="tbl-header">
+        <table class="r-table" cellpadding="0" cellspacing="0" border="0">
+          <thead>
+            <tr>
+              
+              <th>Kupac</th>
+              <th>Restoran</th>
+              <th>Ocjena</th>
+              <th style="width: 35%;">Sadržaj komentara</th>
+              <th>Stanje komentara</th>
+              
+            </tr>
+          </thead>
+          <tbody id='tableBody'>
+            
+          </tbody>
+        </table>
+      </div>
+      </div>
+
+        
+    
+      
+</body>
+</html>

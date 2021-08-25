@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="css/changeProfile.css" rel="stylesheet" >
+    <script src="jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/changeProfile.js"></script>
+</head>
+<body>
+    <section class="header">
+		<nav >
+			<a href=""><img src="pictures/logo.png" width="120px" height="60px"></a>
+			<div class="nav-links">
+				<ul id="ul-menu">
+					
+				</ul>
+			</div>
+		</nav>
+	</section>
+    
+    <section>
+        <section>
+        <div class="editDiv"> 
+
+        <p class="title">Izmjena profila</p>
+        <form id="editProfile"> 
+            
+            <div class="editData">
+                <label>Korisničko ime:</label>
+                <input id="userName" type="text" />
+            </div>
+
+            <div class="editData">
+                <label>Ime:</label>
+                <input id="name" type="text"  />
+            </div>
+
+            <div class="editData">
+                <label>Prezime:</label>
+                <input id="lastname" type="text" /> 
+            </div>
+
+            <div class="editData">
+                <label>Pol:</label>
+                <select id="managerSex">
+                    <option value="male">Muški</option>
+                    <option value="female">Ženski</option>                   
+                </select>
+            </div>
+
+            <div class="editData">
+                <label>Lozinka:</label>
+                <input type="password" id="oldPassword" /> 
+            </div>
+
+            
+
+            <div class="editData">
+                <label>Datum rodjenja:</label>
+                <input id="datapicker" type="text">   
+            </div>    
+            <button  id="submitButton" class="submitButtonClass">Izmijeni podatke</button>
+        
+        </form>
+        <p id="error" class="error-message"></p>
+        </div> 
+        </section>  
+      
+</body>
+</html>

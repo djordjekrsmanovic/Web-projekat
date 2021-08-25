@@ -16,14 +16,14 @@ public class Buyer extends User {
 	}
 	public Buyer(String username, String password, String firstName, String lastName, Gender gender, Date birthDate,
 			boolean deleted, boolean banned) {
-		super(username, password, firstName, lastName, gender, birthDate, deleted, banned);
+		super(username, password, firstName, lastName, gender, birthDate, deleted, banned,UserRole.BUYER);
 		// TODO Auto-generated constructor stub
 		userRole=UserRole.BUYER;
 		this.buyerType=new BuyerType();
 	}
 	public Buyer(String username, String password, String firstName, String lastName, Gender gender, Date birthDate,
 			boolean deleted, boolean banned, List<Order> orders, int points) {
-		super(username, password, firstName, lastName, gender, birthDate, deleted, banned);
+		super(username, password, firstName, lastName, gender, birthDate, deleted, banned,UserRole.BUYER);
 		this.userRole = UserRole.BUYER;
 		this.orders = orders;
 		this.points = points;
@@ -32,7 +32,7 @@ public class Buyer extends User {
 	
 	public Buyer(String username, String password, String firstName, String lastName, Gender gender, Date birthDate,
 			boolean deleted, boolean banned, int points) {
-		super(username, password, firstName, lastName, gender, birthDate, deleted, banned);
+		super(username, password, firstName, lastName, gender, birthDate, deleted, banned,UserRole.BUYER);
 		this.userRole = UserRole.BUYER;
 		this.orders = new ArrayList<Order>();
 		this.points = points;
