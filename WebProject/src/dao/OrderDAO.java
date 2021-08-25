@@ -74,11 +74,17 @@ public class OrderDAO extends GenericFileRepository<Order, String> {
 				"","bojan");
 		Order order = new Order("1234567891", cartItems, restaurant, Converter.convertStringtoDate("13.3.2021."),
 				"djordje", OrderStatus.CEKA_DOSTAVLJACA);
+		Order order1 = new Order("1112334455",cartItems,restaurant, Converter.convertStringtoDate("23.7.2021."),"djordje", OrderStatus.U_TRANSPORTU);
+		Order order2 = new Order("2234549891", cartItems, restaurant, Converter.convertStringtoDate("30.5.2021."),
+				"djordje", OrderStatus.U_TRANSPORTU);
 		createOrUpdate(order);
+		createOrUpdate(order1);
+		createOrUpdate(order2);
 	}
 
-	public OrderDAO(String contextPath) {
+	public OrderDAO(String contextPath) {	
 		this.contextPath = contextPath;
+		generateOrder();
 	}
 	
 	public List<Buyer> getBuyersForManager(String managerID, List<Buyer> kupci){
@@ -112,6 +118,15 @@ public class OrderDAO extends GenericFileRepository<Order, String> {
 			}
 		}
 		return null;
+	}
+	
+	public void deliverOrder(Order ord) {
+		for(Order o : this.getOrders()) {
+			if(o.getId().equals(ord.getId())) {
+				o.setStatus(OrderStatus.DOSTAVLJENA);
+				this.update(o);
+			}
+		}
 	}
 	
 }

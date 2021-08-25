@@ -7,22 +7,22 @@ loadedOrders=[];
 searchResults=[];
 
 $(document).ready(function(){
-	 $.get({
-	 	url:"rest/deliverer/getAllOrders",
-	 	dataType:"json",
-	 	success: function(orders){
-	 	for(order of orders){
+	$.get({
+		url:"rest/deliverer/getMyOrders",
+		dataType:"json",
+		success: function(orders){
+			for(order of orders){
  			loadedOrders.push(order);
  			defaultOrders.push(order);
  		}		 
  		 fillTable(orders);
-	 	},
-	 	error:function(){
-	 		alert("Interna server greska");
-	 	}
-	 
-	 })
-	 
+		},
+		error: function(){
+			alert("Interna greska servera.");
+		}
+		
+	})
+	
 	 $("#logoutButton").click(function(){
 		if(window.confirm("Da li zaista zelite da se odjavite?")){
 			$.get({
@@ -36,8 +36,8 @@ $(document).ready(function(){
 			return;
 		}	
 	})
-	 
-	  $('#searchButton').click(function(){
+	
+	 $('#searchButton').click(function(){
         searchOrders();
         fillTable(searchResults);
     })
@@ -56,11 +56,7 @@ $(document).ready(function(){
         sortOrders(loadedOrders);
         fillTable(loadedOrders);
     })
-
-	$("#myOrdersView").click(function(){
-		window.location.href='/WebProject/delivererPersonalOrders.html';
-	})
-	
+		
 })
 
  function fillTable(orders){
@@ -83,13 +79,13 @@ $(document).ready(function(){
 	 	td3.append(orders[i].price);
 	 	td4.append(orders[i].buyerName);
 	 	td5.append(getOrderStatus(orders[i]));
-	 	if(getOrderStatus(orders[i])==="Ceka dostavljaca"){
+	 	if(getOrderStatus(orders[i])==="U transportu"){
 	 	    let button = $("<button></button>", {id:"changeStatusButton"});
-	 	    button.append("Zatrazi dostavu");
+	 	    button.append("Zavrsi dostavu");
 	 		td6.append(button);
 	 		td6.click(function(){
 	 			i--;
-	 			zatraziDostavu(orders[i]);
+	 			dostavi(orders[i]);
 	 			i++;
 	 		})
 	 	} else {td6.append("Nedostupno");}
@@ -101,11 +97,9 @@ $(document).ready(function(){
  		tr.append(td5);
  		tr.append(td6);
  		table.append(tr);
- 	}
- 
+ 	} 
  }
- 
- 
+
  function getOrderStatus(order){
  	if(order.status==="OBRADA"){return "Obrada";}
  	else if(order.status==="U_PRIPREMI"){return "U pripremi";}
@@ -114,7 +108,7 @@ $(document).ready(function(){
  	else if(order.status==="DOSTAVLJENA"){return "Dostavljena";}
  	else { return "Otkazana";}
  }
- 
+
  function formatDate(date) {
     var d = new Date(date),
         month = '' + (d.getMonth() + 1),
@@ -128,9 +122,8 @@ $(document).ready(function(){
 
     return [year, month, day].join('-');
     }
-    
-    
-  function searchOrders(){
+
+function searchOrders(){
  	 $("#tableBody").empty();
  	 searchResults=[];
 	 let name = $("#name").val().toLowerCase();
@@ -232,20 +225,18 @@ $(document).ready(function(){
  function dateDescSort(){
  	loadedOrders.sort(function(a,b){return b.date-a.date});
  }
- 
- function zatraziDostavu(order){
- 	$.post({
- 		url:"rest/deliverer/requireDeliver",
- 		contentType:"json",
- 		data: JSON.stringify(order),
- 		success: function(response){
- 			alert("Zahtjev za dostavu uspjesno upucen.");
- 		},
- 		error: function(){
- 			alert("Interna server greska.");
- 		}
- 	
- 	})
- 
- }
- 
+
+function dostavi(order){
+	$.post({
+		url:"rest/deliverer/deliverOrder",
+		contentType:"application/json",
+		data: JSON.stringify(order),
+		success: function(){
+			alert("Dostava zavrsena.");
+			$("#changeStatusButton").disable();
+		},
+		error: function(){
+			alert("Interna server greska.");
+		}
+	})
+}

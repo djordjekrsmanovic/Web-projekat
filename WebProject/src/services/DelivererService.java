@@ -101,4 +101,25 @@ public class DelivererService {
 		req.createRequest(o, d);
 		return "Success";
 	}
+	
+	@GET
+	@Path("/getMyOrders")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Order> getMyOrders(){
+		
+		DelivererDAO dDAO = (DelivererDAO) servletContext.getAttribute("DelivererDAO");
+		User user = (User) servletContext.getAttribute("user");
+		return dDAO.getMyOrders(user);
+	}
+	
+	@POST
+	@Path("/deliverOrder")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public String deliverOrder(Order o) {
+		OrderDAO oDAO = (OrderDAO) servletContext.getAttribute("OrderDAO");
+		oDAO.deliverOrder(o);
+		return "Success";
+	}
+	
 }
