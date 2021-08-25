@@ -113,4 +113,13 @@ public class OrderDAO extends GenericFileRepository<Order, String> {
 		return null;
 	}
 	
+	public void deliverOrder(Order ord) {
+		for(Order o : this.getOrders()) {
+			if(o.getId().equals(ord.getId())) {
+				o.setStatus(OrderStatus.DOSTAVLJENA);
+				this.update(o);
+			}
+		}
+	}
+	
 }

@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Moj nalog</title>
-	<script src="app/profile.js"></script>
 	<script src="jquery-3.3.1.min.js"></script>
+	<script src="js/delivererProfile.js"></script>
 	<link href="css/nalog.css" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
 </head>
@@ -12,41 +12,44 @@
 
 	<section class="header">
 		<nav >
-			<a href=""><img src="pictures/logo.png" width="120px" height="60px"></a>
+			<a href=""><img src="pictures/logo.png" width="120px" height="70px"></a>
 			<div class="nav-links">
 				<ul>
 					<li><a href="home.html">Početna strana</a></li>
-					<li><a href="">Pregled porudžbina</a></li>
-					<li><a href="">Odjava</a></li>
+					<li><a href="delivererOrdersView.html">Pregled porudžbina</a></li>
+					<li><a id="logoutButton" href="">Odjava</a></li>
 				</ul>
 			</div>
 		</nav>
 	</section>
 <section class="pozadina">
-	<section class="editSection">
-	<div id="podaci">                    
-	    <label>Korisničko ime:</label>
-		<input id="profileUsername" type="text" /> 
-	    <label>Ime:</label>
-		<input id="profileName" type="text"  /> 
-	    <label>Prezime:</label>
-	    <input id="profileSurname" type="text" /> 
-	    <label>Pol:</label>
-	    <select id="profileSex">
-	        <option value="M">Muški</option>
-	        <option value="F">Ženski</option>                   
-	    </select> 
-	    <label>Trenutna lozinka:</label>
-	    <input type="password" id="oldPassword" /> 
-	    <label>Nova lozinka:</label>
-	    <input type="password" id="NewPassword" /> 
-	    <label>Ponovite novu lozinku:</label>
-	    <input type="password" id="RepeatedNewPassword" /> 
-	    <label>Datum rodjenja:</label>
-	    <input id="datum" type="date" >          
-	    <button type="submit" >Izmjeni podatke</button>
+	<section>
+	<div id="podaci" class="editSection"> 
+	<form id="editProfile"> 
+		<table>                  
+	    <tr><td><label>Korisničko ime:</label></td><td>
+		<input id="delivererUsername" type="text" /></td></tr>
+	    <tr><td><label>Ime:</label></td><td>
+		<input id="delivererName" type="text"  /></td></tr> 
+	    <tr><td><label>Prezime:</label></td><td>
+	    <input id="delivererSurname" type="text" /></td></tr> 
+	    <tr><td><label>Pol:</label></td><td>
+	    <select id="delivererSex">
+	        <option value="male">Muški</option>
+	        <option value="female">Ženski</option>                   
+	    </select></td></tr> 
+	    <tr><td><label>Trenutna lozinka:</label></td><td>
+	    <input type="password" id="oldPassword" /></td></tr> 
+	    <tr><td><label>Nova lozinka:</label></td><td>
+	    <input type="password" id="NewPassword" /></td></tr> 
+	    <tr><td><label>Ponovite novu lozinku:</label></td><td>
+	    <input type="password" id="RepeatedNewPassword" /></td></tr> 
+	    <tr><td><label>Datum rodjenja:</label></td><td>
+	    <input id="datum" type="date" ></td></tr>          
+	    <tr><td><button type="submit" >Izmjeni podatke</button></td><td id="error"></td></tr>
+	</table>
+	</form>
 	</div> 
-	</section>  
-</section>
+	</section> 
 </body>
 </html>
