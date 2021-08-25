@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Porudzbine</title>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="js/delivererOrdersView.js"></script>
+    <link type="text/css" href="css/delivererOrdersView.css" rel="stylesheet">   
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section class="header">
+		<nav >
+			<a href=""><img src="pictures/logo.png" width="120px" height="60px"></a>
+			<div class="nav-links">
+				<ul>
+					<li><a href="home.html">Početna strana</a></li>
+         			<li><a href="delivererProfile.html">Moj nalog</a></li>
+					<li><a href="" id="logoutButton">Odjava</a></li>
+				</ul>
+			</div>
+		</nav>
+	</section>
+
+  <section class="dugmadMenija">
+    <button class="dugme" id="myOrdersView">Moje dostave</button>
+  </section>
+
+    <div class="search-div">
+      <input id="name" type="text" class="form-input" placeholder="Naziv restorana">
+                <input id="priceFrom" type="text" class="form-input" placeholder="Cijena porudžbine od">
+                <input id="priceTo" type="text" class="form-input" placeholder="Cijena porudžbine do">
+                <label>Datum od:</label>
+                <input id="dateFrom" type="date" class="form-input">
+                <label>Datum do:</label>
+                <input id="dateTo" type="date" class="form-input"> 
+      <button id="searchButton">Pretraži</button> <br/>
+      <span class="sortSpan">
+        <span class="sortTable">
+        <br/>
+          <select id="sort">
+            <option value="" >Podrazumjevani prikaz</option>
+            <option value="name-ascending">Ime-rastuće</option>
+            <option value="name-descending">Ime-opadajuće</option>
+            <option value="price-ascending">Cijena-rastuće</option>
+            <option value="price-descending">Cijena-opadajuće</option>
+            <option value="date-ascending">Datum-rastuće</option>
+            <option value="date-descending">Datum-opadajuće</option>
+          </select>
+        </span>
+        <span class="filterTable" >
+          <select id="filterType">
+            <option value="AllOrders">Sve</option>
+            <option value="ITALIAN">Italijanski</option>
+            <option value="JAPANESE">Japanski</option>
+            <option value="GRILL">Grill</option>
+            <option value="ETNO">Etno</option>
+          </select>
+          <select id="filterStatus">
+            <option value="AllOrders">Sve</option>
+            <option value="OBRADA">Obrada</option>
+            <option value="U_PRIPREMI">U pripremi</option>
+            <option value="CEKA_DOSTAVLJACA">Čeka dostavljača </option>
+            <option value="U_TRANSPORTU">U transportu</option>
+            <option value="DOSTAVLJENA">Dostavljena</option>
+            <option value="OTKAZANA">Otkazana</option>
+          </select>
+        </span>
+      </span>
+      
+    </div>
+    
+    <section background:linear-gradient(lightblue, #7980ce)>
+        <div class="tbl-header">
+            <table class="r-table" cellpadding="0" cellspacing="0" border="0">
+              <thead>
+                <tr>
+                  <th>ID</th>
+				  <th>Datum</th>
+			      <th>Cijena</th>
+			      <th>Korisničko ime kupca</th>
+			      <th>Status</th>
+			      <th>Zatraži dostavu</th>
+                </tr>
+              </thead>
+              <tbody id='tableBody'>
+                
+              </tbody>
+            </table>
+          </div>
+          </div>
+    </section>
+    
+      
+</body>
+</html>
