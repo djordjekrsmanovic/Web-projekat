@@ -39,6 +39,10 @@ $(document).ready(function(){
             }
         })
     })
+
+    $('#changeButton').click(function(){
+        window.location.href="http://localhost:8080/WebProject/changeProfile.html";
+    })
 })
 
 function fillUserData(user){

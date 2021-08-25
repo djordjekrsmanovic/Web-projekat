@@ -5,9 +5,10 @@
     "firstName" : "Milan",
     "lastName" : "Markovic",
     "gender" : "male",
-    "birthDate" : 916268400000,
+    "birthDate" : 949359600000,
     "deleted" : false,
     "banned" : false,
+    "role" : null,
     "userRole" : "ADMIN"
   },
   "admin2" : {
