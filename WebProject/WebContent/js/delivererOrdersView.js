@@ -237,9 +237,9 @@ $(document).ready(function(){
  	$.post({
  		url:"rest/deliverer/requireDeliver",
  		contentType:"json",
- 		data: JSON.stringify(order),
+ 		data: order,
  		success: function(response){
- 			alert("Zahtjev za dostavu uspjesno upucen.");
+ 			alert(response);
  		},
  		error: function(){
  			alert("Interna server greska.");

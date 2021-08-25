@@ -116,7 +116,6 @@ public class DelivererDAO extends GenericFileRepository<Deliverer, String> {
 	
 	
 	public List<Order> getMyOrders(User u){
-		generateDeliverer();
 		for(Deliverer d : this.getDeliverers()) {
 			if(d.getUsername().equals(u.getUsername())) {
 				return d.getOredersWaitingForDelivery();

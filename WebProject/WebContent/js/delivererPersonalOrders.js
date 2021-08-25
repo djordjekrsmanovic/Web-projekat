@@ -56,6 +56,23 @@ $(document).ready(function(){
         sortOrders(loadedOrders);
         fillTable(loadedOrders);
     })
+
+	$("#undeliveredView").click(function(){
+		$("#tableBody").empty();
+ 		loadedOrders=[];
+	 	var filterStatus;
+	 	let i;
+	 	let duzina = defaultOrders.length;
+	 	if(filterStatus!="Dostavljena"){
+	 	for(i=0; i<duzina;i++){
+	 		if(defaultOrders[i].status===filterStatus){
+	 			loadedOrders.push(defaultOrders[i]);
+	 		} 
+	 	}
+	 	}
+		fillTable(loadedOrders);
+	
+	})
 		
 })
 

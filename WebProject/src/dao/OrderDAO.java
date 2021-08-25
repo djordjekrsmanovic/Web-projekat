@@ -84,7 +84,6 @@ public class OrderDAO extends GenericFileRepository<Order, String> {
 
 	public OrderDAO(String contextPath) {	
 		this.contextPath = contextPath;
-		generateOrder();
 	}
 	
 	public List<Buyer> getBuyersForManager(String managerID, List<Buyer> kupci){

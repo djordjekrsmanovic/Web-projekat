@@ -99,7 +99,7 @@ public class DelivererService {
 		DeliverRequestDAO req = (DeliverRequestDAO) servletContext.getAttribute("DeliverRequestDAO");
 		Deliverer d = (Deliverer) servletContext.getAttribute("user");
 		req.createRequest(o, d);
-		return "Success";
+		return "Zahtjev za dostavu uspjesno upucen.";
 	}
 	
 	@GET
