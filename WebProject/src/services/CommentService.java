@@ -26,7 +26,7 @@ public class CommentService {
 	@PostConstruct
 	public void init() {
 		if (servletContext.getAttribute("commentDAO")==null) {
-			servletContext.setAttribute("commentDAO", new CommentDAO(servletContext.getRealPath("")));
+			servletContext.setAttribute("commentDAO", new CommentDAO(servletContext.getInitParameter("path")));
 		}
 	}
 	

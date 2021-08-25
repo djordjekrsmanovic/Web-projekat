@@ -39,10 +39,10 @@ public class RestaurantService {
 	public void init() {
 		
 		if (servletContext.getAttribute("RestaurantDAO")==null) {
-			servletContext.setAttribute("RestaurantDAO", new RestaurantDAO(servletContext.getRealPath("")));
+			servletContext.setAttribute("RestaurantDAO", new RestaurantDAO(servletContext.getInitParameter("path")));
 		}
 		if (servletContext.getAttribute("ManagerDAO")==null) {
-			servletContext.setAttribute("ManagerDAO", new ManagerDAO(servletContext.getRealPath("")));
+			servletContext.setAttribute("ManagerDAO", new ManagerDAO(servletContext.getInitParameter("path")));
 		}
 	}
 	
@@ -52,7 +52,7 @@ public class RestaurantService {
 	public List<Restaurant> load(){
 		RestaurantDAO restaurantDAO=(RestaurantDAO) servletContext.getAttribute("RestaurantDAO");
 		System.out.print("\n\n\n\nUSAO SAM U SERVIS RESTORANA");
-		restaurantDAO.generateRestaurant();
+		//restaurantDAO.generateRestaurant();
 		System.out.println("Broj restorana je " + restaurantDAO.getRestaurants().size());
 		return restaurantDAO.getRestaurants();
 	}

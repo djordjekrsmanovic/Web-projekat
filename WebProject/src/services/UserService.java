@@ -37,16 +37,16 @@ public class UserService {
 	@PostConstruct
 	public void init() {
 		if (servletContext.getAttribute("AdminDAO")==null) {
-			servletContext.setAttribute("AdminDAO", new AdminDAO(servletContext.getRealPath("")));
+			servletContext.setAttribute("AdminDAO", new AdminDAO(servletContext.getInitParameter("path")));
 		}
 		if (servletContext.getAttribute("ManagerDAO")==null) {
-			servletContext.setAttribute("ManagerDAO", new ManagerDAO(servletContext.getRealPath("")));
+			servletContext.setAttribute("ManagerDAO", new ManagerDAO(servletContext.getInitParameter("path")));
 		}
 		if (servletContext.getAttribute("DelivererDAO")==null) {
-			servletContext.setAttribute("DelivererDAO", new DelivererDAO(servletContext.getRealPath("")));
+			servletContext.setAttribute("DelivererDAO", new DelivererDAO(servletContext.getInitParameter("path")));
 		}
 		if (servletContext.getAttribute("BuyerDAO")==null) {
-			servletContext.setAttribute("BuyerDAO", new BuyerDAO(servletContext.getRealPath("")));
+			servletContext.setAttribute("BuyerDAO", new BuyerDAO(servletContext.getInitParameter("path")));
 		}
 	}
 	

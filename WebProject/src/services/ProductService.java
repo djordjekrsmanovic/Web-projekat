@@ -27,7 +27,7 @@ public class ProductService {
 	public void init() {
 		
 		if (servletContext.getAttribute("ProductDAO")==null) {
-			servletContext.setAttribute("ProductDAO", new ProductDAO(servletContext.getRealPath("")));
+			servletContext.setAttribute("ProductDAO", new ProductDAO(servletContext.getInitParameter("path")));
 		}
 		
 	}
