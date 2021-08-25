@@ -1,4 +1,3 @@
-@charset "ISO-8859-1";
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;1,700&display=swap');
 
 *{
@@ -6,18 +5,19 @@
     box-sizing: border-box;
     overflow: auto;
     font-family: 'Roboto Condensed', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body{
+	background:linear-gradient(to right,#7980ce,lightblue);
+    height: 100%;
 }
 
 .header{
 	background-size: cover;
     background-color: lightgreen;
-    height: 15vh;
-}
 
-.pozadina{
-	background-color: lightblue;
 }
-
 nav{
 	display: flex;
 	padding: 0.5% 3%;
@@ -40,7 +40,11 @@ nav{
 .nav-links ul li a{
 	color: #fff;
 	text-decoration: none;
-	font-size: 13;
+	font-size: 17px;
+}
+
+.blockedUser{
+  background-color: #f19792;
 }
 
 .nav-links ul li::after {
@@ -56,6 +60,7 @@ nav{
 .nav-links ul li:hover::after{
 	width: 100%;
 }
+
 
 .dugmadMenija{
 	align-content: left;

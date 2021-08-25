@@ -62,26 +62,61 @@ $(document).ready(function(){
                 
 							
 			} else if(userType==="buyer"){
-				$('#prijavaMenu').hide();
-				$('#pregled').append('Pregled porudzbina');
-				$('#pregled').attr('href','');
-				$('#profile').attr('href','buyerProfile.html');
+				//add for buyer
 			} else if(userType==="manager"){
-				$('#prijavaMenu').hide();
-				$('#pregled').append('Pregled Restorana');
-				$('#pregled').attr('href','menagerRestaurantInfo.html');
-				$('#pregledKomentara').append('Pregled Komentara');
-				$('#pregledKomentara').attr('href','managerCommentsView.html');
-				$('#profile').attr('href','menagerProfile.html');
+				$('#loginMenu').hide();
+                $('#registrationMenu').hide();
+                let homeLi=$('<li></li>').append('<a href="home.html">Početna strana </a>');
+                let restaurantViewLi=$('<li></li>').append('<a href="managerCommentsView.html">Pregled komentara</a>');
+                let buyersViewLi=$('<li></li>').append('<a href="menagerBuyersView.html">Pregled kupaca</a>');
+                let usersViewLi=$('<li></li>').append('<a href="menagerRestaurantInfo.html">Pregled restorana</a>');
+                let addRestaurantLi=$('<li></li>').append('<a href="menagerOrdersView.html">Pregled narudžbina</a>');
+                let profileView=$('<li></li>').append('<a href="menagerProfile.html">Profil</a>');
+                let logout=$('<a id="logout" href="">Odjava</a>');
+                logout.click(function(){
+                   
+                        $.get({
+                            url:'rest/login/logout',
+                            contentType:'application/json',
+                            success:function(data){
+                                if (data=="Loged out successfully!"){
+                                    window.location.href="http://localhost:8080/WebProject/home.html";
+                                }else{
+                                    alert('Greska prilikom odjave sa profila');
+                                }
+                            }
+                        })
+                    
+                })
+                let logOut=$('<li></li>').append(logout);
+                $('#ul-menu').append(homeLi,restaurantViewLi,buyersViewLi,usersViewLi,addRestaurantLi,profileView,logOut);
 			} else if(userType==="deliverer"){
-				$('#prijavaMenu').hide();
-				$('#pregled').append('Pregled porudzbina');
-				$('#pregled').attr('href','');
-				$('#profile').attr('href','delivererProfile.html');
+				$('#loginMenu').hide();
+                $('#registrationMenu').hide();
+                let homeLi=$('<li></li>').append('<a href="home.html">Početna strana </a>');
+                let restaurantViewLi=$('<li></li>').append('<a href="delivererOrdersView.html">Pregled porudžbina</a>');
+                let buyersViewLi=$('<li></li>').append('<a href="delivererOrdersView.html">Moje porudžbine</a>');
+                let profileView=$('<li></li>').append('<a href="delivererProfile.html">Profil</a>');
+                let logout=$('<a id="logout" href="">Odjava</a>');
+                logout.click(function(){
+                   
+                        $.get({
+                            url:'rest/login/logout',
+                            contentType:'application/json',
+                            success:function(data){
+                                if (data=="Loged out successfully!"){
+                                    window.location.href="http://localhost:8080/WebProject/home.html";
+                                }else{
+                                    alert('Greska prilikom odjave sa profila');
+                                }
+                            }
+                        })
+                    
+                })
+                let logOut=$('<li></li>').append(logout);
+                $('#ul-menu').append(homeLi,restaurantViewLi,buyersViewLi,profileView,logOut);
 			} else {
-				$('#logoutMenu').hide();
-				$('#profileMenu').hide();
-				$('#pregledMenu').hide();
+				
 			}
 		},
 		
