@@ -237,7 +237,7 @@ $(document).ready(function(){
  	$.post({
  		url:"rest/deliverer/requireDeliver",
  		contentType:"json",
- 		data: order,
+ 		data: JSON.stringify(order),
  		success: function(response){
  			alert(response);
  		},
