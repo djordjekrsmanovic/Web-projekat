@@ -2,24 +2,25 @@
   "admin" : {
     "username" : "admin",
     "password" : "admin",
+    "firstName" : "Djordje",
+    "lastName" : "Krsmanovic",
+    "gender" : "male",
+    "birthDate" : 949359600000,
+    "deleted" : false,
+    "banned" : false,
+    "role" : "ADMIN",
+    "userRole" : "ADMIN"
+  },
+  "admin3" : {
+    "username" : "admin3",
+    "password" : "admin",
     "firstName" : "Milan",
     "lastName" : "Markovic",
     "gender" : "male",
     "birthDate" : 949359600000,
     "deleted" : false,
     "banned" : false,
-    "role" : null,
-    "userRole" : "ADMIN"
-  },
-  "admin2" : {
-    "username" : "admin2",
-    "password" : "admin2",
-    "firstName" : "Djordje",
-    "lastName" : "Krsmanovic",
-    "gender" : "male",
-    "birthDate" : 916268400000,
-    "deleted" : false,
-    "banned" : false,
+    "role" : "ADMIN",
     "userRole" : "ADMIN"
   }
 }

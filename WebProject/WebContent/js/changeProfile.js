@@ -34,7 +34,7 @@ $(document).ready(function(){
                             contentType:'application/json',
                             success:function(data){
                                 if (data=="Loged out successfully!"){
-                                    window.location.replace="http://localhost:8080/WebProject/home.html";
+                                    window.location.href="http://localhost:8080/WebProject/home.html";
                                 }else{
                                     alert('Greska prilikom odjave sa profila');
                                 }
@@ -109,9 +109,23 @@ function changeUser(){
             return;
         }
 
-        if(checkLastName()==false || checkName()==false || wrongUsername==true){
+        let lastNameChecked=checkLastName();
+        let nameChecked=checkName();
+        wrongUsername=checkUserName();
+        if(lastNameChecked==false){
+            alert("Prezime moze samo da sadrzi slova");
             return;
         }
+        
+        if (nameChecked==false){
+            alert('Ime moze samo da sadrzi slova');
+            return;
+        } 
+        if (wrongUsername==true){
+            alert('Korisnicko ime je vec u upotrebi');
+            return;
+        }
+        
         
 
         var changedUser={username:username,password:password,firstName:name,lastName:lastname,gender:sex,birthDate:newdate,oldUsername:loadedUserName,role:loggedUser.role};
@@ -128,7 +142,7 @@ function changeUser(){
                     alert('Korisnik je uspjesno izmjenjen');
                 }
                 if (loggedUser.role=='ADMIN'){
-                    window.location.replace="http://localhost:8080/WebProject/home.html";
+                    window.location.href="http://localhost:8080/WebProject/home.html";
                 }else if(loggedUser.role=='DELIVERER'){
                     //redirekicja na stranicu
                 }else if(loggedUser.role=='MANAGER'){
@@ -141,7 +155,8 @@ function changeUser(){
             error:function(data){
                 alert('Greska prilikom izmjene korisnika');
             },
-            async:false
+            async:true
+           
         })
         window.location.href="http://localhost:8080/WebProject/home.html";
 }
@@ -154,19 +169,13 @@ function checkUserName(){
         success:function(ret){
             if (ret==false){
                 if(loadedUserName!=$('#userName').val()){
-                    $('#userName').addClass('wrongUsername');
-                    $('#error').text('Korisnicko ime je vec u upotrebi');
-                    wrongUsername=true;
+                    return true;
                 }else{
-                    $('#userName').removeClass('wrongUsername');
-                    $('#error').text('');
-                    wrongUsername=false
+                    return false;
                 }
                 
             }else{
-                $('#userName').removeClass('wrongUsername');
-                $('#error').text('');
-                wrongUsername=true;
+                return true;
             }
 
             

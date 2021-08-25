@@ -135,6 +135,7 @@ public class UserService {
 					admin.setLastName(profileData.lastName);
 					admin.setUsername(profileData.username);
 					admin.setGender(Converter.getGender(profileData.gender));
+					admin.setPassword(profileData.password);
 					adminDAO.createOrUpdate(admin);
 					servletContext.removeAttribute("user");
 					servletContext.setAttribute("user", admin);
@@ -146,6 +147,7 @@ public class UserService {
 					admin.setFirstName(profileData.firstName);
 					admin.setLastName(profileData.lastName);
 					admin.setUsername(profileData.username);
+					admin.setPassword(profileData.password);
 					admin.setGender(Converter.getGender(profileData.gender));
 					admin.setUsername(profileData.username);
 					adminDAO.createOrUpdate(admin);
