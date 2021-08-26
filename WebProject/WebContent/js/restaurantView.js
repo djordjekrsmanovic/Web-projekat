@@ -155,11 +155,18 @@ function fillProducts(product){
     productAmount.css('margin-top','5px');
     productAmount.css('marigin-bottom','15px');
     let inputParagraph=$('<p></p>').css('margin-bottom','25px').append('<input type="text">');
-    let buttonAdd=$('<p></p>').append($('<button></button>',{text:'Dodaj u korpu'}));
+    let buttonAdd=document.createElement('button');
+    buttonAdd.innerHTML="Dodaj u korpu";
+    buttonAdd.addEventListener('click',createHandler(product));
     cardDiv.append(image).append(productTitle).append(productPrice).append(productDescription).append(productAmount,inputParagraph,buttonAdd);
     $('#Proizvodi').append(cardDiv);
 }
 
+function createHandler(restaurant){
+    return function(){
+        alert(restaurant.name);
+    }
+}
 function fillData(restaurant){
     console.log("Ucitan je restoran sa servera i njegovo ime je "+ restaurant.name);
     //$('#restaurant-logo').html(restaurant.picturePath); ovo otkomentarisati kada budu dodat logo restorana u bazu
