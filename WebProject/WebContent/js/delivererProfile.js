@@ -21,12 +21,13 @@ $.get({
         let password=$('#newPassword').val();
         let repeatedPassword=$('#RepeatedNewPassword').val();
         let gender=$("delivererSex option:selected").val();
-        if (name===''||surname===''||date===''||userName==''||password==''||repeatedPassword==''||gender==''){
-            $("#error").append=('Sva polja trebaju biti popunjena');
+        if (name===''||surname===''||date===''||userName==''||gender==''){
+            alert("Sva polja trebaju biti popunjena");
             return;
         }
 
         if (password!=repeatedPassword){
+			alert("Lozinke se ne podudaraju.");
             return;
         }
 

@@ -4,7 +4,6 @@
 
 defaultOrders=[];
 loadedOrders=[];
-searchResults=[];
 
 $(document).ready(function(){
 	 $.get({
@@ -39,21 +38,23 @@ $(document).ready(function(){
 	 
 	  $('#searchButton').click(function(){
         searchOrders();
-        fillTable(searchResults);
+        filterOrdersByStatus();
+		filterOrdersByType();
+		sortOrders(loadedOrders);
     })
     
     $("#filterStatus").change(function(){
         filterOrdersByStatus();
-        fillTable(loadedOrders);
     })
     
     $("#filterType").change(function(){
-        filterOrdersByType();
-        fillTable(loadedOrders);
+		filterOrdersByType();
     })
     
     $("#sort").change(function(){
-        sortOrders(loadedOrders);
+        filterOrdersByStatus();
+		filterOrdersByType();
+		sortOrders(loadedOrders);
         fillTable(loadedOrders);
     })
 
@@ -69,7 +70,6 @@ $(document).ready(function(){
  	let i;
  	for(i=0; i<duzina;i++){
  		let tr = $("<tr></tr>");
- 		tr.attr("id",orders[i].id);
 	 	let td1 = $("<td></td>");
 	 	let td2 = $("<td></td>");
 	 	let td3 = $("<td></td>");
@@ -87,9 +87,10 @@ $(document).ready(function(){
 	 	    let button = $("<button></button>", {id:"changeStatusButton"});
 	 	    button.append("Zatrazi dostavu");
 	 		td6.append(button);
+			td6.attr("id",orders[i].id);
 	 		td6.click(function(){
 	 			i--;
-	 			zatraziDostavu(orders[i]);
+	 			zatraziDostavu(td6.attr("id"));
 	 			i++;
 	 		})
 	 	} else {td6.append("Nedostupno");}
@@ -132,14 +133,16 @@ $(document).ready(function(){
     
   function searchOrders(){
  	 $("#tableBody").empty();
- 	 searchResults=[];
 	 let name = $("#name").val().toLowerCase();
 	 let priceFrom =$("#priceFrom").val();
 	 let priceTo = $("#priceTo").val();
 	 let dateFrom = $("#dateFrom").val();
 	 let dateTo = $("#dateTo").val();
- 
- 	if(name===""||priceFrom==="" || priceTo==="" || dateFrom==="" ||dateTo==="")
+
+ 	 loadedOrders.length=0;
+     loadedOrders=JSON.parse(JSON.stringify(defaultOrders));
+
+ 	 if(name===""||priceFrom==="" || priceTo==="" || dateFrom==="" ||dateTo==="")
 	 {
 	 	alert("Popunite sve kriterijume pretrage");
 	 	return;
@@ -148,30 +151,33 @@ $(document).ready(function(){
 	 let duzina = loadedOrders.length;
 	 
 	 for(i=0;i<duzina;i++){
-	 	if(loadedOrders[i].restaurant.name.toLowerCase().includes(name) && loadedOrders[i].price<priceTo &&loadedOrders[i].price>priceFrom)
+	 	if(!defaultOrders[i].restaurant.name.toLowerCase().includes(name) && !defaultOrders[i].price<priceTo && !defaultOrders[i].price>priceFrom)
 	 	{
-	 	if(loadedOrders[i].date<dateTo && loadedOrders[i].date>dateFrom){
-	 		searchResults.push(loadedOrders[i]);
+	 	if(!defaultOrders[i].date<dateTo && !defaultOrders[i].date>dateFrom){
+	 		loadedOrders.splice(i,1);
+			i--;
 	 		}
 	 	}
-	 }	 	 
+	 }
+	fillTable(loadedOrders);	 	 
  }
  
- function filterOrdersByType(){
-   loadedOrders=[];
+ function filterOrdersByType(){   
  	$("#tableBody").empty();
+	loadedOrders=[];
  	var filterType = $("#filterType").val();
  	let i;
  	let duzina = defaultOrders.length;
  	if(filterType!=""){
  	for(i=0; i<duzina;i++){
- 		if(defaultOrders[i].restaurant.type===filterType){
+ 		if(defaultOrders[i].restaurant.restaurantType===filterType){
  			loadedOrders.push(defaultOrders[i]);
  		} else if(filterType==="AllRestaurants"){
  			loadedOrders=defaultOrders;
  		}
  	}
  	}
+	fillTable(loadedOrders);
  }
  
    function filterOrdersByStatus(){
@@ -189,6 +195,7 @@ $(document).ready(function(){
  		}
  	}
  	}
+	fillTable(loadedOrders);
  }
  
  function sortOrders(){
@@ -215,10 +222,10 @@ $(document).ready(function(){
  }
  
  function nameAscSort(){
- 	loadedOrders.sort(function(a,b){return a.toLowerCase().name-b.toLowerCase().name;});
+ 	loadedOrders.sort((a,b)=> (a.name>b.name) ? 1 :(b.name>a.name) ? -1:0);
  }
  function nameDescSort(){
- 	loadedOrders.sort(function(a,b){return b.toLowerCase().name-a.toLowerCase().name;});
+ 	loadedOrders.sort((a,b)=> (a.name<b.name) ? 1 :(b.name<a.name) ? -1:0);
  }
  function priceAscSort(){
  	loadedOrders.sort(function(a,b){return a.price-b.price;});
@@ -233,11 +240,11 @@ $(document).ready(function(){
  	loadedOrders.sort(function(a,b){return b.date-a.date});
  }
  
- function zatraziDostavu(order){
+ function zatraziDostavu(orderID){
  	$.post({
  		url:"rest/deliverer/requireDeliver",
  		contentType:"json",
- 		data: order,
+ 		data: JSON.stringify(orderID),
  		success: function(response){
  			alert(response);
  		},
