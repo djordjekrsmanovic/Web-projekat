@@ -9,7 +9,8 @@
       "type" : "FOOD",
       "amount" : 350,
       "description" : "Cevapi od svinjskog i juneceg mesa",
-      "photoPath" : ""
+      "photoPath" : "",
+	  "restaurantID":"Plava frajla"
     }, {
       "id" : "supa",
       "name" : "supa",
@@ -17,7 +18,8 @@
       "type" : "FOOD",
       "amount" : 350,
       "description" : "supa od svinjskog i juneceg mesa",
-      "photoPath" : ""
+      "photoPath" : "",
+	  "restaurantID":"Plava frajla"
     } ],
     "restaurantStatus" : "OPEN",
     "location" : {

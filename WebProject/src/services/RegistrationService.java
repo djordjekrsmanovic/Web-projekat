@@ -16,8 +16,10 @@ import beans.Converter;
 import beans.Deliverer;
 import beans.Gender;
 import beans.Manager;
+import beans.ShoppingCart;
 import dao.AdminDAO;
 import dao.BuyerDAO;
+import dao.CartDAO;
 import dao.DelivererDAO;
 import dao.ManagerDAO;
 import dto.AdminAddUserDTO;
@@ -46,6 +48,9 @@ public class RegistrationService {
 		}
 		if (servletContext.getAttribute("ManagerDAO")==null) {
 			servletContext.setAttribute("ManagerDAO", new ManagerDAO(servletContext.getInitParameter("path")));
+		}
+		if (servletContext.getAttribute("cartDAO")==null) {
+			servletContext.setAttribute("cartDAO", new CartDAO(servletContext.getInitParameter("path")));
 		}
 		
 	}
@@ -80,7 +85,9 @@ public class RegistrationService {
 		Buyer buyer=new Buyer(user.username,user.password,user.firstName,user.lastName,gender,Converter.convertStringtoDate(user.birthDate),false,false,0);
 		BuyerDAO buyerDAO=(BuyerDAO) servletContext.getAttribute("BuyerDAO");
 		buyerDAO.create(buyer);
-	
+		ShoppingCart shoppingCart=new ShoppingCart(buyer.getUsername());
+		CartDAO cartDAO=(CartDAO) servletContext.getAttribute("cartDAO");
+		cartDAO.create(shoppingCart);
 		return buyer;
 	}
 	

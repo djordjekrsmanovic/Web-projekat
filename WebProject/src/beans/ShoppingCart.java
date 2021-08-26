@@ -1,5 +1,6 @@
 package beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCart {
@@ -11,7 +12,11 @@ public class ShoppingCart {
 		// TODO Auto-generated constructor stub
 	}
 
-	
+	public ShoppingCart(String ownerID) {
+		this.ownerID=ownerID;
+		this.price=0;
+		this.cartItems=new ArrayList<CartItem>();
+	}
 
 	public void setCartItems(List<CartItem> cartItems) {
 		this.cartItems = cartItems;
@@ -28,6 +33,10 @@ public class ShoppingCart {
 		super();
 		this.cartItems=cartItems;
 		this.ownerID=ownerID;
+		calculatePrice();
+	}
+	
+	private void calculatePrice() {
 		double calculatedPrice=0;
 		for (CartItem cartItem:cartItems) {
 			calculatedPrice+=cartItem.getAmount()*cartItem.getProduct().getPrice();
@@ -65,7 +74,12 @@ public class ShoppingCart {
 		this.ownerID = ownerID;
 	}
 
-
+	public void addCartItem(CartItem cartItem) {
+		cartItems.add(cartItem);
+		calculatePrice();
+	}
+	
+	
 
 	@Override
 	public String toString() {

@@ -10,6 +10,7 @@ public class Product {
 	private int amount;
 	private String description;
 	private String photoPath;
+	private String restaurantID;
 	
 	
 
@@ -18,18 +19,9 @@ public class Product {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-
-	public Product(String id, String name, double price) {
-		this.id = id;
-		this.name = name;
-		this.price = price;
-	}
-	
-	
 
 	public Product(String id, String name, double price, ProductType type, int amount, String description,
-			String photoPath) {
+			String photoPath,String restaurantID) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -38,6 +30,7 @@ public class Product {
 		this.amount = amount;
 		this.description = description;
 		this.photoPath = photoPath;
+		this.restaurantID=restaurantID;
 	}
 
 	public void setId(String i) {
@@ -94,6 +87,19 @@ public class Product {
 
 	public void setPhotoPath(String photoPath) {
 		this.photoPath = photoPath;
+	}
+
+	
+
+
+	public String getRestaurantID() {
+		return restaurantID;
+	}
+
+
+
+	public void setRestaurantID(String restaurantID) {
+		this.restaurantID = restaurantID;
 	}
 
 

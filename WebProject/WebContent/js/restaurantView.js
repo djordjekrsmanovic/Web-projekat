@@ -1,11 +1,11 @@
 
 var loadedProducts=[];
 var loadedComments=[];
-
+var loggedUser;
+var restaurantName;
 $(document).ready(function(){
   
-
-    var restaurantName=getUrlParameters("name");
+    restaurantName=getUrlParameters("name");
     if (restaurantName===undefined || restaurantName===""){
         alert("Restoran ne postoji");
         window.location.replace("http://localhost:8080/WebProject/home.html");
@@ -47,6 +47,17 @@ $(document).ready(function(){
                 console.log('ucitani su komentari');
                 formComments(comment);
             }
+        }
+    })
+
+    $.get({
+        url:'rest/login/get-loged-user',
+        contentType:'application/json',
+        success:function(user){
+            loggedUser=user;
+        },
+        error:function(data){
+            alert('Greska prilikom ucitavanja prijavljenog korisnika');
         }
     })
 
@@ -154,7 +165,7 @@ function fillProducts(product){
     })
     productAmount.css('margin-top','5px');
     productAmount.css('marigin-bottom','15px');
-    let inputParagraph=$('<p></p>').css('margin-bottom','25px').append('<input type="text">');
+    let inputParagraph=$('<p></p>').css('margin-bottom','25px').append('<input type="text" id='+product.name+'>');
     let buttonAdd=document.createElement('button');
     buttonAdd.innerHTML="Dodaj u korpu";
     buttonAdd.addEventListener('click',createHandler(product));
@@ -162,9 +173,27 @@ function fillProducts(product){
     $('#Proizvodi').append(cardDiv);
 }
 
-function createHandler(restaurant){
+function createHandler(product){
     return function(){
-        alert(restaurant.name);
+        let value=$("#"+product.name).val();
+        if (loggedUser==null || loggedUser==undefined || loggedUser.role!='BUYER'){
+            alert('Potrebno je da se prijavite kao kupac');
+            return;
+        }
+        var details={productID:product.name,restaurantID:restaurantName,BuyerUsername:loggedUser.username,amount:value}
+        $.post({
+            url:'rest/buying/add-product-to-cart',
+            contentType:'application/json',
+            data:JSON.stringify(details),
+            success:function(){
+                alert('Proizvod je dodat u korpu');
+                $("#"+product.name).val('');
+            },
+            error:function(){
+                alert('Greska prilikom dodavanja proizvoda u korpu');
+            }
+        })
+        
     }
 }
 function fillData(restaurant){
