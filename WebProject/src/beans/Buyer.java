@@ -28,6 +28,7 @@ public class Buyer extends User {
 		this.orders = orders;
 		this.points = points;
 		this.buyerType=new BuyerType();
+		
 	}
 	
 	public Buyer(String username, String password, String firstName, String lastName, Gender gender, Date birthDate,

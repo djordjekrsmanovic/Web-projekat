@@ -62,9 +62,9 @@ public class RestaurantDAO extends GenericFileRepository<Restaurant, String> {
 		Restaurant restaurant1 = new Restaurant("Vidikovac", RestaurantType.ETNO, RestaurantStatus.OPEN, location1, "", "bojan");
 		ProductDAO productDAO = new ProductDAO();
 		Product product = new Product("cevapi", "cevapi", 550, ProductType.FOOD, 350,
-				"Cevapi od svinjskog i juneceg mesa", "");
+				"Cevapi od svinjskog i juneceg mesa", "","Plava frajla");
 		Product product1 = new Product("supa", "supa", 550, ProductType.FOOD, 350, "supa od svinjskog i juneceg mesa",
-				"");
+				"","Plava frajla");
 		List<Product> products = new ArrayList<Product>();
 		products.add(product);
 		products.add(product1);

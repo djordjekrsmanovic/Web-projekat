@@ -8,7 +8,8 @@
         "type" : "FOOD",
         "amount" : 350,
         "description" : "Cevapi od svinjskog i juneceg mesa",
-        "photoPath" : ""
+        "photoPath" : "",
+        "restaurantID" : "Plava frajla"
       },
       "amount" : 2
     }, {
@@ -19,11 +20,72 @@
         "type" : "FOOD",
         "amount" : 350,
         "description" : "supa od svinjskog i juneceg mesa",
-        "photoPath" : ""
+        "photoPath" : "",
+        "restaurantID" : "Plava frajla"
       },
       "amount" : 4
+    }, {
+      "product" : {
+        "id" : "cevapi",
+        "name" : "cevapi",
+        "price" : 550.0,
+        "type" : "FOOD",
+        "amount" : 350,
+        "description" : "Cevapi od svinjskog i juneceg mesa",
+        "photoPath" : "",
+        "restaurantID" : "Plava frajla"
+      },
+      "amount" : 5
+    }, {
+      "product" : {
+        "id" : "supa",
+        "name" : "supa",
+        "price" : 550.0,
+        "type" : "FOOD",
+        "amount" : 350,
+        "description" : "supa od svinjskog i juneceg mesa",
+        "photoPath" : "",
+        "restaurantID" : "Plava frajla"
+      },
+      "amount" : 5
+    }, {
+      "product" : {
+        "id" : "cevapi",
+        "name" : "cevapi",
+        "price" : 550.0,
+        "type" : "FOOD",
+        "amount" : 350,
+        "description" : "Cevapi od svinjskog i juneceg mesa",
+        "photoPath" : "",
+        "restaurantID" : "Plava frajla"
+      },
+      "amount" : 2
+    }, {
+      "product" : {
+        "id" : "cevapi",
+        "name" : "cevapi",
+        "price" : 550.0,
+        "type" : "FOOD",
+        "amount" : 350,
+        "description" : "Cevapi od svinjskog i juneceg mesa",
+        "photoPath" : "",
+        "restaurantID" : "Plava frajla"
+      },
+      "amount" : 2
+    }, {
+      "product" : {
+        "id" : "cevapi",
+        "name" : "cevapi",
+        "price" : 550.0,
+        "type" : "FOOD",
+        "amount" : 350,
+        "description" : "Cevapi od svinjskog i juneceg mesa",
+        "photoPath" : "",
+        "restaurantID" : "Plava frajla"
+      },
+      "amount" : 2
     } ],
-    "price" : 3300.0,
+    "price" : 12100.0,
     "ownerID" : "djordje"
   }
 }

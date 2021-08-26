@@ -45,9 +45,9 @@ public class ProductDAO extends GenericFileRepository<Product, String> {
 
 	public void generateProducts() {
 		Product product = new Product("cevapi", "cevapi", 550, ProductType.FOOD, 350,
-				"Cevapi od svinjskog i juneceg mesa", "");
+				"Cevapi od svinjskog i juneceg mesa", "","Plava frajla");
 		Product product1 = new Product("supa", "supa", 550, ProductType.FOOD, 350, "supa od svinjskog i juneceg mesa",
-				"");
+				"","Plava frajla");
 		createOrUpdate(product);
 		createOrUpdate(product1);
 	}

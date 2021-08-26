@@ -45,9 +45,9 @@ public class CartDAO extends GenericFileRepository<ShoppingCart, String> {
 
 	public void generateShoppingCart() {
 		Product product = new Product("cevapi", "cevapi", 550, ProductType.FOOD, 350,
-				"Cevapi od svinjskog i juneceg mesa", "");
+				"Cevapi od svinjskog i juneceg mesa", "","Plava frajla");
 		Product product1 = new Product("supa", "supa", 550, ProductType.FOOD, 350, "supa od svinjskog i juneceg mesa",
-				"");
+				"","Plava frajla");
 		CartItem cartItem = new CartItem(product, 2);
 		CartItem cartItem1 = new CartItem(product1, 4);
 		List<CartItem> cartItems = new ArrayList<CartItem>();
