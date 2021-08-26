@@ -40,7 +40,8 @@
         }
       },
       "picturePath" : "",
-      "deleted" : false
+      "deleted" : false,
+      "managerID" : "bojan"
     },
     "dateAndTime" : 1615590000000,
     "price" : 3300.0,

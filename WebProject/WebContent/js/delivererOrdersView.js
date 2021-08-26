@@ -52,10 +52,9 @@ $(document).ready(function(){
     })
     
     $("#sort").change(function(){
+		sortOrders(loadedOrders);
         filterOrdersByStatus();
 		filterOrdersByType();
-		sortOrders(loadedOrders);
-        fillTable(loadedOrders);
     })
 
 	$("#myOrdersView").click(function(){
@@ -172,7 +171,7 @@ $(document).ready(function(){
  	for(i=0; i<duzina;i++){
  		if(defaultOrders[i].restaurant.restaurantType===filterType){
  			loadedOrders.push(defaultOrders[i]);
- 		} else if(filterType==="AllRestaurants"){
+ 		} else if(filterType==="AllOrders"){
  			loadedOrders=defaultOrders;
  		}
  	}
@@ -218,26 +217,27 @@ $(document).ready(function(){
  	}else if(sortType==="date-descending"){
  		dateDescSort();
  	}else { loadedOrders=defaultOrders;}
+	fillTable(loadedOrders);
  	
  }
  
  function nameAscSort(){
- 	loadedOrders.sort((a,b)=> (a.name>b.name) ? 1 :(b.name>a.name) ? -1:0);
+ 	return loadedOrders.sort((a,b)=> (a.name>b.name) ? 1 :(b.name>a.name) ? -1:0);
  }
  function nameDescSort(){
- 	loadedOrders.sort((a,b)=> (a.name<b.name) ? 1 :(b.name<a.name) ? -1:0);
+ 	return loadedOrders.sort((a,b)=> (a.name<b.name) ? 1 :(b.name<a.name) ? -1:0);
  }
  function priceAscSort(){
- 	loadedOrders.sort(function(a,b){return a.price-b.price;});
+ 	return loadedOrders.sort(function(a,b){return a.price-b.price;});
  }
  function priceDesscSort(){
- 	loadedOrders.sort(function(a,b){return b.price-a.price;});
+ 	return loadedOrders.sort(function(a,b){return b.price-a.price;});
  }
  function dateAscSort(){
- 	loadedOrders.sort(function(a,b){return a.date-b.date});
+ 	return loadedOrders.sort(function(a,b){return a.date-b.date});
  }
  function dateDescSort(){
- 	loadedOrders.sort(function(a,b){return b.date-a.date});
+ 	return loadedOrders.sort(function(a,b){return b.date-a.date});
  }
  
  function zatraziDostavu(orderID){

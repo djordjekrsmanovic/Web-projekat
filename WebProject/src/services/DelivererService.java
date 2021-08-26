@@ -93,6 +93,19 @@ public class DelivererService {
 
 	@POST
 	@Path("/requireDeliver")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public String deliver(String orderID) {
+		DeliverRequestDAO req = (DeliverRequestDAO) servletContext.getAttribute("DeliverRequestDAO");
+		Deliverer d = (Deliverer) servletContext.getAttribute("user");
+		OrderDAO oDAO = (OrderDAO) servletContext.getAttribute("OrderDAO");
+		Order o = oDAO.getOrderByID(orderID);
+		req.createRequest(o, d);
+		return "Success";
+	}
+	
+	/*@POST
+	@Path("/requireDeliver")
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String requireDeliver(String orderID) {
@@ -102,7 +115,7 @@ public class DelivererService {
 		Order o = oDAO.getOrderByID(orderID);
 		req.createRequest(o, d);
 		return "Success";
-	}
+	}*/
 	
 	@GET
 	@Path("/getMyOrders")

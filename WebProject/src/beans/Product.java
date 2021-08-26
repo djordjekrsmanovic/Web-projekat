@@ -32,6 +32,19 @@ public class Product {
 		this.photoPath = photoPath;
 		this.restaurantID=restaurantID;
 	}
+	
+	public Product(String id, String name, double price, ProductType type, int amount, String description,
+			String photoPath) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.price = price;
+		this.type = type;
+		this.amount = amount;
+		this.description = description;
+		this.photoPath = photoPath;
+		this.restaurantID=restaurantID;
+	}
 
 	public void setId(String i) {
 		id = i;

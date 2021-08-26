@@ -9,7 +9,57 @@
     "deleted" : false,
     "banned" : false,
     "userRole" : "BUYER",
-    "orders" : [ ],
+    "orders" : [
+    {
+    "id" : "1234567891",
+    "products" : [ {
+      "product" : {
+        "id" : "cevapi",
+        "name" : "cevapi",
+        "price" : 550.0,
+        "type" : "FOOD",
+        "amount" : 350,
+        "description" : "Cevapi od svinjskog i juneceg mesa",
+        "photoPath" : ""
+      },
+      "amount" : 2
+    }, {
+      "product" : {
+        "id" : "supa",
+        "name" : "supa",
+        "price" : 550.0,
+        "type" : "FOOD",
+        "amount" : 350,
+        "description" : "supa od svinjskog i juneceg mesa",
+        "photoPath" : ""
+      },
+      "amount" : 4
+    } ],
+    "restaurant" : {
+      "name" : "Plava frajla",
+      "restaurantType" : "ETNO",
+      "products" : [ ],
+      "restaurantStatus" : "OPEN",
+      "location" : {
+        "latitude" : 45.24,
+        "longitude" : 19.84,
+        "address" : {
+          "street" : "Spens",
+          "streetNumber" : "5",
+          "city" : "Novi Sad",
+          "postalCode" : "23000"
+        }
+      },
+      "picturePath" : "",
+      "deleted" : false,
+      "managerID" : "bojan"
+    },
+    "dateAndTime" : 1615590000000,
+    "price" : 3300.0,
+    "status" : "CEKA_DOSTAVLJACA",
+    "buyerName" : "djordje"
+  	}
+    ],
     "points" : 0,
     "buyerType" : {
       "buyerRank" : "GOLD",

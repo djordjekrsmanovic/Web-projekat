@@ -5,7 +5,7 @@
     "firstName" : "Milan",
     "lastName" : "Markovic",
     "gender" : "male",
-    "birthDate" : 479520000000,
+    "birthDate" : 479516400000,
     "deleted" : false,
     "banned" : false,
     "role" : "DELIVERER",
@@ -20,7 +20,8 @@
           "type" : "FOOD",
           "amount" : 350,
           "description" : "Cevapi od svinjskog i juneceg mesa",
-          "photoPath" : ""
+          "photoPath" : "",
+          "restaurantID" : null
         },
         "amount" : 2
       }, {
@@ -31,7 +32,8 @@
           "type" : "FOOD",
           "amount" : 350,
           "description" : "supa od svinjskog i juneceg mesa",
-          "photoPath" : ""
+          "photoPath" : "",
+          "restaurantID" : null
         },
         "amount" : 4
       } ],
@@ -69,7 +71,8 @@
           "type" : "FOOD",
           "amount" : 350,
           "description" : "Cevapi od svinjskog i juneceg mesa",
-          "photoPath" : ""
+          "photoPath" : "",
+          "restaurantID" : null
         },
         "amount" : 2
       }, {
@@ -80,7 +83,8 @@
           "type" : "FOOD",
           "amount" : 350,
           "description" : "supa od svinjskog i juneceg mesa",
-          "photoPath" : ""
+          "photoPath" : "",
+          "restaurantID" : null
         },
         "amount" : 4
       } ],

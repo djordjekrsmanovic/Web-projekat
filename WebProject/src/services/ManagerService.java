@@ -150,10 +150,8 @@ public class ManagerService {
 		OrderDAO orderDAO = (OrderDAO) servletContext.getAttribute("OrderDAO");
 		BuyerDAO bDAO = (BuyerDAO) servletContext.getAttribute("BuyerDAO");
 		User u = (User) servletContext.getAttribute("user");
-		ManagerDAO mDAO = (ManagerDAO) servletContext.getAttribute("ManagerDAO");
-		Manager m = mDAO.getManagerByUsername(u.getUsername());
 		
-		return orderDAO.getBuyersForManager(m.getUsername(), bDAO.getBuyersList());
+		return orderDAO.getBuyersForManager(u.getUsername(), bDAO.getBuyersList());
 	}
 	
 	@GET

@@ -27,6 +27,14 @@
 			return;
 		}	
 	}) 
+	
+	$("#newArticleButton").click(function(){
+		window.location.href='/WebProject/newArticle.html';
+	})
+	
+	$("#ordersViewButton").click(function(){
+		window.location.href='/WebProject/menagerOrdersView.html';
+	})
  
  });
  

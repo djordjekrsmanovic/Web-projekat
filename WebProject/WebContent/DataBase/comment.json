@@ -28,10 +28,11 @@
           "streetNumber" : "5",
           "city" : "Novi Sad",
           "postalCode" : "23000"
-        }
+        }        
       },
       "picturePath" : "",
-      "deleted" : false
+      "deleted" : false,
+      "managerID": "bojan"
     },
     "comment" : "Najbolji restoran",
     "rate" : 5,

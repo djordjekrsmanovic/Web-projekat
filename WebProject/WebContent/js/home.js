@@ -68,10 +68,8 @@ $(document).ready(function(){
                 $('#registrationMenu').hide();
                 let homeLi=$('<li></li>').append('<a href="home.html">Početna strana </a>');
                 let restaurantViewLi=$('<li></li>').append('<a href="managerCommentsView.html">Pregled komentara</a>');
-                let buyersViewLi=$('<li></li>').append('<a href="menagerBuyersView.html">Pregled kupaca</a>');
                 let usersViewLi=$('<li></li>').append('<a href="menagerRestaurantInfo.html">Pregled restorana</a>');
-                let addRestaurantLi=$('<li></li>').append('<a href="menagerOrdersView.html">Pregled narudžbina</a>');
-                let profileView=$('<li></li>').append('<a href="menagerProfile.html">Profil</a>');
+                let profileView=$('<li></li>').append('<a href="menagerProfile.html">Moj nalog</a>');
                 let logout=$('<a id="logout" href="">Odjava</a>');
                 logout.click(function(){
                    
@@ -89,7 +87,7 @@ $(document).ready(function(){
                     
                 })
                 let logOut=$('<li></li>').append(logout);
-                $('#ul-menu').append(homeLi,restaurantViewLi,buyersViewLi,usersViewLi,addRestaurantLi,profileView,logOut);
+                $('#ul-menu').append(restaurantViewLi,usersViewLi,profileView,logOut);
 			} else if(userType==="deliverer"){
 				$('#loginMenu').hide();
                 $('#registrationMenu').hide();

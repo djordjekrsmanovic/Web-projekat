@@ -173,16 +173,16 @@
  }
  
  function priceAscSort(){
- 	loadedOrders.sort(function(a,b){return a.price-b.price;});
+ 	return loadedOrders.sort(function(a,b){return a.price-b.price;});
  }
  function priceDesscSort(){
- 	loadedOrders.sort(function(a,b){return b.price-a.price;});
+ 	return loadedOrders.sort(function(a,b){return b.price-a.price;});
  }
  function dateAscSort(){
- 	loadedOrders.sort(function(a,b){return a.date-b.date});
+ 	return loadedOrders.sort(function(a,b){return a.date-b.date});
  }
  function dateDescSort(){
- 	loadedOrders.sort(function(a,b){return b.date-a.date});
+ 	return loadedOrders.sort(function(a,b){return b.date-a.date});
  }
  
  function changeStatus(orderS){
