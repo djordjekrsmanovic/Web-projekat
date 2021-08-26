@@ -68,8 +68,9 @@ public class ManagerService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Restaurant restoran() {
 		Manager man = (Manager) servletContext.getAttribute("user");
+		RestaurantDAO rDAO = (RestaurantDAO) servletContext.getAttribute("RestaurantDAO");
 		if(man.getRestaurant()!=null) {
-			return man.getRestaurant();
+			return rDAO.getRestaurantByID(man.getRestaurant().getName());
 		}
 		return null;
 	}
@@ -79,9 +80,11 @@ public class ManagerService {
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String newArticle(Product product) {
+		System.out.print("Prije if-a");
 		ProductDAO productDAO = (ProductDAO) servletContext.getAttribute("ProductDAO");
 		if(productDAO.getProductByName(product.getName())==null) {
-			productDAO.create(product);
+			System.out.print("Usao u if");
+			productDAO.createOrUpdate(product);
 			ManagerDAO mDAO = (ManagerDAO) servletContext.getAttribute("ManagerDAO");
 			RestaurantDAO rDAO = (RestaurantDAO) servletContext.getAttribute("RestaurantDAO");
 			User u = (User) servletContext.getAttribute("user");

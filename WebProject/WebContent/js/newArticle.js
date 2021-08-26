@@ -5,8 +5,8 @@
 $(document).ready(function(){
 	$("#dodaj").submit(function(event){
 			
-		var id = 10001;
-		var price=$("input[name=price]").val();
+		var id = $("input[name=ArticleName]").val();
+		var price=$("input[name=Price]").val();
 		var articleName = $("input[name=ArticleName]").val();
 		if($("input[name=ArticleType]").val()=="Hrana"){
 		var articleType = "FOOD"} else { var articleType="DRINK";}
@@ -24,7 +24,7 @@ $(document).ready(function(){
 		var article = {id:id, name:articleName, price:price, type:articleType, amount:amoun, description:descriptio, photoPath:phPath};
 		var jsonArticle= JSON.stringify(article);
 		$.post({
-			url:"rest/menager/newArticle",	
+			url:"rest/manager/newArticle",	
 			contentType:'application/json',
 			data:jsonArticle,
 			success: function(response){					
