@@ -70,7 +70,9 @@ public class RestaurantDAO extends GenericFileRepository<Restaurant, String> {
 	}
 	
 	public void addProductToRestaurant(Restaurant r, Product p) {
-		r.addProduct(p);
+		Restaurant re = this.getRestaurantByID(r.getName());
+		re.addProduct(p);
+		this.createOrUpdate(re);
 	}
 	
 	public Restaurant deleteRestaurant(String id) {

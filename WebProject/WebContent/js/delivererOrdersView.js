@@ -242,8 +242,8 @@ $(document).ready(function(){
  
  function zatraziDostavu(orderID){
  	$.post({
- 		url:"rest/deliverer/requireDeliver",
- 		contentType:"json",
+ 		url:'rest/deliverer/requireDeliver',
+ 		contentType:'json',
  		data: JSON.stringify(orderID),
  		success: function(response){
  			alert(response);

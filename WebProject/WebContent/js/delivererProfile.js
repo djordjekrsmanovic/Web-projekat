@@ -17,10 +17,10 @@ $.get({
  		let name=$('#delivererName').val();
         let surname=$('#delivererSurname').val();
         let date=$('#datum').val();       
-        let userName=$('#delivererUserame').val();
-        let password=$('#newPassword').val();
+        let userName=$('#delivererUsername').val();
+        let password=$('#NewPassword').val();
         let repeatedPassword=$('#RepeatedNewPassword').val();
-        let gender=$("delivererSex option:selected").val();
+        let gender=$("#delivererSex option:selected").val();
         if (name===''||surname===''||date===''||userName==''||gender==''){
             alert("Sva polja trebaju biti popunjena");
             return;
@@ -36,24 +36,22 @@ $.get({
             contentType:'application/json',
             data:JSON.stringify({username:userName,password:password,firstName:name,lastName:surname,gender:gender,birthDate:date}),
             success:function(data){
-                alert("Uspjesno ste izmjenili podatke svog profila");
+				document.location.reload();
             },
             error:function(data){
                 alert("Greska prilikom izmjene.");
             }
         })
  	
- 	event.preventDefault();
- 	document.location.reload();
+ 	event.preventDefault();	
  	});
  	
  	$("#logoutButton").click(function(){
 		if(window.confirm("Da li zaista zelite da se odjavite?")){
 			$.get({
 			url:'rest/login/logout',
-			success: function(response){
-			window.location.href='/WebProject/home.html';
-			alert(response);			
+			success: function(){
+			window.location.href='/WebProject/home.html';			
 			},
 			})
 		} else {

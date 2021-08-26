@@ -2,7 +2,23 @@
   "Plava frajla" : {
     "name" : "Plava frajla",
     "restaurantType" : "ETNO",
-    "products" : [ ],
+    "products" : [ {
+      "id" : "10001",
+      "name" : "Pecenje",
+      "price" : 1500.0,
+      "type" : "DRINK",
+      "amount" : 300,
+      "description" : "Jagnjece",
+      "photoPath" : "../pictures/C:\\fakepath\\pljeskavica.jpg"
+    }, {
+      "id" : "10001",
+      "name" : "Cufta",
+      "price" : 2000.0,
+      "type" : "DRINK",
+      "amount" : 500,
+      "description" : "Meso",
+      "photoPath" : "../pictures/C:\\fakepath\\pljeskavica.jpg"
+    } ],
     "restaurantStatus" : "OPEN",
     "location" : {
       "latitude" : 45.24,
