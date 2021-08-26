@@ -13,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 
 import beans.Product;
 import dao.ProductDAO;
+import dao.RestaurantDAO;
 
 @Path("/products")
 public class ProductService {
@@ -29,6 +30,9 @@ public class ProductService {
 		if (servletContext.getAttribute("ProductDAO")==null) {
 			servletContext.setAttribute("ProductDAO", new ProductDAO(servletContext.getInitParameter("path")));
 		}
+		if (servletContext.getAttribute("RestaurantDAO")==null) {
+			servletContext.setAttribute("RestaurantDAO", new RestaurantDAO(servletContext.getInitParameter("path")));
+		}
 		
 	}
 	
@@ -36,7 +40,7 @@ public class ProductService {
 	@Path("/get-products/{restaurantName}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Product> getProducts(@PathParam("restaurantName")String name){
-		ProductDAO productDAO=(ProductDAO) servletContext.getAttribute("ProductDAO");
-		return productDAO.getRestaurantProducts(name);
+		RestaurantDAO restaurantDAO=(RestaurantDAO) servletContext.getAttribute("RestaurantDAO");
+		return restaurantDAO.getRestaurantByID(name).getProducts();
 	}
 }

@@ -1,6 +1,7 @@
 package dao;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -9,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import beans.Address;
 import beans.Location;
 import beans.Product;
+import beans.ProductType;
 import beans.Restaurant;
 import beans.RestaurantStatus;
 import beans.RestaurantType;
@@ -59,8 +61,15 @@ public class RestaurantDAO extends GenericFileRepository<Restaurant, String> {
 				"", "bojan");
 		Restaurant restaurant1 = new Restaurant("Vidikovac", RestaurantType.ETNO, RestaurantStatus.OPEN, location1, "", "bojan");
 		ProductDAO productDAO = new ProductDAO();
-		List<Product> products = productDAO.getProducts();
+		Product product = new Product("cevapi", "cevapi", 550, ProductType.FOOD, 350,
+				"Cevapi od svinjskog i juneceg mesa", "");
+		Product product1 = new Product("supa", "supa", 550, ProductType.FOOD, 350, "supa od svinjskog i juneceg mesa",
+				"");
+		List<Product> products = new ArrayList<Product>();
+		products.add(product);
+		products.add(product1);
 		restaurant.setProducts(products);
+		System.out.println("Generisao sam restorane");
 		createOrUpdate(restaurant);
 		createOrUpdate(restaurant1);
 	}

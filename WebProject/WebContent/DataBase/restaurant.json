@@ -2,7 +2,23 @@
   "Plava frajla" : {
     "name" : "Plava frajla",
     "restaurantType" : "ETNO",
-    "products" : [ ],
+    "products" : [ {
+      "id" : "cevapi",
+      "name" : "cevapi",
+      "price" : 550.0,
+      "type" : "FOOD",
+      "amount" : 350,
+      "description" : "Cevapi od svinjskog i juneceg mesa",
+      "photoPath" : ""
+    }, {
+      "id" : "supa",
+      "name" : "supa",
+      "price" : 550.0,
+      "type" : "FOOD",
+      "amount" : 350,
+      "description" : "supa od svinjskog i juneceg mesa",
+      "photoPath" : ""
+    } ],
     "restaurantStatus" : "OPEN",
     "location" : {
       "latitude" : 45.24,
@@ -37,6 +53,6 @@
     "picturePath" : "",
     "deleted" : false,
     "raiting" : 0,
-    "managerID" : "manager"
+    "managerID" : "bojan"
   }
 }
