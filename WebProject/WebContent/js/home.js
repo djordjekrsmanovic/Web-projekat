@@ -112,7 +112,7 @@ $(document).ready(function(){
                     
                 })
                 let logOut=$('<li></li>').append(logout);
-                $('#ul-menu').append(homeLi,restaurantViewLi,buyersViewLi,profileView,logOut);
+                $('#ul-menu').append(restaurantViewLi,buyersViewLi,profileView,logOut);
 			} else {
 				
 			}

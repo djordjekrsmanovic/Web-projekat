@@ -1,5 +1,6 @@
 package dao;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,13 +28,13 @@ public class DeliverRequestDAO extends GenericFileRepository<DeliverRequest, Str
 	@Override
 	protected String getPath() {
 		// TODO Auto-generated method stub
-		return null;
+		return contextPath + File.separator + "DataBase" + File.separator + "deliverrequest.json";
 	}
 
 	@Override
 	protected String getKey(DeliverRequest entity) {
 		// TODO Auto-generated method stub
-		return null;
+		return entity.getRequestID();
 	}
 	
 	public DeliverRequestDAO() {

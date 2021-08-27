@@ -101,21 +101,8 @@ public class DelivererService {
 		OrderDAO oDAO = (OrderDAO) servletContext.getAttribute("OrderDAO");
 		Order o = oDAO.getOrderByID(orderID);
 		req.createRequest(o, d);
-		return "Success";
+		return "Zahtjev uspjesno upucen.";
 	}
-	
-	/*@POST
-	@Path("/requireDeliver")
-	@Produces(MediaType.TEXT_PLAIN)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public String requireDeliver(String orderID) {
-		DeliverRequestDAO req = (DeliverRequestDAO) servletContext.getAttribute("DeliverRequestDAO");
-		Deliverer d = (Deliverer) servletContext.getAttribute("user");
-		OrderDAO oDAO = (OrderDAO) servletContext.getAttribute("OrderDAO");
-		Order o = oDAO.getOrderByID(orderID);
-		req.createRequest(o, d);
-		return "Success";
-	}*/
 	
 	@GET
 	@Path("/getMyOrders")
