@@ -8,6 +8,7 @@
     "birthDate" : 916268400000,
     "deleted" : false,
     "banned" : false,
+    "role" : "BUYER",
     "userRole" : "BUYER",
     "orders" : [ ],
     "points" : 0,
@@ -15,8 +16,7 @@
       "buyerRank" : "GOLD",
       "discount" : 0.0,
       "requiredPoints" : 0
-    },
-    "role" : "BUYER"
+    }
   },
   "Marko" : {
     "username" : "Marko",

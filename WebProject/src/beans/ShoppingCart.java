@@ -36,7 +36,7 @@ public class ShoppingCart {
 		calculatePrice();
 	}
 	
-	private void calculatePrice() {
+	public void calculatePrice() {
 		double calculatedPrice=0;
 		for (CartItem cartItem:cartItems) {
 			calculatedPrice+=cartItem.getAmount()*cartItem.getProduct().getPrice();
@@ -75,6 +75,13 @@ public class ShoppingCart {
 	}
 
 	public void addCartItem(CartItem cartItem) {
+		for (CartItem selectedItems:cartItems) {
+			if (cartItem.getProduct().getName().equals(selectedItems.getProduct().getName()) && cartItem.getProduct().getRestaurantID().equals(selectedItems.getProduct().getRestaurantID())) {
+				selectedItems.setAmount(selectedItems.getAmount()+cartItem.getAmount());
+				calculatePrice();
+				return;
+			}
+		}
 		cartItems.add(cartItem);
 		calculatePrice();
 	}
