@@ -135,9 +135,11 @@ $(document).ready(function(){
 	 let name = $("#name").val().toLowerCase();
 	 let priceFrom =$("#priceFrom").val();
 	 let priceTo = $("#priceTo").val();
-	 let dateFrom = $("#dateFrom").val();
-	 let dateTo = $("#dateTo").val();
-
+	 let dateFromE = $("#dateFrom").val();
+	 let dateToE = $("#dateTo").val();
+	 let dateFrom = new Date(dateFromE).getTime();
+	 let dateTo = new Date(dateToE).getTime();
+	
  	 loadedOrders.length=0;
      loadedOrders=JSON.parse(JSON.stringify(defaultOrders));
 
@@ -147,12 +149,12 @@ $(document).ready(function(){
 	 	return;
 	 }
 	 let i;
-	 let duzina = loadedOrders.length;
+	 let duzina = defaultOrders.length;
 	 
 	 for(i=0;i<duzina;i++){
 	 	if(!defaultOrders[i].restaurant.name.toLowerCase().includes(name) && !defaultOrders[i].price<priceTo && !defaultOrders[i].price>priceFrom)
 	 	{
-	 	if(!defaultOrders[i].date<dateTo && !defaultOrders[i].date>dateFrom){
+	 	if(!defaultOrders[i].dateAndTime<dateTo && !defaultOrders[i].dateAndTime>dateFrom){
 	 		loadedOrders.splice(i,1);
 			i--;
 	 		}
