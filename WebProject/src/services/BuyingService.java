@@ -16,6 +16,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
+import beans.Buyer;
 import beans.CartItem;
 import beans.Product;
 import beans.Restaurant;
@@ -75,6 +76,7 @@ public class BuyingService {
 
 		CartItem cartItem = new CartItem(chosenProduct, data.amount);
 		userCart.addCartItem(cartItem);
+		calculatePrice(userCart, (Buyer) servletContext.getAttribute("user"));
 		cartDAO.createOrUpdate(userCart);
 	}
 
@@ -92,7 +94,7 @@ public class BuyingService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public ShoppingCart changeValue(ShoppingCart cart) {
 		CartDAO cartDAO = (CartDAO) servletContext.getAttribute("cartDAO");
-		cart.calculatePrice();
+		calculatePrice(cart, (Buyer) servletContext.getAttribute("user"));
 		cartDAO.createOrUpdate(cart);
 		return cart;
 	}
@@ -108,7 +110,7 @@ public class BuyingService {
 		for (int i=0;i<shoppingCart.getCartItems().size();i++) {
 			if (shoppingCart.getCartItems().get(i).getProduct().getName().equals(cartItem.getProduct().getName()) && shoppingCart.getCartItems().get(i).getProduct().getRestaurantID().equals(cartItem.getProduct().getRestaurantID())){
 				shoppingCart.getCartItems().remove(i);
-				shoppingCart.calculatePrice();
+				calculatePrice(shoppingCart, (Buyer) servletContext.getAttribute("user"));
 				cartDAO.createOrUpdate(shoppingCart);
 			}
 		}
@@ -132,8 +134,16 @@ public class BuyingService {
 		}
 		
 		cart.getCartItems().clear();
-		cart.calculatePrice();
+		calculatePrice(cart, (Buyer) servletContext.getAttribute("user"));
 		cartDAO.createOrUpdate(cart);
 		return cart;
+	}
+	
+	private void calculatePrice(ShoppingCart cart,Buyer buyer) {
+		double calculatedPrice=0;
+		for (CartItem cartItem:cart.getCartItems()) {
+			calculatedPrice+=cartItem.getAmount()*cartItem.getProduct().getPrice();
+		}
+		cart.setPrice(calculatedPrice*((100-buyer.getBuyerType().getDiscount())/100));
 	}
 }
