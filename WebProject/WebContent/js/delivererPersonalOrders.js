@@ -4,7 +4,6 @@
 
 defaultOrders=[];
 loadedOrders=[];
-searchResults=[];
 
 $(document).ready(function(){
 	$.get({
@@ -39,27 +38,29 @@ $(document).ready(function(){
 	
 	 $('#searchButton').click(function(){
         searchOrders();
-        fillTable(searchResults);
+        filterOrdersByStatus();
+		filterOrdersByType();
+		sortOrders(loadedOrders);
     })
     
     $("#filterStatus").change(function(){
         filterOrdersByStatus();
-        fillTable(loadedOrders);
     })
     
     $("#filterType").change(function(){
-        filterOrdersByType();
-        fillTable(loadedOrders);
+		filterOrdersByType();
     })
     
     $("#sort").change(function(){
-        sortOrders(loadedOrders);
+        filterOrdersByStatus();
+		filterOrdersByType();
+		sortOrders(loadedOrders);
         fillTable(loadedOrders);
     })
 
 	$("#undeliveredView").click(function(){
 		$("#tableBody").empty();
- 		loadedOrders=[];
+ 		loadedOrders.length=0;
 	 	var filterStatus;
 	 	let i;
 	 	let duzina = defaultOrders.length;
@@ -142,14 +143,18 @@ $(document).ready(function(){
 
 function searchOrders(){
  	 $("#tableBody").empty();
- 	 searchResults=[];
 	 let name = $("#name").val().toLowerCase();
 	 let priceFrom =$("#priceFrom").val();
 	 let priceTo = $("#priceTo").val();
-	 let dateFrom = $("#dateFrom").val();
-	 let dateTo = $("#dateTo").val();
- 
- 	if(name===""||priceFrom==="" || priceTo==="" || dateFrom==="" ||dateTo==="")
+	 let dateFromE = $("#dateFrom").val();
+	 let dateToE = $("#dateTo").val();
+	 let dateFrom = new Date(dateFromE).getTime();
+	 let dateTo = new Date(dateToE).getTime();
+
+ 	 loadedOrders.length=0;
+     loadedOrders=JSON.parse(JSON.stringify(defaultOrders));
+
+ 	 if(name===""||priceFrom==="" || priceTo==="" || dateFrom==="" ||dateTo==="")
 	 {
 	 	alert("Popunite sve kriterijume pretrage");
 	 	return;
@@ -158,30 +163,33 @@ function searchOrders(){
 	 let duzina = loadedOrders.length;
 	 
 	 for(i=0;i<duzina;i++){
-	 	if(loadedOrders[i].restaurant.name.toLowerCase().includes(name) && loadedOrders[i].price<priceTo &&loadedOrders[i].price>priceFrom)
+	 	if(!defaultOrders[i].restaurant.name.toLowerCase().includes(name) && !defaultOrders[i].price<priceTo && !defaultOrders[i].price>priceFrom)
 	 	{
-	 	if(loadedOrders[i].date<dateTo && loadedOrders[i].date>dateFrom){
-	 		searchResults.push(loadedOrders[i]);
+	 	if(!defaultOrders[i].dateAndTime<dateTo && !defaultOrders[i].dateAndTime>dateFrom){
+	 		loadedOrders.splice(i,1);
+			i--;
 	 		}
 	 	}
-	 }	 	 
+	 }
+	fillTable(loadedOrders);	 	 
  }
  
- function filterOrdersByType(){
-   loadedOrders=[];
+  function filterOrdersByType(){   
  	$("#tableBody").empty();
+	loadedOrders=[];
  	var filterType = $("#filterType").val();
  	let i;
  	let duzina = defaultOrders.length;
  	if(filterType!=""){
  	for(i=0; i<duzina;i++){
- 		if(defaultOrders[i].restaurant.type===filterType){
+ 		if(defaultOrders[i].restaurant.restaurantType===filterType){
  			loadedOrders.push(defaultOrders[i]);
- 		} else if(filterType==="AllRestaurants"){
+ 		} else if(filterType==="AllOrders"){
  			loadedOrders=defaultOrders;
  		}
  	}
  	}
+	fillTable(loadedOrders);
  }
  
    function filterOrdersByStatus(){
@@ -199,6 +207,7 @@ function searchOrders(){
  		}
  	}
  	}
+	fillTable(loadedOrders);
  }
  
  function sortOrders(){
@@ -221,26 +230,27 @@ function searchOrders(){
  	}else if(sortType==="date-descending"){
  		dateDescSort();
  	}else { loadedOrders=defaultOrders;}
+	fillTable(loadedOrders);
  	
  }
  
  function nameAscSort(){
- 	loadedOrders.sort(function(a,b){return a.toLowerCase().name-b.toLowerCase().name;});
+ 	return loadedOrders.sort((a,b)=> (a.name>b.name) ? 1 :(b.name>a.name) ? -1:0);
  }
  function nameDescSort(){
- 	loadedOrders.sort(function(a,b){return b.toLowerCase().name-a.toLowerCase().name;});
+ 	return loadedOrders.sort((a,b)=> (a.name<b.name) ? 1 :(b.name<a.name) ? -1:0);
  }
  function priceAscSort(){
- 	loadedOrders.sort(function(a,b){return a.price-b.price;});
+ 	return loadedOrders.sort(function(a,b){return a.price-b.price;});
  }
  function priceDesscSort(){
- 	loadedOrders.sort(function(a,b){return b.price-a.price;});
+ 	return loadedOrders.sort(function(a,b){return b.price-a.price;});
  }
  function dateAscSort(){
- 	loadedOrders.sort(function(a,b){return a.date-b.date});
+ 	return loadedOrders.sort(function(a,b){return a.date-b.date});
  }
  function dateDescSort(){
- 	loadedOrders.sort(function(a,b){return b.date-a.date});
+ 	return loadedOrders.sort(function(a,b){return b.date-a.date});
  }
 
 function dostavi(order){

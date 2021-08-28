@@ -9,14 +9,7 @@ $(document).ready(function(){
 	event.preventDefault();
 	var articleName = $("#articleName").text();
 	
-	$.post({
-		url:'rest/manager/productName',
-		contentType:'application/json',
-		data: JSON.stringify({id:"", name:articleName, price:100, type:"FOOD", amount:300, description:"", photoPath:""}),		
-		success: function(){
-			window.location.href='/WebProject/managerEditArticle.html';
-		},
-	})
+	
 
 	});
 	
@@ -27,13 +20,13 @@ $(document).ready(function(){
 		success: function(restaurant, response){
 			$("#restaurantName").append(restaurant.name);
 			var products = restaurant.products;
-			let numOfElements = products.lenght;
+			let numOfElements = products.length;
 			let i;
 			for(i=0; i<numOfElements; i++){
-			$("#articles").append('<div class="card"><div class="fishes"><img src="pictures/slika1.jpg"></div>');
-            $("#articles").append('<div style="overflow: hidden;"><p class="restaurant-title">'+products[i]+'</p><p class="raiting-value">4.5</p></div>');
-            $("#articles").append('<div><p class="restaurant-status">Sastojci:</p><p>Svinjeće meso, sir, tragovi soje...</p></div>');
-            $("#articles").append('<div><button id="editArticleButton" class="details-button">Izmjeni artikal</button></div>');
+			$("#articles").append('<div class="card"><div class="fishes"><img src="pictures/slika1.jpg"></div>'
+			+'<div style="overflow: hidden;"><p class="restaurant-title">'+products[i].name+'</p><p class="raiting-value">4.5</p></div>'
+			+'<div><p class="restaurant-status">Sastojci:</p><p>'+products[i].description+'</p></div>'
+			+'<div><button onclick="izmjenaArtikla(\''+products[i].name+'\')" class="details-button">Izmjeni artikal</button></div>');
 			}
 		},	
 	
@@ -66,5 +59,17 @@ $(document).ready(function(){
 	})
 	
 });
+
+function izmjenaArtikla(articleName){
+	$.post({
+		url:'rest/manager/productName',
+		contentType:'application/json',
+		data: JSON.stringify({id:"", name:articleName, price:100, type:"FOOD", amount:300, description:"", photoPath:""}),		
+		success: function(){
+			window.location.href='/WebProject/managerEditArticle.html';
+		},
+	})
+	
+}
 
 

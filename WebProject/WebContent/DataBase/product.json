@@ -16,5 +16,14 @@
     "amount" : 350,
     "description" : "supa od svinjskog i juneceg mesa",
     "photoPath" : ""
+  },
+  "10001" : {
+    "id" : "10001",
+    "name" : "Cufta",
+    "price" : 1900.0,
+    "type" : "DRINK",
+    "amount" : 500,
+    "description" : "Meso i soja",
+    "photoPath" : "../pictures/C:\\fakepath\\pljeskavica.jpg"
   }
 }

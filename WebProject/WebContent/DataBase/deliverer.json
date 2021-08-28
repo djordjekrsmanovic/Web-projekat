@@ -8,7 +8,110 @@
     "birthDate" : 479516400000,
     "deleted" : false,
     "banned" : false,
+    "role" : "DELIVERER",
     "userRole" : "DELIVERER",
-    "oredersWaitingForDelivery" : [ ]
+    "oredersWaitingForDelivery" : [ {
+      "id" : "1112334455",
+      "products" : [ {
+        "product" : {
+          "id" : "cevapi",
+          "name" : "cevapi",
+          "price" : 550.0,
+          "type" : "FOOD",
+          "amount" : 350,
+          "description" : "Cevapi od svinjskog i juneceg mesa",
+          "photoPath" : "",
+          "restaurantID" : null
+        },
+        "amount" : 2
+      }, {
+        "product" : {
+          "id" : "supa",
+          "name" : "supa",
+          "price" : 550.0,
+          "type" : "FOOD",
+          "amount" : 350,
+          "description" : "supa od svinjskog i juneceg mesa",
+          "photoPath" : "",
+          "restaurantID" : null
+        },
+        "amount" : 4
+      } ],
+      "restaurant" : {
+        "name" : "Plava frajla",
+        "restaurantType" : "ETNO",
+        "products" : [ ],
+        "restaurantStatus" : "OPEN",
+        "location" : {
+          "latitude" : 45.24,
+          "longitude" : 19.84,
+          "address" : {
+            "street" : "Spens",
+            "streetNumber" : "5",
+            "city" : "Novi Sad",
+            "postalCode" : "23000"
+          }
+        },
+        "picturePath" : "",
+        "deleted" : false,
+        "raiting" : 0,
+        "managerID" : "bojan"
+      },
+      "dateAndTime" : 1626991200000,
+      "price" : 3300.0,
+      "status" : "U_TRANSPORTU",
+      "buyerName" : "djordje"
+    }, {
+      "id" : "2234549891",
+      "products" : [ {
+        "product" : {
+          "id" : "cevapi",
+          "name" : "cevapi",
+          "price" : 550.0,
+          "type" : "FOOD",
+          "amount" : 350,
+          "description" : "Cevapi od svinjskog i juneceg mesa",
+          "photoPath" : "",
+          "restaurantID" : null
+        },
+        "amount" : 2
+      }, {
+        "product" : {
+          "id" : "supa",
+          "name" : "supa",
+          "price" : 550.0,
+          "type" : "FOOD",
+          "amount" : 350,
+          "description" : "supa od svinjskog i juneceg mesa",
+          "photoPath" : "",
+          "restaurantID" : null
+        },
+        "amount" : 4
+      } ],
+      "restaurant" : {
+        "name" : "Plava frajla",
+        "restaurantType" : "ETNO",
+        "products" : [ ],
+        "restaurantStatus" : "OPEN",
+        "location" : {
+          "latitude" : 45.24,
+          "longitude" : 19.84,
+          "address" : {
+            "street" : "Spens",
+            "streetNumber" : "5",
+            "city" : "Novi Sad",
+            "postalCode" : "23000"
+          }
+        },
+        "picturePath" : "",
+        "deleted" : false,
+        "raiting" : 0,
+        "managerID" : "bojan"
+      },
+      "dateAndTime" : 1622325600000,
+      "price" : 3300.0,
+      "status" : "U_TRANSPORTU",
+      "buyerName" : "djordje"
+    } ]
   }
 }

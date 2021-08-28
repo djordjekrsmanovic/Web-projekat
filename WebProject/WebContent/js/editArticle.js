@@ -6,7 +6,7 @@
  function collectData(){
  	product.name=$("#ArticleName").val();
  	product.price=$("#Price").val();
- 	if($("#ArticleType").val()==="food"){
+ 	if($("#ArticleType").val()==="FOOD"){
  	product.type="FOOD";
  	} else {product.type="DRINK";}
  	product.amount=$("#Amount").val();
