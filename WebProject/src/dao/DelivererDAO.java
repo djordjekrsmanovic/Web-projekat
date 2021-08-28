@@ -116,7 +116,6 @@ public class DelivererDAO extends GenericFileRepository<Deliverer, String> {
 	
 	
 	public List<Order> getMyOrders(User u){
-		generateDeliverer();
 		for(Deliverer d : this.getDeliverers()) {
 			if(d.getUsername().equals(u.getUsername())) {
 				return d.getOredersWaitingForDelivery();
@@ -148,4 +147,12 @@ public class DelivererDAO extends GenericFileRepository<Deliverer, String> {
 		d.getOredersWaitingForDelivery().add(order2);
 	}
 	
+	public void deliverOrder(Order o, String id) {
+		for(Order ord : this.getDelivererByID(id).getOredersWaitingForDelivery()) {
+			if(ord.getId().equals(o.getId())) {
+				ord.setStatus(OrderStatus.DOSTAVLJENA);
+				this.createOrUpdate(this.getDelivererByID(id));
+			}
+		}
+	}
 }

@@ -118,9 +118,13 @@ public class DelivererService {
 	@Path("/deliverOrder")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String deliverOrder(Order o) {
+	public String deliverOrder(String oID) {
 		OrderDAO oDAO = (OrderDAO) servletContext.getAttribute("OrderDAO");
+		Order o = oDAO.getOrderByID(oID);
 		oDAO.deliverOrder(o);
+		DelivererDAO dDAO = (DelivererDAO) servletContext.getAttribute("DelivererDAO");
+		User user = (User) servletContext.getAttribute("user");
+		dDAO.deliverOrder(o, user.getUsername());
 		return "Success";
 	}
 	

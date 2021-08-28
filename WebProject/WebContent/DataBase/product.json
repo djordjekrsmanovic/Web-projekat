@@ -17,6 +17,16 @@
     "description" : "supa od svinjskog i juneceg mesa",
     "photoPath" : ""
   },
+  "Ljuta kobasica" : {
+    "id" : "Ljuta kobasica",
+    "name" : "Ljuta kobasica",
+    "price" : 1400.0,
+    "type" : "FOOD",
+    "amount" : 400,
+    "description" : "Kobasice  sa feferonima",
+    "photoPath" : "../pictures/C:\\fakepath\\pljeskavica.jpg",
+    "restaurantID" : null
+  },
   "10001" : {
     "id" : "10001",
     "name" : "Cufta",

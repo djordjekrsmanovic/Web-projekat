@@ -10,7 +10,7 @@
       "amount" : 350,
       "description" : "Cevapi od svinjskog i juneceg mesa",
       "photoPath" : "",
-	  "restaurantID":"Plava frajla"
+      "restaurantID" : "Plava frajla"
     }, {
       "id" : "supa",
       "name" : "supa",
@@ -19,7 +19,16 @@
       "amount" : 350,
       "description" : "supa od svinjskog i juneceg mesa",
       "photoPath" : "",
-	  "restaurantID":"Plava frajla"
+      "restaurantID" : "Plava frajla"
+    }, {
+      "id" : "Ljuta kobasica",
+      "name" : "Ljuta kobasica",
+      "price" : 1400.0,
+      "type" : "DRINK",
+      "amount" : 400,
+      "description" : "Kobasice  sa feferonima",
+      "photoPath" : "../pictures/C:\\fakepath\\pljeskavica.jpg",
+      "restaurantID" : null
     } ],
     "restaurantStatus" : "OPEN",
     "location" : {

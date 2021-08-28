@@ -63,8 +63,8 @@
  	$("#ArticleName").val(article.name);
  	$("#Price").val(article.price);
  	if(article.type=="FOOD"){
- 	$("#ArticleType").val("food");
- 	} else {$("#ArticleType").val("drink");} 
+ 	$("#ArticleType").val("FOOD");
+ 	} else {$("#ArticleType").val("DRINK");} 
  	$("#Amount").val(article.amount);
  	$("#Description").val(article.description);
  }
