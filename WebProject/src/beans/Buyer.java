@@ -58,6 +58,12 @@ public class Buyer extends User {
 	}
 	public void setPoints(int points) {
 		this.points = points;
+		
+	}
+	
+	public void earnPoints(int points) {
+		this.points+=points;
+		buyerType.recalculateRank(this.points);
 	}
 	
 	

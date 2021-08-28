@@ -1,7 +1,9 @@
 package dao;
 
 import java.io.File;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -19,6 +21,7 @@ import beans.ProductType;
 import beans.Restaurant;
 import beans.RestaurantStatus;
 import beans.RestaurantType;
+import beans.ShoppingCart;
 
 public class OrderDAO extends GenericFileRepository<Order, String> {
 
@@ -117,6 +120,30 @@ public class OrderDAO extends GenericFileRepository<Order, String> {
 			}
 		}
 		return null;
+	}
+
+	public Order formOrder(String id, ShoppingCart cart) {
+		RestaurantDAO restaurantDAO=new RestaurantDAO(contextPath);
+		Restaurant restaurant=restaurantDAO.getRestaurantByID(id);
+		Order order=new Order();
+		double price=0;
+		List<CartItem> products=new ArrayList<CartItem>();
+		for (CartItem cartItem:cart.getCartItems()) {
+			if (cartItem.getProduct().getRestaurantID().equals(id)){
+				products.add(cartItem);
+				price+=cartItem.getAmount()*cartItem.getProduct().getPrice();
+			}
+		}
+		
+		order.setBuyerName(cart.getOwnerID());
+		order.setDateAndTime(new Date());
+		order.setPrice(price);
+		order.setProducts(products);
+		order.setRestaurant(restaurant);
+		order.setStatus(OrderStatus.OBRADA);
+		create(order);
+		return order;
+		
 	}
 	
 	public void deliverOrder(Order ord) {

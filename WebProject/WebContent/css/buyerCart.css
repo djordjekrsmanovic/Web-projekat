@@ -151,7 +151,13 @@ nav{
   .r-table td img {
     height: 40px;
     transition: transform .6s;
-    width: 250px;
+    width: 100px;
+    
+  }
+
+  .r-table td input {
+    
+    width: 25px;
     
   }
   

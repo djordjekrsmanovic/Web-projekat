@@ -1,11 +1,17 @@
 package beans;
 
+
+
+
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
+
 
 //porudzbina
 public class Order {
 
+	final int ID_LENGTH = 10;
 	private String id;
 	private List<CartItem> products;
 	private Restaurant restaurant;
@@ -23,14 +29,14 @@ public class Order {
 
 	public Order() {
 		super();
-		// TODO Auto-generated constructor stub
+		this.id=UUID.randomUUID().toString().replace("-","").substring(0,ID_LENGTH);
 	}
 
 
-	public Order(String id, List<CartItem> products, Restaurant restaurant, Date dateAndTime, double price,
+	public Order(List<CartItem> products, Restaurant restaurant, Date dateAndTime, double price,
 			String buyerName, OrderStatus status) {
 		super();
-		this.id = id;
+		this.id = this.id=UUID.randomUUID().toString().replace("-","").substring(0,ID_LENGTH);
 		this.products = products;
 		this.restaurant = restaurant;
 		this.dateAndTime = dateAndTime;

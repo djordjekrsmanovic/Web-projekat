@@ -33,16 +33,9 @@ public class ShoppingCart {
 		super();
 		this.cartItems=cartItems;
 		this.ownerID=ownerID;
-		calculatePrice();
 	}
 	
-	private void calculatePrice() {
-		double calculatedPrice=0;
-		for (CartItem cartItem:cartItems) {
-			calculatedPrice+=cartItem.getAmount()*cartItem.getProduct().getPrice();
-		}
-		this.price=calculatedPrice;
-	}
+	
 
 	public List<CartItem> getCartItems() {
 		return cartItems;
@@ -75,8 +68,13 @@ public class ShoppingCart {
 	}
 
 	public void addCartItem(CartItem cartItem) {
+		for (CartItem selectedItems:cartItems) {
+			if (cartItem.getProduct().getName().equals(selectedItems.getProduct().getName()) && cartItem.getProduct().getRestaurantID().equals(selectedItems.getProduct().getRestaurantID())) {
+				selectedItems.setAmount(selectedItems.getAmount()+cartItem.getAmount());
+				return;
+			}
+		}
 		cartItems.add(cartItem);
-		calculatePrice();
 	}
 	
 	

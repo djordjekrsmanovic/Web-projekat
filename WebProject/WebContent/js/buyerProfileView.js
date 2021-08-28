@@ -46,10 +46,14 @@ function fillUserData(user){
     }else{
         $('#gender').text('Ženski');
     }
+
+    $('#category').text(getRole(user));
+    $('#points').text(user.points);
+    $('#discount').text(user.buyerType.discount+'%');
     
 }
 
-function formCommentTable(){
+function formOrderTable(){
     for (comment of comments){
         let tr=$('<tr></tr>');
         let customerTd=$('<td>'+comment.buyer.firstName+' '+comment.buyer.lastName+'</td>');
@@ -63,12 +67,13 @@ function formCommentTable(){
     
 }
 
-function getCommentState(comment){
-    if (comment.comentState=='APPROVED'){
-        return 'Odobren';
-    }else if(comment.comentState=='WAITING'){
-        return 'Čeka';
-    }else{
-        return 'Odbijen';
+function getRole(user){
+    if (user.buyerType.buyerRank=='GOLD'){
+        return 'Zlatni kupac';
+    }else if(user.buyerType.buyerRank=='BRONZE'){
+        return 'Bronzani kupac';
+    }else if(user.buyerType.buyerRank=='SILVER'){
+        return 'Srebrni kupac';
     }
+    return 'Početnik';
 }

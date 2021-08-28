@@ -1,10 +1,57 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
 
-</body>
-</html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link href="css/buyerCart.css" rel="stylesheet" >
+        <script src="jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="js/buyerCart.js"></script>
+    </head>
+    <body>
+        <section class="header">
+            <nav >
+                <a href=""><img src="pictures/logo.png" width="120px" height="60px"></a>
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="home.html">Početna strana</a></li>
+              <li><a href="adminRestaurantsView.html">Korpa</a></li>
+              <li><a href="adminAddUser.html">Porudžbine</a></li>
+                  <li><a href="buyerProfileView.html">Profil</a></li>
+              <li><a href="" id='logout'>Odjava</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </section>
+    
+        
+        <div class="cart-div">
+            <p class="comments-title">Porudžbine</p>
+        <div class="tbl-header">
+            <table class="r-table" cellpadding="0" cellspacing="0" border="0">
+              <thead>
+                <tr>
+                  <th>Restoran</th>
+                  <th>Datum</th>
+                  <th>Cijena</th>
+                  <th>Status</th>
+                  <th>Otkaži porudžbinu</th>
+                  
+                </tr>
+              </thead>
+              <tbody id='tableBody' class="scroll">
+                
+              </tbody>
+            </table>
+          </div>
+          <span><span id='finalPrice' class="final-price"></span> <button class="confirm" id='confirmButton'>Završi narudžbinu</button></span>
+          </div>
+         
+        </div>
+        
+            
+        
+          
+    </body>
+    </html>
