@@ -45,17 +45,20 @@ $(document).ready(function(){
     
     $("#filterStatus").change(function(){
         filterOrdersByStatus();
+		sortOrders(loadedOrders);
+        filterOrdersByStatus();
     })
     
     $("#filterType").change(function(){
 		filterOrdersByType();
+		sortOrders(loadedOrders);
+        filterOrdersByStatus();
     })
     
     $("#sort").change(function(){
-        filterOrdersByStatus();
-		filterOrdersByType();
 		sortOrders(loadedOrders);
-        fillTable(loadedOrders);
+        filterOrdersByStatus();
+		filterOrdersByType();		
     })
 
 	$("#undeliveredView").click(function(){
@@ -248,10 +251,10 @@ function searchOrders(){
  	return loadedOrders.sort(function(a,b){return b.price-a.price;});
  }
  function dateAscSort(){
- 	return loadedOrders.sort(function(a,b){return a.date-b.date});
+ 	return loadedOrders.sort(function(a,b){return a.dateAndTime-b.dateAndTime});
  }
  function dateDescSort(){
- 	return loadedOrders.sort(function(a,b){return b.date-a.date});
+ 	return loadedOrders.sort(function(a,b){return b.dateAndTime-a.dateAndTime});
  }
 
 function dostavi(orderID){
