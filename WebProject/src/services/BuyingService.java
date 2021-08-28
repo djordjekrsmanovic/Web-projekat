@@ -18,10 +18,12 @@ import javax.ws.rs.core.MediaType;
 
 import beans.Buyer;
 import beans.CartItem;
+import beans.Order;
 import beans.Product;
 import beans.Restaurant;
 import beans.ShoppingCart;
 import beans.User;
+import beans.OrderStatus;
 import dao.BuyerDAO;
 import dao.CartDAO;
 import dao.OrderDAO;
@@ -145,5 +147,25 @@ public class BuyingService {
 			calculatedPrice+=cartItem.getAmount()*cartItem.getProduct().getPrice();
 		}
 		cart.setPrice(calculatedPrice*((100-buyer.getBuyerType().getDiscount())/100));
+	}
+	
+	@GET
+	@Path("get-orders/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Order> getOrders(@PathParam("id") String id) {
+		OrderDAO orderDAO=(OrderDAO) servletContext.getAttribute("orderDAO");
+		return orderDAO.getBuyerOrders(id);
+	}
+	
+	@DELETE
+	@Path("cancel-order/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Order> cancelOrder(@PathParam("id") String id){
+		OrderDAO orderDAO=(OrderDAO) servletContext.getAttribute("orderDAO");
+		Order order=orderDAO.getOrderByID(id);
+		order.setStatus(OrderStatus.OTKAZANA);
+		orderDAO.createOrUpdate(order);
+		Buyer buyer=(Buyer) servletContext.getAttribute("user");
+		return orderDAO.getBuyerOrders(buyer.getUsername());
 	}
 }

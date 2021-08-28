@@ -1,7 +1,6 @@
 package dao;
 
 import java.io.File;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -147,6 +146,17 @@ public class OrderDAO extends GenericFileRepository<Order, String> {
 				this.update(o);
 			}
 		}
+	}
+
+	public List<Order> getBuyerOrders(String id) {
+		List<Order> retVal=getOrders();
+		for (int i=0;i<retVal.size();i++) {
+			if (!retVal.get(i).getBuyerName().equals(id)) {
+				retVal.remove(i);
+				i--;
+			}
+		}
+		return retVal;
 	}
 	
 }

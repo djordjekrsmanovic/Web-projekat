@@ -1,31 +1,7 @@
 {
   "Djordje" : {
-    "cartItems" : [ {
-      "product" : {
-        "id" : "supa",
-        "name" : "supa",
-        "price" : 550.0,
-        "type" : "FOOD",
-        "amount" : 350,
-        "description" : "supa od svinjskog i juneceg mesa",
-        "photoPath" : "",
-        "restaurantID" : "Plava frajla"
-      },
-      "amount" : 8
-    }, {
-      "product" : {
-        "id" : "cevapi",
-        "name" : "cevapi",
-        "price" : 550.0,
-        "type" : "FOOD",
-        "amount" : 350,
-        "description" : "Cevapi od svinjskog i juneceg mesa",
-        "photoPath" : "",
-        "restaurantID" : "Plava frajla"
-      },
-      "amount" : 2
-    } ],
-    "price" : 4950.0,
+    "cartItems" : [ ],
+    "price" : 0.0,
     "ownerID" : "Djordje"
   }
 }

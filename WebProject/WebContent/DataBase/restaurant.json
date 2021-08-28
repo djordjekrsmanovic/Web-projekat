@@ -40,7 +40,25 @@
   "Vidikovac" : {
     "name" : "Vidikovac",
     "restaurantType" : "ETNO",
-    "products" : [ ],
+    "products" : [ {
+      "id" : "pecenje",
+      "name" : "pecenje",
+      "price" : 550.0,
+      "type" : "FOOD",
+      "amount" : 350,
+      "description" : "Svinjsko pecenje",
+      "photoPath" : "",
+	  "restaurantID":"Vidikovac"
+    }, {
+      "id" : "kupus salata",
+      "name" : "kupus salata",
+      "price" : 550.0,
+      "type" : "FOOD",
+      "amount" : 350,
+      "description" : "kupus salata",
+      "photoPath" : "",
+	  "restaurantID":"Vidikovac"
+    } ],
     "restaurantStatus" : "OPEN",
     "location" : {
       "latitude" : 44.34,
