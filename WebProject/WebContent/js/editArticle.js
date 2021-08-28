@@ -2,7 +2,8 @@
  * 
  */
  var product;
- 
+ var fileInput;
+
  function collectData(){
  	product.name=$("#ArticleName").val();
  	product.price=$("#Price").val();
@@ -11,7 +12,9 @@
  	} else {product.type="DRINK";}
  	product.amount=$("#Amount").val();
  	product.description=$("#Description").val();
- 	
+	product.photoPath=$("#photo").val();
+	product.photoPath = product.photoPath.substring(product.photoPath.lastIndexOf("\\") + 1, product.photoPath.length); 	
+	product.binaryPhoto=fileInput;
  }
  
  $(document).ready(function(){
@@ -56,6 +59,18 @@
 		}	
 	})
  
+	$("#photo").change(function(){
+		var file = $("#photo")[0].files[0];
+		var reader = new FileReader();
+		reader.readAsText(file);
+		reader.onload = function(e) {
+		fileInput = e.target.result;
+		};
+		reader.onerror = function(e) {
+		console.log('Error : ' + e.type);
+		};
+		
+	})
  
  });
  

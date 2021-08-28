@@ -11,6 +11,7 @@ public class Product {
 	private String description;
 	private String photoPath;
 	private String restaurantID;
+	private String binaryPhoto;
 	
 	
 
@@ -43,8 +44,24 @@ public class Product {
 		this.amount = amount;
 		this.description = description;
 		this.photoPath = photoPath;
-		this.restaurantID=restaurantID;
 	}
+	
+	
+
+	public Product(String id, String name, double price, ProductType type, int amount, String description,
+			String photoPath, String restaurantID, String binaryPhoto) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.price = price;
+		this.type = type;
+		this.amount = amount;
+		this.description = description;
+		this.photoPath = photoPath;
+		this.restaurantID = restaurantID;
+		this.binaryPhoto = binaryPhoto;
+	}
+
 
 	public void setId(String i) {
 		id = i;
@@ -115,6 +132,15 @@ public class Product {
 		this.restaurantID = restaurantID;
 	}
 
+
+	public String getBinaryPhoto() {
+		return binaryPhoto;
+	}
+
+
+	public void setBinaryPhoto(String binaryPhoto) {
+		this.binaryPhoto = binaryPhoto;
+	}
 
 
 	@Override
