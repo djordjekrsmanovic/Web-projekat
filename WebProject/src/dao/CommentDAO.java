@@ -7,16 +7,8 @@ import java.util.List;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import beans.Address;
-import beans.Buyer;
 import beans.Comment;
 import beans.CommentState;
-import beans.Converter;
-import beans.Gender;
-import beans.Location;
-import beans.Restaurant;
-import beans.RestaurantStatus;
-import beans.RestaurantType;
 
 public class CommentDAO extends GenericFileRepository<Comment, String> {
 
@@ -31,7 +23,7 @@ public class CommentDAO extends GenericFileRepository<Comment, String> {
 	@Override
 	protected String getKey(Comment entity) {
 		// TODO Auto-generated method stub
-		return entity.getBuyer().getUsername();// za kljuc jos potrebno dodati naziv restorana
+		return entity.getCommentID();
 	}
 
 	public List<Comment> getComments() {
@@ -53,14 +45,14 @@ public class CommentDAO extends GenericFileRepository<Comment, String> {
 		 * private User buyer; private Restaurant restaurant; private String comment;
 		 * private int rate; private CommentState commentState; private boolean deleted;
 		 */
-		Buyer buyer = new Buyer("djordje", "djordje", "Djordje", "Krsmanovic", Gender.male,
+		/*Buyer buyer = new Buyer("djordje", "djordje", "Djordje", "Krsmanovic", Gender.male,
 				Converter.convertStringtoDate("14.01.1999."), false, false, 0);
 		Address address = new Address("Spens", "5", "Novi Sad", "23000");
 		Location location = new Location(45.24, 19.84, address);
 		Restaurant restaurant = new Restaurant("Plava frajla", RestaurantType.ETNO, RestaurantStatus.OPEN, location,
 				"","bojan");
-		Comment comment = new Comment(buyer, restaurant, "Najbolji restoran", 5);
-		createOrUpdate(comment);
+		//Comment comment = new Comment(buyer, restaurant, "Najbolji restoran", 5);
+		//createOrUpdate(comment); */
 	}
 
 	public CommentDAO(String contextPath) {

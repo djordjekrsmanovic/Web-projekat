@@ -168,4 +168,22 @@ public class BuyingService {
 		Buyer buyer=(Buyer) servletContext.getAttribute("user");
 		return orderDAO.getBuyerOrders(buyer.getUsername());
 	}
+	
+	@GET
+	@Path("get-orders-for-review")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Order> getOrdersForReview(){
+		OrderDAO orderDAO=(OrderDAO) servletContext.getAttribute("orderDAO");
+		Buyer buyer=(Buyer) servletContext.getAttribute("user");
+		
+		List<Order> orders=new ArrayList<Order>();
+		orders=orderDAO.getBuyerOrders(buyer.getUsername());
+		for (int i=0;i<orders.size();i++) {
+			if (orders.get(i).isReviewed()==true || orders.get(i).getStatus()!=OrderStatus.DOSTAVLJENA) {
+				orders.remove(i);
+				i--;
+			}
+		}
+		return orders;
+	}
 }

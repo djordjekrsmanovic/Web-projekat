@@ -128,7 +128,7 @@ public class OrderDAO extends GenericFileRepository<Order, String> {
 			}
 		}
 		
-		order.setBuyerName(cart.getOwnerID());
+		order.setBuyerID(cart.getOwnerID());
 		order.setDateAndTime(new Date());
 		order.setPrice(price);
 		order.setProducts(products);
@@ -151,7 +151,7 @@ public class OrderDAO extends GenericFileRepository<Order, String> {
 	public List<Order> getBuyerOrders(String id) {
 		List<Order> retVal=getOrders();
 		for (int i=0;i<retVal.size();i++) {
-			if (!retVal.get(i).getBuyerName().equals(id)) {
+			if (!retVal.get(i).getBuyerID().equals(id)) {
 				retVal.remove(i);
 				i--;
 			}

@@ -5,7 +5,7 @@
     "firstName" : "Djordje",
     "lastName" : "Krsmanovic",
     "gender" : "female",
-    "birthDate" : 1628632800000,
+    "birthDate" : 1629151200000,
     "deleted" : false,
     "banned" : false,
     "role" : "BUYER",
@@ -13,8 +13,8 @@
     "orders" : [ ],
     "points" : 0,
     "buyerType" : {
-      "buyerRank" : "GOLD",
-      "discount" : 10.0
+      "buyerRank" : "NO_RANK",
+      "discount" : 0.0
     }
   }
 }

@@ -47,7 +47,36 @@ $(document).ready(function(){
                 fillProfileData();
 							
 			} else if(loggedUser.role=="BUYER"){
-                //dodati podatke za ovu ulogo po uzoru na prethodne
+                /*<li><a href="home.html">Početna strana</a></li>
+                      <li><a href="buyerCart.html">Korpa</a></li>
+                      <li><a href="buyerOrders.html">Porudžbine</a></li>
+                      <li><a href="buyerProfileView.html">Profil</a></li>
+                      <li><a href="" id='logout'>Odjava</a></li>*/
+                $('#loginMenu').hide();
+                $('#registrationMenu').hide();
+                let homeLi=$('<li></li>').append('<a href="home.html">Početna strana </a>');
+                let restaurantViewLi=$('<li></li>').append('<a href="buyerCart.html">Korpa</a>');
+                let buyersViewLi=$('<li></li>').append('<a href="buyerOrders.html">Porudžbine</a>');
+                let profileView=$('<li></li>').append('<a href="buyerProfileView.html">Profil</a>');
+                let logout=$('<a id="logout" href="">Odjava</a>');
+                logout.click(function(){
+                   
+                        $.get({
+                            url:'rest/login/logout',
+                            contentType:'application/json',
+                            success:function(data){
+                                if (data=="Loged out successfully!"){
+                                    window.location.href="http://localhost:8080/WebProject/home.html";
+                                }else{
+                                    alert('Greska prilikom odjave sa profila');
+                                }
+                            }
+                        })
+                    
+                })
+                let logOut=$('<li></li>').append(logout);
+                $('#ul-menu').append(homeLi,restaurantViewLi,buyersViewLi,profileView,logOut);
+                fillProfileData();
 				
 			} else if(loggedUser.role=="MANAGER"){
                 //dodati podatke za ovu ulogo po uzoru na prethodne

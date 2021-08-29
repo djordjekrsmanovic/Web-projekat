@@ -1,24 +1,46 @@
 {
-  "djordje" : {
+  "5b42fe08cf" : {
+    "commentID" : "5b42fe08cf",
     "buyer" : {
-      "username" : "djordje",
+      "username" : "Djordje",
       "password" : "djordje",
       "firstName" : "Djordje",
       "lastName" : "Krsmanovic",
-      "gender" : "male",
-      "birthDate" : 916268400000,
+      "gender" : "female",
+      "birthDate" : 1629151200000,
       "deleted" : false,
       "banned" : false,
+      "role" : "BUYER",
       "userRole" : "BUYER",
       "orders" : [ ],
       "points" : 0,
-      "buyerType" : null,
-      "role" : "BUYER"
+      "buyerType" : {
+        "buyerRank" : "NO_RANK",
+        "discount" : 0.0
+      }
     },
     "restaurant" : {
       "name" : "Plava frajla",
       "restaurantType" : "ETNO",
-      "products" : [ ],
+      "products" : [ {
+        "id" : "cevapi",
+        "name" : "cevapi",
+        "price" : 550.0,
+        "type" : "FOOD",
+        "amount" : 350,
+        "description" : "Cevapi od svinjskog i juneceg mesa",
+        "photoPath" : "",
+        "restaurantID" : "Plava frajla"
+      }, {
+        "id" : "supa",
+        "name" : "supa",
+        "price" : 550.0,
+        "type" : "FOOD",
+        "amount" : 350,
+        "description" : "supa od svinjskog i juneceg mesa",
+        "photoPath" : "",
+        "restaurantID" : "Plava frajla"
+      } ],
       "restaurantStatus" : "OPEN",
       "location" : {
         "latitude" : 45.24,
@@ -28,15 +50,16 @@
           "streetNumber" : "5",
           "city" : "Novi Sad",
           "postalCode" : "23000"
-        }        
+        }
       },
       "picturePath" : "",
       "deleted" : false,
-      "managerID": "bojan"
+      "raiting" : 0,
+      "managerID" : "bojan"
     },
-    "comment" : "Najbolji restoran",
+    "comment" : "Sve za 10",
     "rate" : 5,
-    "commentState" : "APPROVED",
+    "commentState" : "WAITING",
     "deleted" : false
   }
 }

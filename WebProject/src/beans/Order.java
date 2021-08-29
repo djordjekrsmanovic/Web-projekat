@@ -15,10 +15,12 @@ public class Order {
 	private double price;
 	private String buyerID;
 	private OrderStatus status;
+	private boolean reviewed;
 
 	public Order() {
 		super();
 		this.id = UUID.randomUUID().toString().replace("-", "").substring(0, ID_LENGTH);
+		this.reviewed=false;
 	}
 
 	public Order(List<CartItem> products, Restaurant restaurant, Date dateAndTime, double price, String buyerName,
@@ -30,6 +32,7 @@ public class Order {
 		this.dateAndTime = dateAndTime;
 		this.price = price;
 		this.buyerID = buyerName;
+		this.reviewed=false;
 		this.status = status;
 	}
 
@@ -47,6 +50,7 @@ public class Order {
 			calculatedPrice += cartItem.getAmount() * cartItem.getProduct().getPrice();
 		}
 		this.price = calculatedPrice;
+		this.reviewed=false;
 	}
 
 	public String getId() {
@@ -104,6 +108,16 @@ public class Order {
 	public void setRestaurant(Restaurant restaurant) {
 		this.restaurant = restaurant;
 	}
+	
+	
+
+	public boolean isReviewed() {
+		return reviewed;
+	}
+
+	public void setReviewed(boolean reviewed) {
+		this.reviewed = reviewed;
+	}
 
 	@Override
 	public String toString() {
@@ -111,4 +125,7 @@ public class Order {
 				+ dateAndTime + ", price=" + price + ", buyerID=" + buyerID + ", status=" + status + "]";
 	}
 
+	}
+
+	
 }

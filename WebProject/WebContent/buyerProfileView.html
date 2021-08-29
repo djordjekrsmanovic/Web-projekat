@@ -16,10 +16,10 @@
 			<div class="nav-links">
 				<ul>
 					<li><a href="home.html">Početna strana</a></li>
-          <li><a href="adminRestaurantsView.html">Korpa</a></li>
-          <li><a href="adminAddUser.html">Porudžbine</a></li>
-		  <li><a href="adminProfileView.html">Profil</a></li>
-		  <li><a href="" id='logout'>Odjava</a></li>
+                      <li><a href="buyerCart.html">Korpa</a></li>
+                      <li><a href="buyerOrders.html">Porudžbine</a></li>
+                      <li><a href="buyerProfileView.html">Profil</a></li>
+                      <li><a href="" id='logout'>Odjava</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -93,7 +93,44 @@
       </div>
       </div>
 
-        
+        <!-------------------------Write-Comment---------------------------->
+        <div class="comment-card" id='writeComment'>
+            <p class="comment-title">Unesite komentar</p>
+            <hr style="height: 1px; background-color: white;">
+        <form>
+            <div>
+                
+            </div>
+            <div style="margin:20px">
+                <textarea style="width: 80%; height: 100px;" placeholder="Unesite komentar" id="comment-text"></textarea>
+            </div>
+            <div>
+                <span class="mark" >Ocjena:</span>
+                <select id='rate'>
+                    <option value="1">
+                    1
+                    </option>
+                    <option value="2">
+                        2
+                    </option>
+                    <option value="3"> 
+                        3
+                    </option>
+                    <option value="4">
+                        4
+                    </option>
+                    <option value="5">
+                        5
+                    </option>
+                </select>
+            </div>
+            <div class="submit-div">
+                <input type="submit" class="submit-button" id='send-comment' value="Posalji">
+            </div>
+        </form>
+    
+        <!----------X--------------Write-Comment---------------------------->
+        </div>
     
       
 </body>

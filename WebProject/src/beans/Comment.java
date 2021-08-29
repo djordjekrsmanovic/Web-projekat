@@ -2,6 +2,7 @@ package beans;
 
 public class Comment {
 	
+	private String commentID;
 	private Buyer buyer;
 	private Restaurant restaurant;
 	private String comment;
@@ -9,18 +10,20 @@ public class Comment {
 	private CommentState commentState;
 	private boolean deleted;
 	
-	public Comment(Buyer buyer,Restaurant restaurant, String comment, int rate) {
+	public Comment(String commentID,Buyer buyer,Restaurant restaurant, String comment, int rate) {
 		super();
+		this.commentID=commentID;
 		this.buyer = buyer;
 		this.restaurant=restaurant;
 		this.comment = comment;
 		this.rate = rate;
-		this.commentState=CommentState.APPROVED;
+		this.commentState=CommentState.WAITING;
 		this.deleted=false;
 	}
 	
-	public Comment(Buyer buyer,Restaurant restaurant, String comment, int rate,CommentState commentState) {
+	public Comment(String commentID,Buyer buyer,Restaurant restaurant, String comment, int rate,CommentState commentState) {
 		super();
+		this.commentID=commentID;
 		this.buyer = buyer;
 		this.restaurant=restaurant;
 		this.comment = comment;
@@ -89,6 +92,15 @@ public class Comment {
 				+ ", commentState=" + commentState + ", deleted=" + deleted + "]";
 	}
 
+	public String getCommentID() {
+		return commentID;
+	}
+
+	public void setCommentID(String commentID) {
+		this.commentID = commentID;
+	}
+
+	
 	
 	
 }
