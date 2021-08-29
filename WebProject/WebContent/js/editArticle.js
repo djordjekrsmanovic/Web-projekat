@@ -62,7 +62,7 @@
 	$("#photo").change(function(){
 		var file = $("#photo")[0].files[0];
 		var reader = new FileReader();
-		reader.readAsText(file);
+		reader.readAsDataURL(file);
 		reader.onload = function(e) {
 		fileInput = e.target.result;
 		};

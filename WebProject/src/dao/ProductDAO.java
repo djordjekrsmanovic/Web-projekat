@@ -94,7 +94,7 @@ public class ProductDAO extends GenericFileRepository<Product, String> {
 			
 
 		byte[] data = Base64.getDecoder().decode(imageDataBytes.getBytes());
-	   
+	   System.out.print(images + photoName);
 	   	try(OutputStream stream = new FileOutputStream(images + photoName)) {
 	   		stream.write(data);
 		} catch (Exception e) {
