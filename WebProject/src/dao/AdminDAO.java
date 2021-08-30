@@ -79,8 +79,10 @@ public class AdminDAO extends GenericFileRepository<Administrator, String> {
 		System.out.print(admins.size());
 		for(Administrator a : admins) {				
 			if(a.getUsername().equals(username) && a.getPassword().equals(password)) {
+				if(!a.isBanned()) {
 				a.setRole(UserRole.ADMIN);
 				return (User) a;
+				}
 			}			
 		}
 		return null;

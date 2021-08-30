@@ -75,7 +75,9 @@ public class CommentDAO extends GenericFileRepository<Comment, String> {
 		List<Comment> retVal = new ArrayList<Comment>();
 		for(Comment c : this.getComments()) {
 			if(c.getRestaurant().getManagerID().equals(managerid)) {
+				if(!c.isDeleted()) {
 				retVal.add(c);
+				}
 			}
 		}
 		return retVal;
@@ -87,9 +89,11 @@ public class CommentDAO extends GenericFileRepository<Comment, String> {
 			if(c.getBuyer().getUsername().equals(comm.getBuyer().getUsername()) && c.getRestaurant().getManagerID().equals(comm.getRestaurant().getManagerID())) {
 				if(tipPromjene.equals("odobri")) {
 					c.setCommentState(CommentState.APPROVED);
+					c.setDeleted(true);
 					this.update(c);
 				} else {
 					c.setCommentState(CommentState.REJECT);
+					c.setDeleted(true);
 					this.update(c);
 				}
 			}
