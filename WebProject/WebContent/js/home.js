@@ -71,7 +71,7 @@ $(document).ready(function(){
 		            <li><a href="buyerProfile.html">Profil</a></li>*/
                 let homeLi=$('<li></li>').append('<a href="home.html">Početna strana </a>');
                 let restaurantViewLi=$('<li></li>').append('<a href="buyerCart.html">Korpa</a>');
-                let buyersViewLi=$('<li></li>').append('<a href="#">Porudžbine</a>');
+                let buyersViewLi=$('<li></li>').append('<a href="buyerOrders.html">Porudžbine</a>');
                 let usersViewLi=$('<li></li>').append('<a href="buyerProfileView.html">Profil</a>');
                 
                 let logout=$('<a id="logout" href="">Odjava</a>');
@@ -312,10 +312,10 @@ function formRestaurantCard(restaurant){
     let StatusAndTypeDiv=$('<div></div>');
     let RestaurantStatus=$('<p></p>',{
         class:"restaurant-status",
-        text:restaurant.restaurantStatus
+        text:getRestaurantStatus(restaurant)
     });
     let RestaurantType=$('<p></p>',{
-        text:restaurant.restaurantType
+        text:getType(restaurant)
     })
 
     let locationDiv=$('<div></div>');
@@ -378,3 +378,28 @@ function formRestaurantCard(restaurant){
             <button class="details-button">Detalji</button>\
         </div>\
     </div>')*/
+
+
+    function getType(restaurant){
+        /*ITALIAN,
+        JAPANESE,
+        GRILL,
+        ETNO*/
+        if (restaurant.restaurantType=='ITALIAN'){
+            return "Italijanski restoran";
+        }else if(restaurant.restaurantType=='JAPANESE'){
+            return "Japanski restoran";
+        }else if(restaurant.restaurantType=="GRILL"){
+            return "Roštiljnica";
+        }else{
+            return "Etno restoran";
+        }
+    }
+    
+    function getRestaurantStatus(restaurant){
+        if (restaurant.restaurantStatus=="CLOSED"){
+            return "Zatvoren";
+        }else{
+            return "Otvoren";
+        }
+    }

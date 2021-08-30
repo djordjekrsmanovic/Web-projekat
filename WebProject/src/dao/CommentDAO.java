@@ -95,5 +95,16 @@ public class CommentDAO extends GenericFileRepository<Comment, String> {
 			}
 		}
 	}
+	
+	public List<Comment> getBuyerComments(String id){
+		List<Comment> comments=getComments();
+		for(int i=0;i<comments.size();i++) {
+			if (!comments.get(i).getBuyer().getUsername().equals(id)) {
+				comments.remove(i);
+				i--;
+			}
+		}
+		return comments;
+	}
 
 }

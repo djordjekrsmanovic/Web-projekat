@@ -28,7 +28,7 @@ $(document).ready(function(){
         $.post({
             url:'rest/registration/register',
             contentType:'application/json',
-            data:JSON.stringify({username:name,password:password,firstName:name,lastName:surname,gender:gender,birthDate:newdate}),
+            data:JSON.stringify({username:userName,password:password,firstName:name,lastName:surname,gender:gender,birthDate:newdate}),
             success:function(data){
                 alert("Uspjesno ste registrovani");
             },

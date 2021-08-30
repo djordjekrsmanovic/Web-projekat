@@ -4,6 +4,7 @@ import java.io.File;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +12,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import beans.Buyer;
+import beans.Comment;
 import beans.Gender;
+import beans.Order;
+import beans.ShoppingCart;
 import beans.User;
 import beans.UserRole;
 
@@ -124,6 +128,31 @@ public class BuyerDAO extends GenericFileRepository<Buyer, String> {
 			}
 		}
 		return null;
+		
+	}
+
+	public void changeReferences(String oldID,Buyer buyer) {
+		CartDAO cartDAO=new CartDAO(contextPath);
+		ShoppingCart cart=cartDAO.getShoppingCartByID(oldID);
+		cart.setOwnerID(buyer.getUsername());
+		cartDAO.deletePhysical(oldID);
+		cartDAO.create(cart);
+		OrderDAO orderDAO=new OrderDAO(contextPath);
+		List<Order> buyerOrders=new ArrayList<Order>();
+		buyerOrders=orderDAO.getBuyerOrders(oldID);
+		for (Order order:buyerOrders) {
+			order.setBuyerName(buyer.getUsername());
+			orderDAO.createOrUpdate(order);
+		}
+		
+		CommentDAO commentDAO=new CommentDAO(contextPath);
+		List<Comment> comments=new ArrayList<Comment>();
+		comments=commentDAO.getBuyerComments(oldID);
+		for (Comment comment:comments) {
+			comment.setBuyer(buyer);
+			commentDAO.createOrUpdate(comment);
+		}
+		
 		
 	}
 }

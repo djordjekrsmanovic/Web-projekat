@@ -1,11 +1,11 @@
 {
-  "Djordje" : {
-    "username" : "Djordje",
+  "djordje123" : {
+    "username" : "djordje123",
     "password" : "djordje",
     "firstName" : "Djordje",
     "lastName" : "Krsmanovic",
-    "gender" : "female",
-    "birthDate" : 1629151200000,
+    "gender" : "male",
+    "birthDate" : 1659650400000,
     "deleted" : false,
     "banned" : false,
     "role" : "BUYER",

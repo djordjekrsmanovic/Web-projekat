@@ -155,93 +155,94 @@ public class UserService {
 					servletContext.setAttribute("user", admin);
 					return admin;
 				}
-			} else if (profileData.role.equalsIgnoreCase("manager")) {
-				Manager manager = managerDAO.getManagerByID(profileData.oldUsername);
-				if (manager != null) {
-					if (manager.getUsername().equals(profileData.username)) {
-						manager.setBirthDate(Converter.convertStringtoDate(profileData.birthDate));
-						manager.setFirstName(profileData.firstName);
-						manager.setLastName(profileData.lastName);
-						manager.setUsername(profileData.username);
-						manager.setGender(Converter.getGender(profileData.gender));
-						managerDAO.createOrUpdate(manager);
-						servletContext.removeAttribute("user");
-						servletContext.setAttribute("user", manager);
-						return manager;
-					} else {
-						// must change username
-						managerDAO.deletePhysical(manager.getUsername());
-						manager.setBirthDate(Converter.convertStringtoDate(profileData.birthDate));
-						manager.setFirstName(profileData.firstName);
-						manager.setLastName(profileData.lastName);
-						manager.setUsername(profileData.username);
-						manager.setGender(Converter.getGender(profileData.gender));
-						manager.setUsername(profileData.username);
-						managerDAO.createOrUpdate(manager);
-						servletContext.removeAttribute("user");
-						servletContext.setAttribute("user", manager);
-						return manager;
-					}
-				}
+			}
+		} else if (profileData.role.equalsIgnoreCase("manager")) {
+			Manager manager = managerDAO.getManagerByID(profileData.oldUsername);
+			if (manager != null) {
+				if (manager.getUsername().equals(profileData.username)) {
+					manager.setBirthDate(Converter.convertStringtoDate(profileData.birthDate));
+					manager.setFirstName(profileData.firstName);
+					manager.setLastName(profileData.lastName);
+					manager.setUsername(profileData.username);
+					manager.setGender(Converter.getGender(profileData.gender));
+					managerDAO.createOrUpdate(manager);
+					servletContext.removeAttribute("user");
+					servletContext.setAttribute("user", manager);
+					return manager;
+				} else {
+					// must change username
+					managerDAO.deletePhysical(manager.getUsername());
+					manager.setBirthDate(Converter.convertStringtoDate(profileData.birthDate));
+					manager.setFirstName(profileData.firstName);
+					manager.setLastName(profileData.lastName);
+					manager.setUsername(profileData.username);
+					manager.setGender(Converter.getGender(profileData.gender));
+					manager.setUsername(profileData.username);
+					managerDAO.createOrUpdate(manager);
 
-			}else if(profileData.role.equalsIgnoreCase("buyer")) {
-				Buyer buyer = buyerDAO.getBuyerByID(profileData.oldUsername);
-				if (buyer != null) {
-					if (buyer.getUsername().equals(profileData.username)) {
-						buyer.setBirthDate(Converter.convertStringtoDate(profileData.birthDate));
-						buyer.setFirstName(profileData.firstName);
-						buyer.setLastName(profileData.lastName);
-						buyer.setUsername(profileData.username);
-						buyer.setGender(Converter.getGender(profileData.gender));
-						buyerDAO.createOrUpdate(buyer);
-						servletContext.removeAttribute("user");
-						servletContext.setAttribute("user", buyer);
-						return buyer;
-					} else {
-						// must change username
-						buyerDAO.deletePhysical(buyer.getUsername());
-						buyer.setBirthDate(Converter.convertStringtoDate(profileData.birthDate));
-						buyer.setFirstName(profileData.firstName);
-						buyer.setLastName(profileData.lastName);
-						buyer.setUsername(profileData.username);
-						buyer.setGender(Converter.getGender(profileData.gender));
-						buyer.setUsername(profileData.username);
-						buyerDAO.createOrUpdate(buyer);
-						servletContext.removeAttribute("user");
-						servletContext.setAttribute("user", buyer);
-						return buyer;
-					}
+					servletContext.removeAttribute("user");
+					servletContext.setAttribute("user", manager);
+					return manager;
 				}
+			}
 
-			}else if(profileData.role.equalsIgnoreCase("deliverer")) {
-				Deliverer deliverer = delivererDAO.getDelivererByID(profileData.oldUsername);
-				if (deliverer != null) {
-					if (deliverer.getUsername().equals(profileData.username)) {
-						deliverer.setBirthDate(Converter.convertStringtoDate(profileData.birthDate));
-						deliverer.setFirstName(profileData.firstName);
-						deliverer.setLastName(profileData.lastName);
-						deliverer.setUsername(profileData.username);
-						deliverer.setGender(Converter.getGender(profileData.gender));
-						delivererDAO.createOrUpdate(deliverer);
-						servletContext.removeAttribute("user");
-						servletContext.setAttribute("user", deliverer);
-						return deliverer;
-					} else {
-						// must change username
-						delivererDAO.deletePhysical(deliverer.getUsername());
-						deliverer.setBirthDate(Converter.convertStringtoDate(profileData.birthDate));
-						deliverer.setFirstName(profileData.firstName);
-						deliverer.setLastName(profileData.lastName);
-						deliverer.setUsername(profileData.username);
-						deliverer.setGender(Converter.getGender(profileData.gender));
-						deliverer.setUsername(profileData.username);
-						delivererDAO.createOrUpdate(deliverer);
-						servletContext.removeAttribute("user");
-						servletContext.setAttribute("user", deliverer);
-						return deliverer;
-					}
+		} else if (profileData.role.equalsIgnoreCase("buyer")) {
+			Buyer buyer = buyerDAO.getBuyerByID(profileData.oldUsername);
+			if (buyer != null) {
+				if (buyer.getUsername().equals(profileData.username)) {
+					buyer.setBirthDate(Converter.convertStringtoDate(profileData.birthDate));
+					buyer.setFirstName(profileData.firstName);
+					buyer.setLastName(profileData.lastName);
+					buyer.setUsername(profileData.username);
+					buyer.setGender(Converter.getGender(profileData.gender));
+					buyerDAO.createOrUpdate(buyer);
+					servletContext.removeAttribute("user");
+					servletContext.setAttribute("user", buyer);
+					return buyer;
+				} else {
+					// must change username
+					buyerDAO.deletePhysical(buyer.getUsername());
+					buyer.setBirthDate(Converter.convertStringtoDate(profileData.birthDate));
+					buyer.setFirstName(profileData.firstName);
+					buyer.setLastName(profileData.lastName);
+					buyer.setUsername(profileData.username);
+					buyer.setGender(Converter.getGender(profileData.gender));
+					buyer.setUsername(profileData.username);
+					buyerDAO.createOrUpdate(buyer);
+					buyerDAO.changeReferences(profileData.oldUsername, buyer);
+					servletContext.removeAttribute("user");
+					servletContext.setAttribute("user", buyer);
+					return buyer;
 				}
+			}
 
+		} else if (profileData.role.equalsIgnoreCase("deliverer")) {
+			Deliverer deliverer = delivererDAO.getDelivererByID(profileData.oldUsername);
+			if (deliverer != null) {
+				if (deliverer.getUsername().equals(profileData.username)) {
+					deliverer.setBirthDate(Converter.convertStringtoDate(profileData.birthDate));
+					deliverer.setFirstName(profileData.firstName);
+					deliverer.setLastName(profileData.lastName);
+					deliverer.setUsername(profileData.username);
+					deliverer.setGender(Converter.getGender(profileData.gender));
+					delivererDAO.createOrUpdate(deliverer);
+					servletContext.removeAttribute("user");
+					servletContext.setAttribute("user", deliverer);
+					return deliverer;
+				} else {
+					// must change username
+					delivererDAO.deletePhysical(deliverer.getUsername());
+					deliverer.setBirthDate(Converter.convertStringtoDate(profileData.birthDate));
+					deliverer.setFirstName(profileData.firstName);
+					deliverer.setLastName(profileData.lastName);
+					deliverer.setUsername(profileData.username);
+					deliverer.setGender(Converter.getGender(profileData.gender));
+					deliverer.setUsername(profileData.username);
+					delivererDAO.createOrUpdate(deliverer);
+					servletContext.removeAttribute("user");
+					servletContext.setAttribute("user", deliverer);
+					return deliverer;
+				}
 			}
 
 		}

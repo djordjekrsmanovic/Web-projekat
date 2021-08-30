@@ -2,12 +2,12 @@
   "5b42fe08cf" : {
     "commentID" : "5b42fe08cf",
     "buyer" : {
-      "username" : "Djordje",
+      "username" : "djordje123",
       "password" : "djordje",
       "firstName" : "Djordje",
       "lastName" : "Krsmanovic",
-      "gender" : "female",
-      "birthDate" : 1629151200000,
+      "gender" : "male",
+      "birthDate" : 1659650400000,
       "deleted" : false,
       "banned" : false,
       "role" : "BUYER",
@@ -30,7 +30,8 @@
         "amount" : 350,
         "description" : "Cevapi od svinjskog i juneceg mesa",
         "photoPath" : "",
-        "restaurantID" : "Plava frajla"
+        "restaurantID" : "Plava frajla",
+        "binaryPhoto" : null
       }, {
         "id" : "supa",
         "name" : "supa",
@@ -39,7 +40,8 @@
         "amount" : 350,
         "description" : "supa od svinjskog i juneceg mesa",
         "photoPath" : "",
-        "restaurantID" : "Plava frajla"
+        "restaurantID" : "Plava frajla",
+        "binaryPhoto" : null
       } ],
       "restaurantStatus" : "OPEN",
       "location" : {
