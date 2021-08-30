@@ -45,17 +45,20 @@ $(document).ready(function(){
     
     $("#filterStatus").change(function(){
         filterOrdersByStatus();
+		sortOrders(loadedOrders);
+        filterOrdersByStatus();
     })
     
     $("#filterType").change(function(){
 		filterOrdersByType();
+		sortOrders(loadedOrders);
+        filterOrdersByStatus();
     })
     
     $("#sort").change(function(){
-        filterOrdersByStatus();
-		filterOrdersByType();
 		sortOrders(loadedOrders);
-        fillTable(loadedOrders);
+        filterOrdersByStatus();
+		filterOrdersByType();		
     })
 
 	$("#undeliveredView").click(function(){
@@ -101,9 +104,10 @@ $(document).ready(function(){
 	 	    let button = $("<button></button>", {id:"changeStatusButton"});
 	 	    button.append("Zavrsi dostavu");
 	 		td6.append(button);
+			td6.attr("id",orders[i].id);
 	 		td6.click(function(){
 	 			i--;
-	 			dostavi(orders[i]);
+	 			dostavi(td6.attr("id"));
 	 			i++;
 	 		})
 	 	} else {td6.append("Nedostupno");}
@@ -247,20 +251,21 @@ function searchOrders(){
  	return loadedOrders.sort(function(a,b){return b.price-a.price;});
  }
  function dateAscSort(){
- 	return loadedOrders.sort(function(a,b){return a.date-b.date});
+ 	return loadedOrders.sort(function(a,b){return a.dateAndTime-b.dateAndTime});
  }
  function dateDescSort(){
- 	return loadedOrders.sort(function(a,b){return b.date-a.date});
+ 	return loadedOrders.sort(function(a,b){return b.dateAndTime-a.dateAndTime});
  }
 
-function dostavi(order){
+function dostavi(orderID){
 	$.post({
 		url:"rest/deliverer/deliverOrder",
 		contentType:"application/json",
-		data: JSON.stringify(order),
+		data: orderID,
 		success: function(){
 			alert("Dostava zavrsena.");
-			$("#changeStatusButton").disable();
+			$("#changeStatusButton").empty();
+			$("#changeStatusButton").append("Dostavljena");
 		},
 		error: function(){
 			alert("Interna server greska.");

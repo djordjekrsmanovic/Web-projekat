@@ -1,7 +1,10 @@
 package dao;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -85,4 +88,20 @@ public class ProductDAO extends GenericFileRepository<Product, String> {
 		}
 	}
 
+	public String storePhoto(String photoData, String photoName) {
+		String images = contextPath + File.separator + "pictures" + File.separator;
+		String imageDataBytes = photoData.substring(photoData.indexOf(",")+1);
+			
+
+		byte[] data = Base64.getDecoder().decode(imageDataBytes.getBytes());
+	   System.out.print(images + photoName);
+	   	try(OutputStream stream = new FileOutputStream(images + photoName)) {
+	   		stream.write(data);
+		} catch (Exception e) {
+			System.out.println("Greska prilikom pohranjivanja slike!");
+		}
+		
+		
+		return "../pictures/"+photoName+".jpg";
+	}
 }

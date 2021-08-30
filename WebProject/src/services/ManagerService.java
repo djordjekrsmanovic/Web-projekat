@@ -80,10 +80,9 @@ public class ManagerService {
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String newArticle(Product product) {
-		System.out.print("Prije if-a");
 		ProductDAO productDAO = (ProductDAO) servletContext.getAttribute("ProductDAO");
 		if(productDAO.getProductByName(product.getName())==null) {
-			System.out.print("Usao u if");
+			product.setPhotoPath(productDAO.storePhoto(product.getBinaryPhoto(), product.getPhotoPath()));
 			productDAO.createOrUpdate(product);
 			ManagerDAO mDAO = (ManagerDAO) servletContext.getAttribute("ManagerDAO");
 			RestaurantDAO rDAO = (RestaurantDAO) servletContext.getAttribute("RestaurantDAO");
@@ -101,7 +100,8 @@ public class ManagerService {
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String editArticle(Product product) {
-		ProductDAO productDAO = (ProductDAO) servletContext.getAttribute("ProductDAO");		
+		ProductDAO productDAO = (ProductDAO) servletContext.getAttribute("ProductDAO");				
+			product.setPhotoPath(productDAO.storePhoto(product.getBinaryPhoto(), product.getPhotoPath()));
 			productDAO.createOrUpdate(product);
 			return "Artikal izmjenjen!";
 	}

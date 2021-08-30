@@ -45,10 +45,14 @@ $(document).ready(function(){
     
     $("#filterStatus").change(function(){
         filterOrdersByStatus();
+		sortOrders(loadedOrders);
+        filterOrdersByStatus();
     })
     
     $("#filterType").change(function(){
 		filterOrdersByType();
+		sortOrders(loadedOrders);
+        filterOrdersByStatus();
     })
     
     $("#sort").change(function(){
@@ -236,10 +240,10 @@ $(document).ready(function(){
  	return loadedOrders.sort(function(a,b){return b.price-a.price;});
  }
  function dateAscSort(){
- 	return loadedOrders.sort(function(a,b){return a.date-b.date});
+ 	return loadedOrders.sort(function(a,b){return a.dateAndTime-b.dateAndTime});
  }
  function dateDescSort(){
- 	return loadedOrders.sort(function(a,b){return b.date-a.date});
+ 	return loadedOrders.sort(function(a,b){return b.dateAndTime-a.dateAndTime});
  }
  
  function zatraziDostavu(orderID){

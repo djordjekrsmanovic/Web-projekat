@@ -23,7 +23,7 @@ $(document).ready(function(){
 			let numOfElements = products.length;
 			let i;
 			for(i=0; i<numOfElements; i++){
-			$("#articles").append('<div class="card"><div class="fishes"><img src="pictures/slika1.jpg"></div>'
+			$("#articles").append('<div class="card"><div class="fishes"><img src=\"'+products[i].photoPath+'\"></div>'
 			+'<div style="overflow: hidden;"><p class="restaurant-title">'+products[i].name+'</p><p class="raiting-value">4.5</p></div>'
 			+'<div><p class="restaurant-status">Sastojci:</p><p>'+products[i].description+'</p></div>'
 			+'<div><button onclick="izmjenaArtikla(\''+products[i].name+'\')" class="details-button">Izmjeni artikal</button></div>');
