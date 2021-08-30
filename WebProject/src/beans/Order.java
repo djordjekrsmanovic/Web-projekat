@@ -125,7 +125,7 @@ public class Order {
 				+ dateAndTime + ", price=" + price + ", buyerID=" + buyerID + ", status=" + status + "]";
 	}
 
-	}
+}
 
 	
-}
+

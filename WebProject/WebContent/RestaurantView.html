@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="js/restaurantView.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.6.1/build/ol.js"></script>
 </head>
 <body>
     <!---------------------------Navigation bar ------------------------------>
@@ -60,6 +62,9 @@
           <!------------X---------------------Tab panel ---------------X------------>
 
            <!----------------------------------Products ---------------------------->
+           
+        
+        </div>
            <div class="arrangment tabcontent" id="Proizvodi">
             
           <div class="Product-card">
@@ -143,6 +148,18 @@
       </div>
       </div>
 
-         
+      <!------------------------------MAP------------------------------------>
+      
+      
+
+      <div id="map" class="map"></div>
+
+      
+        
+     
+      <!-------------X----------------MAP-------------------X---------------->
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCi7oxKC-tCLJBXACu020XT0PbBvfJS1pE&callback=myMap" async>
+      
+    </script>  
      </body>
 </html>

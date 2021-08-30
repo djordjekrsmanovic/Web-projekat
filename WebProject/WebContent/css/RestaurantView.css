@@ -202,8 +202,8 @@ div{
 
   .Product-card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 300px;
-    width: 300px;
+    max-width: 350px;
+    width: 350px;
     height: auto;
     margin: auto;
     text-align: center;
@@ -365,4 +365,14 @@ div{
     
 }
 
+.map{
+    width: 80%;
+    height: 600px;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: none;
+    margin-bottom: 50px;
+    background-color:white;
+    margin-top: 50px;
+}
 

@@ -3,12 +3,14 @@ var loadedProducts=[];
 var loadedComments=[];
 var loggedUser;
 var restaurantName;
+var restaurant;
+var mapCreated=false;
 $(document).ready(function(){
   
     restaurantName=getUrlParameters("name");
     if (restaurantName===undefined || restaurantName===""){
         alert("Restoran ne postoji");
-        window.location.replace("http://localhost:8080/WebProject/home.html");
+        // window.location.replace("http://localhost:8080/WebProject/home.html");
     }else{
         console.log("Restoran postoji i njegovo ime je "+ restaurantName);
     }
@@ -16,7 +18,8 @@ $(document).ready(function(){
     $.get({
         url:urlAddress,
         contentType:'application/json',
-        success:function(restaurant){
+        success:function(data){
+            restaurant=data;
             fillData(restaurant);
         },
         error:function (param) { 
@@ -55,6 +58,9 @@ $(document).ready(function(){
         contentType:'application/json',
         success:function(user){
             loggedUser=user;
+            if (loggedUser==null || loggedUser==undefined){
+                return;
+            }
             if(loggedUser.role==="ADMIN"){
                 /*	<li><a href="home.html">Početna strana</a></li>
                      <li><a href="adminRestaurantsView.html">Restorani</a></li>
@@ -259,7 +265,7 @@ function fillProducts(product){
     })
     productAmount.css('margin-top','5px');
     productAmount.css('marigin-bottom','15px');
-    let inputParagraph=$('<p></p>').css('margin-bottom','25px').append('<input type="text" id='+product.name+'>');
+    let inputParagraph=$('<p></p>').css('margin-bottom','25px','margin-top','25px').append('<input type="number" id='+product.name+'>');
     let buttonAdd=document.createElement('button');
     buttonAdd.innerHTML="Dodaj u korpu";
     buttonAdd.addEventListener('click',createHandler(product));
@@ -322,6 +328,7 @@ function openTab(evt, cityName) {
     document.getElementById("Komentari").style.display = "none";
     //document.getElementById("Proizvodi").style.display="none";
     //document.getElementById("Lokacija").style.display="none";
+    $('#map').hide();
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
       tabcontent[i].style.display = "none";
@@ -333,7 +340,68 @@ function openTab(evt, cityName) {
     if (cityName==="Proizvodi"){
         //readProducts();d
     }
-    document.getElementById(cityName).style.display = "grid";
+    if (cityName==="Lokacija"){
+        if(mapCreated==false){
+            myMap();
+        }
+        mapCreated=true;
+        $('#map').show();
+    }
+    $('#'+cityName).show();
     evt.currentTarget.className += " active";
     window.scroll(0,400);
 }
+
+function myMap() {
+    console.log('Kreiram mapu');
+	let restaurantLocation=restaurant.location.address.street+" "+restaurant.location.address.streetNumber+" "+restaurant.location.address.city;
+	geocode(restaurantLocation);
+}
+
+
+
+
+	  function geocode(location){
+	axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+		params:{
+			address:location,
+			key: 'AIzaSyCi7oxKC-tCLJBXACu020XT0PbBvfJS1pE'
+		}
+	})
+	.then(function(response){
+		console.log(response);
+		var lat = response.data.results[0].geometry.location.lat;
+		var lng = response.data.results[0].geometry.location.lng;
+		drawMap(lat,lng);
+		})
+	
+	.catch(function(error){
+        console.log(error);
+	})
+}
+function drawMap(lat,lng){
+var map = new ol.Map({
+        target: 'map',
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.OSM()
+          })
+        ],
+        view: new ol.View({
+          center: ol.proj.fromLonLat([lng,lat]),
+          zoom: 15
+        })
+      });
+	   var layer = new ol.layer.Vector({
+     source: new ol.source.Vector({
+         features: [
+             new ol.Feature({
+                 geometry: new ol.geom.Point(ol.proj.fromLonLat([lng,lat]))
+             })
+         ]
+     })
+ });
+ map.addLayer(layer);
+}
+  
+ 
