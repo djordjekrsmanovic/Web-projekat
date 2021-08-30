@@ -225,7 +225,7 @@ function formComments(comment){
     }
 
     tableRow.append(userTD,commentTd,raitingTd);
-    $('.table-body').append(tableRow);
+    $('.tbl-content').append(tableRow);
 
 }
 
