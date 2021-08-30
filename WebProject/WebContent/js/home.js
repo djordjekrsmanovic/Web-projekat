@@ -98,6 +98,7 @@ $(document).ready(function(){
                 let homeLi=$('<li></li>').append('<a href="home.html">Početna strana </a>');
                 let restaurantViewLi=$('<li></li>').append('<a href="managerCommentsView.html">Pregled komentara</a>');
                 let usersViewLi=$('<li></li>').append('<a href="menagerRestaurantInfo.html">Pregled restorana</a>');
+				let requestsView=$('<li></li>').append('<a href="menagerRequestsView.html">Pregled zahtjeva</a>');
                 let profileView=$('<li></li>').append('<a href="menagerProfile.html">Moj nalog</a>');
                 let logout=$('<a id="logout" href="">Odjava</a>');
                 logout.click(function(){
@@ -116,7 +117,7 @@ $(document).ready(function(){
                     
                 })
                 let logOut=$('<li></li>').append(logout);
-                $('#ul-menu').append(restaurantViewLi,usersViewLi,profileView,logOut);
+                $('#ul-menu').append(restaurantViewLi,usersViewLi,requestsView,profileView,logOut);
 			} else if(userType==="deliverer"){
 				$('#loginMenu').hide();
                 $('#registrationMenu').hide();

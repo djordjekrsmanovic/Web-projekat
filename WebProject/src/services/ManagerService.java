@@ -13,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 
 import beans.Buyer;
 import beans.Comment;
+import beans.DeliverRequest;
 import beans.Manager;
 import beans.Order;
 import beans.Product;
@@ -21,6 +22,7 @@ import beans.User;
 import dao.AdminDAO;
 import dao.BuyerDAO;
 import dao.CommentDAO;
+import dao.DeliverRequestDAO;
 import dao.DelivererDAO;
 import dao.ManagerDAO;
 import dao.OrderDAO;
@@ -60,6 +62,9 @@ public class ManagerService {
 		}
 		if (servletContext.getAttribute("CommentDAO")==null) {
 			servletContext.setAttribute("CommentDAO", new CommentDAO(servletContext.getInitParameter("path")));
+		}
+		if (servletContext.getAttribute("RequestDAO")==null) {
+			servletContext.setAttribute("RequestDAO", new DeliverRequestDAO(servletContext.getInitParameter("path")));
 		}
 	}
 	
@@ -217,5 +222,38 @@ public class ManagerService {
 		}
 		System.out.println(managers.size());
 		return managers;
+	}
+	
+	@GET
+	@Path("/getRequests")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<DeliverRequest> getRequests(){
+		User u = (User) servletContext.getAttribute("user");
+		DeliverRequestDAO dDAO = (DeliverRequestDAO) servletContext.getAttribute("RequestDAO");
+		return dDAO.getRequestsForManager(u.getUsername());
+	}
+	
+	@POST
+	@Path("/odobriZahtjev")
+	@Produces(MediaType.TEXT_PLAIN)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String odobriZahtjev(String id) {
+		DeliverRequestDAO drDAO = (DeliverRequestDAO) servletContext.getAttribute("RequestDAO");
+		OrderDAO oDAO=(OrderDAO) servletContext.getAttribute("OrderDAO");
+		DelivererDAO dDAO = (DelivererDAO) servletContext.getAttribute("DelivererDAO");
+		drDAO.odobri(id, oDAO, dDAO);
+		return "Odobren!";
+	}
+	
+	@POST
+	@Path("/odbijZahtjev")
+	@Produces(MediaType.TEXT_PLAIN)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String odbijZahtjev(String id) {
+		DeliverRequestDAO drDAO = (DeliverRequestDAO) servletContext.getAttribute("RequestDAO");
+		OrderDAO oDAO=(OrderDAO) servletContext.getAttribute("OrderDAO");
+		DelivererDAO dDAO = (DelivererDAO) servletContext.getAttribute("DelivererDAO");
+		drDAO.odbij(id, oDAO, dDAO);
+		return "Odbijen!";
 	}
 }

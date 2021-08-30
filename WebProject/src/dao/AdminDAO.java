@@ -75,8 +75,9 @@ public class AdminDAO extends GenericFileRepository<Administrator, String> {
 	}
 	
 	public User loginAdmin(String username, String password) {
-		List<Administrator> admins = getAdminstrators();		
-		for(Administrator a : admins) {						
+		List<Administrator> admins = getAdminstrators();	
+		System.out.print(admins.size());
+		for(Administrator a : admins) {				
 			if(a.getUsername().equals(username) && a.getPassword().equals(password)) {
 				a.setRole(UserRole.ADMIN);
 				return (User) a;
