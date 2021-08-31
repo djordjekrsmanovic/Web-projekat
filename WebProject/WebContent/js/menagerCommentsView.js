@@ -27,6 +27,7 @@ $(document).ready(function(){
 		} else {
 			return;
 		}	
+		alert("Uspjesna odjava");
 	})
 	
 })

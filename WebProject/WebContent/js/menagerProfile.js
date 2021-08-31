@@ -57,6 +57,7 @@
 		} else {
 			return;
 		}	
+		alert("Uspjesna odjava");
 	})
  	
  });
