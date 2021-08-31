@@ -86,7 +86,7 @@ public class ManagerService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String newArticle(Product product) {
 		ProductDAO productDAO = (ProductDAO) servletContext.getAttribute("ProductDAO");
-		if(productDAO.getProductByName(product.getName())==null) {
+		
 			product.setPhotoPath(productDAO.storePhoto(product.getBinaryPhoto(), product.getPhotoPath()));
 			productDAO.createOrUpdate(product);
 			ManagerDAO mDAO = (ManagerDAO) servletContext.getAttribute("ManagerDAO");
@@ -96,8 +96,6 @@ public class ManagerService {
 			rDAO.addProductToRestaurant(m.getRestaurant(), product);
 			
 			return "Novi artikal napravljen!";
-		}
-		return "Artikal vec postoji";
 	}
 	
 	@POST
@@ -108,9 +106,10 @@ public class ManagerService {
 		Manager man = (Manager) servletContext.getAttribute("user");
 		ProductDAO productDAO = (ProductDAO) servletContext.getAttribute("ProductDAO");	
 		RestaurantDAO rDAO = (RestaurantDAO) servletContext.getAttribute("RestaurantDAO");	
-			product.setPhotoPath(productDAO.storePhoto(product.getBinaryPhoto(), product.getPhotoPath()));
-			productDAO.createOrUpdate(product);
-			rDAO.updateProductMenager(man.getUsername(), product);
+		Restaurant r = rDAO.getRestaurantByID(man.getRestaurant().getName());
+		product.setPhotoPath(productDAO.storePhoto(product.getBinaryPhoto(), product.getPhotoPath()));
+		productDAO.createOrUpdate(product);
+		rDAO.updateProductMenager(r, product);
 	}
 	
 	@POST

@@ -15,6 +15,7 @@ $(document).ready(function(){
 		var amoun = $("input[name=Amount]").val();
 		var descriptio = $("input[name=Description]").val();
 		var photoName = $("#photo").val();
+		photoName = photoName.substring(photoName.lastIndexOf("\\") + 1, photoName.length); 
 		
 		
 		if(articleName==="" || articleType==="" || price==="" || photoName===""){
