@@ -77,10 +77,9 @@ function formCart(){
 
         tr.append(pictureTD,name,amount,unitPrice,productPrice,deleteTd);
         $('#tableBody').append(tr);
-
-        $('#finalPrice').text('Cijena:'+cart.price+' dinara');
         i++;
     }
+    $('#finalPrice').text('Cijena:'+cart.price+' dinara');
 }
 
 function createChangeHandler(cartItem,i){
@@ -88,6 +87,10 @@ function createChangeHandler(cartItem,i){
         alert('Izmjena vrijednosti');
         let newValue=$('#'+i).val();
         cartItem.amount=newValue;
+        if(newValue=="" || newValue=="0"){
+            alert('Potrebno je da unesete kolicinu za proizvod');
+            return;
+        }
         $.post({
             url:'rest/buying/change-amount',
             data:JSON.stringify(cart),

@@ -66,16 +66,25 @@ public class UserService {
 		BuyerDAO buyerDAO = (BuyerDAO) servletContext.getAttribute("BuyerDAO");
 
 		for (Manager manager : managerDAO.getManagersList()) {
+			if(manager.isDeleted()==true) {
+				continue;
+			}
 			allUsers.add(new ShowUsersDTO(manager.getUsername(), manager.getPassword(), manager.getFirstName(),
 					manager.getLastName(), UserRole.MANAGER, manager.isBanned()));
 		}
 
 		for (Deliverer deliverer : delivererDAO.getDeliverers()) {
+			if(deliverer.isDeleted()==true) {
+				continue;
+			}
 			allUsers.add(new ShowUsersDTO(deliverer.getUsername(), deliverer.getPassword(), deliverer.getFirstName(),
 					deliverer.getLastName(), UserRole.DELIVERER, deliverer.isBanned()));
 		}
 
 		for (Buyer buyer : buyerDAO.getBuyersList()) {
+			if(buyer.isDeleted()==true) {
+				continue;
+			}
 			allUsers.add(new ShowUsersDTO(buyer.getUsername(), buyer.getPassword(), buyer.getFirstName(),
 					buyer.getLastName(), UserRole.BUYER, buyer.isBanned()));
 		}

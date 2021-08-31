@@ -8,6 +8,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import beans.Address;
+import beans.Comment;
 import beans.Location;
 import beans.Product;
 import beans.ProductType;
@@ -57,14 +58,15 @@ public class RestaurantDAO extends GenericFileRepository<Restaurant, String> {
 		Location location = new Location(45.24, 19.84, address);
 		Location location1 = new Location(44.34, 18.16, address1);
 
-		Restaurant restaurant = new Restaurant("Plava frajla", RestaurantType.ETNO, RestaurantStatus.OPEN, location,
-				"", "bojan");
-		Restaurant restaurant1 = new Restaurant("Vidikovac", RestaurantType.ETNO, RestaurantStatus.OPEN, location1, "", "bojan");
+		Restaurant restaurant = new Restaurant("Plava frajla", RestaurantType.ETNO, RestaurantStatus.OPEN, location, "",
+				"bojan");
+		Restaurant restaurant1 = new Restaurant("Vidikovac", RestaurantType.ETNO, RestaurantStatus.OPEN, location1, "",
+				"bojan");
 		ProductDAO productDAO = new ProductDAO();
 		Product product = new Product("cevapi", "cevapi", 550, ProductType.FOOD, 350,
-				"Cevapi od svinjskog i juneceg mesa", "","Plava frajla");
+				"Cevapi od svinjskog i juneceg mesa", "", "Plava frajla");
 		Product product1 = new Product("supa", "supa", 550, ProductType.FOOD, 350, "supa od svinjskog i juneceg mesa",
-				"","Plava frajla");
+				"", "Plava frajla");
 		List<Product> products = new ArrayList<Product>();
 		products.add(product);
 		products.add(product1);
@@ -77,20 +79,35 @@ public class RestaurantDAO extends GenericFileRepository<Restaurant, String> {
 	public RestaurantDAO(String contextPath) {
 		this.contextPath = contextPath;
 	}
-	
+
 	public void addProductToRestaurant(Restaurant r, Product p) {
 		Restaurant re = this.getRestaurantByID(r.getName());
 		re.addProduct(p);
 		this.createOrUpdate(re);
 	}
-	
+
 	public Restaurant deleteRestaurant(String id) {
-		Restaurant restaurant=getRestaurantByID(id);
-		if (restaurant==null) {
+		Restaurant restaurant = getRestaurantByID(id);
+		if (restaurant == null) {
 			return null;
 		}
 		restaurant.setDeleted(!restaurant.isDeleted());
 		return restaurant;
+	}
+
+	public void updateGrade(String restaurantID) {
+		Restaurant restaurant = getRestaurantByID(restaurantID);
+		CommentDAO commentDAO = new CommentDAO(contextPath);
+		double grade = 0;
+		int counter = 0;
+		for (Comment comment : commentDAO.getRestaurantComments(restaurantID)) {
+			grade += comment.getRate();
+			counter += 1;
+		}
+
+		double avg = Math.round((grade / counter) * 100.0) / 100.0;
+		restaurant.setRaiting(avg);
+
 	}
 
 }

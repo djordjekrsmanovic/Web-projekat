@@ -17,6 +17,7 @@ import javax.ws.rs.core.MediaType;
 
 import dto.PictureDTO;
 //import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Decoder;
 
 @Path("/images")
 public class ImageService {
@@ -33,7 +34,7 @@ public class ImageService {
 		
 	}
 	
-/*	@POST
+	@POST
 	@Path("/upload-restaurant-logo")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
@@ -48,10 +49,10 @@ public class ImageService {
 		
 		BufferedImage buffImg = ImageIO.read(new ByteArrayInputStream(decodedBytes));
 		String basePath=servletContext.getInitParameter("path");
-		String photoPath=basePath+File.separator+"pictures"+File.separator+pictureDTO.name;
+		String photoPath=basePath+File.separator+"pictures"+File.separator+"logos"+File.separator+pictureDTO.name;
 		File file = new File(photoPath + "."+extension);
 		ImageIO.write(buffImg, extension, file);
 		System.out.println("Image " + ".png" + " uploaded.");
 
-	}*/
+	}
 }

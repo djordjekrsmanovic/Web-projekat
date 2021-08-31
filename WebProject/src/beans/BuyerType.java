@@ -21,7 +21,7 @@ public class BuyerType {
 		
 	}
 
-	public void recalculateRank(int points) {
+	public void recalculateRank(double points) {
 		if (points<bronzePoints) {
 			this.discount=0;
 			this.buyerRank=BuyerRank.NO_RANK;

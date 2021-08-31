@@ -296,10 +296,11 @@ function formRestaurantCard(restaurant){
     let Card=$('<div></div>',{
         class:"card"
     })
-    let imageDiv="<div id='imageDiv'class='fishes'></div>";
-    let image=$('<img/>',{
+    let imageDiv=$("<div id='imageDiv'class='fishes'></div>");
+    let image=$('<img />',{
         src:restaurant.picturePath
-    }).append(imageDiv);
+    });
+    imageDiv.append(image);
     let titleAndRatingDiv=$('<div style="overflow:hidden"></div>');
     let restaurantTitle=$('<p></p>',{
         class:"restaurant-title",

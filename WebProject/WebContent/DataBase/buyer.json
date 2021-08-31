@@ -1,17 +1,17 @@
 {
-  "djordje123" : {
-    "username" : "djordje123",
+  "Djordje" : {
+    "username" : "Djordje",
     "password" : "djordje",
     "firstName" : "Djordje",
     "lastName" : "Krsmanovic",
     "gender" : "male",
-    "birthDate" : 1659650400000,
+    "birthDate" : 1651960800000,
     "deleted" : false,
     "banned" : false,
     "role" : "BUYER",
     "userRole" : "BUYER",
     "orders" : [ ],
-    "points" : 0,
+    "points" : 658.3499999999999,
     "buyerType" : {
       "buyerRank" : "NO_RANK",
       "discount" : 0.0

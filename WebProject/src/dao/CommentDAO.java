@@ -62,7 +62,7 @@ public class CommentDAO extends GenericFileRepository<Comment, String> {
 	public List<Comment> getRestaurantComments(String restaurantName){
 		List<Comment> allComments=getComments();
 		for (int i=0;i<allComments.size();i++) {
-			if (!allComments.get(i).getRestaurant().getName().equalsIgnoreCase(restaurantName)) {
+			if (!allComments.get(i).getRestaurant().getName().equalsIgnoreCase(restaurantName) || allComments.get(i).getCommentState()!=CommentState.APPROVED) {
 				allComments.remove(i);
 				i--;
 			}

@@ -105,7 +105,26 @@ public class LoginService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public User getLogedUser() {
 		User user=(User) request.getAttribute("user");
-		return user;
+		if(user==null) {
+			return null;
+		}
+		AdminDAO adminDAO= (AdminDAO) request.getAttribute("AdminDAO");
+		ManagerDAO managerDAO= (ManagerDAO) request.getAttribute("ManagerDAO");
+		DelivererDAO delivererDAO= (DelivererDAO) request.getAttribute("DelivererDAO");
+		BuyerDAO buyerDAO=(BuyerDAO) request.getAttribute("BuyerDAO");
+		if(adminDAO.getAdministratorsByID(user.getUsername())!=null) {
+			return adminDAO.getAdministratorsByID(user.getUsername());
+		}
+		if(managerDAO.getManagerByID(user.getUsername())!=null) {
+			return managerDAO.getManagerByID(user.getUsername());
+		}
+		if(delivererDAO.getDelivererByID(user.getUsername())!=null) {
+			return delivererDAO.getDelivererByID(user.getUsername());
+		}
+		if(buyerDAO.getBuyerByID(user.getUsername())!=null) {
+			return buyerDAO.getBuyerByID(user.getUsername());
+		}
+		return null;
 	}
 	
 }

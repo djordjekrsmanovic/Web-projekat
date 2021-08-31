@@ -69,12 +69,12 @@ public class CommentService {
 		OrderDAO orderDAO=(OrderDAO) servletContext.getAttribute("orderDAO");
 		RestaurantDAO restaurantDAO=(RestaurantDAO) servletContext.getAttribute("restaurantDAO");
 		Buyer buyer=(Buyer) servletContext.getAttribute("user");
-		
 		Comment comment=new Comment(createCommentDTO.orderID,buyer,restaurantDAO.getRestaurantByID(createCommentDTO.restaurantID),createCommentDTO.comment,createCommentDTO.rate);
 		commentDAO.create(comment);
 		Order order=orderDAO.getOrderByID(createCommentDTO.orderID);
 		order.setReviewed(true);
 		orderDAO.createOrUpdate(order);
+		
 		
 	}
 }

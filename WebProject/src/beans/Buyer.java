@@ -7,7 +7,7 @@ import java.util.List;
 public class Buyer extends User {
 	private UserRole userRole; //vjerovatno nije potrebno jer imamo odvojene entitete
 	private List<Order> orders;
-	private int points;
+	private double points;
 	private BuyerType buyerType;
 	
 	public Buyer() {
@@ -53,15 +53,15 @@ public class Buyer extends User {
 	}
 	
 	
-	public int getPoints() {
+	public double getPoints() {
 		return points;
 	}
-	public void setPoints(int points) {
-		this.points = points;
+	public void setPoints(double d) {
+		this.points = d;
 		
 	}
 	
-	public void earnPoints(int points) {
+	public void earnPoints(double points) {
 		this.points+=points;
 		buyerType.recalculateRank(this.points);
 	}

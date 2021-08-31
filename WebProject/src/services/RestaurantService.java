@@ -103,7 +103,7 @@ public class RestaurantService {
 		RestaurantDAO restaurantDAO=(RestaurantDAO) servletContext.getAttribute("RestaurantDAO");
 		ManagerDAO managerDAO=(ManagerDAO) servletContext.getAttribute("ManagerDAO");
 		if (restaurantDTO.username=="") {
-			Address address=new Address(restaurantDTO.restaurantStreet,restaurantDTO.restaurantStreet,restaurantDTO.restaurantCity,restaurantDTO.restuarantPostalNumber);
+			Address address=new Address(restaurantDTO.restaurantStreet,restaurantDTO.restaurantNumber,restaurantDTO.restaurantCity,restaurantDTO.restuarantPostalNumber);
 			Location location=new Location(0,0,address);
 			Restaurant restaurant=new Restaurant(restaurantDTO.restaurantName,Converter.getRestaurantType(restaurantDTO.restaurantType),Converter.getRestaurantStatus(restaurantDTO.restaurantStatus),location,restaurantDTO.URL,restaurantDTO.selectedManager);
 			Manager manager=managerDAO.getManagerByID(restaurantDTO.selectedManager);
@@ -112,7 +112,7 @@ public class RestaurantService {
 			restaurantDAO.create(restaurant);
 			return restaurant;
 		}else {
-			Address address=new Address(restaurantDTO.restaurantStreet,restaurantDTO.restaurantStreet,restaurantDTO.restaurantCity,restaurantDTO.restuarantPostalNumber);
+			Address address=new Address(restaurantDTO.restaurantStreet,restaurantDTO.restaurantNumber,restaurantDTO.restaurantCity,restaurantDTO.restuarantPostalNumber);
 			Location location=new Location(0,0,address);
 			Restaurant restaurant=new Restaurant(restaurantDTO.restaurantName,Converter.getRestaurantType(restaurantDTO.restaurantType),Converter.getRestaurantStatus(restaurantDTO.restaurantStatus),location,restaurantDTO.URL,restaurantDTO.selectedManager);
 			Manager manager=new Manager(restaurantDTO.username,restaurantDTO.password,restaurantDTO.firstName,restaurantDTO.lastName,Converter.getGender(restaurantDTO.gender),Converter.convertStringtoDate(restaurantDTO.birthDate),false,false,restaurant);
