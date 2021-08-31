@@ -307,6 +307,10 @@ function createHandler(product){
             alert('Potrebno je da se prijavite kao kupac');
             return;
         }
+        if(value==""){
+            alert('Potrebno je da unesete kolicinu proizvoda');
+            return;
+        }
         var details={productID:product.name,restaurantID:restaurantName,BuyerUsername:loggedUser.username,amount:value}
         $.post({
             url:'rest/buying/add-product-to-cart',
@@ -325,7 +329,7 @@ function createHandler(product){
 }
 function fillData(restaurant){
     console.log("Ucitan je restoran sa servera i njegovo ime je "+ restaurant.name);
-    //$('#restaurant-logo').html(restaurant.picturePath); ovo otkomentarisati kada budu dodat logo restorana u bazu
+    $('#restaurant-logo').attr('src',restaurant.picturePath); //ovo otkomentarisati kada budu dodat logo restorana u bazu
     $('#title-restaurant').html(restaurant.name);
     $('#restaurant-raiting').html(restaurant.raiting);
     $('#restaurant-sort').html(restaurant.restaurantType);
@@ -333,7 +337,7 @@ function fillData(restaurant){
     let restaurantLocation=restaurant.location.address.street+" "+restaurant.location.address.streetNumber+" "+restaurant.location.address.city;
     $('#restaurant-address').html(restaurantLocation);
     let restaurantStatus=restaurant.restaurantStatus=='OPEN' ? 'Otvoren' : 'Zatvoren';
-    $('#restaurant-status').html(restaurantStatus);
+    $('#restarant-status').html(restaurantStatus);
 }
 function getUrlParameters(paramName){
     var PageURL = window.location.search.substring(1),

@@ -1,3 +1,15 @@
 {
-
+  "deliverer" : {
+    "username" : "deliverer",
+    "password" : "deliverer",
+    "firstName" : "deliverer",
+    "lastName" : "deliverer",
+    "gender" : "female",
+    "birthDate" : 1629237600000,
+    "deleted" : false,
+    "banned" : false,
+    "role" : "DELIVERER",
+    "userRole" : "DELIVERER",
+    "oredersWaitingForDelivery" : [ ]
+  }
 }

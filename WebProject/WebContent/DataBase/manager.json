@@ -26,7 +26,7 @@
       },
       "picturePath" : "",
       "deleted" : false,
-      "raiting" : 0,
+      "raiting" : 0.0,
       "managerID" : "bojan"
     },
     "userRole" : "MANAGER"
@@ -70,10 +70,61 @@
     "lastName" : "novi",
     "gender" : "female",
     "birthDate" : 1627596000000,
-    "deleted" : false,
+    "deleted" : true,
     "banned" : false,
     "role" : null,
-    "restaurant" : null,
+    "restaurant" : {
+      "name" : "Japanski restoran",
+      "restaurantType" : "JAPANESE",
+      "products" : [ ],
+      "restaurantStatus" : "OPEN",
+      "location" : {
+        "latitude" : 0.0,
+        "longitude" : 0.0,
+        "address" : {
+          "street" : "Bulevar Oslobodjenja",
+          "streetNumber" : "Bulevar Oslobodjenja",
+          "city" : "Novi Sad",
+          "postalCode" : "21000"
+        }
+      },
+      "picturePath" : "pictures/logos/Japanski restoran.jpeg",
+      "deleted" : false,
+      "raiting" : 0.0,
+      "managerID" : "novi"
+    },
+    "userRole" : "MANAGER"
+  },
+  "najnoviji" : {
+    "username" : "najnoviji",
+    "password" : "najnoviji",
+    "firstName" : "Novi",
+    "lastName" : "Novi",
+    "gender" : "female",
+    "birthDate" : 1628546400000,
+    "deleted" : false,
+    "banned" : false,
+    "role" : "MANAGER",
+    "restaurant" : {
+      "name" : "Japanski restoran",
+      "restaurantType" : "JAPANESE",
+      "products" : [ ],
+      "restaurantStatus" : "OPEN",
+      "location" : {
+        "latitude" : 0.0,
+        "longitude" : 0.0,
+        "address" : {
+          "street" : "Bulvear Oslobodjenja",
+          "streetNumber" : "15",
+          "city" : "Novi Sad",
+          "postalCode" : "21800"
+        }
+      },
+      "picturePath" : "pictures/logos/Japanski restoran.jpeg",
+      "deleted" : false,
+      "raiting" : 0.0,
+      "managerID" : "najnoviji"
+    },
     "userRole" : "MANAGER"
   }
 }

@@ -304,7 +304,6 @@ function getExtension(){
 }
 
 function writePictureOnServer(){
-    var data=
     $.post({
         url:'rest/images/upload-restaurant-logo',
         contentType:'application/json',

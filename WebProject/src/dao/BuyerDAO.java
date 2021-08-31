@@ -155,4 +155,17 @@ public class BuyerDAO extends GenericFileRepository<Buyer, String> {
 		
 		
 	}
+	
+	public void increasePoints(String id,double d) {
+		Buyer buyer=getBuyerByID(id);
+		buyer.setPoints(buyer.getPoints()+d);
+		createOrUpdate(buyer);
+	}
+
+	public void decreasePoints(String username, double d) {
+		Buyer buyer=getBuyerByID(username);
+		buyer.setPoints(buyer.getPoints()-d);
+		createOrUpdate(buyer);
+		
+	}
 }

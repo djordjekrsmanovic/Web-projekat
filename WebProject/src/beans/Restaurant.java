@@ -11,7 +11,7 @@ public class Restaurant {
 	private Location location;
 	private String picturePath;//neka sad ovako ostane ne znam sta treba da bude
 	private boolean deleted;
-	private int raiting;
+	private double raiting;
 	private String managerID;
 	
 	public String getManagerID() {
@@ -111,11 +111,11 @@ public class Restaurant {
 		this.deleted = deleted;
 	}
 
-	public int getRaiting() {
+	public double getRaiting() {
 		return raiting;
 	}
 
-	public void setRaiting(int raiting) {
+	public void setRaiting(double raiting) {
 		this.raiting = raiting;
 	}
 

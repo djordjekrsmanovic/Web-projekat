@@ -136,8 +136,14 @@ public class BuyingService {
 		}
 		
 		cart.getCartItems().clear();
+		User user=(User) servletContext.getAttribute("user");
+		BuyerDAO buyerDAO=(BuyerDAO) servletContext.getAttribute("buyerDAO");
+		Buyer buyer=buyerDAO.getBuyerByID(user.getUsername());
+		buyer.earnPoints((cart.getPrice()/1000)*133);
+		buyerDAO.createOrUpdate(buyer);
 		calculatePrice(cart, (Buyer) servletContext.getAttribute("user"));
 		cartDAO.createOrUpdate(cart);
+		
 		return cart;
 	}
 	
@@ -165,7 +171,12 @@ public class BuyingService {
 		Order order=orderDAO.getOrderByID(id);
 		order.setStatus(OrderStatus.OTKAZANA);
 		orderDAO.createOrUpdate(order);
-		Buyer buyer=(Buyer) servletContext.getAttribute("user");
+		
+		User user=(User) servletContext.getAttribute("user");
+		BuyerDAO buyerDAO=(BuyerDAO) servletContext.getAttribute("buyerDAO");
+		Buyer buyer=buyerDAO.getBuyerByID(user.getUsername());
+		buyer.earnPoints(-(order.getPrice()/1000)*133*4);
+		buyerDAO.createOrUpdate(buyer);
 		return orderDAO.getBuyerOrders(buyer.getUsername());
 	}
 	

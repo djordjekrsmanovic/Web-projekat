@@ -70,7 +70,7 @@
       "amount" : 350,
       "description" : "Svinjsko pecenje",
       "photoPath" : "",
-	  "restaurantID":"Vidikovac"
+      "restaurantID" : "Vidikovac"
     }, {
       "id" : "kupus salata",
       "name" : "kupus salata",
@@ -79,7 +79,7 @@
       "amount" : 350,
       "description" : "kupus salata",
       "photoPath" : "",
-	  "restaurantID":"Vidikovac"
+      "restaurantID" : "Vidikovac"
     } ],
     "restaurantStatus" : "OPEN",
     "location" : {
@@ -94,7 +94,27 @@
     },
     "picturePath" : "",
     "deleted" : false,
-    "raiting" : 0,
+    "raiting" : 5,
     "managerID" : "bojan"
+  },
+  "Japanski restoran" : {
+    "name" : "Japanski restoran",
+    "restaurantType" : "JAPANESE",
+    "products" : [ ],
+    "restaurantStatus" : "OPEN",
+    "location" : {
+      "latitude" : 0.0,
+      "longitude" : 0.0,
+      "address" : {
+        "street" : "Bulvear Oslobodjenja",
+        "streetNumber" : "15",
+        "city" : "Novi Sad",
+        "postalCode" : "21800"
+      }
+    },
+    "picturePath" : "pictures/logos/Japanski restoran.jpeg",
+    "deleted" : false,
+    "raiting" : 0.0,
+    "managerID" : "najnoviji"
   }
 }

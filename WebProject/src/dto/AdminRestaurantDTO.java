@@ -13,11 +13,11 @@ public class AdminRestaurantDTO {
 	public RestaurantStatus restaurantStatus;
 	public Location location;
 	public String picturePath;//neka sad ovako ostane ne znam sta treba da bude
-	public int raiting;
+	public double raiting;
 	public Manager manager;
 	
 	public AdminRestaurantDTO(String name, RestaurantType restaurantType,
-			RestaurantStatus restaurantStatus, Location location, String picturePath, int raiting,
+			RestaurantStatus restaurantStatus, Location location, String picturePath, double raiting,
 			Manager manager) {
 		super();
 		this.name = name;

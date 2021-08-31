@@ -189,6 +189,8 @@ public class ManagerService {
 	public String odobri(Comment komentar) {
 		CommentDAO cDAO = (CommentDAO) servletContext.getAttribute("CommentDAO");
 		cDAO.changeCommentStatus(komentar, "odobri");
+		RestaurantDAO restaurantDAO=(RestaurantDAO) servletContext.getAttribute("RestaurantDAO");
+		restaurantDAO.updateGrade(komentar.getRestaurant().getName());
 		return "Odobren!";
 	}
 	
