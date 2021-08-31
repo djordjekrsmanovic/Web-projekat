@@ -61,7 +61,7 @@
     },
     "comment" : "Sve za 10",
     "rate" : 5,
-    "commentState" : "WAITING",
+    "commentState" : "APPROVED",
     "deleted" : false
   }
 }

@@ -191,20 +191,30 @@ public class ManagerService {
 	@Path("/odobri")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String odobri(Comment komentar) {
+	public String odobri(String komentar) {
 		CommentDAO cDAO = (CommentDAO) servletContext.getAttribute("CommentDAO");
-		cDAO.changeCommentStatus(komentar, "odobri");
-		return "Odobren!";
+		for(Comment c : cDAO.getComments()) {
+			if(c.getCommentID().equals(komentar)) {
+				cDAO.changeCommentStatus(c, "odobri");
+				return "Odobren!";
+			}
+		}
+		return "Greska";
 	}
 	
 	@POST
 	@Path("/odbij")
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String odbij(Comment komentar) {
+	public String odbij(String komentar) {
 		CommentDAO cDAO = (CommentDAO) servletContext.getAttribute("CommentDAO");
-		cDAO.changeCommentStatus(komentar, "odbij");
-		return "Odbijen!";
+		for(Comment c : cDAO.getComments()) {
+			if(c.getCommentID().equals(komentar)) {
+				cDAO.changeCommentStatus(c, "odbij");
+				return "Odbijen!";
+			}
+		}
+		return "Greska";
 	}
 	
 	@GET

@@ -53,17 +53,17 @@ function fillCommentSection(comments){
 	if(getStatus(comments[i].commentState)!="Odobren"){
 	let button1=$("<button></button>");
 	button1.append("Odobri komentar");
-	button1.attr("id","dugmeOdobri");
+	button1.attr("id",comments[i].commentID);
 	button1.attr("class","dugme");
 	button1.click(function(){
-		odobri(comments[i]);
+		odobri(button1.attr("id"));
 	});
 	let button2=$("<button></button>");
 	button2.append("Odbij komentar");
-	button2.attr("id","dugmeOdbij");
+	button2.attr("id",comments[i].commentID);
 	button2.attr("class","dugme");
 	button2.click(function(){
-		odbij(comments[i]);
+		odbij(button2.attr("id"));
 	});
 	d6.append(button1); d7.append(button2);
 	d5.append(d6); d5.append(d7);
@@ -99,12 +99,12 @@ function getStatus(commentState){
 	} else {return "Odbijen";}
 }
 
-function odobri(comment){
+function odobri(commentID){
 	$.post({
 		url:"rest/manager/odobri",
 		contentType:"application/json",
-		data:comment,
-		success:function(){
+		data:commentID,
+		success:function(response){
 			alert("Komentar odobren.");
 			document.location.reload();
 		},
@@ -114,12 +114,12 @@ function odobri(comment){
 	})
 }
 
-function odbij(comment){
+function odbij(commentID){
 	$.post({
 		url:"rest/manager/odbij",
 		contentType:"application/json",
-		data:comment,
-		success:function(){
+		data:commentID,
+		success:function(response){
 			alert("Komentar odbijen.");
 			document.location.reload();
 		},
