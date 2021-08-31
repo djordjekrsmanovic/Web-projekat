@@ -265,7 +265,7 @@ function filterDate(){
         fromDate=new Date(dateFrom);
         toDate=new Date(dateTo);
         for (let i=0;i<orders.length;i++){
-            date=new Date(order.dateAndTime);
+            date=new Date(orders[i].dateAndTime);
             if (!date.inRange(fromDate,toDate)){
                 orders.splice(i,1);
                 i--;
@@ -279,10 +279,10 @@ Date.prototype.inRange = function(dateFrom,dateTo) {
 }
 
 function filterWithFromDate(){
-    toDate=new Date(dateTo);
+    fromDate=new Date(dateFrom);
     for (let i=0;i<orders.length;i++){
-        date=new Date(order.dateAndTime);
-        if (date>toDate){
+        date=new Date(orders[i].dateAndTime);
+        if (date<fromDate){
             orders.splice(i,1);
             i--;
         }
@@ -290,10 +290,10 @@ function filterWithFromDate(){
 }
 
 function filterWithToDate(){
-    toDate=new Date(dateFrom);
+    toDate=new Date(dateTo);
     for (let i=0;i<orders.length;i++){
-        date=new Date(order.dateAndTime);
-        if (date<fromDate){
+        date=new Date(orders[i].dateAndTime);
+        if (date>toDate){
             orders.splice(i,1);
             i--;
         }
