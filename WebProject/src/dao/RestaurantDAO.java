@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import beans.Address;
 import beans.Comment;
 import beans.Location;
+import beans.Manager;
 import beans.Product;
 import beans.ProductType;
 import beans.Restaurant;
@@ -91,7 +92,12 @@ public class RestaurantDAO extends GenericFileRepository<Restaurant, String> {
 		if (restaurant == null) {
 			return null;
 		}
-		restaurant.setDeleted(!restaurant.isDeleted());
+		restaurant.setDeleted(true);
+		update(restaurant);
+		ManagerDAO managerDAO=new ManagerDAO(contextPath);
+		Manager manager=managerDAO.getManagerByID(restaurant.getManagerID());
+		manager.setRestaurant(null);
+		managerDAO.update(manager);
 		return restaurant;
 	}
 

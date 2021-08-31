@@ -20,6 +20,7 @@ import beans.Converter;
 import beans.Location;
 import beans.Manager;
 import beans.Restaurant;
+import beans.RestaurantStatus;
 import dao.ManagerDAO;
 import dao.RestaurantDAO;
 import dto.AdminRestaurantDTO;
@@ -52,9 +53,22 @@ public class RestaurantService {
 	public List<Restaurant> load(){
 		RestaurantDAO restaurantDAO=(RestaurantDAO) servletContext.getAttribute("RestaurantDAO");
 		System.out.print("\n\n\n\nUSAO SAM U SERVIS RESTORANA");
-		//restaurantDAO.generateRestaurant();
 		System.out.println("Broj restorana je " + restaurantDAO.getRestaurants().size());
-		return restaurantDAO.getRestaurants();
+		List<Restaurant> restaurants=new ArrayList<Restaurant>();
+		restaurants=restaurantDAO.getRestaurants();
+		List<Restaurant> retVal=new ArrayList<Restaurant>();
+		for (Restaurant restaurant:restaurants) {
+			if(restaurant.getRestaurantStatus()==RestaurantStatus.OPEN && restaurant.isDeleted()==false) {
+				retVal.add(restaurant);
+			}
+		}
+		
+		for (Restaurant restaurant:restaurants) {
+			if(restaurant.getRestaurantStatus()==RestaurantStatus.CLOSED && restaurant.isDeleted()==false) {
+				retVal.add(restaurant);
+			}
+		}
+		return retVal;
 	}
 	
 	@GET
@@ -70,7 +84,10 @@ public class RestaurantService {
 				RestaurantStatus restaurantStatus, Location location, String picturePath, int raiting, String managerID,
 				Manager manager)*/
 		for (Restaurant restaurant:restaurantDAO.getRestaurants()) {
-			retValue.add(new AdminRestaurantDTO(restaurant.getName(),restaurant.getRestaurantType(),restaurant.getRestaurantStatus(),restaurant.getLocation(),restaurant.getPicturePath(),restaurant.getRaiting(),managerDAO.getManagerByID(restaurant.getManagerID())));
+			if(restaurant.isDeleted()==false) {
+				retValue.add(new AdminRestaurantDTO(restaurant.getName(),restaurant.getRestaurantType(),restaurant.getRestaurantStatus(),restaurant.getLocation(),restaurant.getPicturePath(),restaurant.getRaiting(),managerDAO.getManagerByID(restaurant.getManagerID())));
+			}
+			
 		}
 		
 		return retValue;
@@ -88,10 +105,11 @@ public class RestaurantService {
 	@DELETE
 	@Path("delete-restaurant/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Restaurant deleteRestaurant(@PathParam("id") String id) {
+	public List<Restaurant> deleteRestaurant(@PathParam("id") String id) {
 		RestaurantDAO restaurantDAO=(RestaurantDAO) servletContext.getAttribute("RestaurantDAO");
 		System.out.println("USAO SAM U BRISANJE RESTORANA");
-		return restaurantDAO.deleteRestaurant(id);
+		restaurantDAO.deleteRestaurant(id);
+		return restaurantDAO.getRestaurants();
 	}
 	
 	@POST
