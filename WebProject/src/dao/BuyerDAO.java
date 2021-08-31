@@ -94,8 +94,10 @@ public class BuyerDAO extends GenericFileRepository<Buyer, String> {
 		List<Buyer> buyers = getBuyersList();
 		for(Buyer b : buyers) {
 			if(b.getUsername().equals(username) && b.getPassword().equals(password)) {
+				if(!b.isBanned()) {
 				b.setRole(UserRole.BUYER);
 				return (User) b;
+				}
 			}			
 		}
 		return null;

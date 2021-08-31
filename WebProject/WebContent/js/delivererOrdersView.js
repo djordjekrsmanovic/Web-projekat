@@ -236,7 +236,7 @@ $(document).ready(function(){
  function priceAscSort(){
  	return loadedOrders.sort(function(a,b){return a.price-b.price;});
  }
- function priceDesscSort(){
+ function priceDescSort(){
  	return loadedOrders.sort(function(a,b){return b.price-a.price;});
  }
  function dateAscSort(){

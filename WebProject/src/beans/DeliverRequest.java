@@ -5,14 +5,23 @@ public class DeliverRequest {
 	private String requestID;
 	private Deliverer deliverer;
 	private Order order;
+	private boolean deleted;
 	
-	
+	public DeliverRequest() {}
 	
 	public DeliverRequest(String requestID, Deliverer deliverer, Order order) {
 		super();
 		this.requestID = requestID;
 		this.deliverer = deliverer;
 		this.order = order;
+	}
+	
+	public DeliverRequest(String requestID, Deliverer deliverer, Order order, boolean deleted) {
+		super();
+		this.requestID = requestID;
+		this.deliverer = deliverer;
+		this.order = order;
+		this.deleted = deleted;
 	}
 	
 	public String getRequestID() {
@@ -32,6 +41,14 @@ public class DeliverRequest {
 	}
 	public void setOrder(Order order) {
 		this.order = order;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 	
 	

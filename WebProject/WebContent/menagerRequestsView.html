@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Pregled kupaca</title>
+	<script src="jquery-3.3.1.min.js"></script>
+	<script src="js/menagerRequests.js"></script>
+	<link href="css/menagerBuyersView.css" rel="stylesheet" />
+	<link href="css/orderedArticlesMenager.css" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+</head>
+<body id="profileBody">
+
+	<section class="header">
+		<nav >
+			<a href=""><img src="pictures/logo.png" width="120px" height="60px"></a>
+			<div class="nav-links">
+				<ul>
+					<li><a href="home.html">Početna strana</a></li>
+					<li><a href="menagerRestaurantInfo.html">Pregled restorana</a></li>
+					<li><a href="menagerProfile.html">Moj nalog</a></li>
+					<li><a id="logoutButton" href="">Odjava</a></li>
+				</ul>
+			</div>
+		</nav>
+	</section>
+	<section>
+		<div class="pozadinaTabele">
+			<table class="tabela">
+				<tr><th>Dostavljac</th>
+                <th>Cijena porudzbine</th>
+                <th>Datum porudzbine</th>
+                <th>Odobri</th>
+                <th>Odbij</th>
+				</tr>
+				<tbody id="requestsTable">
+				</tbody>
+			</table>
+		</div>
+	</section>
+
+</body>
+</html>

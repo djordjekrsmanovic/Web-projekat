@@ -45,7 +45,7 @@ public class LoginService {
 	@Path("/loginTry")
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String loginTry(User userRequest) { 		
+	public String loginTry(User userRequest) {		
 		AdminDAO adminDAO= (AdminDAO) request.getAttribute("AdminDAO");
 		ManagerDAO managerDAO= (ManagerDAO) request.getAttribute("ManagerDAO");
 		DelivererDAO delivererDAO= (DelivererDAO) request.getAttribute("DelivererDAO");

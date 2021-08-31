@@ -15,6 +15,20 @@ $(document).ready(function(){
 		}
 	})	
 	
+	$("#logoutButton").click(function(){
+		if(window.confirm("Da li zaista zelite da se odjavite?")){
+			$.get({
+			url:'rest/login/logout',
+			success: function(response){
+			window.location.href='/WebProject/home.html';
+			alert(response);			
+			},
+			})
+		} else {
+			return;
+		}	
+	})
+	
 })
 
 function fillCommentSection(comments){

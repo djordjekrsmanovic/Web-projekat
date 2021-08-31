@@ -37,7 +37,9 @@ public class Deliverer extends User {
 		this.oredersWaitingForDelivery = oredersWaitingForDelivery;
 	}
 	
-	
+	public void addOrder(Order o) {
+		this.oredersWaitingForDelivery.add(o);
+	}
 	
 	
 }
