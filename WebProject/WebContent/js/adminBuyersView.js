@@ -1,8 +1,11 @@
 var loadedUsers=[];
 var loadedUsersDefault=[];
+var suspiciousUsers=[];
 $(document).ready(function(){
 
     loadUsers();
+
+    loadSuspiciousUsers();
     
     $('#logout').click(function(){
         $.get({
@@ -39,6 +42,19 @@ $(document).ready(function(){
     })
 })
 
+function loadSuspiciousUsers(){
+    suspiciousUsers.length=0;
+    $.get({
+        url:'rest/users/get-suspicious',
+        contentType:'application/json',
+        success:function(users){
+            for (user of users){
+                suspiciousUsers.push(user);
+            }
+            formSuspicious(suspiciousUsers);
+        }
+    })
+}
 function loadUsers(){
     $('#tableBody').empty();
     loadedUsers.length=0;
@@ -185,6 +201,37 @@ function formTable(users){
     }
 }
 
+
+function formSuspicious(users){
+    $('#tableBodySuspicious').empty();
+    for (user of users){
+        let tr=$('<tr></tr>');
+        
+        let nameTd=$('<td>'+user.firstName+'</td>');
+        let lastNameTd=$('<td>'+user.lastName+'</td>');
+        let userNameTd=$('<td>'+user.username+'</td>');
+        let role=getRole(user);
+        let roleTd=$('<td>'+role+'</td>');
+        let pointsTd=$('<td>'+user.points+'</td>');
+        let buttonDelete=document.createElement('button');
+        buttonDelete.innerHTML="Obriši";
+        buttonDelete.addEventListener('click',createHandler(user));
+        let buttonTd=$('<td></td>').append(buttonDelete);
+        let blockButtonTd=$('<td></td>');
+        let blockButton=document.createElement('button');
+        if (user.banned==false){
+            blockButton.innerHTML="Blokiraj korisnika";
+        }else{
+            blockButton.innerHTML="Odblokiraj korisnika";
+            tr.addClass("blockedUser");
+        }
+        
+        blockButton.addEventListener('click',createHandlerBlockSuspicious(user));
+        blockButtonTd.append(blockButton);
+        tr.append(nameTd,lastNameTd,userNameTd,roleTd,pointsTd,blockButtonTd,buttonTd);
+        $('#tableBodySuspicious').append(tr);
+    }
+}
 function createHandler(user){
     return function(){
         let url="rest/users/"+user.username;
@@ -214,6 +261,26 @@ function createHandlerBlock(user){
         success:function(){
             alert("Korisnik je blokiran")
             loadUsers();
+        },
+        error:function(){
+            alert("Greška prilikom blokiranja korisnika")
+        }
+
+        })
+    }
+}
+
+function createHandlerBlockSuspicious(user){
+    return function(){
+        let url="rest/users/ban-user/"+user.username;
+        $.ajax({
+        url:url,
+        type:'PUT',
+        contentType:'application/json',
+        success:function(){
+            alert("Korisnik je blokiran")
+            loadUsers();
+            loadSuspiciousUsers();
         },
         error:function(){
             alert("Greška prilikom blokiranja korisnika")

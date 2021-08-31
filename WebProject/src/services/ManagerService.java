@@ -93,6 +93,7 @@ public class ManagerService {
 			RestaurantDAO rDAO = (RestaurantDAO) servletContext.getAttribute("RestaurantDAO");
 			User u = (User) servletContext.getAttribute("user");
 			Manager m = mDAO.getManagerByUsername(u.getUsername());
+			product.setRestaurantID(m.getRestaurant().getName());
 			rDAO.addProductToRestaurant(m.getRestaurant(), product);
 			
 			return "Novi artikal napravljen!";

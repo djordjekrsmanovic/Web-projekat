@@ -170,4 +170,22 @@ public class BuyerDAO extends GenericFileRepository<Buyer, String> {
 		createOrUpdate(buyer);
 		
 	}
+	
+	public List<Buyer> getSuspiciousUsers(){
+		List<Buyer> buyers=new ArrayList<Buyer>();
+		buyers=this.getBuyersList();
+		OrderDAO orderDAO=new OrderDAO(contextPath);
+		List<Buyer> suspiciousBuyers=new ArrayList<Buyer>();
+		for(Buyer buyer:buyers) {
+			if(buyer.isBanned()==true || buyer.isDeleted()==true) {
+				continue;
+			}
+			int numberOfCanceledOrders=orderDAO.cauntCancledeOrders(buyer);
+			if(numberOfCanceledOrders>1) {
+				suspiciousBuyers.add(buyer);
+			}
+		}
+		
+		return suspiciousBuyers;
+	}
 }

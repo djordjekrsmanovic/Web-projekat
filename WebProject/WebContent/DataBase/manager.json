@@ -1,110 +1,33 @@
 {
-  "bojan" : {
-    "username" : "bojan",
-    "password" : "bojan",
-    "firstName" : "Bojan",
-    "lastName" : "Prodanovic",
-    "gender" : "male",
-    "birthDate" : 916268400000,
-    "deleted" : false,
-    "banned" : false,
-    "role" : null,
-    "restaurant" : null,
-    "userRole" : "MANAGER"
-  },
   "manager" : {
     "username" : "manager",
     "password" : "manager",
-    "firstName" : "Manager",
-    "lastName" : "manager",
+    "firstName" : "Marko",
+    "lastName" : "Milosevic",
     "gender" : "female",
-    "birthDate" : 1628200800000,
-    "deleted" : false,
-    "banned" : false,
-    "role" : null,
-    "restaurant" : {
-      "name" : "Plava frajla",
-      "restaurantType" : "ETNO",
-      "products" : [ ],
-      "restaurantStatus" : "OPEN",
-      "location" : {
-        "latitude" : 45.24,
-        "longitude" : 19.84,
-        "address" : {
-          "street" : "Spens",
-          "streetNumber" : "5",
-          "city" : "Novi Sad",
-          "postalCode" : "23000"
-        }
-      },
-      "picturePath" : "",
-      "deleted" : false,
-      "raiting" : 0,
-      "managerID" : "manager"
-    },
-    "userRole" : "MANAGER"
-  },
-  "novi" : {
-    "username" : "novi",
-    "password" : "novi",
-    "firstName" : "novi",
-    "lastName" : "novi",
-    "gender" : "female",
-    "birthDate" : 1627596000000,
-    "deleted" : true,
-    "banned" : false,
-    "role" : null,
-    "restaurant" : {
-      "name" : "Japanski restoran",
-      "restaurantType" : "JAPANESE",
-      "products" : [ ],
-      "restaurantStatus" : "OPEN",
-      "location" : {
-        "latitude" : 0.0,
-        "longitude" : 0.0,
-        "address" : {
-          "street" : "Bulevar Oslobodjenja",
-          "streetNumber" : "Bulevar Oslobodjenja",
-          "city" : "Novi Sad",
-          "postalCode" : "21000"
-        }
-      },
-      "picturePath" : "pictures/logos/Japanski restoran.jpeg",
-      "deleted" : false,
-      "raiting" : 0.0,
-      "managerID" : "novi"
-    },
-    "userRole" : "MANAGER"
-  },
-  "najnoviji" : {
-    "username" : "najnoviji",
-    "password" : "najnoviji",
-    "firstName" : "Novi",
-    "lastName" : "Novi",
-    "gender" : "female",
-    "birthDate" : 1628546400000,
+    "birthDate" : 1629237600000,
     "deleted" : false,
     "banned" : false,
     "role" : "MANAGER",
     "restaurant" : {
-      "name" : "Japanski restoran",
-      "restaurantType" : "JAPANESE",
+      "name" : "Pizzeria Ciao",
+      "restaurantType" : "ITALIAN",
       "products" : [ ],
       "restaurantStatus" : "OPEN",
       "location" : {
         "latitude" : 0.0,
         "longitude" : 0.0,
         "address" : {
-          "street" : "Bulvear Oslobodjenja",
-          "streetNumber" : "15",
+          "street" : "Žitni trg",
+          "streetNumber" : "5",
           "city" : "Novi Sad",
-          "postalCode" : "21800"
+          "postalCode" : "21000"
         }
       },
-      "picturePath" : "pictures/logos/Japanski restoran.jpeg",
+      "picturePath" : "pictures/logos/Pizzeria Ciao.png",
       "deleted" : false,
       "raiting" : 0.0,
-      "managerID" : "najnoviji"
+      "managerID" : "manager"
     },
     "userRole" : "MANAGER"
   }

@@ -259,4 +259,12 @@ public class UserService {
 		System.out.println("IZASAO SAM U IZMJENU PROFILA");
 		return null;
 	}
+	
+	@GET
+	@Path("get-suspicious")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Buyer> getSuspiciousUsers(){
+		BuyerDAO buyerDAO = (BuyerDAO) servletContext.getAttribute("BuyerDAO");
+		return buyerDAO.getSuspiciousUsers();
+	}
 }
