@@ -109,5 +109,24 @@ public class RestaurantDAO extends GenericFileRepository<Restaurant, String> {
 		restaurant.setRaiting(avg);
 
 	}
+	
+	public void updateProductMenager(String menID, Product p) {
+		for(Restaurant r : this.getRestaurants()) {
+			if(r.getManagerID()==menID) {
+				for(Product prod : r.getProducts()) {
+					if(prod.getId().equals(p.getId())) {
+						prod.setAmount(p.getAmount());
+						prod.setDescription(p.getDescription());
+						prod.setBinaryPhoto(p.getBinaryPhoto());
+						prod.setName(p.getName());
+						prod.setPhotoPath(p.getPhotoPath());
+						prod.setPrice(p.getPrice());
+						prod.setType(p.getType());
+					}
+				}
+			}
+			this.createOrUpdate(r);
+		}
+	}
 
 }

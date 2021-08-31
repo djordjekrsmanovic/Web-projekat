@@ -104,7 +104,7 @@ function odobri(commentID){
 		url:"rest/manager/odobri",
 		contentType:"application/json",
 		data:commentID,
-		success:function(response){
+		success:function(){
 			alert("Komentar odobren.");
 			document.location.reload();
 		},

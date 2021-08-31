@@ -15,6 +15,7 @@
 	product.photoPath=$("#photo").val();
 	product.photoPath = product.photoPath.substring(product.photoPath.lastIndexOf("\\") + 1, product.photoPath.length); 	
 	product.binaryPhoto=fileInput;
+	return product;
  }
  
  $(document).ready(function(){
@@ -26,23 +27,23 @@
  		populateArticleData(response);
  	},
  	
- 	});
+ 	})
  	
  	
- 	$("#izmjeniButton").click(function(){
- 		collectData();
- 		$.post({
+ 	$("#izmjeniForma").submit(function(){
+ 		$.ajax({
+			type:"POST",
  			url:"rest/manager/editArticle",
  			contentType:"application/json",
- 			data: JSON.stringify(product),
+ 			data: JSON.stringify(collectData()),
  			success:function(){
- 				document.location.reload();
+ 				document.location.href="http://localhost:8080/WebProject/menagerRestaurantInfo.html";
  			},
  			error: function(){
  			alert("Interna server greska");
- 			}
+ 			},
  		})
- 	});
+ 	})
  	
  	
  	$("#logoutButton").click(function(){

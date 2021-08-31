@@ -104,11 +104,13 @@ public class ManagerService {
 	@Path("/editArticle")
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String editArticle(Product product) {
-		ProductDAO productDAO = (ProductDAO) servletContext.getAttribute("ProductDAO");				
+	public void editArticle(Product product) {
+		Manager man = (Manager) servletContext.getAttribute("user");
+		ProductDAO productDAO = (ProductDAO) servletContext.getAttribute("ProductDAO");	
+		RestaurantDAO rDAO = (RestaurantDAO) servletContext.getAttribute("RestaurantDAO");	
 			product.setPhotoPath(productDAO.storePhoto(product.getBinaryPhoto(), product.getPhotoPath()));
 			productDAO.createOrUpdate(product);
-			return "Artikal izmjenjen!";
+			rDAO.updateProductMenager(man.getUsername(), product);
 	}
 	
 	@POST
@@ -191,15 +193,13 @@ public class ManagerService {
 	@Path("/odobri")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String odobri(String komentar) {
+	public void odobri(String komentar) {
 		CommentDAO cDAO = (CommentDAO) servletContext.getAttribute("CommentDAO");
 		for(Comment c : cDAO.getComments()) {
 			if(c.getCommentID().equals(komentar)) {
 				cDAO.changeCommentStatus(c, "odobri");
-				return "Odobren!";
 			}
 		}
-		return "Greska";
 	}
 	
 	@POST

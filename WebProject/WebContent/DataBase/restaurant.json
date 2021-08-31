@@ -56,7 +56,7 @@
     },
     "picturePath" : "",
     "deleted" : false,
-    "raiting" : 0,
+    "raiting" : 0.0,
     "managerID" : "bojan"
   },
   "Vidikovac" : {
@@ -70,7 +70,8 @@
       "amount" : 350,
       "description" : "Svinjsko pecenje",
       "photoPath" : "",
-      "restaurantID" : "Vidikovac"
+      "restaurantID" : "Vidikovac",
+      "binaryPhoto" : null
     }, {
       "id" : "kupus salata",
       "name" : "kupus salata",
@@ -79,7 +80,8 @@
       "amount" : 350,
       "description" : "kupus salata",
       "photoPath" : "",
-      "restaurantID" : "Vidikovac"
+      "restaurantID" : "Vidikovac",
+      "binaryPhoto" : null
     } ],
     "restaurantStatus" : "OPEN",
     "location" : {
@@ -94,8 +96,8 @@
     },
     "picturePath" : "",
     "deleted" : false,
-    "raiting" : 5,
-    "managerID" : "bojan"
+    "raiting" : 5.0,
+    "managerID" : ""
   },
   "Japanski restoran" : {
     "name" : "Japanski restoran",

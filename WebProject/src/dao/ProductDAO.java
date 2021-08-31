@@ -102,6 +102,6 @@ public class ProductDAO extends GenericFileRepository<Product, String> {
 		}
 		
 		
-		return "../pictures/"+photoName+".jpg";
+		return "pictures/"+photoName;
 	}
 }
