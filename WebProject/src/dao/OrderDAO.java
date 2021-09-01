@@ -154,12 +154,9 @@ public class OrderDAO extends GenericFileRepository<Order, String> {
 	}
 	
 	public void deliverOrder(Order ord) {
-		for(Order o : this.getOrders()) {
-			if(o.getId().equals(ord.getId())) {
-				o.setStatus(OrderStatus.DOSTAVLJENA);
-				this.update(o);
-			}
-		}
+				ord.setStatus(OrderStatus.DOSTAVLJENA);
+				this.createOrUpdate(ord);
+				System.out.print("Porudzbina dostavljena.");
 	}
 
 	public List<Order> getBuyerOrders(String id) {
@@ -185,6 +182,12 @@ public class OrderDAO extends GenericFileRepository<Order, String> {
 			}
 		}
 		return orderCounter;
+	}
+	
+	public void prebaciUtransport(String id) {
+		Order o = this.getOrderByID(id);
+		o.setStatus(OrderStatus.U_TRANSPORTU);
+		this.createOrUpdate(o);
 	}
 	
 }

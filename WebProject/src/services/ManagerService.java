@@ -261,7 +261,7 @@ public class ManagerService {
 		DeliverRequestDAO drDAO = (DeliverRequestDAO) servletContext.getAttribute("RequestDAO");
 		OrderDAO oDAO=(OrderDAO) servletContext.getAttribute("OrderDAO");
 		DelivererDAO dDAO = (DelivererDAO) servletContext.getAttribute("DelivererDAO");
-		drDAO.odobri(id, oDAO, dDAO);
+		drDAO.odobri(id, oDAO, dDAO);		
 		return "Odobren!";
 	}
 	

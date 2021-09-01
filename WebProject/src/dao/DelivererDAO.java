@@ -149,12 +149,28 @@ public class DelivererDAO extends GenericFileRepository<Deliverer, String> {
 		d.getOredersWaitingForDelivery().add(order2);
 	}
 	
-	public void deliverOrder(Order o, String id) {
-		for(Order ord : this.getDelivererByID(id).getOredersWaitingForDelivery()) {
+	public void deliverOrder(Order o, User id) {
+		for(Order ord : this.getMyOrders(id)) {
 			if(ord.getId().equals(o.getId())) {
 				ord.setStatus(OrderStatus.DOSTAVLJENA);
-				this.createOrUpdate(this.getDelivererByID(id));
+				Deliverer d = this.getDelivererByID(id.getUsername());
+				for(Order or : d.getOredersWaitingForDelivery()) {
+					if(or.getId().equals(o.getId())) {
+						ord.setStatus(OrderStatus.DOSTAVLJENA);
+					}
+				}
+				this.createOrUpdate(d);
 			}
+		}
+	}
+	
+	public void prebaciUTransport(Deliverer d, Order o) {
+		Deliverer drr= this.getDelivererByID(d.getUsername());		
+				for(Order ord : drr.getOredersWaitingForDelivery()) {
+					if(ord.getId().equals(o.getId())) {
+						ord.setStatus(OrderStatus.U_TRANSPORTU);
+					}
+			this.createOrUpdate(drr);
 		}
 	}
 }

@@ -245,14 +245,13 @@ $(document).ready(function(){
  		contentType:'application/json',
  		data: orderID,
  		success: function(response){
- 			alert(response);
-			document.getElementById(orderID).empty();
+ 			alert(response);			
  		},
  		error: function(){
  			alert("Interna server greska.");
  		}
  	
  	})
- 
+ 	$("#orderID").html='';
  }
  

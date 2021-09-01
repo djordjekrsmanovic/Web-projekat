@@ -59,8 +59,8 @@ public class DelivererService {
 		if (servletContext.getAttribute("CommentDAO")==null) {
 			servletContext.setAttribute("CommentDAO", new CommentDAO(servletContext.getRealPath("")));
 		}
-		if (servletContext.getAttribute("DeliverRequestDAO")==null) {
-			servletContext.setAttribute("DeliverRequestDAO", new DeliverRequestDAO(servletContext.getRealPath("")));
+		if (servletContext.getAttribute("RequestDAO")==null) {
+			servletContext.setAttribute("RequestDAO", new DeliverRequestDAO(servletContext.getRealPath("")));
 		}
 	}
 	
@@ -96,7 +96,7 @@ public class DelivererService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	public String deliver(String orderID) {
-		DeliverRequestDAO req = (DeliverRequestDAO) servletContext.getAttribute("DeliverRequestDAO");
+		DeliverRequestDAO req = (DeliverRequestDAO) servletContext.getAttribute("RequestDAO");
 		Deliverer d = (Deliverer) servletContext.getAttribute("user");
 		OrderDAO oDAO = (OrderDAO) servletContext.getAttribute("OrderDAO");
 		Order o = oDAO.getOrderByID(orderID);
@@ -124,7 +124,7 @@ public class DelivererService {
 		oDAO.deliverOrder(o);
 		DelivererDAO dDAO = (DelivererDAO) servletContext.getAttribute("DelivererDAO");
 		User user = (User) servletContext.getAttribute("user");
-		dDAO.deliverOrder(o, user.getUsername());
+		dDAO.deliverOrder(o, user);
 		return "Success";
 	}
 	
