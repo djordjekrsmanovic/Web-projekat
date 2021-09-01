@@ -17,9 +17,9 @@ import javax.ws.rs.core.MediaType;
 
 import dto.PictureDTO;
 //import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Decoder;
 
-@Path("/images")
+
+/*@Path("/images")
 public class ImageService {
 
 	@Context
@@ -56,4 +56,4 @@ public class ImageService {
 		System.out.println("Image " + ".png" + " uploaded.");
 
 	}
-}
+}*/

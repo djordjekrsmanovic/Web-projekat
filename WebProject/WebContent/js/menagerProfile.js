@@ -16,10 +16,10 @@
  		let name=$('#managerName').val();
         let surname=$('#managerSurname').val();
         let date=$('#datum').val();       
-        let userName=$('#managerUserame').val();
-        let password=$('#newPassword').val();
+        let userName=$('#managerUsername').val();
+        let password=$('#NewPassword').val();
         let repeatedPassword=$('#RepeatedNewPassword').val();
-        let gender=$("managerSex option:selected").val();
+        let gender=$("#managerSex option:selected").val();
         if (name===''||surname===''||date===''||userName==''||password==''||repeatedPassword==''||gender==''){
             $("#error").append=('Sva polja trebaju biti popunjena');
             return;
@@ -34,7 +34,7 @@
             contentType:'application/json',
             data:JSON.stringify({username:userName,password:password,firstName:name,lastName:surname,gender:gender,birthDate:date}),
             success:function(data){
-                alert("Uspjesno ste izmjenili podatke svog profila");
+                document.location.reload();
             },
             error:function(data){
                 alert("Greska prilikom izmjene.");
@@ -42,7 +42,7 @@
         })
  	
  	event.preventDefault();
- 	document.location.reload();
+ 	
  	});
  	
  	$("#logoutButton").click(function(){
@@ -71,4 +71,21 @@ function fillProfileData(user) {
     else {  $("#managerSex").val("female");}
     $("#oldPassword").val(user.password);
     $("#datum").val(user.birthDate);
+	let date =  new Date(user.birthDate);
+    let formatedDate=formatDate(date);
+    $("#datum").val(formatedDate);
+}
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
 }
