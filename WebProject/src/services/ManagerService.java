@@ -108,7 +108,16 @@ public class ManagerService {
 		ProductDAO productDAO = (ProductDAO) servletContext.getAttribute("ProductDAO");	
 		RestaurantDAO rDAO = (RestaurantDAO) servletContext.getAttribute("RestaurantDAO");	
 		Restaurant r = rDAO.getRestaurantByID(man.getRestaurant().getName());
+		if(product.getPhotoPath()!="" && product.getBinaryPhoto()!="") {
 		product.setPhotoPath(productDAO.storePhoto(product.getBinaryPhoto(), product.getPhotoPath()));
+		} else {
+			for(Product pp : r.getProducts()) {
+				if(pp.getId().equals(product.getId())) {
+					product.setBinaryPhoto(pp.getBinaryPhoto());
+					product.setPhotoPath(pp.getPhotoPath());
+				}
+			}
+		}
 		productDAO.createOrUpdate(product);
 		rDAO.updateProductMenager(r, product);
 	}
