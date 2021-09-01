@@ -1,27 +1,15 @@
 package dao;
 
 import java.io.File;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import beans.Address;
 import beans.DeliverRequest;
 import beans.Deliverer;
-import beans.Gender;
-import beans.Location;
-import beans.Manager;
 import beans.Order;
 import beans.OrderStatus;
-import beans.Restaurant;
-import beans.RestaurantStatus;
-import beans.RestaurantType;
+
 
 public class DeliverRequestDAO extends GenericFileRepository<DeliverRequest, String> {
 
@@ -67,7 +55,7 @@ public class DeliverRequestDAO extends GenericFileRepository<DeliverRequest, Str
 	
 	public String createRequest(Order o, Deliverer d ) {
 		DeliverRequest request = new DeliverRequest(o.getId(), d, o, false);
-		this.createOrUpdate(request);
+		this.create(request);
 		return "Successfully created request!";
 	}
 	
@@ -83,17 +71,15 @@ public class DeliverRequestDAO extends GenericFileRepository<DeliverRequest, Str
 		return ret;
 	}
 	
-	public void odobri(String requestId, OrderDAO oDAO, DelivererDAO dDAO) {
-		for(DeliverRequest dr : this.getDeliverRequestsList()) {
-			if(dr.getRequestID().equals(requestId)) {
+	public void odobri(String requestId, OrderDAO oDAO, DelivererDAO dDAO) {				
+				DeliverRequest dr = this.getRequestByID(requestId);			
 				dr.getDeliverer().addOrder(dr.getOrder());
 				dr.getOrder().setStatus(OrderStatus.U_TRANSPORTU);
-				oDAO.createOrUpdate(dr.getOrder());
+				oDAO.prebaciUtransport(dr.getOrder().getId());			
 				dDAO.createOrUpdate(dr.getDeliverer());
 				dr.setDeleted(true);
 				this.createOrUpdate(dr);
-			}
-		}
+				dDAO.prebaciUTransport(dr.getDeliverer(), dr.getOrder());					
 	}
 	
 	public void odbij(String requestId, OrderDAO oDAO, DelivererDAO dDAO) {

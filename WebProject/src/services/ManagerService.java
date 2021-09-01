@@ -184,8 +184,9 @@ public class ManagerService {
 	@Path("/changeOrderStatus")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Order changeOrderStatus(Order order) {
+	public Order changeOrderStatus(String orderID) {
 		OrderDAO orderDAO=(OrderDAO) servletContext.getAttribute("OrderDAO");
+		Order order = orderDAO.getOrderByID(orderID);
 		return orderDAO.changeStatus(order.getId());
 	}
 	
@@ -263,7 +264,7 @@ public class ManagerService {
 		DeliverRequestDAO drDAO = (DeliverRequestDAO) servletContext.getAttribute("RequestDAO");
 		OrderDAO oDAO=(OrderDAO) servletContext.getAttribute("OrderDAO");
 		DelivererDAO dDAO = (DelivererDAO) servletContext.getAttribute("DelivererDAO");
-		drDAO.odobri(id, oDAO, dDAO);
+		drDAO.odobri(id, oDAO, dDAO);		
 		return "Odobren!";
 	}
 	

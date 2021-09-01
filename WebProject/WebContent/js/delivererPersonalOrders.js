@@ -39,9 +39,6 @@ $(document).ready(function(){
 	
 	 $('#searchButton').click(function(){
         searchOrders();
-        filterOrdersByStatus();
-		filterOrdersByType();
-		sortOrders(loadedOrders);
     })
     
     $("#filterStatus").change(function(){
@@ -103,9 +100,7 @@ $(document).ready(function(){
 	 		td6.append(button);
 			td6.attr("id",orders[i].id);
 	 		td6.click(function(){
-	 			i--;
 	 			dostavi(td6.attr("id"));
-	 			i++;
 	 		})
 	 	} else {td6.append("Nedostupno");}
 	 	
@@ -164,13 +159,13 @@ function searchOrders(){
 	 let duzina = loadedOrders.length;
 	 
 	 for(i=0;i<duzina;i++){
-	 	if(!defaultOrders[i].restaurant.name.toLowerCase().includes(name) && !defaultOrders[i].price<priceTo && !defaultOrders[i].price>priceFrom)
+		if(defaultOrders[i].restaurant.name.toLowerCase().includes(name)){
+	 	if( defaultOrders[i].price>priceTo || defaultOrders[i].price<priceFrom ||defaultOrders[i].dateAndTime>dateTo || defaultOrders[i].dateAndTime<dateFrom)
 	 	{
-	 	if(!defaultOrders[i].dateAndTime<dateTo && !defaultOrders[i].dateAndTime>dateFrom){
 	 		loadedOrders.splice(i,1);
 			i--;
-	 		}
 	 	}
+	}
 	 }
 	fillTable(loadedOrders);	 	 
  }
@@ -259,13 +254,12 @@ function dostavi(orderID){
 		url:"rest/deliverer/deliverOrder",
 		contentType:"application/json",
 		data: orderID,
-		success: function(){
-			alert("Dostava zavrsena.");
-			$("#changeStatusButton").empty();
-			$("#changeStatusButton").append("Dostavljena");
+		success: function(response){
+			console.log(response);		
 		},
 		error: function(){
 			alert("Interna server greska.");
 		}
 	})
+	alert("Uspjesna dostava.");
 }

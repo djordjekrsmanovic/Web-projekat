@@ -39,9 +39,6 @@ $(document).ready(function(){
 	 
 	  $('#searchButton').click(function(){
         searchOrders();
-        filterOrdersByStatus();
-		filterOrdersByType();
-		sortOrders(loadedOrders);
     })
     
     $("#filterStatus").change(function(){
@@ -153,14 +150,13 @@ $(document).ready(function(){
 	 let duzina = defaultOrders.length;
 	 
 	 for(i=0;i<duzina;i++){
-	 	if(!defaultOrders[i].restaurant.name.toLowerCase().includes(name) && !defaultOrders[i].price<priceTo && !defaultOrders[i].price>priceFrom)
+		if(defaultOrders[i].restaurant.name.toLowerCase().includes(name)){
+	 	if(defaultOrders[i].price>priceTo || defaultOrders[i].price<priceFrom ||defaultOrders[i].dateAndTime>dateTo || defaultOrders[i].dateAndTime<dateFrom)
 	 	{
-	 	if(!defaultOrders[i].dateAndTime<dateTo && !defaultOrders[i].dateAndTime>dateFrom){
-	 		loadedOrders.splice(i,1);
-			i--;
-	 		}
+	 		loadedOrders.splice(i,1);			
 	 	}
 	 }
+	}
 	fillTable(loadedOrders);	 	 
  }
  
@@ -249,14 +245,13 @@ $(document).ready(function(){
  		contentType:'application/json',
  		data: orderID,
  		success: function(response){
- 			alert(response);
-			document.getElementById(orderID).empty();
+ 			alert(response);			
  		},
  		error: function(){
  			alert("Interna server greska.");
  		}
  	
  	})
- 
+ 	$("#orderID").html='';
  }
  

@@ -3,7 +3,8 @@
  */
  loadedOrders = [];
  defaultOrders=[];
- 
+ var restName;
+
  $(document).ready(function(){
  
 	 $("#logoutButton").click(function(){
@@ -28,8 +29,9 @@
  		for(order of orders){
  			loadedOrders.push(order);
  			defaultOrders.push(order);
- 			$("#restaurantName").append(order.restaurant.name);
+			restName=order.restaurant.name;			
  		}		 
+		$("#restaurantName").append(restName);
  		 fillTable(orders);
  		},
  		error: function(response){
@@ -50,6 +52,7 @@
 
     $('#searchButton').click(function(){
         searchOrders();
+		fillTable(loadedOrders);
     })
     
    
@@ -62,7 +65,6 @@
  	let i;
  	for(i=0; i<duzina;i++){
  		let tr = $("<tr></tr>");
- 		tr.attr("id",orders[i].id);
 	 	let td1 = $("<td></td>");
 	 	let td2 = $("<td></td>");
 	 	let td3 = $("<td></td>");
@@ -70,7 +72,9 @@
 	 	let td5 = $("<td></td>");
 	 	let td6 = $("<td></td>");
 	 	td1.append(orders[i].id);
-	 	td2.append(orders[i].dateAndTime);
+		date= new Date(orders[i].dateAndTime);
+		date = formatDate(date);
+	 	td2.append(date);
 	 	td3.append(orders[i].price);
 	 	td4.append(orders[i].buyerID);
 	 	td5.append(getOrderStatus(orders[i]));
@@ -78,12 +82,19 @@
 	 	    let button = $("<button></button>", {id:"changeStatusButton"});
 	 	    button.append("Zavrsi pripremu");
 	 		td6.append(button);
+			td6.attr("id",orders[i].id)
 	 		td6.click(function(){
-	 			i--;
-	 			changeStatus(orders[i]);
-	 			i++;
+	 			changeStatus(td6.attr("id"));
 	 		})
-	 	} else {td6.append("Nedostupno");}
+	 	} else if(getOrderStatus(orders[i])==="Obrada"){
+			let button = $("<button></button>", {id:"changeStatusButton"});
+	 	    button.append("Pocni pripremu");
+			td6.append(button);
+			td6.attr("id",orders[i].id)
+			td6.click(function(){
+	 			changeStatus(td6.attr("id"));
+	 		})
+		} else {td6.append("Nedostupno");}
 	 	
 	 	tr.append(td1);
  		tr.append(td2);
@@ -128,15 +139,11 @@
 	 let duzina = loadedOrders.length;
 	 
 	 for(i=0;i<duzina;i++){
-	 	if(!defaultOrders[i].restaurant.name.toLowerCase().includes(name) && !defaultOrders[i].price<priceTo && !defaultOrders[i].price>priceFrom)
+	 	if(defaultOrders[i].price>priceTo || defaultOrders[i].price<priceFrom || defaultOrders[i].dateAndTime>dateTo || defaultOrders[i].dateAndTime<dateFrom)
 	 	{
-	 	if(!defaultOrders[i].dateAndTime<dateTo && !defaultOrders[i].dateAndTime>dateFrom){
-	 		loadedOrders.splice(i,1);
-			i--;
-	 		}
+	 		loadedOrders.splice(i,1);	 		
 	 	}
-	 }
-	fillTable(loadedOrders);	 	 
+	 }		 	 
  }
  
   function filterOrdersByStatus(){
@@ -188,20 +195,30 @@
  	return loadedOrders.sort(function(a,b){return b.date-a.date});
  }
  
- function changeStatus(orderS){
+ function changeStatus(orderID){
  	$.post({
  	url:"rest/manager/changeOrderStatus",
  	contentType:"application/json",
- 	data:JSON.stringify(orderS),
+ 	data:orderID,
  	success: function(order){
- 		var row = document.getElementById(order.id);
- 		var tds=row.children;
- 		tds[5].innerHTML="";
- 		tds[5].append("Nedostupno");
+ 		window.location.reload();		 	
  	},
  	
- 	})
- 
+ 	}) 
  
  }
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
  
