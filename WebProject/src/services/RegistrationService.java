@@ -75,7 +75,7 @@ public class RegistrationService {
 		/*public Buyer(String username, String password, String firstName, String lastName, Gender gender, Date birthDate,
 				boolean deleted, boolean banned, int points) */
 		Gender gender=Gender.other;
-		if (user.gender.equalsIgnoreCase("muski")) {
+		if (user.gender.equalsIgnoreCase("musko")) {
 			gender=Gender.male;
 		}else {
 			gender=Gender.female;

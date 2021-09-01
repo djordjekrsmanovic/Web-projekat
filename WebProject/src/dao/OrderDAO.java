@@ -40,7 +40,6 @@ public class OrderDAO extends GenericFileRepository<Order, String> {
 	}
 
 	public List<Order> getOrders() {
-		generateOrder();
 		ObjectMapper objectMapper = new ObjectMapper();
 		List<Order> orders = objectMapper.convertValue(getList(), new TypeReference<List<Order>>() {
 		});

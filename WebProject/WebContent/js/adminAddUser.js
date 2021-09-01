@@ -16,6 +16,21 @@ $(document).ready(function(){
         })
     })
 
+    $.ajax({
+        url:'rest/login/get-loged-user',
+        contentType:'application/json',
+        type:'GET',
+        success:function(user){
+            loggedUser=user;
+        },
+        async:false,
+    })
+
+    if (  loggedUser==null || loggedUser==undefined || loggedUser.role!='ADMIN' ){
+        alert("Potrebno je da se prijavite kao administrator");
+        window.location.href="http://localhost:8080/WebProject/home.html";
+    }
+
     $('#registration-form').submit(function(event){
         event.preventDefault();
         var name=$('#name').val();

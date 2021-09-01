@@ -207,8 +207,11 @@ public class ManagerService {
 		for(Comment c : cDAO.getComments()) {
 			if(c.getCommentID().equals(komentar)) {
 				cDAO.changeCommentStatus(c, "odobri");
+				RestaurantDAO restaurantDAO=(RestaurantDAO) servletContext.getAttribute("RestaurantDAO");
+				restaurantDAO.updateGrade(c.getRestaurant().getName());
 			}
 		}
+		
 	}
 	
 	@POST

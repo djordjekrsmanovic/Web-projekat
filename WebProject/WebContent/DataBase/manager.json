@@ -2,15 +2,15 @@
   "manager" : {
     "username" : "manager",
     "password" : "manager",
-    "firstName" : "Marko",
-    "lastName" : "Milosevic",
+    "firstName" : "Menadzer",
+    "lastName" : "Menadzer",
     "gender" : "female",
-    "birthDate" : 1629237600000,
+    "birthDate" : 1632261600000,
     "deleted" : false,
     "banned" : false,
     "role" : "MANAGER",
     "restaurant" : {
-      "name" : "Pizzeria Ciao",
+      "name" : "Novi",
       "restaurantType" : "ITALIAN",
       "products" : [ ],
       "restaurantStatus" : "OPEN",
@@ -18,45 +18,16 @@
         "latitude" : 0.0,
         "longitude" : 0.0,
         "address" : {
-          "street" : "Žitni trg",
+          "street" : "Bulevac Cara Lazara",
           "streetNumber" : "5",
           "city" : "Novi Sad",
           "postalCode" : "21000"
         }
       },
-      "picturePath" : "pictures/logos/Pizzeria Ciao.png",
+      "picturePath" : "pictures/logos/Novi.jpeg",
       "deleted" : false,
       "raiting" : 0.0,
       "managerID" : "manager"
-    },
-    "userRole" : "MANAGER"
-  },
-  "bojan" : {
-    "username" : "bojan",
-    "password" : "bojan",
-    "firstName" : "Bojan",
-    "lastName" : "Prodanovic",
-    "gender" : "male",
-    "birthDate" : 916268400000,
-    "deleted" : false,
-    "banned" : false,
-    "restaurant" : {
-      "name" : "Plava frajla",
-      "restaurantType" : "ETNO",
-      "products" : [ ],
-      "restaurantStatus" : "OPEN",
-      "location" : {
-        "latitude" : 45.24,
-        "longitude" : 19.84,
-        "address" : {
-          "street" : "Spens",
-          "streetNumber" : "5",
-          "city" : "Novi Sad",
-          "postalCode" : "23000"
-        }
-      },
-      "picturePath" : "",
-      "deleted" : false
     },
     "userRole" : "MANAGER"
   }

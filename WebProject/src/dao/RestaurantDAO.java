@@ -113,7 +113,7 @@ public class RestaurantDAO extends GenericFileRepository<Restaurant, String> {
 
 		double avg = Math.round((grade / counter) * 100.0) / 100.0;
 		restaurant.setRaiting(avg);
-
+		update(restaurant);
 	}
 	
 	public void updateProductMenager(Restaurant r, Product p) {		

@@ -20,9 +20,9 @@ $(document).ready(function(){
         async:false,
     })
 
-    if (loggedUser.role!='BUYER'){
+    if (  loggedUser==null || loggedUser==undefined || loggedUser.role!='BUYER' ){
         alert("Potrebno je da se prijavite kao kupac");
-        //window.location.href="http://localhost:8080/WebProject/home.html";
+        window.location.href="http://localhost:8080/WebProject/home.html";
     }
 
     $.ajax({

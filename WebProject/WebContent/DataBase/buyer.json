@@ -1,35 +1,17 @@
 {
-  "djordje" : {
-    "username" : "djordje",
-    "password" : "djordje",
-    "firstName" : "Djordje",
-    "lastName" : "Krsmanovic",
-    "gender" : "male",
-    "birthDate" : 1636326000000,
-    "deleted" : false,
-    "banned" : false,
-    "role" : "BUYER",
-    "userRole" : "BUYER",
-    "orders" : [ ],
-    "points" : -1795.5,
-    "buyerType" : {
-      "buyerRank" : "NO_RANK",
-      "discount" : 0.0
-    }
-  },
   "buyer" : {
     "username" : "buyer",
     "password" : "buyer",
-    "firstName" : "Milan",
-    "lastName" : "Krunic",
-    "gender" : "female",
-    "birthDate" : 1629928800000,
+    "firstName" : "Buyer",
+    "lastName" : "Buyer",
+    "gender" : "male",
+    "birthDate" : 1632780000000,
     "deleted" : false,
     "banned" : false,
     "role" : "BUYER",
     "userRole" : "BUYER",
     "orders" : [ ],
-    "points" : -598.5,
+    "points" : 166.25,
     "buyerType" : {
       "buyerRank" : "NO_RANK",
       "discount" : 0.0

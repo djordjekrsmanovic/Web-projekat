@@ -3,6 +3,20 @@ var ordersForReview=[];
 var selectedOrder;
 $(document).ready(function(){
     
+    $.ajax({
+        url:'rest/login/get-loged-user',
+        contentType:'application/json',
+        type:'GET',
+        success:function(user){
+            loggedUser=user;
+        },
+        async:false,
+    })
+
+    if (loggedUser==null || loggedUser==undefined || loggedUser.role!='BUYER'  ){
+        alert("Potrebno je da se prijavite kao kupac");
+        window.location.href="http://localhost:8080/WebProject/home.html";
+    }
 
     //kod za ucitavanje korisnika
 

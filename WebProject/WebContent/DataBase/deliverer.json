@@ -2,10 +2,10 @@
   "deliverer" : {
     "username" : "deliverer",
     "password" : "deliverer",
-    "firstName" : "deliverer",
-    "lastName" : "deliverer",
+    "firstName" : "Deliverer",
+    "lastName" : "Deliverer",
     "gender" : "female",
-    "birthDate" : 1629237600000,
+    "birthDate" : 1631570400000,
     "deleted" : false,
     "banned" : false,
     "role" : "DELIVERER",

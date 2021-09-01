@@ -1,14 +1,4 @@
 {
-  "djordje" : {
-    "cartItems" : [ ],
-    "price" : 0.0,
-    "ownerID" : "djordje"
-  },
-  "Djordje" : {
-    "cartItems" : [ ],
-    "price" : 0.0,
-    "ownerID" : "Djordje"
-  },
   "buyer" : {
     "cartItems" : [ ],
     "price" : 0.0,
