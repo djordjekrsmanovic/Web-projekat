@@ -49,7 +49,8 @@ public class ImageService {
 		
 		BufferedImage buffImg = ImageIO.read(new ByteArrayInputStream(decodedBytes));
 		String basePath=servletContext.getInitParameter("path");
-		String photoPath=basePath+File.separator+"pictures"+File.separator+"logos"+File.separator+pictureDTO.name;
+		String name=pictureDTO.name.replaceAll(" ", "_");
+		String photoPath=basePath+File.separator+"pictures"+File.separator+"logos"+File.separator+name;
 		File file = new File(photoPath + "."+extension);
 		ImageIO.write(buffImg, extension, file);
 		System.out.println("Image " + ".png" + " uploaded.");

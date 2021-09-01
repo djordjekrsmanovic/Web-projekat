@@ -2,6 +2,7 @@ package dao;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -163,6 +164,20 @@ public class OrderDAO extends GenericFileRepository<Order, String> {
 			}
 		}
 		return retVal;
+	}
+
+	public int cauntCancledeOrders(Buyer buyer) {
+		int orderCounter=0;
+		for(Order order:getBuyerOrders(buyer.getUsername())) {
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(new Date());
+			cal.add(Calendar.DATE, -30);
+			Date dateBefore30Days = cal.getTime();
+			if(order.getDateAndTime().after(dateBefore30Days)) {
+				orderCounter++;
+			}
+		}
+		return orderCounter;
 	}
 	
 }

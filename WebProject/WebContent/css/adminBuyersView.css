@@ -167,6 +167,19 @@ nav{
     color: #086642;
   }
 
+  table tbody {
+    display: block;
+    max-height: 250px;
+    overflow-y: scroll;
+    scrollbar-color: rgb(248, 246, 246);
+  }
+  
+  table thead, table tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+
   .filterSortDiv{
     margin-left: 10%;
     margin-top: 20px;
@@ -191,6 +204,25 @@ nav{
 
   .sortSpan{
     float: right;
+  }
+
+  ::-webkit-scrollbar {
+    width: 7px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(192, 192, 192); 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(184, 182, 182); 
   }
   
 

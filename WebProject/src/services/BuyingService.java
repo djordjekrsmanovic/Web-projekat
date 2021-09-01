@@ -128,7 +128,7 @@ public class BuyingService {
 		OrderDAO orderDAO=(OrderDAO) servletContext.getAttribute("orderDAO");
 		CartDAO cartDAO=(CartDAO) servletContext.getAttribute("cartDAO");
 		for (CartItem cartItem:cart.getCartItems()) {
-			restaurantsID.put(cartItem.getProduct().getRestaurantID(), cartItem.getProduct().getName()); //made to get unique values of restaurants
+			restaurantsID.put(cartItem.getProduct().getRestaurantID(), cartItem.getProduct().getName()); //done to get unique values of restaurants
 		}
 		List<String> keys = new ArrayList<String>(restaurantsID.keySet());
 		for (String id:keys) {

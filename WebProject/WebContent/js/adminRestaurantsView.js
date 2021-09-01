@@ -44,7 +44,8 @@ function loadRestaurants(){
 		url:'rest/restaurant/load-admin-restaurants',
 		contentType:'application/json',
 		success:function(restaurants){
-			
+			loadedRestaurants.length=0;
+            recomendedView.length=0;
 			for(restaurant of restaurants){
 				loadedRestaurants.push(restaurant);
                 recomendedView.push(restaurant);
@@ -111,10 +112,9 @@ function createDeleteHandler(restaurant){
             url:url,
             type:'DELETE',
             contentType:'application/json',
-            success:function(restaurant){
+            success:function(data){
                 alert('Restoran je izbrisan');
-                loadedRestaurants();
-                formTable(loadedRestaurants);
+                loadRestaurants();
             },
             error:function(){
                 alert('Greska prilikom brisanja restorana');
