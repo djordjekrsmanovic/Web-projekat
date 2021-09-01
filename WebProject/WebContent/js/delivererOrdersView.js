@@ -11,10 +11,12 @@ $(document).ready(function(){
 	 	dataType:"json",
 	 	success: function(orders){
 	 	for(order of orders){
+			if(order.status==="CEKA_DOSTAVLJACA"){
  			loadedOrders.push(order);
  			defaultOrders.push(order);
+		}
  		}		 
- 		 fillTable(orders);
+ 		 fillTable(defaultOrders);
 	 	},
 	 	error:function(){
 	 		alert("Interna server greska");

@@ -31,12 +31,20 @@ $.get({
             return;
         }
 
+		if(password===""){
+			password=$("#oldPassword").val();
+		}
+
         $.post({
             url:'rest/deliverer/editProfile',
             contentType:'application/json',
             data:JSON.stringify({username:userName,password:password,firstName:name,lastName:surname,gender:gender,birthDate:date}),
             success:function(data){
-				document.location.reload();
+				if(data==="f"){
+				alert("Postoji korisnik sa ukucanim korisnickim imenom.");
+				} else {
+                document.location.reload();
+				}
             },
             error:function(data){
                 alert("Greska prilikom izmjene.");
