@@ -86,7 +86,7 @@ public class ManagerService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String newArticle(Product product) {
 		ProductDAO productDAO = (ProductDAO) servletContext.getAttribute("ProductDAO");
-		if(productDAO.getProductByName(product.getName())==null) {
+		
 			product.setPhotoPath(productDAO.storePhoto(product.getBinaryPhoto(), product.getPhotoPath()));
 			productDAO.createOrUpdate(product);
 			ManagerDAO mDAO = (ManagerDAO) servletContext.getAttribute("ManagerDAO");
@@ -97,19 +97,20 @@ public class ManagerService {
 			rDAO.addProductToRestaurant(m.getRestaurant(), product);
 			
 			return "Novi artikal napravljen!";
-		}
-		return "Artikal vec postoji";
 	}
 	
 	@POST
 	@Path("/editArticle")
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String editArticle(Product product) {
-		ProductDAO productDAO = (ProductDAO) servletContext.getAttribute("ProductDAO");				
-			product.setPhotoPath(productDAO.storePhoto(product.getBinaryPhoto(), product.getPhotoPath()));
-			productDAO.createOrUpdate(product);
-			return "Artikal izmjenjen!";
+	public void editArticle(Product product) {
+		Manager man = (Manager) servletContext.getAttribute("user");
+		ProductDAO productDAO = (ProductDAO) servletContext.getAttribute("ProductDAO");	
+		RestaurantDAO rDAO = (RestaurantDAO) servletContext.getAttribute("RestaurantDAO");	
+		Restaurant r = rDAO.getRestaurantByID(man.getRestaurant().getName());
+		product.setPhotoPath(productDAO.storePhoto(product.getBinaryPhoto(), product.getPhotoPath()));
+		productDAO.createOrUpdate(product);
+		rDAO.updateProductMenager(r, product);
 	}
 	
 	@POST
@@ -192,22 +193,28 @@ public class ManagerService {
 	@Path("/odobri")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String odobri(Comment komentar) {
+	public void odobri(String komentar) {
 		CommentDAO cDAO = (CommentDAO) servletContext.getAttribute("CommentDAO");
-		cDAO.changeCommentStatus(komentar, "odobri");
-		RestaurantDAO restaurantDAO=(RestaurantDAO) servletContext.getAttribute("RestaurantDAO");
-		restaurantDAO.updateGrade(komentar.getRestaurant().getName());
-		return "Odobren!";
+		for(Comment c : cDAO.getComments()) {
+			if(c.getCommentID().equals(komentar)) {
+				cDAO.changeCommentStatus(c, "odobri");
+			}
+		}
 	}
 	
 	@POST
 	@Path("/odbij")
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String odbij(Comment komentar) {
+	public String odbij(String komentar) {
 		CommentDAO cDAO = (CommentDAO) servletContext.getAttribute("CommentDAO");
-		cDAO.changeCommentStatus(komentar, "odbij");
-		return "Odbijen!";
+		for(Comment c : cDAO.getComments()) {
+			if(c.getCommentID().equals(komentar)) {
+				cDAO.changeCommentStatus(c, "odbij");
+				return "Odbijen!";
+			}
+		}
+		return "Greska";
 	}
 	
 	@GET

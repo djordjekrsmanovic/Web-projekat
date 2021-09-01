@@ -18,6 +18,7 @@
 		} else {
 			return;
 		}	
+		alert("Uspjesna odjava");
 	})
 
  	$.get({

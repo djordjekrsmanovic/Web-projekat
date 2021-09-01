@@ -34,6 +34,7 @@ $(document).ready(function(){
 		} else {
 			return;
 		}	
+		alert("Uspjesna odjava.");	
 	})
 	
 	 $('#searchButton').click(function(){
@@ -45,14 +46,10 @@ $(document).ready(function(){
     
     $("#filterStatus").change(function(){
         filterOrdersByStatus();
-		sortOrders(loadedOrders);
-        filterOrdersByStatus();
     })
     
     $("#filterType").change(function(){
 		filterOrdersByType();
-		sortOrders(loadedOrders);
-        filterOrdersByStatus();
     })
     
     $("#sort").change(function(){

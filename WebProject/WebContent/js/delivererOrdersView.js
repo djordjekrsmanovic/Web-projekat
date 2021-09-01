@@ -33,7 +33,8 @@ $(document).ready(function(){
 			})
 		} else {
 			return;
-		}	
+		}
+		alert("Uspjesna odjava.");	
 	})
 	 
 	  $('#searchButton').click(function(){
@@ -45,14 +46,10 @@ $(document).ready(function(){
     
     $("#filterStatus").change(function(){
         filterOrdersByStatus();
-		sortOrders(loadedOrders);
-        filterOrdersByStatus();
     })
     
     $("#filterType").change(function(){
 		filterOrdersByType();
-		sortOrders(loadedOrders);
-        filterOrdersByStatus();
     })
     
     $("#sort").change(function(){
@@ -253,6 +250,7 @@ $(document).ready(function(){
  		data: orderID,
  		success: function(response){
  			alert(response);
+			document.getElementById(orderID).empty();
  		},
  		error: function(){
  			alert("Interna server greska.");
