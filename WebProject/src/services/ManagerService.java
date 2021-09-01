@@ -85,14 +85,15 @@ public class ManagerService {
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String newArticle(Product product) {
-		ProductDAO productDAO = (ProductDAO) servletContext.getAttribute("ProductDAO");
-		
-			product.setPhotoPath(productDAO.storePhoto(product.getBinaryPhoto(), product.getPhotoPath()));
-			productDAO.createOrUpdate(product);
+			ProductDAO productDAO = (ProductDAO) servletContext.getAttribute("ProductDAO");
 			ManagerDAO mDAO = (ManagerDAO) servletContext.getAttribute("ManagerDAO");
 			RestaurantDAO rDAO = (RestaurantDAO) servletContext.getAttribute("RestaurantDAO");
 			User u = (User) servletContext.getAttribute("user");
 			Manager m = mDAO.getManagerByUsername(u.getUsername());
+			product.setRestaurantID(m.getRestaurant().getName());
+			product.setPhotoPath(productDAO.storePhoto(product.getBinaryPhoto(), product.getPhotoPath()));
+			productDAO.createOrUpdate(product);
+			
 			rDAO.addProductToRestaurant(m.getRestaurant(), product);
 			
 			return "Novi artikal napravljen!";
