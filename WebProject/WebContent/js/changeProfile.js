@@ -238,24 +238,30 @@ function changeUser(){
 
 function checkUserName(){
     let validUser="rest/registration/get-usernames/"+$('#userName').val();
+    var returnValue;
     $.get({
         url:validUser,
         contentType:'application/json',
         success:function(ret){
             if (ret==false){
                 if(loadedUserName!=$('#userName').val()){
-                    return true;
+                    returnValue=true;
                 }else{
-                    return false;
+                    returnValue=false;
                 }
                 
             }else{
-                return true;
+                returnValue=true;
             }
 
             
-        }
-    })
+        },
+        error:function(data){
+            alert('Greska prilikom provjere validnosti korisnickog imena');
+        },
+        async:false
+    });
+    return returnValue;
 }
 
 function checkLastName(){
