@@ -58,7 +58,61 @@
           },
           "picturePath" : "",
           "deleted" : false,
-          "raiting" : 0,
+          "raiting" : 0.0,
+          "managerID" : "bojan"
+        },
+        "dateAndTime" : 1615590000000,
+        "price" : 3300.0,
+        "status" : "CEKA_DOSTAVLJACA",
+        "reviewed" : false,
+        "buyerName" : "djordje"
+      }, {
+        "id" : "1234567891",
+        "products" : [ {
+          "product" : {
+            "id" : "cevapi",
+            "name" : "cevapi",
+            "price" : 550.0,
+            "type" : "FOOD",
+            "amount" : 350,
+            "description" : "Cevapi od svinjskog i juneceg mesa",
+            "photoPath" : "",
+            "restaurantID" : "Plava frajla",
+            "binaryPhoto" : null
+          },
+          "amount" : 2
+        }, {
+          "product" : {
+            "id" : "supa",
+            "name" : "supa",
+            "price" : 550.0,
+            "type" : "FOOD",
+            "amount" : 350,
+            "description" : "supa od svinjskog i juneceg mesa",
+            "photoPath" : "",
+            "restaurantID" : "Plava frajla",
+            "binaryPhoto" : null
+          },
+          "amount" : 4
+        } ],
+        "restaurant" : {
+          "name" : "Plava frajla",
+          "restaurantType" : "ETNO",
+          "products" : [ ],
+          "restaurantStatus" : "OPEN",
+          "location" : {
+            "latitude" : 45.24,
+            "longitude" : 19.84,
+            "address" : {
+              "street" : "Spens",
+              "streetNumber" : "5",
+              "city" : "Novi Sad",
+              "postalCode" : "23000"
+            }
+          },
+          "picturePath" : "",
+          "deleted" : false,
+          "raiting" : 0.0,
           "managerID" : "bojan"
         },
         "dateAndTime" : 1615590000000,
@@ -114,12 +168,12 @@
         },
         "picturePath" : "",
         "deleted" : false,
-        "raiting" : 0,
+        "raiting" : 0.0,
         "managerID" : "bojan"
       },
       "dateAndTime" : 1615590000000,
       "price" : 3300.0,
-      "status" : "U_TRANSPORTU",
+      "status" : "CEKA_DOSTAVLJACA",
       "reviewed" : false,
       "buyerName" : "djordje"
     },

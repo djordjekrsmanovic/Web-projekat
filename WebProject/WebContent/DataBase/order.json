@@ -291,7 +291,7 @@
       },
       "picturePath" : "",
       "deleted" : false,
-      "raiting" : 0,
+      "raiting" : 0.0,
       "managerID" : "bojan"
     },
     "dateAndTime" : 1630349085403,
@@ -351,7 +351,7 @@
     },
     "dateAndTime" : 1626991200000,
     "price" : 3300.0,
-    "status" : "U_TRANSPORTU",
+    "status" : "CEKA_DOSTAVLJACA",
     "reviewed" : false,
     "buyerName" : "djordje"
   },
@@ -731,7 +731,7 @@
       },
       "picturePath" : "",
       "deleted" : false,
-      "raiting" : 0,
+      "raiting" : 0.0,
       "managerID" : "bojan"
     },
     "dateAndTime" : 1630347856559,

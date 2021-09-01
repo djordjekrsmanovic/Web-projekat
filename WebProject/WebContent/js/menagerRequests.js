@@ -27,7 +27,7 @@ $(document).ready(function(){
 			return;
 		}	
 	})
-	
+	alert("Uspjesno ste se odjavili.");
 })
 
 function fillTable(data){
@@ -71,7 +71,7 @@ function odobri(requestID){
 		data:requestID,
 		success: function(){
 			let td= document.getElementById(requestID);
-			td.empty();
+			td.empty;
 		},
 		error: function(){
 			alert("Interna server greska.");

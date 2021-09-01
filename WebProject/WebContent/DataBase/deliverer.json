@@ -2,14 +2,14 @@
   "deliverer" : {
     "username" : "deliverer",
     "password" : "deliverer",
-    "firstName" : "deliverer",
-    "lastName" : "deliverer",
-    "gender" : "female",
-    "birthDate" : 1629237600000,
+    "firstName" : "Milan",
+    "lastName" : "Markovic",
+    "gender" : "male",
+    "birthDate" : 479516400000,
     "deleted" : false,
     "banned" : false,
-    "role" : "DELIVERER",
+    "role" : null,
     "userRole" : "DELIVERER",
-    "oredersWaitingForDelivery" : [ ]
+    "oredersWaitingForDelivery" : []
   }
 }
