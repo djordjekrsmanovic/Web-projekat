@@ -94,9 +94,9 @@ function formCommentTable(){
 }
 
 function getCommentState(comment){
-    if (comment.comentState=='APPROVED'){
+    if (comment.commentState==="APPROVED"){
         return 'Odobren';
-    }else if(comment.comentState=='WAITING'){
+    }else if(comment.commentState==="WAITING"){
         return 'Čeka';
     }else{
         return 'Odbijen';

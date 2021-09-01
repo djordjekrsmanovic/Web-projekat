@@ -256,6 +256,7 @@ function createHandler(user){
         success:function(){
             alert("Korisnik je uspješno obrisan")
             loadUsers();
+            loadSuspiciousUsers();
         },
         error:function(){
             alert("Greška prilikom brisanja")
@@ -275,6 +276,7 @@ function createHandlerBlock(user){
         success:function(){
             alert("Korisnik je blokiran")
             loadUsers();
+            loadSuspiciousUsers();
         },
         error:function(){
             alert("Greška prilikom blokiranja korisnika")

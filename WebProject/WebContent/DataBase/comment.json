@@ -2,18 +2,18 @@
   "3096930901" : {
     "commentID" : "3096930901",
     "buyer" : {
-      "username" : "buyer",
+      "username" : "buyerNovi",
       "password" : "buyer",
       "firstName" : "Buyer",
       "lastName" : "Buyer",
       "gender" : "male",
-      "birthDate" : 1632780000000,
+      "birthDate" : 1680991200000,
       "deleted" : false,
       "banned" : false,
       "role" : "BUYER",
       "userRole" : "BUYER",
       "orders" : [ ],
-      "points" : 166.25,
+      "points" : -1013958.75,
       "buyerType" : {
         "buyerRank" : "NO_RANK",
         "discount" : 0.0

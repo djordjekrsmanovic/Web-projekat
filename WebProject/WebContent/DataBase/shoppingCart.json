@@ -1,7 +1,12 @@
 {
-  "buyer" : {
+  "buyerNovi" : {
     "cartItems" : [ ],
     "price" : 0.0,
-    "ownerID" : "buyer"
+    "ownerID" : "buyerNovi"
+  },
+  "milan" : {
+    "cartItems" : [ ],
+    "price" : 0.0,
+    "ownerID" : "milan"
   }
 }

@@ -23,6 +23,10 @@ $(document).ready(function(){
     $('#confirm').click(function(){
         var managerName=$('#selectedManager').val();
         var restaurantName=getUrlParameters("name");
+        if(managerName=="" || managerName==null){
+            alert('Potrebno je da izaberete menadzera');
+            return;
+        }
         $.post({
             url:'rest/restaurant/change-manager',
             contentType:'application/json',

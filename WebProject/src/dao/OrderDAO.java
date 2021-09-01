@@ -172,7 +172,7 @@ public class OrderDAO extends GenericFileRepository<Order, String> {
 			cal.setTime(new Date());
 			cal.add(Calendar.DATE, -30);
 			Date dateBefore30Days = cal.getTime();
-			if(order.getDateAndTime().after(dateBefore30Days)) {
+			if(order.getDateAndTime().after(dateBefore30Days) && order.getStatus()==OrderStatus.OTKAZANA) {
 				orderCounter++;
 			}
 		}
