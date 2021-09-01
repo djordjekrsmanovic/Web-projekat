@@ -13,13 +13,13 @@
  	product.amount=$("#Amount").val();
  	product.description=$("#Description").val();
 	if($("#photo").val()===""){
-	alert("Morate dodati sliku.");
-	return;
-	}
 	product.photoPath=$("#photo").val();
 	product.photoPath = product.photoPath.substring(product.photoPath.lastIndexOf("\\") + 1, product.photoPath.length); 	
 	product.binaryPhoto=fileInput;
-	return product;
+	} else {
+		product.photoPath = ""; 	
+		product.binaryPhoto="";
+	}
  }
  
  $(document).ready(function(){
@@ -35,11 +35,12 @@
  	
  	
  	$("#izmjeniForma").submit(function(){
+		collectData();
  		$.ajax({
 			type:"POST",
  			url:"rest/manager/editArticle",
  			contentType:"application/json",
- 			data: JSON.stringify(collectData()),
+ 			data: JSON.stringify(product),
  			success:function(response){
  				document.location.href="http://localhost:8080/WebProject/menagerRestaurantInfo.html";
  			},
