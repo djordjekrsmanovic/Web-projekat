@@ -158,15 +158,22 @@ function searchOrders(){
 	 let i;
 	 let duzina = loadedOrders.length;
 	 
-	 for(i=0;i<duzina;i++){
+	 for(i=duzina-1;i>-1;i--){
 		if(defaultOrders[i].restaurant.name.toLowerCase().includes(name)){
 	 	if( defaultOrders[i].price>priceTo || defaultOrders[i].price<priceFrom ||defaultOrders[i].dateAndTime>dateTo || defaultOrders[i].dateAndTime<dateFrom)
 	 	{
 	 		loadedOrders.splice(i,1);
-			i--;
 	 	}
 	}
 	 }
+	duzina = loadedOrders.length;
+	for(i=duzina-1;i>-1;i--){		
+	 	if(defaultOrders[i].dateAndTime>dateTo || defaultOrders[i].dateAndTime<dateFrom)
+	 	{
+	 		loadedOrders.splice(i,1);					
+	 	}
+	 
+	}
 	fillTable(loadedOrders);	 	 
  }
  

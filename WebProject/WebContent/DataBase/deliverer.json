@@ -5,11 +5,11 @@
     "firstName" : "Milan",
     "lastName" : "Markovic",
     "gender" : "male",
-    "birthDate" : 479516400000,
+    "birthDate" : 479692800000,
     "deleted" : false,
     "banned" : false,
-    "role" : null,
+    "role" : "DELIVERER",
     "userRole" : "DELIVERER",
-    "oredersWaitingForDelivery" : []
+    "oredersWaitingForDelivery" : [ ]
   }
 }
