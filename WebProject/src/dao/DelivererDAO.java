@@ -107,6 +107,7 @@ public class DelivererDAO extends GenericFileRepository<Deliverer, String> {
 	}
 	
 	public void updateProfile(Deliverer oldData, User newData) {
+		this.deletePhysical(oldData.getUsername());
 		oldData.setUsername(newData.getUsername());
 		oldData.setPassword(newData.getPassword());
 		oldData.setFirstName(newData.getFirstName());
@@ -174,11 +175,13 @@ public class DelivererDAO extends GenericFileRepository<Deliverer, String> {
 		}
 	}
 	
-	public boolean validacija(User u) {
+	public boolean validacija(User u, Deliverer del) {
+		if(!del.getUsername().equals(u.getUsername())) {
 		for(Deliverer d : this.getDeliverers()) {
 			if(d.getUsername().equals(u.getUsername())) {
 				return true;
 			}
+		}
 		}
 		return false;
 	}

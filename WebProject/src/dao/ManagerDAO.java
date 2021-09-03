@@ -121,6 +121,7 @@ public class ManagerDAO extends GenericFileRepository<Manager, String> {
 		oldData.setLastName(newData.getLastName());
 		oldData.setBirthDate(newData.getBirthDate());
 		oldData.setGender(newData.getGender());
+		this.createOrUpdate(oldData);
 	}
 
 	public void banManager(String id) {
@@ -143,11 +144,13 @@ public class ManagerDAO extends GenericFileRepository<Manager, String> {
 	}
 	
 	
-	public boolean validacija(User u) {
+	public boolean validacija(User u, Manager man) {
+		if(!man.getUsername().equals(u.getUsername())) {
 		for(Manager d : this.getManagersList()) {
 			if(d.getUsername().equals(u.getUsername())) {
 				return true;
 			}
+		}
 		}
 		return false;
 	}

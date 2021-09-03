@@ -129,11 +129,11 @@ public class ManagerService {
 	public String editProfile(User user) {
 		Manager man = (Manager) servletContext.getAttribute("user");	
 		ManagerDAO manDAO = (ManagerDAO) servletContext.getAttribute("ManagerDAO");
-		if(!man.getUsername().equals(user.getUsername())) {
-		if(manDAO.validacija(user)) {
+		
+		if(manDAO.validacija(user, man)) {
 			return "f";
 		}
-		}
+		
 		manDAO.updateProfile(man, user);
 		return "Profil azuriran.";
 	}

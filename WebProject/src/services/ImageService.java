@@ -16,7 +16,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import dto.PictureDTO;
-import sun.misc.BASE64Decoder;
+//import sun.misc.BASE64Decoder;
 
 
 @Path("/images")

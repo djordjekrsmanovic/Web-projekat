@@ -80,11 +80,11 @@ public class DelivererService {
 	public String editProfile(User user) {
 		Deliverer del = (Deliverer) servletContext.getAttribute("user");	
 		DelivererDAO delDAO = (DelivererDAO) servletContext.getAttribute("DelivererDAO");
-		if(!del.getUsername().equals(user.getUsername())) {
-		if(delDAO.validacija(user)) {
+		
+		if(delDAO.validacija(user, del)) {
 			return "f";
 		}
-		}
+		
 		delDAO.updateProfile(del, user);
 		return "Profil azuriran.";
 	}
