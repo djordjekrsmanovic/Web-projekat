@@ -304,9 +304,26 @@ function fillProfileData(){
         $("#managerSex").val("female");
     }
     $("#oldPassword").val(loggedUser.password);
-    let date=new Date(loggedUser.birthDate);
+    /*let date=new Date(loggedUser.birthDate);
     date=date.toLocaleDateString();
     date=date.split('/');
-    let newDate=date[2]+'-'+date[0]+'-'+date[1];
-    $('#datapicker').val(newDate);
+    let newDate=date[2]+'-'+date[0]+'-'+date[1]; */
+    let date =  new Date(loggedUser.birthDate);
+    let formatedDate=formatDate(date);
+    
+    $('#datapicker').val(formatedDate);
+}
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
 }

@@ -18,5 +18,25 @@
     "deleted" : false,
     "raiting" : 0.0,
     "managerID" : "manager123"
+  },
+  "Example" : {
+    "name" : "Example",
+    "restaurantType" : "ITALIAN",
+    "products" : [ ],
+    "restaurantStatus" : "CLOSED",
+    "location" : {
+      "latitude" : 0.0,
+      "longitude" : 0.0,
+      "address" : {
+        "street" : "ad",
+        "streetNumber" : "ad",
+        "city" : "Novi Sad",
+        "postalCode" : "21000"
+      }
+    },
+    "picturePath" : "pictures/logos/Example.jpeg",
+    "deleted" : false,
+    "raiting" : 0.0,
+    "managerID" : "a"
   }
 }
