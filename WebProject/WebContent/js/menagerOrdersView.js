@@ -1,235 +1,359 @@
-/**
- * 
- */
- loadedOrders = [];
- defaultOrders=[];
- var restName;
 
- $(document).ready(function(){
- 
-	 $("#logoutButton").click(function(){
-		if(window.confirm("Da li zaista zelite da se odjavite?")){
-			$.get({
-			url:'rest/login/logout',
-			success: function(response){
-			window.location.href='/WebProject/home.html';
-			alert(response);			
-			},
-			})
-		} else {
-			return;
-		}	
-		alert("Uspjesna odjava");
-	})
 
- 	$.get({
- 		url:"rest/manager/getOrders",
- 		dataType:"json",
- 		success: function(orders){
- 		for(order of orders){
- 			loadedOrders.push(order);
- 			defaultOrders.push(order);
-			restName=order.restaurant.name;			
- 		}		 
-		$("#restaurantName").append(restName);
- 		 fillTable(orders);
- 		},
- 		error: function(response){
- 			alert("Interna server greska");
- 		}
- 	
- 	})
- 	
- 	$("#SortType").change(function(){
-        sortOrders(loadedOrders);
-        fillTable(loadedOrders);
-    })
-    
-    $("#OrderStatusFilter").change(function(){
-        filterOrdersByStatus();
-        fillTable(loadedOrders);
+
+var loggedUser;
+var orders=[];
+var unchangedOrders=[];
+var filteredOrders=[];
+var name;
+var priceFrom;
+var priceTo;
+var dateFrom;
+var dateTo;
+var restaurantType;
+var orderStatus;
+$(document).ready(function(){
+    $.ajax({
+        url:'rest/login/get-loged-user',
+        contentType:'application/json',
+        type:'GET',
+        success:function(user){
+            loggedUser=user;
+        },
+        async:false,
     })
 
-    $('#searchButton').click(function(){
+    if (  loggedUser==null || loggedUser==undefined || loggedUser.role!='MANAGER' ){
+        alert("Potrebno je da se prijavite kao menadzer");
+        window.location.href="http://localhost:8080/WebProject/home.html";
+    }
+
+    $.ajax({
+        url:'rest/manager/getOrders',
+        contentType:'application/json',
+        type:'GET',
+        success:function(data){
+            orders=data;
+            unchangedOrders=JSON.parse(JSON.stringify(orders));
+            formTable(orders);
+			var restName=order.restaurant.name;
+        },
+        error:function(data){
+            alert('Greska prilikom ucitavanja porudzbina');
+        }
+    })
+
+	$("#searchButton").click(function(){
+
+
         searchOrders();
-		fillTable(loadedOrders);
+        formTable(orders);
+        
     })
+
+    $('#filterType').change(function(){
+        filterType();
+        filterStatus();
+        filterPrice();
+        filterDate();
+        filterName();
+        filteredOrders.length=0;
+        filteredOrders=JSON.parse(JSON.stringify(orders));
+        sort();
+        formTable(orders);
+    })
+
+    $('#filterStatus').change(function(){
+        filterType();
+        filterStatus();
+        filterPrice();
+        filterDate();
+        filterName();
+        filteredOrders.length=0;
+        filteredOrders=JSON.parse(JSON.stringify(orders));
+        sort();
+        formTable(orders);
+    })
+
+    $('#sort').change(function(){
+        filterType();
+        filterStatus();
+        filterPrice();
+        filterDate();
+        filterName();
+        filteredOrders.length=0;
+        filteredOrders=JSON.parse(JSON.stringify(orders));
+        sort();
+        formTable(orders);
+    })
+})
+
+function changeStatus(orderID){
+	return function(){
+		$.post({
+			url:"rest/manager/changeOrderStatus",
+			contentType:"application/json",
+			data:orderID,
+			success: function(order){
+				window.location.reload();		 	
+			},
+			
+			}) 
+	}
+	
+
+}
+
+function sort(){
+    let sortCriterium=$('#sort').val();
+    if (sortCriterium==""){
+        orders.length=0;
+        orders=JSON.parse(JSON.stringify(filteredOrders));
+    }else if(sortCriterium=="name-ascending"){
+        sortNameAscending();
+    }else if(sortCriterium=="name-descending"){
+        sortNameDescending();
+    }else if(sortCriterium=="price-ascending"){
+        sortPriceAscending();
+    }else if(sortCriterium=="price-descending"){
+        sortPriceDescending();
+    }else if(sortCriterium=="date-ascending"){
+        sortDateAscending();
+    }else if(sortCriterium=="date-descending"){
+        sortDateDescending();
+    }
+}
+
+function formTable(orders){
+    $('#tableBody').empty();
+	$('#tableBody').empty();
+    for (order of orders){
+        
+		let date=new Date(order.dateAndTime);
+        date=date.toLocaleString();
+        let parts=date.split('/');
+        let newDate=parts[0]+'.'+parts[1]+'.'+parts[2];
+		let tr=$('<tr></tr>');
+        let orderID=$('<td>'+order.id+'</td>');
+        let dateTD=$('<td>'+newDate+'</td>');
+        let priceTD=$('<td>'+order.price+'</td>');
+		let buyerTD=$('<td>'+order.buyerName+'</td>');
+        let statusTD=$('<td>'+getStatus(order)+'</td>');
+        let cancelButton=$('<button>'+'Izmijeni status porudžbine'+'</button>');
+        var buttonTD;
+        cancelButton[0].addEventListener('click',changeStatus(order.id));
+		if (order.status=="OBRADA" || order.status=="U_PRIPREMI"){
+			buttonTD=$('<td></td>').append(cancelButton);
+		}else{
+			buttonTD=$('<td>NEDOSTUPNO</td>');
+		}
+		
+        tr.append(orderID,dateTD,priceTD,buyerTD,statusTD,buttonTD);
+        $('#tableBody').append(tr);
+    }
+}
+
+
+function createDeleteHandler(order){
+    return function(){
+        $.ajax({
+            url:'rest/buying/cancel-order/'+order.id,
+            contentType:'application/json',
+            type:'DELETE',
+            success:function(data){
+                alert('Narudžbina je uspješno otkazana');
+                orders=data;
+                unchangedOrders=JSON.parse(JSON.stringify(orders));
+                filterType();
+                filterStatus();
+                filterPrice();
+                filterDate();
+                filterName();
+                filteredOrders.length=0;
+                filteredOrders=JSON.parse(JSON.stringify(orders));
+                sort();
+                formTable(orders);
+            },
+            error:function(data){
+                alert('Greska prilikom otkazivanja narudzbine');
+            }
+
+        })
+    }
+}
+
+function getStatus(order){
+    if (order.status=='OBRADA'){
+        return 'U statusu obrade';
+    }else if(order.status=='U_PRIPREMI'){
+        return 'U pripremi';
+    }else if(order.status=='CEKA_DOSTAVLJACA'){
+        return 'Čeka dostavljača'
+    }else if(order.status=='U_TRANSPORTU'){
+        return 'U transportu';
+    }else if(order.status=='DOSTAVLJENA'){
+        return 'Dostavljena';
+    }else if (order.status=='OTKAZANA'){
+        return 'Otkazana';
+    }
+}
+
+function searchOrders(){
+        name=$('#name').val();
+        priceFrom=$('#priceFrom').val();
+        priceTo=$('#priceTo').val();
+        dateFrom=$('#dateFrom').val();
+        dateTo=$('#dateTo').val();
+        filterType();
+        filterStatus();
+        filterPrice();
+        filterDate();
+        filterName();
+        filteredOrders.length=0;
+        filteredOrders=JSON.parse(JSON.stringify(orders));
+        sort();
+        
+}
+
+
+function filterType(){
+    restaurantType=$('#filterType').val();
+    orderStatus=$('#filterStatus').val();
+    orders.length=0;
+    orders=JSON.parse(JSON.stringify(unchangedOrders));
+
+    if (restaurantType==""){
+        return;
+    }
+    for(let i=0;i<orders.length;i++){
+        if (orders[i].restaurant.restaurantType!=restaurantType){
+            orders.splice(i,1);
+            i--;
+        }
+    }
     
-   
- 
- });
- 
- function fillTable(orders){
- 	var table = $("#tableBody");
- 	var duzina = orders.length;
- 	let i;
- 	for(i=0; i<duzina;i++){
- 		let tr = $("<tr></tr>");
-	 	let td1 = $("<td></td>");
-	 	let td2 = $("<td></td>");
-	 	let td3 = $("<td></td>");
-	 	let td4 = $("<td></td>");
-	 	let td5 = $("<td></td>");
-	 	let td6 = $("<td></td>");
-	 	td1.append(orders[i].id);
-		date= new Date(orders[i].dateAndTime);
-		date = formatDate(date);
-	 	td2.append(date);
-	 	td3.append(orders[i].price);
-	 	td4.append(orders[i].buyerName);
-	 	td5.append(getOrderStatus(orders[i]));
-	 	if(getOrderStatus(orders[i])==="U pripremi"){
-	 	    let button = $("<button></button>", {id:"changeStatusButton"});
-	 	    button.append("Zavrsi pripremu");
-	 		td6.append(button);
-			td6.attr("id",orders[i].id)
-	 		td6.click(function(){
-	 			changeStatus(td6.attr("id"));
-	 		})
-	 	} else if(getOrderStatus(orders[i])==="Obrada"){
-			let button = $("<button></button>", {id:"changeStatusButton"});
-	 	    button.append("Pocni pripremu");
-			td6.append(button);
-			td6.attr("id",orders[i].id)
-			td6.click(function(){
-	 			changeStatus(td6.attr("id"));
-	 		})
-		} else {td6.append("Nedostupno");}
-	 	
-	 	tr.append(td1);
- 		tr.append(td2);
- 		tr.append(td3);
- 		tr.append(td4);
- 		tr.append(td5);
- 		tr.append(td6);
-		$("#tableBody").append(tr);
- 	}
- 
- }
- 
- 
- function getOrderStatus(order){
- 	if(order.status==="OBRADA"){return "Obrada";}
- 	else if(order.status==="U_PRIPREMI"){return "U pripremi";}
- 	else if(order.status==="CEKA_DOSTAVLJACA"){return "Ceka dostavljaca";}
- 	else if(order.status==="U_TRANSPORTU"){return "U transportu";}
- 	else if(order.status==="DOSTAVLJENA"){return "Dostavljena";}
- 	else { return "Otkazana";}
- }
- 
- function searchOrders(){
- 	$("#tableBody").empty();
-	 let name = $("#name").val().toLowerCase();
-	 let priceFrom =$("#priceFrom").val();
-	 let priceTo = $("#priceTo").val();
-	 let dateFromE = $("#dateFrom").val();
-	 let dateToE = $("#dateTo").val();
-	 let dateFrom = new Date(dateFromE).getTime();
-	 let dateTo = new Date(dateToE).getTime();
+}
 
- 	 loadedOrders.length=0;
-     loadedOrders=JSON.parse(JSON.stringify(defaultOrders));
+function filterStatus(){
+    restaurantType=$('#filterType').val();
+    orderStatus=$('#filterStatus').val();
+    
+    if (orderStatus==""){
+        return;
+    }
+    for(let i=0;i<orders.length;i++){
+        if (orders[i].status!=orderStatus){
+            orders.splice(i,1);
+            i--;
+        }
+    }
+}
 
- 	 if(name===""||priceFrom==="" || priceTo==="" || dateFrom==="" ||dateTo==="")
-	 {
-	 	alert("Popunite sve kriterijume pretrage");
-	 	return;
-	 }
-	 let i;
-	 let duzina = loadedOrders.length;
-	 
-	 for(i=duzina-1;i>-1;i--){
-	 	if(defaultOrders[i].price>priceTo || defaultOrders[i].price<priceFrom) 
-	 	{
-			if(defaultOrders[i].dateAndTime>dateTo || defaultOrders[i].dateAndTime<dateFrom){
-	 		loadedOrders.splice(i,1);	 		
-			}
-	 	}
-	 }			
+function filterPrice(){
+    priceFrom=$('#priceFrom').val();
+    priceTo=$('#priceTo').val();
 
-	duzina = loadedOrders.length;
-	 
-	 for(i=duzina-1;i>-1;i--){
-	 	if(loadedOrders[i].dateAndTime>dateTo || loadedOrders[i].dateAndTime<dateFrom) 
-	 	{
-	 		loadedOrders.splice(i,1);	 		
-	 	}
-	 }		 	 
- }
- 
-  function filterOrdersByStatus(){
- 	$("#tableBody").empty();
- 	loadedOrders=[];
- 	var filterStatus = $("#OrderStatusFilter").val();
- 	let i;
- 	let duzina = defaultOrders.length;
- 	if(filterStatus!=""){
- 	for(i=0; i<duzina;i++){
- 		if(defaultOrders[i].status===filterStatus){
- 			loadedOrders.push(defaultOrders[i]);
- 		} else if(filterStatus==="AllOrders"){
- 			loadedOrders=defaultOrders;
- 		}
- 	}
- 	}
- }
- 
-  function sortOrders(){
- 	$("#tableBody").empty();
- 	var sortType = $("#SortType").val();
- 	
- 	if(sortType==null){
- 		return;
- 	}
- 	if(sortType==="price-ascending"){
- 		priceAscSort();
- 	}else if(sortType==="price-descending"){
- 		priceDescSort();
- 	}else if(sortType==="date-ascending"){
- 		dateAscSort();
- 	}else if(sortType==="date-descending"){
- 		dateDescSort();
- 	}else { loadedOrders=defaultOrders;}
- 	
- }
- 
- function priceAscSort(){
- 	return loadedOrders.sort(function(a,b){return a.price-b.price;});
- }
- function priceDescSort(){
- 	return loadedOrders.sort(function(a,b){return b.price-a.price;});
- }
- function dateAscSort(){
- 	return loadedOrders.sort(function(a,b){return a.date-b.date});
- }
- function dateDescSort(){
- 	return loadedOrders.sort(function(a,b){return b.date-a.date});
- }
- 
- function changeStatus(orderID){
- 	$.post({
- 	url:"rest/manager/changeOrderStatus",
- 	contentType:"application/json",
- 	data:orderID,
- 	success: function(order){
- 		window.location.reload();		 	
- 	},
- 	
- 	}) 
- 
- }
+    if (priceFrom=="" && priceTo==""){
+        return;
+    }
 
-function formatDate(date) {
-    var d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
+    if (priceTo==""){
+        priceTo=Number.MAX_VALUE;
+    }
+    if (priceFrom==""){
+        priceFrom=0;
+    }
+    for(let i=0;i<orders.length;i++){
+        if (!(parseFloat(orders[i].price) >= parseFloat(priceFrom) && parseFloat(orders[i].price)<=parseFloat(priceTo))){
+            orders.splice(i,1);
+            i--;
+        }
+    }
+}
 
-    if (month.length < 2) 
-        month = '0' + month;
-    if (day.length < 2) 
-        day = '0' + day;
+function filterDate(){
+    dateFrom=$('#dateFrom').val();
+    dateTo=$('#dateTo').val();
 
-    return [year, month, day].join('-');
+    if (dateFrom=="" && dateTo==""){
+        return;
+    }
+    if (dateTo==""){
+        filterWithFromDate();
+    }else if(dateFrom==""){
+        filterWithToDate();
+        
+    }else{
+        fromDate=new Date(dateFrom);
+        toDate=new Date(dateTo);
+        for (let i=0;i<orders.length;i++){
+            date=new Date(orders[i].dateAndTime);
+            if (!date.inRange(fromDate,toDate)){
+                orders.splice(i,1);
+                i--;
+            }
+        }
+    }
+}
+
+Date.prototype.inRange = function(dateFrom,dateTo) {
+    return this>=dateFrom && this<=dateTo;
+}
+
+function filterWithFromDate(){
+    fromDate=new Date(dateFrom);
+    for (let i=0;i<orders.length;i++){
+        date=new Date(orders[i].dateAndTime);
+        if (date<fromDate){
+            orders.splice(i,1);
+            i--;
+        }
+    }
+}
+
+function filterWithToDate(){
+    toDate=new Date(dateTo);
+    for (let i=0;i<orders.length;i++){
+        date=new Date(orders[i].dateAndTime);
+        if (date>toDate){
+            orders.splice(i,1);
+            i--;
+        }
+    }
+}
+
+function filterName(){
+    name=$('#name').val().toLowerCase();
+    for (let i=0;i<orders.length;i++){
+        if (!orders[i].buyerName.toLowerCase().includes(name)){
+            orders.splice(i,1);
+            i--;
+        }
+    }
+}
+
+
+function sortNameAscending(){
+    return orders.sort((a,b)=> (a.buyerName>b.buyerName.name) ? 1 :(b.buyerName>a.buyerName) ? -1:0);
+}
+
+function sortNameDescending(){
+    return orders.sort((a,b)=> (a.buyerName<b.buyerName) ? 1 :(b.buyerName<a.buyerName) ? -1:0);
+}
+
+function sortPriceAscending(){
+    return orders.sort((a,b)=> (parseFloat(a.price)>parseFloat(b.price)? 1 : (parseFloat(b.price)>parseFloat(a.price))? -1 :0));
+}
+
+function sortPriceDescending(){
+    return orders.sort((a,b)=> (parseFloat(a.price)<parseFloat(b.price)? 1 : (parseFloat(b.price)<parseFloat(a.price))? -1 :0));
+}
+
+function sortDateAscending(){
+    return orders.sort((a,b)=> (new Date(a.dateAndTime)>new Date(b.dateAndTime))? 1 : (new Date(b.dateAndTime)>new Date(a.dateAndTime))? -1:0);
+}
+
+function sortDateDescending(){
+    return orders.sort((a,b)=> (new Date(a.dateAndTime)<new Date(b.dateAndTime))? 1 : (new Date(b.dateAndTime)<new Date(a.dateAndTime))? -1:0);
 }
  

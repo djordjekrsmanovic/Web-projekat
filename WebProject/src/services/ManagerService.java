@@ -191,6 +191,9 @@ public class ManagerService {
 	public Order changeOrderStatus(String orderID) {
 		OrderDAO orderDAO=(OrderDAO) servletContext.getAttribute("OrderDAO");
 		Order order = orderDAO.getOrderByID(orderID);
+		if (order==null) {
+			return null;
+		}
 		return orderDAO.changeStatus(order.getId());
 	}
 	
