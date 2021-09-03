@@ -316,7 +316,7 @@
  function filterName(){
 	 name=$('#name').val().toLowerCase();
 	 for (let i=0;i<orders.length;i++){
-		 if (!orders[i].buyerName.toLowerCase().includes(name)){
+		 if (!orders[i].restaurant.name.toLowerCase().includes(name)){
 			 orders.splice(i,1);
 			 i--;
 		 }
@@ -325,11 +325,11 @@
  
  
  function sortNameAscending(){
-	 return orders.sort((a,b)=> (a.buyerName>b.buyerName.name) ? 1 :(b.buyerName>a.buyerName) ? -1:0);
+	 return orders.sort((a,b)=> (a.restaurant.name>b.restaurant.name) ? 1 :(b.restaurant.name>a.restaurant.name) ? -1:0);
  }
  
  function sortNameDescending(){
-	 return orders.sort((a,b)=> (a.buyerName<b.buyerName) ? 1 :(b.buyerName<a.buyerName) ? -1:0);
+	 return orders.sort((a,b)=> (a.restaurant.name<b.restaurant.name) ? 1 :(b.restaurant.name<a.restaurant.name) ? -1:0);
  }
  
  function sortPriceAscending(){
