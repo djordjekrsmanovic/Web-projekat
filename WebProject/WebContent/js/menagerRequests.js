@@ -60,7 +60,8 @@ function fillTable(data){
 			odbij(td5.attr("id"));
 		})
 		tr.append(td1,td2,td3,td4,td5);
-		tabela.append(tr);
+		$("#tableBody").append(tr);
+		
 	}
 	
 }
