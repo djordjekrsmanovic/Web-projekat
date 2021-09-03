@@ -11,10 +11,10 @@
     "role" : "BUYER",
     "userRole" : "BUYER",
     "orders" : [ ],
-    "points" : -1008539.0,
+    "points" : 2316490.925,
     "buyerType" : {
-      "buyerRank" : "NO_RANK",
-      "discount" : 0.0
+      "buyerRank" : "GOLD",
+      "discount" : 10.0
     }
   },
   "milan" : {
