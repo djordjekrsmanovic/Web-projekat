@@ -117,7 +117,7 @@ $(document).ready(function(){
                     
                 })
                 let logOut=$('<li></li>').append(logout);
-                $('#ul-menu').append(restaurantViewLi,usersViewLi,requestsView,profileView,logOut);
+                $('#ul-menu').append(homeLi,restaurantViewLi,usersViewLi,requestsView,profileView,logOut);
 			} else if(userType==="deliverer"){
 				$('#loginMenu').hide();
                 $('#registrationMenu').hide();
