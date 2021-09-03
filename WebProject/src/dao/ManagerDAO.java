@@ -115,6 +115,10 @@ public class ManagerDAO extends GenericFileRepository<Manager, String> {
 	}
 	
 	public void updateProfile(Manager oldData, User newData) {
+		String oldUserName=oldData.getUsername();
+		RestaurantDAO restaurantDAO=new RestaurantDAO(contextPath);
+		restaurantDAO.changeUsername(oldUserName,newData.getUsername());
+		this.deletePhysical(oldData.getUsername());
 		oldData.setUsername(newData.getUsername());
 		oldData.setPassword(newData.getPassword());
 		oldData.setFirstName(newData.getFirstName());

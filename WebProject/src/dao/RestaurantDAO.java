@@ -131,4 +131,15 @@ public class RestaurantDAO extends GenericFileRepository<Restaurant, String> {
 		}
 	}
 
+	public void changeUsername(String oldUserName, String newUsername) {
+		for (Restaurant restaurant:this.getRestaurants()) {
+			if (restaurant.getManagerID().equals(oldUserName)) {
+				restaurant.setManagerID(newUsername);
+				createOrUpdate(restaurant);
+				return;
+			}
+		}
+		
+	}
+
 }
