@@ -154,4 +154,5 @@ public class ManagerDAO extends GenericFileRepository<Manager, String> {
 		}
 		return false;
 	}
+	
 }

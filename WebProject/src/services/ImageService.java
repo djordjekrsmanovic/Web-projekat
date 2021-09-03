@@ -14,9 +14,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-
 import dto.PictureDTO;
-//import sun.misc.BASE64Decoder;
+import java.util.Base64;
+
 
 
 @Path("/images")
@@ -44,8 +44,7 @@ public class ImageService {
 		String[] parts = pictureDTO.pictureData.split(",");
 		String imageString = parts[1];
 		String extension=parts[0].split(";")[0].split("/")[1];
-		BASE64Decoder decoder = new BASE64Decoder();
-		byte[] decodedBytes = decoder.decodeBuffer(imageString);
+		byte[] decodedBytes = Base64.getDecoder().decode(imageString);
 		
 		BufferedImage buffImg = ImageIO.read(new ByteArrayInputStream(decodedBytes));
 		String basePath=servletContext.getInitParameter("path");

@@ -30,5 +30,69 @@
       "managerID" : "manager"
     },
     "userRole" : "MANAGER"
+  },
+  "lepa" : {
+    "username" : "lepa",
+    "password" : "brena",
+    "firstName" : "Lepa",
+    "lastName" : "Brena",
+    "gender" : "female",
+    "birthDate" : 1631570400000,
+    "deleted" : false,
+    "banned" : false,
+    "role" : "MANAGER",
+    "restaurant" : {
+      "name" : "Papricica",
+      "restaurantType" : "GRILL",
+      "products" : [ ],
+      "restaurantStatus" : "OPEN",
+      "location" : {
+        "latitude" : 0.0,
+        "longitude" : 0.0,
+        "address" : {
+          "street" : "Bulevar Oslobodjenja",
+          "streetNumber" : "2",
+          "city" : "Novi Sad",
+          "postalCode" : "21000"
+        }
+      },
+      "picturePath" : "pictures/logos/Papricica.jpeg",
+      "deleted" : false,
+      "raiting" : 0.0,
+      "managerID" : "lepa"
+    },
+    "userRole" : "MANAGER"
+  },
+  "nikodije" : {
+    "username" : "nikodije",
+    "password" : "nikodije",
+    "firstName" : "Nikodije",
+    "lastName" : "Nikic",
+    "gender" : "male",
+    "birthDate" : 1630274400000,
+    "deleted" : false,
+    "banned" : false,
+    "role" : "MANAGER",
+    "restaurant" : {
+      "name" : "Plava frajla",
+      "restaurantType" : "ETNO",
+      "products" : [ ],
+      "restaurantStatus" : "OPEN",
+      "location" : {
+        "latitude" : 0.0,
+        "longitude" : 0.0,
+        "address" : {
+          "street" : "Spens",
+          "streetNumber" : "5",
+          "city" : "Novi Sad",
+          "postalCode" : "21000"
+        }
+      },
+      "picturePath" : "pictures/logos/Plava frajla.png",
+      "deleted" : false,
+      "raiting" : 0.0,
+      "managerID" : "nikodije"
+    },
+    "userRole" : "MANAGER"
   }
 }

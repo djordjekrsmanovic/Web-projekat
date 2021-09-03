@@ -300,9 +300,10 @@ function formRestaurantCard(restaurant){
     let Card=$('<div></div>',{
         class:"card"
     })
+    var src=restaurant.picturePath.replaceAll(' ','_');
     let imageDiv=$("<div id='imageDiv'class='fishes'></div>");
     let image=$('<img />',{
-        src:restaurant.picturePath
+        src:src
     });
     imageDiv.append(image);
     let titleAndRatingDiv=$('<div style="overflow:hidden"></div>');
