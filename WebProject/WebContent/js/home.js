@@ -208,7 +208,11 @@ function searchRestaurant(){
         }
 
         if (grade!="" && deleted==false){
-            if ((parseFloat(grade)-1 <= parseFloat(loadedRestaurants[i].raiting) < parseFloat(grade))){
+            let down=parseFloat(grade)-1;
+            let uper=parseFloat(grade);
+            let raiting=parseFloat(loadedRestaurants[i].raiting);
+            let k=down<=raiting && uper>=raiting;
+            if (!k){
                 loadedRestaurants.splice(i,1);
                 i--;
             } 
