@@ -151,7 +151,7 @@
     },
     "dateAndTime" : 1630660554972,
     "price" : 250.0,
-    "status" : "OBRADA",
+    "status" : "CEKA_DOSTAVLJACA",
     "reviewed" : false,
     "buyerName" : "buyerNovi"
   }

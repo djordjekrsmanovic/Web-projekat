@@ -76,7 +76,7 @@
 		date = formatDate(date);
 	 	td2.append(date);
 	 	td3.append(orders[i].price);
-	 	td4.append(orders[i].buyerID);
+	 	td4.append(orders[i].buyerName);
 	 	td5.append(getOrderStatus(orders[i]));
 	 	if(getOrderStatus(orders[i])==="U pripremi"){
 	 	    let button = $("<button></button>", {id:"changeStatusButton"});
@@ -102,7 +102,7 @@
  		tr.append(td4);
  		tr.append(td5);
  		tr.append(td6);
- 		table.append(tr);
+		$("#tableBody").append(tr);
  	}
  
  }

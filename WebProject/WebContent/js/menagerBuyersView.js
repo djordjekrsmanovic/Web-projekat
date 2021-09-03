@@ -59,15 +59,18 @@
  		} 
  		else if(buyers[i].buyerType.buyerRank=="SILVER"){
  		td5.append("Srebrni");
- 		} else {
+ 		} else if(buyers[i].buyerType.buyerRank=="BRONZE") {
  		td5.append("Bronzani");
- 		}
+ 		}else{
+			td5.append("Početnik");
+		 }
  		tr.append(td1);
  		tr.append(td2);
  		tr.append(td3);
  		tr.append(td4);
  		tr.append(td5);
- 		table.append(tr);
+		 $("#tableBody").append(tr);
+ 		
  	}
  	
  }
