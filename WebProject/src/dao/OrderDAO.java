@@ -61,9 +61,9 @@ public class OrderDAO extends GenericFileRepository<Order, String> {
 		 */
 
 		Product product = new Product("cevapi", "cevapi", 550, ProductType.FOOD, 350,
-				"Cevapi od svinjskog i juneceg mesa", "","Plava frajla");
+				"Cevapi od svinjskog i juneceg mesa", "", "Plava frajla");
 		Product product1 = new Product("supa", "supa", 550, ProductType.FOOD, 350, "supa od svinjskog i juneceg mesa",
-				"","Plava frajla");
+				"", "Plava frajla");
 		CartItem cartItem = new CartItem(product, 2);
 		CartItem cartItem1 = new CartItem(product1, 4);
 		List<CartItem> cartItems = new ArrayList<CartItem>();
@@ -73,13 +73,14 @@ public class OrderDAO extends GenericFileRepository<Order, String> {
 		Address address = new Address("Spens", "5", "Novi Sad", "23000");
 
 		Location location = new Location(45.24, 19.84, address);
-		Restaurant restaurant = new Restaurant("Plava frajla", RestaurantType.ETNO, RestaurantStatus.OPEN, location,
-				"","bojan");
+		Restaurant restaurant = new Restaurant("Plava frajla", RestaurantType.ETNO, RestaurantStatus.OPEN, location, "",
+				"bojan");
 		Order order = new Order("1234567891", cartItems, restaurant, Converter.convertStringtoDate("13.3.2021."),
 				"djordje", OrderStatus.CEKA_DOSTAVLJACA);
 		Order order2 = new Order("2234549891", cartItems, restaurant, Converter.convertStringtoDate("30.5.2021."),
 				"djordje", OrderStatus.U_TRANSPORTU);
-		Order order1 = new Order("1112334455",cartItems,restaurant, Converter.convertStringtoDate("23.7.2021."),"djordje", OrderStatus.U_TRANSPORTU);
+		Order order1 = new Order("1112334455", cartItems, restaurant, Converter.convertStringtoDate("23.7.2021."),
+				"djordje", OrderStatus.U_TRANSPORTU);
 		createOrUpdate(order);
 		createOrUpdate(order1);
 		createOrUpdate(order2);
@@ -88,23 +89,21 @@ public class OrderDAO extends GenericFileRepository<Order, String> {
 	public OrderDAO(String contextPath) {
 		this.contextPath = contextPath;
 	}
-	
-	public List<Buyer> getBuyersForManager(String managerID, List<Buyer> kupci){
+
+	public List<Buyer> getBuyersForManager(String managerID) {
 		List<Buyer> retLista = new ArrayList<Buyer>();
-		for(Buyer k : kupci) {
-			for(Order o : k.getOrders()) {			
-			if(o.getRestaurant().getManagerID().equals(managerID)) {				
-				retLista.add(k);
-			}
-			}
+		BuyerDAO buyerDAO = new BuyerDAO(contextPath);
+
+		for (Order o : getOrdersForManager(managerID)) {
+			retLista.add(buyerDAO.getBuyerByID(o.getBuyerName()));
 		}
 		return retLista;
 	}
-	
-	public List<Order> getOrdersForManager(String managerID){
+
+	public List<Order> getOrdersForManager(String managerID) {
 		List<Order> retLista = new ArrayList<Order>();
-		for(Order o : this.getOrders())	{
-			if(o.getRestaurant().getManagerID().equals(managerID)) {
+		for (Order o : this.getOrders()) {
+			if (o.getRestaurant().getManagerID().equals(managerID)) {
 				retLista.add(o);
 			}
 		}
@@ -112,12 +111,12 @@ public class OrderDAO extends GenericFileRepository<Order, String> {
 	}
 
 	public Order changeStatus(String id) {
-		for(Order o : this.getOrders()) {
-			if(o.getId().equals(id)) {
-				if(o.getStatus()==OrderStatus.U_PRIPREMI) {
-				o.setStatus(OrderStatus.CEKA_DOSTAVLJACA);
-				this.createOrUpdate(o);
-				return o;
+		for (Order o : this.getOrders()) {
+			if (o.getId().equals(id)) {
+				if (o.getStatus() == OrderStatus.U_PRIPREMI) {
+					o.setStatus(OrderStatus.CEKA_DOSTAVLJACA);
+					this.createOrUpdate(o);
+					return o;
 				} else {
 					o.setStatus(OrderStatus.U_PRIPREMI);
 					this.createOrUpdate(o);
@@ -129,18 +128,18 @@ public class OrderDAO extends GenericFileRepository<Order, String> {
 	}
 
 	public Order formOrder(String id, ShoppingCart cart) {
-		RestaurantDAO restaurantDAO=new RestaurantDAO(contextPath);
-		Restaurant restaurant=restaurantDAO.getRestaurantByID(id);
-		Order order=new Order();
-		double price=0;
-		List<CartItem> products=new ArrayList<CartItem>();
-		for (CartItem cartItem:cart.getCartItems()) {
-			if (cartItem.getProduct().getRestaurantID().equals(id)){
+		RestaurantDAO restaurantDAO = new RestaurantDAO(contextPath);
+		Restaurant restaurant = restaurantDAO.getRestaurantByID(id);
+		Order order = new Order();
+		double price = 0;
+		List<CartItem> products = new ArrayList<CartItem>();
+		for (CartItem cartItem : cart.getCartItems()) {
+			if (cartItem.getProduct().getRestaurantID().equals(id)) {
 				products.add(cartItem);
-				price+=cartItem.getAmount()*cartItem.getProduct().getPrice();
+				price += cartItem.getAmount() * cartItem.getProduct().getPrice();
 			}
 		}
-		
+
 		order.setBuyerName(cart.getOwnerID());
 		order.setDateAndTime(new Date());
 		order.setPrice(price);
@@ -149,18 +148,18 @@ public class OrderDAO extends GenericFileRepository<Order, String> {
 		order.setStatus(OrderStatus.OBRADA);
 		create(order);
 		return order;
-		
+
 	}
-	
+
 	public void deliverOrder(Order ord) {
-				ord.setStatus(OrderStatus.DOSTAVLJENA);
-				this.createOrUpdate(ord);
-				System.out.print("Porudzbina dostavljena.");
+		ord.setStatus(OrderStatus.DOSTAVLJENA);
+		this.createOrUpdate(ord);
+		System.out.print("Porudzbina dostavljena.");
 	}
 
 	public List<Order> getBuyerOrders(String id) {
-		List<Order> retVal=getOrders();
-		for (int i=0;i<retVal.size();i++) {
+		List<Order> retVal = getOrders();
+		for (int i = 0; i < retVal.size(); i++) {
 			if (!retVal.get(i).getBuyerName().equals(id)) {
 				retVal.remove(i);
 				i--;
@@ -170,23 +169,23 @@ public class OrderDAO extends GenericFileRepository<Order, String> {
 	}
 
 	public int cauntCancledeOrders(Buyer buyer) {
-		int orderCounter=0;
-		for(Order order:getBuyerOrders(buyer.getUsername())) {
+		int orderCounter = 0;
+		for (Order order : getBuyerOrders(buyer.getUsername())) {
 			Calendar cal = Calendar.getInstance();
 			cal.setTime(new Date());
 			cal.add(Calendar.DATE, -30);
 			Date dateBefore30Days = cal.getTime();
-			if(order.getDateAndTime().after(dateBefore30Days) && order.getStatus()==OrderStatus.OTKAZANA) {
+			if (order.getDateAndTime().after(dateBefore30Days) && order.getStatus() == OrderStatus.OTKAZANA) {
 				orderCounter++;
 			}
 		}
 		return orderCounter;
 	}
-	
+
 	public void prebaciUtransport(String id) {
 		Order o = this.getOrderByID(id);
 		o.setStatus(OrderStatus.U_TRANSPORTU);
 		this.createOrUpdate(o);
 	}
-	
+
 }

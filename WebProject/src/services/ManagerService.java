@@ -169,10 +169,9 @@ public class ManagerService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Buyer> managerBuyers(){
 		OrderDAO orderDAO = (OrderDAO) servletContext.getAttribute("OrderDAO");
-		BuyerDAO bDAO = (BuyerDAO) servletContext.getAttribute("BuyerDAO");
 		User u = (User) servletContext.getAttribute("user");
 		
-		return orderDAO.getBuyersForManager(u.getUsername(), bDAO.getBuyersList());
+		return orderDAO.getBuyersForManager(u.getUsername());
 	}
 	
 	@GET

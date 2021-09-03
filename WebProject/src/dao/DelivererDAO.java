@@ -145,8 +145,8 @@ public class DelivererDAO extends GenericFileRepository<Deliverer, String> {
 		Order order2 = new Order("2234549891", cartItems, restaurant, Converter.convertStringtoDate("30.5.2021."),
 				"djordje", OrderStatus.U_TRANSPORTU);
 		Order order1 = new Order("1112334455",cartItems,restaurant, Converter.convertStringtoDate("23.7.2021."),"djordje", OrderStatus.U_TRANSPORTU);
-		d.getOredersWaitingForDelivery().add(order1);
-		d.getOredersWaitingForDelivery().add(order2);
+		//d.getOredersWaitingForDelivery().add(order1);
+		//d.getOredersWaitingForDelivery().add(order2);
 	}
 	
 	public void deliverOrder(Order o, User id) {
@@ -156,7 +156,7 @@ public class DelivererDAO extends GenericFileRepository<Deliverer, String> {
 				Deliverer d = this.getDelivererByID(id.getUsername());
 				for(Order or : d.getOredersWaitingForDelivery()) {
 					if(or.getId().equals(o.getId())) {
-						ord.setStatus(OrderStatus.DOSTAVLJENA);
+						or.setStatus(OrderStatus.DOSTAVLJENA);
 					}
 				}
 				this.createOrUpdate(d);
