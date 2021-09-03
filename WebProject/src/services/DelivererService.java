@@ -1,5 +1,6 @@
 package services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -15,6 +16,7 @@ import javax.ws.rs.core.MediaType;
 import beans.Deliverer;
 import beans.User;
 import beans.Order;
+import beans.OrderStatus;
 import dao.AdminDAO;
 import dao.BuyerDAO;
 import dao.CommentDAO;
@@ -93,7 +95,13 @@ public class DelivererService {
 	public List<Order> getOrders(){
 		
 		OrderDAO oDAO = (OrderDAO) servletContext.getAttribute("OrderDAO");
-		return oDAO.getOrders();
+		List<Order> retList=new ArrayList<Order>();
+		for (Order order:oDAO.getOrders()) {
+			if (order.getStatus()==OrderStatus.CEKA_DOSTAVLJACA) {
+				retList.add(order);
+			}
+		}
+		return retList;
 	}
 
 	@POST
