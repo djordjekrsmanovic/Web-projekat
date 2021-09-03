@@ -173,4 +173,13 @@ public class DelivererDAO extends GenericFileRepository<Deliverer, String> {
 			this.createOrUpdate(drr);
 		}
 	}
+	
+	public boolean validacija(User u) {
+		for(Deliverer d : this.getDeliverers()) {
+			if(d.getUsername().equals(u.getUsername())) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

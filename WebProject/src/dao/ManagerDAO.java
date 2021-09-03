@@ -11,6 +11,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import beans.Address;
+import beans.Deliverer;
 import beans.Gender;
 import beans.Location;
 import beans.Manager;
@@ -141,4 +142,13 @@ public class ManagerDAO extends GenericFileRepository<Manager, String> {
 		return null;
 	}
 	
+	
+	public boolean validacija(User u) {
+		for(Manager d : this.getManagersList()) {
+			if(d.getUsername().equals(u.getUsername())) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

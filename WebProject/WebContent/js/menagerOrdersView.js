@@ -138,8 +138,19 @@
 	 let i;
 	 let duzina = loadedOrders.length;
 	 
-	 for(i=0;i<duzina;i++){
-	 	if(defaultOrders[i].price>priceTo || defaultOrders[i].price<priceFrom || defaultOrders[i].dateAndTime>dateTo || defaultOrders[i].dateAndTime<dateFrom)
+	 for(i=duzina-1;i>-1;i--){
+	 	if(defaultOrders[i].price>priceTo || defaultOrders[i].price<priceFrom) 
+	 	{
+			if(defaultOrders[i].dateAndTime>dateTo || defaultOrders[i].dateAndTime<dateFrom){
+	 		loadedOrders.splice(i,1);	 		
+			}
+	 	}
+	 }			
+
+	duzina = loadedOrders.length;
+	 
+	 for(i=duzina-1;i>-1;i--){
+	 	if(loadedOrders[i].dateAndTime>dateTo || loadedOrders[i].dateAndTime<dateFrom) 
 	 	{
 	 		loadedOrders.splice(i,1);	 		
 	 	}
@@ -185,7 +196,7 @@
  function priceAscSort(){
  	return loadedOrders.sort(function(a,b){return a.price-b.price;});
  }
- function priceDesscSort(){
+ function priceDescSort(){
  	return loadedOrders.sort(function(a,b){return b.price-a.price;});
  }
  function dateAscSort(){

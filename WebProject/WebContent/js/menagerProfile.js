@@ -20,27 +20,37 @@
         let password=$('#NewPassword').val();
         let repeatedPassword=$('#RepeatedNewPassword').val();
         let gender=$("#managerSex option:selected").val();
-        if (name===''||surname===''||date===''||userName==''||password==''||repeatedPassword==''||gender==''){
+        if (name===''||surname===''||date===''||userName==''||gender==''){
             $("#error").append=('Sva polja trebaju biti popunjena');
             return;
         }
 
         if (password!=repeatedPassword){
+			alert("Lozinke se ne podudaraju.");
             return;
         }
+
+		if(password===""){
+			password=$("#oldPassword").val();
+		}
 
         $.post({
             url:'rest/manager/editProfile',
             contentType:'application/json',
             data:JSON.stringify({username:userName,password:password,firstName:name,lastName:surname,gender:gender,birthDate:date}),
             success:function(data){
+				if(data==="f"){
+				alert("Postoji korisnik sa ukucanim korisnickim imenom.");
+				} else {
                 document.location.reload();
+				
+				}
             },
             error:function(data){
                 alert("Greska prilikom izmjene.");
             }
         })
- 	
+ 	alert("Uspjesno se izmjenili profil.");
  	event.preventDefault();
  	
  	});
