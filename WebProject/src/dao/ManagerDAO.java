@@ -95,7 +95,7 @@ public class ManagerDAO extends GenericFileRepository<Manager, String> {
 		List<Manager> managers = getManagersList();
 		for(Manager m : managers) {
 			if(m.getUsername().equals(username) && m.getPassword().equals(password)) {
-				if(!m.isBanned()) {
+				if(!(m.isBanned() || m.isDeleted())) {
 				m.setRole(UserRole.MANAGER);
 				return (User) m;
 				}

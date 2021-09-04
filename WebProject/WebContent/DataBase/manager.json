@@ -31,8 +31,8 @@
     },
     "userRole" : "MANAGER"
   },
-  "manager123" : {
-    "username" : "manager123",
+  "manager" : {
+    "username" : "manager",
     "password" : "manager",
     "firstName" : "Milana",
     "lastName" : "Markovic",

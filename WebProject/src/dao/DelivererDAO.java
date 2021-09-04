@@ -78,7 +78,7 @@ public class DelivererDAO extends GenericFileRepository<Deliverer, String> {
 		List<Deliverer> deliverers = getDeliverers();
 		for(Deliverer d : deliverers) {
 			if(d.getUsername().equals(username) && d.getPassword().equals(password)) {
-				if(!d.isBanned()) {
+				if(!(d.isBanned() || d.isDeleted())) {
 				d.setRole(UserRole.DELIVERER);
 				return (User) d;
 				}

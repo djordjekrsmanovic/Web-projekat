@@ -154,7 +154,7 @@ $(document).ready(function(){
                     
                 })
                 let logOut=$('<li></li>').append(logout);
-                $('#ul-menu').append(homeLi,restaurantViewLi,buyersViewLi,usersViewLi,addRestaurantLi,profileView,logOut);
+                $('#ul-menu').append(homeLi,restaurantViewLi,usersViewLi,addRestaurantLi,profileView,logOut);
             } else if(loggedUser.role==="DELIVERER"){
                 $('#loginMenu').hide();
                 $('#registrationMenu').hide();

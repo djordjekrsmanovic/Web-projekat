@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -91,12 +92,13 @@ public class OrderDAO extends GenericFileRepository<Order, String> {
 	}
 
 	public List<Buyer> getBuyersForManager(String managerID) {
-		List<Buyer> retLista = new ArrayList<Buyer>();
+		
 		BuyerDAO buyerDAO = new BuyerDAO(contextPath);
-
+		HashMap<String,Buyer> buyers=new HashMap<String,Buyer>();
 		for (Order o : getOrdersForManager(managerID)) {
-			retLista.add(buyerDAO.getBuyerByID(o.getBuyerName()));
+			buyers.put(o.getBuyerName(), buyerDAO.getBuyerByID(o.getBuyerName()));
 		}
+		List<Buyer> retLista = new ArrayList<Buyer>(buyers.values());
 		return retLista;
 	}
 
