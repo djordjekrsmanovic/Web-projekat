@@ -2,7 +2,7 @@
   "Papricica" : {
     "name" : "Papricica",
     "restaurantType" : "GRILL",
-    "products" : [ ],
+    "products" : [],
     "restaurantStatus" : "OPEN",
     "location" : {
       "latitude" : 0.0,

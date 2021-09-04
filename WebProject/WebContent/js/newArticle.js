@@ -10,8 +10,8 @@ $(document).ready(function(){
 		var id = $("input[name=ArticleName]").val();
 		var price=$("input[name=Price]").val();
 		var articleName = $("input[name=ArticleName]").val();
-		if($("input[name=ArticleType]").val()=="FOOD"){
-		var articleType = "FOOD"} else { var articleType="DRINK";}
+		if($("#ArticleType").val()==="FOOD"){
+		var articleType = "FOOD";} else { var articleType="DRINK";}
 		var amoun = $("input[name=Amount]").val();
 		var descriptio = $("input[name=Description]").val();
 		var photoName = $("#photo").val();
