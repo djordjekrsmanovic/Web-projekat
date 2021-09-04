@@ -25,6 +25,20 @@ $(document).ready(function(){
         window.location.href="http://localhost:8080/WebProject/home.html";
     }
 
+    $('#logout').click(function(){
+        $.get({
+            url:'rest/login/logout',
+            contentType:'application/json',
+            success:function(data){
+                if (data=="Loged out successfully!"){
+                    window.location.href="http://localhost:8080/WebProject/home.html";
+                }else{
+                    alert('Greska prilikom odjave sa profila');
+                }
+            }
+        })
+    })
+
     $.ajax({
         url:'rest/buying/get-orders/'+loggedUser.username,
         contentType:'application/json',

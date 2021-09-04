@@ -311,6 +311,11 @@ function createHandler(product){
             alert('Potrebno je da unesete kolicinu proizvoda');
             return;
         }
+
+        if(restaurant.restaurantStatus=="CLOSED"){
+            alert("Ne možete naručivati hranu iz zatvorenog restorana!");
+            return;
+        }
         var details={productID:product.name,restaurantID:restaurantName,BuyerUsername:loggedUser.username,amount:value}
         $.post({
             url:'rest/buying/add-product-to-cart',
