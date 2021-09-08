@@ -30,9 +30,7 @@ $(document).ready(function(){
 			changeWindowAfterLog();
 			} else {
 			if (document.getElementById("errorMessage").innerHTML == "") {
-            $("#errorMessage").append(
-              '<td colspan="2" class="error-message"><div>Unijeli ste pogrešno korisničko ime ili šifru.</div></td>'
-            );
+				$('#errorMessage').text("Unijeli ste pogrešno korisničko ime ili lozinku");
             }
             }
 			},       	      

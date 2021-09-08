@@ -122,3 +122,69 @@ nav{
   ::-webkit-scrollbar-thumb:hover {
     background: rgb(184, 182, 182); 
   }
+
+  .editDiv{
+    margin-top: 40px;
+    width: 40%;
+    background-color: white;
+    border-radius: 10px;
+    margin-left: 30%;
+	margin-right: 30%;
+    margin-bottom: 50px;
+	
+}
+
+.editData{
+    display: grid;
+    grid-template-columns: 250px auto;
+    margin: 20px;
+}
+
+.editData label{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.editData input{
+    height: 30px;
+}
+
+.title{
+    font-weight: bolder;
+    font-size: xx-large;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.editData button{
+    margin-left: 15px;
+    border: 0px;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(108, 168, 236);
+    cursor: pointer;
+}
+
+
+
+.submitButtonClass{
+    margin: 50px;
+    margin-left: 42%;
+    height: 40px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    background-color: rgb(16, 204, 57);
+    border: 0px;
+    color: white;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+	width: 100px;
+}
+
+.error-message{
+    margin-left: 10px;
+    font-size: 18px;
+    color: rgb(241, 76, 76);
+    margin-bottom: 10px;
+}

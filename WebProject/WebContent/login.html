@@ -24,17 +24,34 @@
 <h1 id="naslov" class="titleStyle">Dobrodošli u aplikaciju za naručivanje hrane.</h1>
 <h2 class="titleStyle" font-size=16>Molimo prijavite se na svoj nalog</h2>
 
-<div id="loginForm" class="loginFormStyle">
+
 	
 <h2 class="formTitle">Prijavite se:</h2>
+<div class="editDiv"> 
 <form id="login">
-<table class="loginTable">
+	<div class="editData">
+		<label>Korisničko ime:</label>
+		<input id="userName" name="username" type="text" />
+	</div>
+
+	<div class="editData">
+		<label>Lozinka:</label>
+		<input id="password" name="pass" type="text"  />
+	</div>
+
+	<button type="submit" class="submitButtonClass">Prijava</button>
+	<p class="error-message" id="errorMessage"></p>
+	<div class="editData">
+		<label style="float: right;">Niste registrovani?</label> <a href="registration.html">Registracija</a>
+	</div>
+	
+<!--<table class="loginTable">
 <tr><td><label>Korisničko ime: </label></td><td><input name="username" type="text"></input> <br/> </td></tr>
 <tr><td><label>Lozinka: </label></td><td><input name="pass" type="password"></input> <br/> </td></tr>
 <tr><td><button type="submit">Prijava</button> <br/><br/></td></tr>
 <tr><td><label>Niste registrovani?</label></td><td> <a href="registration.html">Registracija</a> <br/></td></tr>
 <tr id="errorMessage"></tr>
-</table>
+</table> -->
 </form>
 </div>
 
