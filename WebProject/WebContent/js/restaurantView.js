@@ -5,6 +5,7 @@ var loggedUser;
 var restaurantName;
 var restaurant;
 var mapCreated=false;
+var i=0;
 $(document).ready(function(){
   
     restaurantName=getUrlParameters("name");
@@ -19,8 +20,9 @@ $(document).ready(function(){
         url:urlAddress,
         contentType:'application/json',
         success:function(data){
+            i=0;
             restaurant=data;
-            fillData(restaurant);
+            fillData(restaurant,i);
         },
         error:function (param) { 
             alert('Restoran ne postoji u bazi');
@@ -257,7 +259,7 @@ function formComments(comment){
 
 }
 
-function fillProducts(product){
+function fillProducts(product,i){
     /*<div class="Product-card">
             <img src="../pictures/slika1.jpg" alt="Denim Jeans" style="width:100%">
             <h1>Tailored Jeans</h1>
@@ -270,6 +272,7 @@ function fillProducts(product){
     let cardDiv=$('<div></div>',{
         class:'Product-card',
     })
+
     let image=$('<img />',{
         src:product.photoPath,
         class:'product-picture'
@@ -292,17 +295,22 @@ function fillProducts(product){
     })
     productAmount.css('margin-top','5px');
     productAmount.css('marigin-bottom','15px');
-    let inputParagraph=$('<p></p>').css('margin-bottom','25px','margin-top','25px').append('<input type="number" id='+product.name+'>');
+    let inputParagraph=$('<p></p>').css('margin-bottom','25px','margin-top','25px').append('<input type="number" id='+i+'>');
     let buttonAdd=document.createElement('button');
     buttonAdd.innerHTML="Dodaj u korpu";
-    buttonAdd.addEventListener('click',createHandler(product));
+    buttonAdd.addEventListener('click',createHandler(product,i));
     cardDiv.append(image).append(productTitle).append(productPrice).append(productDescription).append(productAmount,inputParagraph,buttonAdd);
     $('#Proizvodi').append(cardDiv);
+    i=i+1;
 }
 
-function createHandler(product){
+function createHandler(product,i){
     return function(){
-        let value=$("#"+product.name).val();
+        let value=$("#"+i).val();
+        if (parseInt(value)<1){
+            alert('Kolicina proizvoda mora biti veca od 0');
+            return;
+        }
         if (loggedUser==null || loggedUser==undefined || loggedUser.role!='BUYER'){
             alert('Potrebno je da se prijavite kao kupac');
             return;
@@ -334,7 +342,8 @@ function createHandler(product){
 }
 function fillData(restaurant){
     console.log("Ucitan je restoran sa servera i njegovo ime je "+ restaurant.name);
-    $('#restaurant-logo').attr('src',restaurant.picturePath); //ovo otkomentarisati kada budu dodat logo restorana u bazu
+    var src=restaurant.picturePath.replaceAll(' ','_');
+    $('#restaurant-logo').attr('src',src); //ovo otkomentarisati kada budu dodat logo restorana u bazu
     $('#title-restaurant').html(restaurant.name);
     $('#restaurant-raiting').html(restaurant.raiting);
     $('#restaurant-sort').html(restaurant.restaurantType);

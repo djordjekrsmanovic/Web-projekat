@@ -11,7 +11,7 @@
     "role" : "BUYER",
     "userRole" : "BUYER",
     "orders" : [ ],
-    "points" : 0.0,
+    "points" : 266.0,
     "buyerType" : {
       "buyerRank" : "NO_RANK",
       "discount" : 0.0
@@ -29,10 +29,10 @@
     "role" : "BUYER",
     "userRole" : "BUYER",
     "orders" : [ ],
-    "points" : 0.0,
+    "points" : 3269.30625,
     "buyerType" : {
-      "buyerRank" : "NO_RANK",
-      "discount" : 0.0
+      "buyerRank" : "GOLD",
+      "discount" : 10.0
     }
   }
 }

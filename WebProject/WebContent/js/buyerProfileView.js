@@ -119,7 +119,6 @@ function formOrderTable(){
 
 function createCommentHandler(order){
     return function(){
-        alert(order.dateAndTime);
         selectedOrder=order;
         $('#writeComment').show();
         window.scrollTo(0,document.body.scrollHeight);

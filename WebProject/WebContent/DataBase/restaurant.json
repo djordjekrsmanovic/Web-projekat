@@ -36,7 +36,7 @@
     },
     "picturePath" : "pictures/logos/Plava frajla.png",
     "deleted" : false,
-    "raiting" : 0.0,
+    "raiting" : 5.0,
     "managerID" : "manager1"
   },
   "Mozart" : {
@@ -86,7 +86,7 @@
     },
     "picturePath" : "pictures/logos/Mozart.png",
     "deleted" : false,
-    "raiting" : 0.0,
+    "raiting" : 4.0,
     "managerID" : "manager"
   },
   "Papricica" : {

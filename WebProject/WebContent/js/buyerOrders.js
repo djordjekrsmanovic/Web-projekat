@@ -124,6 +124,7 @@ function formTable(orders){
         let tr=$('<tr></tr>');
         let restaurantID=$('<td>'+order.id+'</td>');
         let restraurantTD=$('<td>'+order.restaurant.name+'</td>');
+        let restaurantType=$('<td>'+getType(order.restaurant)+'</td>')
         let date=new Date(order.dateAndTime);
         date=date.toLocaleString();
         let parts=date.split('/');
@@ -141,7 +142,7 @@ function formTable(orders){
         }
         cancelButton[0].addEventListener('click',createDeleteHandler(order));
         let buttonTD=$('<td></td>').append(cancelButton);
-        tr.append(restaurantID,restraurantTD,dateTD,priceTD,statusTD,buttonTD);
+        tr.append(restaurantID,restraurantTD,restaurantType,dateTD,priceTD,statusTD,buttonTD);
         $('#tableBody').append(tr);
     }
 }
@@ -347,4 +348,20 @@ function sortDateAscending(){
 
 function sortDateDescending(){
     return orders.sort((a,b)=> (new Date(a.dateAndTime)<new Date(b.dateAndTime))? 1 : (new Date(b.dateAndTime)<new Date(a.dateAndTime))? -1:0);
+}
+
+function getType(restaurant){
+    /*ITALIAN,
+	JAPANESE,
+	GRILL,
+	ETNO*/
+    if (restaurant.restaurantType=='ITALIAN'){
+        return "Italijanski restoran";
+    }else if(restaurant.restaurantType=='JAPANESE'){
+        return "Japanski restoran";
+    }else if(restaurant.restaurantType=="GRILL"){
+        return "Roštiljnica";
+    }else{
+        return "Etno restoran";
+    }
 }

@@ -71,15 +71,26 @@ public class DeliverRequestDAO extends GenericFileRepository<DeliverRequest, Str
 		return ret;
 	}
 	
-	public void odobri(String requestId, OrderDAO oDAO, DelivererDAO dDAO) {				
-				DeliverRequest dr = this.getRequestByID(requestId);			
+	public void odobri(String requestId, OrderDAO orderDAO, DelivererDAO delivererDAO) {				
+				/*DeliverRequest dr = this.getRequestByID(requestId);			
 				dr.getDeliverer().addOrder(dr.getOrder());
+				Deliverer deliverer=delivererDAO.getDelivererByID(dr.getDeliverer().getUsername());
+				deliverer.addOrder(dr.getOrder());
 				dr.getOrder().setStatus(OrderStatus.U_TRANSPORTU);
 				oDAO.prebaciUtransport(dr.getOrder().getId());			
-				dDAO.createOrUpdate(dr.getDeliverer());
+				delivererDAO.createOrUpdate(dr.getDeliverer());
 				dr.setDeleted(true);
 				this.createOrUpdate(dr);
-				dDAO.prebaciUTransport(dr.getDeliverer(), dr.getOrder());					
+				delivererDAO.prebaciUTransport(dr.getDeliverer(), dr.getOrder());	*/
+				DeliverRequest delivererRequest=this.getRequestByID(requestId);
+				delivererRequest.setDeleted(true);
+				this.createOrUpdate(delivererRequest);
+				Deliverer deliverer=delivererDAO.getDelivererByID(delivererRequest.getDeliverer().getUsername());
+				Order order=orderDAO.getOrderByID(delivererRequest.getOrder().getId());
+				order.setStatus(OrderStatus.U_TRANSPORTU);
+				orderDAO.update(order);
+				deliverer.addOrder(order);
+				delivererDAO.createOrUpdate(deliverer);
 	}
 	
 	public void odbij(String requestId, OrderDAO oDAO, DelivererDAO dDAO) {

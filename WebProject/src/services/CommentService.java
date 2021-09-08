@@ -1,5 +1,6 @@
 package services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -48,7 +49,9 @@ public class CommentService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Comment> getComments(@PathParam("restaurantName") String restaurantName){
 		CommentDAO commentDAO=(CommentDAO) servletContext.getAttribute("commentDAO");
-		return commentDAO.getRestaurantComments(restaurantName);
+		List<Comment> comments=new ArrayList<Comment>();
+		comments=commentDAO.getRestaurantComments(restaurantName);
+		return comments;
 	}
 	
 	@GET

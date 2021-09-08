@@ -1,5 +1,6 @@
 var loggedUser;
 var cart;
+var wrongAmount=false;
 $(document).ready(function(){
     $.ajax({
         url:'rest/login/get-loged-user',
@@ -48,6 +49,11 @@ $(document).ready(function(){
             return;
         }
 
+        if (wrongAmount==true){
+            alert('Kolicina proizvoda u korpi treba da bude veca od 0');
+            return;
+        }
+
         $.post({
             url:'rest/buying/form-order',
             data:JSON.stringify(cart),
@@ -77,7 +83,7 @@ function formCart(){
         pictureTD.append(picture);
 
         let name=$('<td>'+cartItem.product.name+'</td>');
-        let amountInput=$('<input id='+i+' type="text">');
+        let amountInput=$('<input id='+i+' type="number">');
         amountInput[0].addEventListener('change',createChangeHandler(cartItem,i));
         amountInput.val(cartItem.amount);
         let amount=$('<td></td>').append(amountInput);
@@ -98,13 +104,20 @@ function formCart(){
 
 function createChangeHandler(cartItem,i){
     return function(){
-        alert('Izmjena vrijednosti');
         let newValue=$('#'+i).val();
+        if (parseInt(newValue)<=0){
+            alert('Kolicina proizvoda treba da bude veca od 0');
+            wrongAmount=true;
+            return;
+        }
         cartItem.amount=newValue;
         if(newValue=="" || newValue=="0"){
             alert('Potrebno je da unesete kolicinu za proizvod');
+            wrongAmount=true;
             return;
         }
+
+        wrongAmount=false;
         $.post({
             url:'rest/buying/change-amount',
             data:JSON.stringify(cart),
