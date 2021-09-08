@@ -210,12 +210,12 @@ function sortLocationDescending(){
 }
 
 function sortGradeAscending(){
-    loadedRestaurants.sort((a,b) => (a.grade > b.grade) ? 1 : ((b.grade > a.grade) ? -1 : 0));
+    loadedRestaurants.sort((a,b) => (parseFloat(a.raiting) > parseFloat(b.raiting)) ? 1 : ((parseFloat(b.raiting) > parseFloat(a.raiting)) ? -1 : 0));
     
 }
 
 function sortGradeDescending(){
-    loadedRestaurants.sort((a,b) => (a.grade < b.grade) ? 1 : ((b.grade < a.grade) ? -1 : 0));
+    loadedRestaurants.sort((a,b) => (parseFloat(a.raiting) < parseFloat(b.raiting)) ? 1 : ((parseFloat(b.raiting) < parseFloat(a.raiting)) ? -1 : 0));
     
 }
 
