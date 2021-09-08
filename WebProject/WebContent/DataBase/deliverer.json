@@ -1,11 +1,11 @@
 {
-  "deliverer123" : {
-    "username" : "deliverer123",
-    "password" : "deliverer",
-    "firstName" : "deliverer",
-    "lastName" : "deliverer",
+  "aaa" : {
+    "username" : "aaa",
+    "password" : "aaa",
+    "firstName" : "a",
+    "lastName" : "a",
     "gender" : "male",
-    "birthDate" : 1631059200000,
+    "birthDate" : 1632780000000,
     "deleted" : false,
     "banned" : false,
     "role" : "DELIVERER",

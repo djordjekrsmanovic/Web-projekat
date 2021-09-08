@@ -163,4 +163,19 @@ public class RestaurantService {
 		return restaurant;
 	}
 	
+	@GET
+	@Path("check-name/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public boolean checkName(@PathParam("id")String id) {
+		boolean ret=true;
+		RestaurantDAO restaurantDAO=(RestaurantDAO) servletContext.getAttribute("RestaurantDAO");
+		for (Restaurant restaurant:restaurantDAO.getRestaurants()) {
+			if (restaurant.getName().equals(id)) {
+				ret=false;
+				break;
+			}
+		}
+		return ret;
+	}
+	
 }

@@ -148,6 +148,7 @@ function createManager(){
                 alert("Greska prilikom registracije");
             }else{
                 alert("Uspjesno ste registrovani");
+                window.location.reload();
             }
             
         },
@@ -175,6 +176,7 @@ function createDeliverer(){
         data:JSON.stringify({username:userName,password:password,firstName:name,lastName:surname,gender:gender,birthDate:newdate,userType:type}),
         success:function(data){
             alert("Uspjesno ste registrovani");
+            window.location.reload();
         },
         error:function(data){
             alert("Greska prilikom registracije");

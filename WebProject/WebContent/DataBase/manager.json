@@ -1,65 +1,65 @@
 {
-  "a" : {
-    "username" : "a",
-    "password" : "a",
+  "aa" : {
+    "username" : "aa",
+    "password" : "aa",
     "firstName" : "a",
     "lastName" : "a",
     "gender" : "male",
-    "birthDate" : 1631570400000,
+    "birthDate" : 1631484000000,
     "deleted" : false,
     "banned" : false,
     "role" : "MANAGER",
     "restaurant" : {
-      "name" : "Example",
+      "name" : "Papricica3",
       "restaurantType" : "ITALIAN",
-      "products" : [ ],
-      "restaurantStatus" : "CLOSED",
-      "location" : {
-        "latitude" : 0.0,
-        "longitude" : 0.0,
-        "address" : {
-          "street" : "ad",
-          "streetNumber" : "ad",
-          "city" : "Novi Sad",
-          "postalCode" : "21000"
-        }
-      },
-      "picturePath" : "pictures/logos/Example.jpeg",
-      "deleted" : false,
-      "raiting" : 0.0,
-      "managerID" : "a"
-    },
-    "userRole" : "MANAGER"
-  },
-  "manager" : {
-    "username" : "manager",
-    "password" : "manager",
-    "firstName" : "Milana",
-    "lastName" : "Markovic",
-    "gender" : "female",
-    "birthDate" : 1631577600000,
-    "deleted" : false,
-    "banned" : false,
-    "role" : "MANAGER",
-    "restaurant" : {
-      "name" : "Papricica",
-      "restaurantType" : "GRILL",
       "products" : [ ],
       "restaurantStatus" : "OPEN",
       "location" : {
         "latitude" : 0.0,
         "longitude" : 0.0,
         "address" : {
-          "street" : "Bulevar Oslobodjenja ",
-          "streetNumber" : "6",
-          "city" : "Novi SAd",
-          "postalCode" : "21000"
+          "street" : "a",
+          "streetNumber" : "a",
+          "city" : "a",
+          "postalCode" : "a"
         }
       },
-      "picturePath" : "pictures/logos/Papricica.jpeg",
+      "picturePath" : "pictures/logos/Papricica3.png",
       "deleted" : false,
       "raiting" : 0.0,
-      "managerID" : "manager"
+      "managerID" : "aa"
+    },
+    "userRole" : "MANAGER"
+  },
+  "a" : {
+    "username" : "a",
+    "password" : "a",
+    "firstName" : "a",
+    "lastName" : "a",
+    "gender" : "male",
+    "birthDate" : 1631656800000,
+    "deleted" : false,
+    "banned" : false,
+    "role" : "MANAGER",
+    "restaurant" : {
+      "name" : "Papricica1",
+      "restaurantType" : "ITALIAN",
+      "products" : [ ],
+      "restaurantStatus" : "OPEN",
+      "location" : {
+        "latitude" : 0.0,
+        "longitude" : 0.0,
+        "address" : {
+          "street" : "a",
+          "streetNumber" : "a",
+          "city" : "a",
+          "postalCode" : "a"
+        }
+      },
+      "picturePath" : "pictures/logos/Papricica1.jpeg",
+      "deleted" : false,
+      "raiting" : 0.0,
+      "managerID" : "a"
     },
     "userRole" : "MANAGER"
   }

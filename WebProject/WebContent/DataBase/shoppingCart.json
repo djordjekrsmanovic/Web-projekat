@@ -1,12 +1,2 @@
 {
-  "buyerNovi" : {
-    "cartItems" : [ ],
-    "price" : 0.0,
-    "ownerID" : "buyerNovi"
-  },
-  "milan" : {
-    "cartItems" : [ ],
-    "price" : 0.0,
-    "ownerID" : "milan"
-  }
 }

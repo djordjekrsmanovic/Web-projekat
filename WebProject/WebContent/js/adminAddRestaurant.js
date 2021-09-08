@@ -7,6 +7,7 @@ var createdRestaurant;
 var managerExists=false;
 var pictureURL="";
 var srcData="";
+var validRestaurantName=true;
 
 $(document).ready(function(){
 
@@ -139,6 +140,30 @@ $(document).ready(function(){
         
     })
 
+    $('#restaurantName').focusout(function(){
+        let name=$('#restaurantName').val();
+        if (name==""){
+            return;
+        }
+        $.get({
+            url:'rest/restaurant/check-name/'+name ,
+            contentType:'appliaction/json',
+            success:function(value){
+                if(value==false){
+                    validRestaurantName=false;
+                    alert('Restoran sa datim imenom vec postoji');
+                }else{
+                    validRestaurantName=true;
+                }
+            },
+            error:function(data){
+                alert('Greska prilikom provjere imena restorana');
+                validRestaurantName=false;
+            }
+        })
+    })
+
+
     $('#confirmRestaurant').click(function(){
         let restaurantName=$('#restaurantName').val();
         let restaurantType=$('#restaurantType').val();
@@ -155,6 +180,11 @@ $(document).ready(function(){
                 alert("Popunite sva polja");
             }
             
+            return;
+        }
+
+        if(validRestaurantName==false){
+            alert('Naziv restorana je već u upotrebi');
             return;
         }
 
@@ -326,6 +356,7 @@ function writePictureOnServer(){
 
         success:function(data){
             console.log("Success");
+            window.location.reload();
         },
         error:function(data){
             console.log("Error");

@@ -8,7 +8,7 @@
     font-family: 'Roboto Condensed', sans-serif;
 }
 body{
-	background-color: lightblue;
+	background:linear-gradient(to right,#7980ce,lightblue);
 }
 
 .titleStyle{
