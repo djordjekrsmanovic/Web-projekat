@@ -1,2 +1,38 @@
 {
+  "buyer1" : {
+    "username" : "buyer1",
+    "password" : "buyer1",
+    "firstName" : "Marko",
+    "lastName" : "Markovic",
+    "gender" : "male",
+    "birthDate" : 1630274400000,
+    "deleted" : false,
+    "banned" : false,
+    "role" : "BUYER",
+    "userRole" : "BUYER",
+    "orders" : [ ],
+    "points" : 0.0,
+    "buyerType" : {
+      "buyerRank" : "NO_RANK",
+      "discount" : 0.0
+    }
+  },
+  "buyer" : {
+    "username" : "buyer",
+    "password" : "buyer",
+    "firstName" : "Bojan",
+    "lastName" : "Prodanovic",
+    "gender" : "male",
+    "birthDate" : 1630274400000,
+    "deleted" : false,
+    "banned" : false,
+    "role" : "BUYER",
+    "userRole" : "BUYER",
+    "orders" : [ ],
+    "points" : 0.0,
+    "buyerType" : {
+      "buyerRank" : "NO_RANK",
+      "discount" : 0.0
+    }
+  }
 }

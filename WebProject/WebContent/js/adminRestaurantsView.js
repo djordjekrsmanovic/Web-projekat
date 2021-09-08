@@ -78,8 +78,9 @@ function formTable(restaurants){
     for (restaurant of restaurants){
         let tr=$('<tr></tr>');
         let logoTd=$('<td></td>')
+        var src=restaurant.picturePath.replaceAll(' ','_');
         let imageSrc=$('<img />',{
-            src:restaurant.picturePath
+            src:src
         })
         logoTd.append(imageSrc);
         let nameTd=$('<td>'+restaurant.name+'</td>');

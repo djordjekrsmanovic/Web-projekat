@@ -1,16 +1,16 @@
 {
-  "aa" : {
-    "username" : "aa",
-    "password" : "aa",
-    "firstName" : "a",
-    "lastName" : "a",
+  "manager" : {
+    "username" : "manager",
+    "password" : "manager",
+    "firstName" : "Zoran",
+    "lastName" : "Dragas",
     "gender" : "male",
-    "birthDate" : 1631484000000,
+    "birthDate" : 477702000000,
     "deleted" : false,
     "banned" : false,
     "role" : "MANAGER",
     "restaurant" : {
-      "name" : "Papricica3",
+      "name" : "Mozart",
       "restaurantType" : "ITALIAN",
       "products" : [ ],
       "restaurantStatus" : "OPEN",
@@ -18,48 +18,144 @@
         "latitude" : 0.0,
         "longitude" : 0.0,
         "address" : {
-          "street" : "a",
-          "streetNumber" : "a",
-          "city" : "a",
-          "postalCode" : "a"
+          "street" : "Kralja Petra",
+          "streetNumber" : "1",
+          "city" : "Foca",
+          "postalCode" : "73300"
         }
       },
-      "picturePath" : "pictures/logos/Papricica3.png",
+      "picturePath" : "pictures/logos/Mozart.png",
       "deleted" : false,
       "raiting" : 0.0,
-      "managerID" : "aa"
+      "managerID" : "manager"
     },
     "userRole" : "MANAGER"
   },
-  "a" : {
-    "username" : "a",
-    "password" : "a",
-    "firstName" : "a",
-    "lastName" : "a",
+  "manager1" : {
+    "username" : "manager1",
+    "password" : "manager1",
+    "firstName" : "Milana",
+    "lastName" : "Vasic",
     "gender" : "male",
-    "birthDate" : 1631656800000,
+    "birthDate" : 803772000000,
     "deleted" : false,
     "banned" : false,
     "role" : "MANAGER",
     "restaurant" : {
-      "name" : "Papricica1",
-      "restaurantType" : "ITALIAN",
+      "name" : "Plava frajla",
+      "restaurantType" : "ETNO",
       "products" : [ ],
       "restaurantStatus" : "OPEN",
       "location" : {
         "latitude" : 0.0,
         "longitude" : 0.0,
         "address" : {
-          "street" : "a",
-          "streetNumber" : "a",
-          "city" : "a",
-          "postalCode" : "a"
+          "street" : "Spens",
+          "streetNumber" : "5",
+          "city" : "Novi Sad",
+          "postalCode" : "21000"
         }
       },
-      "picturePath" : "pictures/logos/Papricica1.jpeg",
+      "picturePath" : "pictures/logos/Plava frajla.png",
       "deleted" : false,
       "raiting" : 0.0,
-      "managerID" : "a"
+      "managerID" : "manager1"
+    },
+    "userRole" : "MANAGER"
+  },
+  "manager2" : {
+    "username" : "manager2",
+    "password" : "manager2",
+    "firstName" : "Milan",
+    "lastName" : "Maric",
+    "gender" : "male",
+    "birthDate" : 1265583600000,
+    "deleted" : false,
+    "banned" : false,
+    "role" : "MANAGER",
+    "restaurant" : {
+      "name" : "Carda Aqua Doria",
+      "restaurantType" : "ETNO",
+      "products" : [ ],
+      "restaurantStatus" : "OPEN",
+      "location" : {
+        "latitude" : 0.0,
+        "longitude" : 0.0,
+        "address" : {
+          "street" : "Kamenicki put",
+          "streetNumber" : "1",
+          "city" : "Petrovaradin",
+          "postalCode" : "21000"
+        }
+      },
+      "picturePath" : "pictures/logos/Carda Aqua Doria.png",
+      "deleted" : false,
+      "raiting" : 0.0,
+      "managerID" : "manager2"
+    },
+    "userRole" : "MANAGER"
+  },
+  "manager3" : {
+    "username" : "manager3",
+    "password" : "manager3",
+    "firstName" : "Lepa",
+    "lastName" : "Brena",
+    "gender" : "female",
+    "birthDate" : 791593200000,
+    "deleted" : false,
+    "banned" : false,
+    "role" : "MANAGER",
+    "restaurant" : {
+      "name" : "Papricica",
+      "restaurantType" : "GRILL",
+      "products" : [ ],
+      "restaurantStatus" : "CLOSED",
+      "location" : {
+        "latitude" : 0.0,
+        "longitude" : 0.0,
+        "address" : {
+          "street" : "Mičurinova ",
+          "streetNumber" : "58",
+          "city" : "Novi Sad",
+          "postalCode" : "21000"
+        }
+      },
+      "picturePath" : "pictures/logos/Papricica.jpeg",
+      "deleted" : false,
+      "raiting" : 0.0,
+      "managerID" : "manager3"
+    },
+    "userRole" : "MANAGER"
+  },
+  "manager4" : {
+    "username" : "manager4",
+    "password" : "manager4",
+    "firstName" : "Nikola",
+    "lastName" : "Miletic",
+    "gender" : "male",
+    "birthDate" : 1339106400000,
+    "deleted" : false,
+    "banned" : false,
+    "role" : "MANAGER",
+    "restaurant" : {
+      "name" : "Sushi Fresh",
+      "restaurantType" : "JAPANESE",
+      "products" : [ ],
+      "restaurantStatus" : "OPEN",
+      "location" : {
+        "latitude" : 0.0,
+        "longitude" : 0.0,
+        "address" : {
+          "street" : "Maksima Gorkog",
+          "streetNumber" : "1a",
+          "city" : "Novi Sad",
+          "postalCode" : "21000"
+        }
+      },
+      "picturePath" : "pictures/logos/Sushi Fresh.jpeg",
+      "deleted" : false,
+      "raiting" : 0.0,
+      "managerID" : "manager4"
     },
     "userRole" : "MANAGER"
   }

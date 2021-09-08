@@ -1,2 +1,12 @@
 {
+  "buyer1" : {
+    "cartItems" : [ ],
+    "price" : 0.0,
+    "ownerID" : "buyer1"
+  },
+  "buyer" : {
+    "cartItems" : [ ],
+    "price" : 0.0,
+    "ownerID" : "buyer"
+  }
 }

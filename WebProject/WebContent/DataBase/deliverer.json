@@ -1,15 +1,3 @@
 {
-  "aaa" : {
-    "username" : "aaa",
-    "password" : "aaa",
-    "firstName" : "a",
-    "lastName" : "a",
-    "gender" : "male",
-    "birthDate" : 1632780000000,
-    "deleted" : false,
-    "banned" : false,
-    "role" : "DELIVERER",
-    "userRole" : "DELIVERER",
-    "oredersWaitingForDelivery" : [ ]
-  }
+ 
 }
