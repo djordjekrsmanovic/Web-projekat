@@ -20,7 +20,6 @@ $(document).ready(function(){
         url:urlAddress,
         contentType:'application/json',
         success:function(data){
-            i=0;
             restaurant=data;
             fillData(restaurant,i);
         },
@@ -39,6 +38,7 @@ $(document).ready(function(){
             for (product of products){
                 loadedProducts.push(product);
                 fillProducts(product,i);
+                i=i+1;
             }
         }
     })
@@ -302,7 +302,6 @@ function fillProducts(product,i){
     buttonAdd.addEventListener('click',createHandler(product,i));
     cardDiv.append(image).append(productTitle).append(productPrice).append(productDescription).append(productAmount,inputParagraph,buttonAdd);
     $('#Proizvodi').append(cardDiv);
-    i=i+1;
 }
 
 function createHandler(product,i){
