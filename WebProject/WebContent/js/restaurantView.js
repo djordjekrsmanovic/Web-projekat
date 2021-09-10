@@ -35,9 +35,10 @@ $(document).ready(function(){
         url:productsUrlAddress,
         contentType:'application/json',
         success:function(products){
+            i=0;
             for (product of products){
                 loadedProducts.push(product);
-                fillProducts(product);
+                fillProducts(product,i);
             }
         }
     })
